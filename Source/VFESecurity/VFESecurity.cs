@@ -14,14 +14,15 @@ using Harmony;
 namespace VFESecurity
 {
 
-    [StaticConstructorOnStartup]
-    public static class HarmonyPatches
+    public class VFESecurity : Mod
     {
 
-        static HarmonyPatches()
+        public VFESecurity(ModContentPack content) : base(content)
         {
-            VFESecurity.HarmonyInstance.PatchAll();
+            HarmonyInstance = HarmonyInstance.Create("OskarPotocki.VanillaFurnitureExpanded.Security");
         }
+
+        public static HarmonyInstance HarmonyInstance;
 
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Deployable Barrier -->
+  <!-- Deployable Barrier -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_DeployableBarrier</defName>
     <label>deployable barrier</label>
@@ -25,6 +25,7 @@
     <castEdgeShadows>true</castEdgeShadows>
     <pathCost>60</pathCost>
     <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
     <selectable>true</selectable>
     <stealable>false</stealable>
     <neverMultiSelect>true</neverMultiSelect>
@@ -44,6 +45,26 @@
       <Steel>80</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
+    <comps>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="VFESecurity.CompProperties_Retractable">
+        <retractedPathCost>35</retractedPathCost>
+        <retractedPassability>Standable</retractedPassability>
+        <retractedGraphicData>
+          <texPath>Things/Security/BarrierDeployed/BarrierSubmerged_south</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </retractedGraphicData>
+        <ticksToRetract>120</ticksToRetract>
+        <ticksToDeploy>120</ticksToDeploy>
+      </li>
+    </comps>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories Inherit="False">
       <li>BuildingsSecurity</li>
@@ -53,17 +74,17 @@
     <canOverlapZones>false</canOverlapZones>
     <building>
       <isInert>true</isInert>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
       <expandHomeArea>false</expandHomeArea>
     </building>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_ConcealedDefenses</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
   </ThingDef>
-  
+
   <!-- Deployable Barrier (Submerged) -->
-  <ThingDef ParentName="BuildingBase">
+  <!-- <ThingDef ParentName="BuildingBase">
     <defName>VFES_DeployableBarrierSubmerged</defName>
     <label>deployable barrier</label>
     <description>A submersible barrier, which acts as a normal floor tile when turned off. Provides a moderate degree of cover.</description>
@@ -109,21 +130,21 @@
     <thingCategories Inherit="False">
       <li>BuildingsSecurity</li>
     </thingCategories>
-    <!-- <staticSunShadowHeight>0.5</staticSunShadowHeight> -->
+    <- <staticSunShadowHeight>0.5</staticSunShadowHeight> ->
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
     <building>
       <isInert>true</isInert>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
       <expandHomeArea>false</expandHomeArea>
     </building>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_ConcealedDefenses</li>
-		</researchPrerequisites>
-  </ThingDef>
+    <researchPrerequisites>
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
+  </ThingDef> -->
 
-<!-- Floor Turret -->
+  <!-- Floor Turret -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_FloorTurret</defName>
     <label>floor turret</label>
@@ -177,6 +198,23 @@
         <basePowerConsumption>120</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
+      <li Class="VFESecurity.CompProperties_Retractable">
+        <retractedPathCost>35</retractedPathCost>
+        <retractedPassability>Standable</retractedPassability>
+        <retractedGraphicData>
+          <texPath>Things/Building/Floor/TurretFloorSubmerged_south</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </retractedGraphicData>
+        <ticksToRetract>120</ticksToRetract>
+        <ticksToDeploy>120</ticksToDeploy>
+      </li>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Shots until barrel change</fuelLabel>
@@ -207,7 +245,7 @@
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_FloorTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/Floor/TurretFloor_Top</turretTopGraphicPath>
@@ -264,9 +302,9 @@
       </li>
     </verbs>
   </ThingDef>
-  
-    <!-- Floor Turret (Submerged) -->
-  <ThingDef ParentName="BuildingBase">
+
+  <!-- Floor Turret (Submerged) -->
+  <!-- <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_FloorTurretSubmerged</defName>
     <label>floor turret</label>
     <description>An automatic, submersible turret with two machine guns on top. Requires steel to refurbish its barrel after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
@@ -312,21 +350,21 @@
     <thingCategories Inherit="False">
       <li>BuildingsSecurity</li>
     </thingCategories>
-    <!-- <staticSunShadowHeight>0.5</staticSunShadowHeight> -->
+    <- <staticSunShadowHeight>0.5</staticSunShadowHeight> ->
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
     <building>
       <isInert>true</isInert>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
       <expandHomeArea>false</expandHomeArea>
     </building>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_ConcealedDefenses</li>
-		</researchPrerequisites>
-  </ThingDef>
+    <researchPrerequisites>
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
+  </ThingDef> -->
 
-<!-- HMG Complex (3.15,1.45) --> 
+  <!-- HMG Complex (3.15,1.45) -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_HMGComplex</defName>
     <label>HMG complex</label>
@@ -412,7 +450,7 @@
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_HMGComplex</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Security/HMGComplex/HMGComplexGun</turretTopGraphicPath>

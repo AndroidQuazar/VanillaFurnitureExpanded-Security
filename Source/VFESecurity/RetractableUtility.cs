@@ -14,13 +14,13 @@ using Harmony;
 namespace VFESecurity
 {
 
-    [StaticConstructorOnStartup]
-    public static class HarmonyPatches
+    public static class RetractableUtility
     {
 
-        static HarmonyPatches()
+        public static bool IsRetractable(this Thing thing, out CompRetractable retractableComp)
         {
-            VFESecurity.HarmonyInstance.PatchAll();
+            retractableComp = thing.TryGetComp<CompRetractable>();
+            return retractableComp != null;
         }
 
     }

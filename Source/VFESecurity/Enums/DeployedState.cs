@@ -14,14 +14,11 @@ using Harmony;
 namespace VFESecurity
 {
 
-    [StaticConstructorOnStartup]
-    public static class HarmonyPatches
+    public enum DeployedState
     {
 
-        static HarmonyPatches()
-        {
-            VFESecurity.HarmonyInstance.PatchAll();
-        }
+        Deployed,
+        Retracted
 
     }
 
