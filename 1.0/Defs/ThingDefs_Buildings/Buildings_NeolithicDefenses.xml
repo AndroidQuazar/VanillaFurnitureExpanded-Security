@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Chunk Cover -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_ChunkCover</defName>
+    <label>chunk cover</label>
+    <description>A simple pile of stone chunks. Acts as a mediocre cover.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Security/Rock</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.2)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>55</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.45</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <stuffCategories>
+      <li>Rocks</li>
+    </stuffCategories>
+    <costStuffCount>1</costStuffCount>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-8</Beauty>
+      <WorkToBuild>25</WorkToBuild>
+      <Cleanliness>-2</Cleanliness>
+    </statBases>
+    <building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+    </building>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+  </ThingDef>
+
+<!-- Cavalry Spikes -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_CavalrySpikes</defName>
+    <label>cavalry spikes</label>
+    <description>Wooden stakes placed in a row to build defensive fort. Some parts needs to replaced after a while.</description>
+    <thingClass>Building_TrapDamager</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Security/CavalrySpikes/CavalrySpikes</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>2,1</drawSize>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,1)</size>
+    <uiIconPath>Things/Security/CavalrySpikes/CavalrySpikes_south</uiIconPath>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>40</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <!-- <staticSunShadowHeight>0.35</staticSunShadowHeight> -->
+    <fillPercent>0.70</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <costList>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <statBases>
+      <TrapMeleeDamage>5</TrapMeleeDamage>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+      <WorkToBuild>800</WorkToBuild>
+      <Mass>50</Mass>
+    </statBases>
+    <building>
+			<ai_chillDestination>false</ai_chillDestination>
+      <repairable>true</repairable>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <trapDestroyOnSpring>false</trapDestroyOnSpring>
+    </building>
+    <coversFloor>false</coversFloor>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <repairEffect>ConstructDirt</repairEffect>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>2.0</fuelConsumptionRate> <!-- 10 -->
+        <fuelCapacity>20.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <initialFuelPercent>1</initialFuelPercent>
+      </li>
+    </comps>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+  </ThingDef>
+
+</Defs>

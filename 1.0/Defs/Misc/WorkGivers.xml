@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <WorkGiverDef>
+    <defName>VFES_RearmTraps</defName>
+    <label>Rearm traps</label>
+    <giverClass>TrapsRearmable.WorkGiver_RearmTraps</giverClass>
+    <workType>VFES_Rearm</workType>
+    <verb>Rearm</verb>
+    <gerund>rearming</gerund>
+    <priorityInType>50</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+</Defs>
