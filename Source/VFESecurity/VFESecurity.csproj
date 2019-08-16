@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrivalActions\CompLongRangeArtillery.cs" />
+    <Compile Include="Comps\CompProperties_LongRangeArtillery.cs" />
     <Compile Include="Comps\CompProperties_Retractable.cs" />
+    <Compile Include="Comps\CompLongRangeArtillery.cs" />
     <Compile Include="Comps\CompRetractable.cs" />
     <Compile Include="Enums\DeployedState.cs" />
     <Compile Include="HarmonyPatches\Patch_JobDriver_ManTurret.cs" />
@@ -59,11 +62,14 @@
     <Compile Include="HarmonyPatches\Patch_GenGrid.cs" />
     <Compile Include="HarmonyPatches\Patch_Thing.cs" />
     <Compile Include="HarmonyPatches\Patch_LordToil_Siege.cs" />
+    <Compile Include="StaticConstructorClass.cs" />
+    <Compile Include="LongRangeArtilleryUtility.cs" />
     <Compile Include="RetractableUtility.cs" />
     <Compile Include="StatParts\StatPart_Retracted.cs" />
     <Compile Include="VFESecurity.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

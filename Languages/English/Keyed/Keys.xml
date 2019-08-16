@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+    <!-- Retractable-->
     <VFESecurity.Retracted>retracted</VFESecurity.Retracted>
+
+    <!-- Long-range artillery -->
+    <VFESecurity.TargetWorldTile>Target world tile</VFESecurity.TargetWorldTile>
+    <VFESecurity.TargetWorldTile_Description>Select a world tile for this {0} to fire at.</VFESecurity.TargetWorldTile_Description>
+    <VFESecurity.CommandTargetTileFailNoFuel>{0} does not have enough {1}.</VFESecurity.CommandTargetTileFailNoFuel>
+    <VFESecurity.CommandTargetTileFailNotLoaded>{0} does not have any ammunition loaded.</VFESecurity.CommandTargetTileFailNotLoaded>
+    <VFESecurity.CommandTargetTileFailUnderRoof>{0} is underneath a roof.</VFESecurity.CommandTargetTileFailUnderRoof>
+
+    <VFESecurity.TargetWorldTileOutOfRange>Tile is out of range.</VFESecurity.TargetWorldTileOutOfRange>
+    <VFESecurity.TargetWorldTileSite>Target site</VFESecurity.TargetWorldTileSite>
+    <VFESecurity.TargetWorldTileEmpty>Target area</VFESecurity.TargetWorldTileEmpty>
+
+    <VFESecurity.MessageTargetWorldTileInvalid>Targeted area is invalid.</VFESecurity.MessageTargetWorldTileInvalid>
+    <VFESecurity.MessageTargetWorldTileOutOfRange>Targeted area is out of the {0}'s range.</VFESecurity.MessageTargetWorldTileOutOfRange>
 
 </LanguageData>
