@@ -51,12 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_AIBase.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Outpost.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Settlement.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_PeaceTalks.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Map.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction.cs" />
-    <Compile Include="Comps\CompProperties_LongRangeArtillery.cs" />
-    <Compile Include="Comps\CompProperties_Retractable.cs" />
-    <Compile Include="Comps\CompLongRangeArtillery.cs" />
-    <Compile Include="Comps\CompRetractable.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_LongRangeArtillery.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_Retractable.cs" />
+    <Compile Include="Comps\ThingComps\CompLongRangeArtillery.cs" />
+    <Compile Include="Comps\ThingComps\CompRetractable.cs" />
+    <Compile Include="Comps\WorldComponents\AIArtilleryTracker.cs" />
+    <Compile Include="DefModExtensions\ThingDefExtension.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\WorldObjectDefOf.cs" />
     <Compile Include="Enums\DeployedState.cs" />
@@ -69,9 +75,10 @@
     <Compile Include="Reflection\NonPublicProperties.cs" />
     <Compile Include="Reflection\NonPublicMethods.cs" />
     <Compile Include="StaticConstructorClass.cs" />
-    <Compile Include="LongRangeArtilleryUtility.cs" />
+    <Compile Include="ArtilleryStrikeUtility.cs" />
     <Compile Include="RetractableUtility.cs" />
     <Compile Include="StatParts\StatPart_Retracted.cs" />
+    <Compile Include="Things\ArtilleryStrikeSkyfaller.cs" />
     <Compile Include="Things\ArtilleryStrikeIncoming.cs" />
     <Compile Include="Things\ArtilleryStrikeLeaving.cs" />
     <Compile Include="Things\ActiveArtilleryStrike.cs" />

@@ -6,17 +6,12 @@
         <label>artillery strike (incoming)</label>
         <thingClass>VFESecurity.ArtilleryStrikeIncoming</thingClass>
         <graphicData>
-            <texPath>Things/Special/DropPod</texPath>
+            <texPath>Things/Special/IncomingHighExplosive</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <shaderType>CutoutFlying</shaderType>
-            <drawSize>1.9</drawSize>
         </graphicData>
         <skyfaller>
-            <movementType>Decelerate</movementType>
-            <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-            <shadowSize>(2, 2)</shadowSize>
-            <anticipationSound>DropPod_Fall</anticipationSound>
-            <anticipationSoundTicks>100</anticipationSoundTicks>
+            <movementType>Accelerate</movementType>
             <motesPerCell>0</motesPerCell>
         </skyfaller>
     </ThingDef>
@@ -26,22 +21,13 @@
         <label>artillery strike (leaving)</label>
         <thingClass>VFESecurity.ArtilleryStrikeLeaving</thingClass>
         <graphicData>
-            <texPath>Things/Special/DropPod</texPath>
+            <texPath>Things/Special/LeavingHighExplosive</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <shaderType>CutoutFlying</shaderType>
-            <drawSize>1.9</drawSize>
         </graphicData>
         <skyfaller>
             <movementType>Decelerate</movementType>
             <reversed>true</reversed>
-            <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-            <shadowSize>(2, 2)</shadowSize>
-            <anticipationSound>DropPod_Leaving</anticipationSound>
-            <anticipationSoundTicks>-10</anticipationSoundTicks>
-            <ticksToImpactRange>
-                <min>-40</min>
-                <max>-15</max>
-            </ticksToImpactRange>
         </skyfaller>
     </ThingDef>
 

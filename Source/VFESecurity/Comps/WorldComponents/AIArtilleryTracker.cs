@@ -9,18 +9,19 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
+using RimWorld.Planet;
 using Harmony;
 
 namespace VFESecurity
 {
 
-    [StaticConstructorOnStartup]
-    public static class StaticConstructorClass
+    public class AIArtilleryTracker : WorldComponent
     {
-
-        static StaticConstructorClass()
+        public AIArtilleryTracker(World world) : base(world)
         {
         }
+
+
 
     }
 

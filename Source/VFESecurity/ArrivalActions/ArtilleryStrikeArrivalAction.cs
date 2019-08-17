@@ -18,7 +18,7 @@ namespace VFESecurity
     public abstract class ArtilleryStrikeArrivalAction : IExposable
     {
 
-        public abstract void Arrived(ActiveArtilleryStrike artilleryStrike, int tile);
+        public abstract void Arrived(List<ActiveArtilleryStrike> artilleryStrikes, int tile);
 
         public virtual void ExposeData()
         {

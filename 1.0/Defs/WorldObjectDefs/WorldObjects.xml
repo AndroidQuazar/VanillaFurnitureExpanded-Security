@@ -6,10 +6,10 @@
         <label>artillery strike</label>
         <description>Artillery strike in flight.</description>
         <worldObjectClass>VFESecurity.TravellingArtilleryStrike</worldObjectClass>
-        <texture>World/WorldObjects/TravelingTransportPods</texture>
+        <texture>World/WorldObjects/Expanding/TravelingArtilleryShells</texture>
         <useDynamicDrawer>true</useDynamicDrawer>
         <expandingIcon>true</expandingIcon>
-        <expandingIconTexture>World/WorldObjects/Expanding/TravelingTransportPods</expandingIconTexture>
+        <expandingIconTexture>Things/Item/Resource/Shell/Shell_HighExplosive/Shell_HighExplosive_A</expandingIconTexture>
         <expandingIconPriority>60</expandingIconPriority>
         <expandMore>true</expandMore>
         <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>

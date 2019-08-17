@@ -19,7 +19,9 @@ namespace VFESecurity
 
         public override void ExposeData()
         {
-            Scribe_Collections.Look(ref artilleryShellDefs, "artilleryShellDefs", LookMode.Def, new object[0]);
+            Scribe_Values.Look(ref missRadius, "missRadius");
+            Scribe_Defs.Look(ref shellDef, "shellDef");
+            Scribe_Values.Look(ref shellCount, "count");
             base.ExposeData();
         }
 
@@ -27,9 +29,11 @@ namespace VFESecurity
         {
         }
 
-        public List<ThingDef> artilleryShellDefs;
+        public float missRadius;
+        public ThingDef shellDef;
+        public int shellCount;
 
-        public float Speed => artilleryShellDefs.Select(p => p.projectile.speed).Average();
+        public float Speed => shellDef.projectile.speed;
 
     }
 

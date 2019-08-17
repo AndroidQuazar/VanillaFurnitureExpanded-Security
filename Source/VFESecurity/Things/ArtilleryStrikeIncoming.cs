@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
@@ -15,10 +16,31 @@ using Harmony;
 namespace VFESecurity
 {
 
-    public class ArtilleryStrikeIncoming : Skyfaller
+    public class ArtilleryStrikeIncoming : ArtilleryStrikeSkyfaller
     {
 
         public ThingDef artilleryShellDef;
+
+        protected override ThingDef ShellDef => artilleryShellDef;
+
+        public override Graphic Graphic
+        {
+            get
+            {
+                if (artilleryShellDef.GetModExtension<ThingDefExtension>() is ThingDefExtension thingDefExtension && thingDefExtension.incomingSkyfallerGraphicData != null)
+                    return thingDefExtension.incomingSkyfallerGraphicData.Graphic;
+                return base.Graphic;
+            }
+        }
+
+        public override void Tick()
+        {
+            // Sounds
+            if (ticksToImpact == 60 && Find.TickManager.CurTimeSpeed == TimeSpeed.Normal && !artilleryShellDef.projectile.soundImpactAnticipate.NullOrUndefined())
+                artilleryShellDef.projectile.soundImpactAnticipate.PlayOneShot(this);
+
+            base.Tick();
+        }
 
         protected override void Impact()
         {

@@ -18,7 +18,7 @@ namespace VFESecurity
     public class TravellingArtilleryStrike : WorldObject, IThingHolder
     {
 
-        private const float TravelSpeedPerShellSpeed = 0.03f / GenTicks.TicksPerRealSecond;
+        private const float TravelSpeedPerShellSpeed = 0.00025f / 10;
 
         private int initialTile;
         public int destinationTile;
@@ -49,7 +49,7 @@ namespace VFESecurity
 
         public override Vector3 DrawPos => Vector3.Slerp(Start, End, travelledPct);
 
-        private ActiveArtilleryStrike ArtilleryStrike => (ActiveArtilleryStrike)innerContainer[0];
+        private IEnumerable<ActiveArtilleryStrike> ArtilleryStrikes => innerContainer.Cast<ActiveArtilleryStrike>();
 
         private float TravelledPctStepPerTick
         {
@@ -62,7 +62,7 @@ namespace VFESecurity
                 if (sphericalDist == 0)
                     return 1;
 
-                return ArtilleryStrike.Speed * TravelSpeedPerShellSpeed;
+                return ArtilleryStrikes.Select(s => s.Speed).Average() * TravelSpeedPerShellSpeed;
             }
         }
 
@@ -83,7 +83,7 @@ namespace VFESecurity
             {
                 try
                 {
-                    arrivalAction.Arrived((ActiveArtilleryStrike)innerContainer.First(), destinationTile);
+                    arrivalAction.Arrived(ArtilleryStrikes.ToList(), destinationTile);
                 }
                 catch (Exception ex)
                 {

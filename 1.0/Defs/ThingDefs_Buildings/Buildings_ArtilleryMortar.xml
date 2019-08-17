@@ -42,7 +42,7 @@
       </li>
       <li Class="VFESecurity.CompProperties_LongRangeArtillery">
         <worldTileRange>20</worldTileRange>
-        <maxForcedMissRadiusFactor>10</maxForcedMissRadiusFactor>
+        <maxForcedMissRadiusFactor>2.5</maxForcedMissRadiusFactor>
         <gizmoIconTexPath>Things/Building/Artillery/TurretArtillery_Top</gizmoIconTexPath>
       </li>
     </comps>

@@ -15,11 +15,23 @@
     <VFESecurity.CommandTargetTileFailUnderRoof>{0} is underneath a roof.</VFESecurity.CommandTargetTileFailUnderRoof>
 
     <VFESecurity.TargetWorldTileOutOfRange>Tile is out of range.</VFESecurity.TargetWorldTileOutOfRange>
-    <VFESecurity.TargetWorldTileSite>Target site</VFESecurity.TargetWorldTileSite>
-    <VFESecurity.TargetWorldTileEmpty>Target area</VFESecurity.TargetWorldTileEmpty>
+    <VFESecurity.TargetMap>Target map</VFESecurity.TargetMap>
+    <VFESecurity.TargetPeaceTalks>Target peace talks</VFESecurity.TargetPeaceTalks>
+    <VFESecurity.TargetSettlement>Target settlement</VFESecurity.TargetSettlement>
+    <VFESecurity.TargetOutpost>Target outpost</VFESecurity.TargetOutpost>
+    <VFESecurity.TargetWorldTileEmpty>Target area (will have no effect)</VFESecurity.TargetWorldTileEmpty>
     <VFESecurity.TargetWorldTileSameTile>Cannot target the same tile.</VFESecurity.TargetWorldTileSameTile>
 
     <VFESecurity.MessageTargetWorldTileInvalid>Targeted area is invalid.</VFESecurity.MessageTargetWorldTileInvalid>
     <VFESecurity.MessageTargetWorldTileOutOfRange>Targeted area is out of the {0}'s range.</VFESecurity.MessageTargetWorldTileOutOfRange>
+
+    <!-- Messages -->
+    <VFESecurity.GoodwillChangedReason_ArtilleryStrike>attacked by artillery</VFESecurity.GoodwillChangedReason_ArtilleryStrike>
+
+    <!-- Letters -->
+    <VFESecurity.ArtilleryStrikePeaceTalks_Letter>Provoked peace talks</VFESecurity.ArtilleryStrikePeaceTalks_Letter>
+    <VFESecurity.ArtilleryStrikePeaceTalks_LetterText>By sending an artillery strike at their peace talks negotiation party, relations between you and {0} have soured. They may send a raiding party in retaliation.</VFESecurity.ArtilleryStrikePeaceTalks_LetterText>
+
+    <VFESecurity.LetterFactionBaseDefeatedStrike>The enemy base {0} has been destroyed.</VFESecurity.LetterFactionBaseDefeatedStrike>
 
 </LanguageData>

@@ -18,23 +18,22 @@ namespace VFESecurity
     public class ArtilleryStrikeArrivalAction_Map : ArtilleryStrikeArrivalAction
     {
 
-        public ArtilleryStrikeArrivalAction_Map(MapParent mapParent, float missRadius)
+        public ArtilleryStrikeArrivalAction_Map(MapParent mapParent)
         {
             this.mapParent = mapParent;
-            this.missRadius = missRadius;
         }
 
-        public override void Arrived(ActiveArtilleryStrike artilleryStrike, int tile)
+        public override void Arrived(List<ActiveArtilleryStrike> artilleryStrikes, int tile)
         {
+            // Boom
             var map = mapParent.Map;
             if (map != null)
             {
-                var potentialCells = GenRadial.RadialCellsAround(map.Center, missRadius, true);
-                foreach (var def in artilleryStrike.artilleryShellDefs)
+                foreach (var strike in artilleryStrikes)
                 {
-                    var artilleryStrikeIncoming = (ArtilleryStrikeIncoming)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFE_ArtilleryStrikeIncoming);
-                    artilleryStrikeIncoming.artilleryShellDef = def;
-                    GenSpawn.Spawn(artilleryStrikeIncoming, potentialCells.RandomElement(), map);
+                    var potentialCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, strike.missRadius);
+                    for (int i = 0; i < strike.shellCount; i++)
+                        ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(strike.shellDef, map, potentialCells.RandomElement());
                 }
             }
         }
@@ -42,12 +41,10 @@ namespace VFESecurity
         public override void ExposeData()
         {
             Scribe_References.Look(ref mapParent, "mapParent");
-            Scribe_Values.Look(ref missRadius, "missRadius");
             base.ExposeData();
         }
 
         public MapParent mapParent;
-        public float missRadius;
 
     }
 
