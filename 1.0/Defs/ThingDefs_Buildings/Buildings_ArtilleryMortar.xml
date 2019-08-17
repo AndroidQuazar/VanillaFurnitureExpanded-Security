@@ -24,7 +24,7 @@
     <interactionCellOffset>(0,0,-2)</interactionCellOffset>
     <hasInteractionCell>true</hasInteractionCell>
     <size>(3,3)</size>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
     <stealable>false</stealable>
     <stuffCategories>
       <li>Metallic</li>
@@ -39,6 +39,11 @@
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
         <chanceNeverExplodeFromDamage>0.65</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="VFESecurity.CompProperties_LongRangeArtillery">
+        <worldTileRange>20</worldTileRange>
+        <maxForcedMissRadiusFactor>10</maxForcedMissRadiusFactor>
+        <gizmoIconTexPath>Things/Building/Artillery/TurretArtillery_Top</gizmoIconTexPath>
       </li>
     </comps>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>

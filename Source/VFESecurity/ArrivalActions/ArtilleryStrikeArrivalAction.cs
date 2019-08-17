@@ -15,10 +15,10 @@ using Harmony;
 namespace VFESecurity
 {
 
-    public abstract class LongRangeArtilleryShellArrivalAction : IExposable
+    public abstract class ArtilleryStrikeArrivalAction : IExposable
     {
 
-        public abstract void ArrivedAction(int tile);
+        public abstract void Arrived(ActiveArtilleryStrike artilleryStrike, int tile);
 
         public virtual void ExposeData()
         {
