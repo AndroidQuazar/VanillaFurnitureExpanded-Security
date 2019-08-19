@@ -20,9 +20,9 @@ namespace VFESecurity
     public class CompLongRangeArtillery : ThingComp
     {
 
-        private static readonly Texture2D TargetWorldTileIcon = ContentFinder<Texture2D>.Get("UI/Commands/ArtilleryTargetTile");
+        public static readonly Texture2D TargetWorldTileIcon = ContentFinder<Texture2D>.Get("UI/Commands/ArtilleryTargetTile");
 
-        private CompProperties_LongRangeArtillery Props => (CompProperties_LongRangeArtillery)props;
+        public CompProperties_LongRangeArtillery Props => (CompProperties_LongRangeArtillery)props;
 
         private Building_TurretGun Turret => (Building_TurretGun)parent;
         private CompChangeableProjectile ChangeableProjectile => Turret.gun.TryGetComp<CompChangeableProjectile>();
@@ -33,13 +33,63 @@ namespace VFESecurity
         private bool CanLaunch => (PowerComp == null || PowerComp.PowerOn) && (RefuelableComp == null || RefuelableComp.HasFuel) && (ChangeableProjectile == null || ChangeableProjectile.Loaded)
             && (MannableComp == null || MannableComp.MannedNow) && (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret) <= 0 && !parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
 
+        private int CurAngle => targetedTile != GlobalTargetInfo.Invalid ? (int)Find.WorldGrid.GetDirection8WayFromTo(parent.Map.Tile, targetedTile.Tile) * 45 : -1;
+
+        public LocalTargetInfo FacingEdgeCell
+        {
+            get
+            {
+                if (targetedTile != GlobalTargetInfo.Invalid)
+                {
+                    var edgeCells = new CellRect(0, 0, parent.Map.Size.x, parent.Map.Size.z).EdgeCells;
+                    return edgeCells.MinBy(c => Mathf.Abs(CurAngle - (c.ToVector3() - parent.TrueCenter()).AngleFlat()));
+                }
+                return LocalTargetInfo.Invalid;
+            }
+        }
+
+        private List<ArtilleryComp> ArtilleryComps(Map map)
+        {
+            return Find.WorldObjects.AllWorldObjects.Where(o => o.Tile == map.Tile && o.GetComponent(typeof(ArtilleryComp)) != null).Select(o => o.GetComponent<ArtilleryComp>()).ToList();
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            ArtilleryComps(parent.Map).ForEach(c => c.artillery.Add(parent));
+            ResetWarmupTicks();
+            base.PostSpawnSetup(respawningAfterLoad);
+        }
+
+        public override void PostDeSpawn(Map map)
+        {
+            ArtilleryComps(map).ForEach(c => c.artillery.Remove(parent));
+            base.PostDeSpawn(map);
+        }
+
         public override void CompTick()
         {
             // Automatically attack if there is a forced target
-            if (targetedTile != GlobalTargetInfo.Invalid && CanLaunch)
+            if (targetedTile != GlobalTargetInfo.Invalid)
             {
-                TryLaunch(targetedTile.Tile);
+                var turretTop = (TurretTop)NonPublicFields.Building_TurretGun_top.GetValue(Turret);
+                NonPublicProperties.TurretTop_set_CurRotation(turretTop, CurAngle);
+                NonPublicFields.TurretTop_ticksUntilIdleTurn.SetValue(turretTop, Rand.RangeInclusive(150, 350));
+                if (CanLaunch)
+                { 
+                    if (warmupTicksLeft == 0)
+                    {
+                        TryLaunch(targetedTile.Tile);
+                        ResetWarmupTicks();
+                    }
+                    else
+                        warmupTicksLeft--;
+                }
             }
+        }
+
+        private void ResetWarmupTicks()
+        {
+            warmupTicksLeft = Mathf.Max(1, Turret.def.building.turretBurstWarmupTime.SecondsToTicks());
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -70,7 +120,7 @@ namespace VFESecurity
             }
         }
 
-        private void StartChoosingTarget()
+        public void StartChoosingTarget()
         {
             // Adapted from transport pod code
             CameraJumper.TryJump(CameraJumper.GetWorldTarget(parent));
@@ -123,7 +173,7 @@ namespace VFESecurity
             });
         }
 
-        private bool ChooseWorldTarget(GlobalTargetInfo target)
+        public bool ChooseWorldTarget(GlobalTargetInfo target)
         {
             // Invalid tile
             if (!target.IsValid)
@@ -165,7 +215,7 @@ namespace VFESecurity
                 }
 
                 // Multiple options
-                Find.WindowStack.Add(new FloatMenu(floatMenuOptions.ToList<FloatMenuOption>()));
+                Find.WindowStack.Add(new FloatMenu(floatMenuOptions.ToList()));
                 return false;
             }
         }
@@ -218,20 +268,30 @@ namespace VFESecurity
             }
         }
 
-        private void SetTargetedTile(GlobalTargetInfo targetInfo)
+        public void SetTargetedTile(GlobalTargetInfo targetInfo, CompLongRangeArtillery extComp = null, bool hideWorld = true)
         {
-            var artilleryComps = Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing t && t.TryGetComp<CompLongRangeArtillery>() != null).Cast<Thing>().Select(t => t.TryGetComp<CompLongRangeArtillery>());
+            if (hideWorld)
+                CameraJumper.TryHideWorld();
+
+            var artilleryComps = new List<CompLongRangeArtillery>();
+            if (extComp != null)
+                artilleryComps.Add(extComp);
+            else
+                artilleryComps.AddRange(Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing t && t.TryGetComp<CompLongRangeArtillery>() != null).Cast<Thing>().Select(t => t.TryGetComp<CompLongRangeArtillery>()));
+
             foreach (var comp in artilleryComps)
             {
                 NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
                 comp.targetedTile = targetInfo;
+                SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map, false));
+                comp.ResetWarmupTicks();
             }
-            CameraJumper.TryHideWorld();
         }
 
         public void ResetForcedTarget()
         {
             targetedTile = GlobalTargetInfo.Invalid;
+            ResetWarmupTicks();
         }
 
         private ArtilleryStrikeArrivalAction CurrentArrivalAction
@@ -306,24 +366,19 @@ namespace VFESecurity
             artilleryStrikeLeaving.arrivalAction = arrivalAction;
             artilleryStrikeLeaving.groupID = Find.TickManager.TicksGame;
 
-            int angle = (int)Find.WorldGrid.GetDirection8WayFromTo(parent.Map.Tile, destinationTile) * 45;
-            var skyfallerPos = GenAdj.CellsAdjacent8Way(parent).MinBy(c => Mathf.Abs(angle - (c - parent.Position).AngleFlat));
-
-            var turretTop = (TurretTop)NonPublicFields.Building_TurretGun_top.GetValue(Turret);
-            int cooldownTicks = (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret);
-            NonPublicProperties.TurretTop_set_CurRotation(turretTop, angle);
-            NonPublicFields.TurretTop_ticksUntilIdleTurn.SetValue(turretTop, (int)NonPublicFields.TurretTop_ticksUntilIdleTurn.GetValue(turretTop) + cooldownTicks);
-
+            var skyfallerPos = GenAdj.CellsAdjacent8Way(parent).MinBy(c => Mathf.Abs(CurAngle - (c - parent.Position).AngleFlat));
             GenSpawn.Spawn(artilleryStrikeLeaving, skyfallerPos, parent.Map);
         }
 
         public override void PostExposeData()
         {
+            Scribe_Values.Look(ref warmupTicksLeft, "warmupTicksLeft");
             Scribe_TargetInfo.Look(ref targetedTile, "targetedTile");
             base.PostExposeData();
         }
 
-        private GlobalTargetInfo targetedTile;
+        public int warmupTicksLeft;
+        public GlobalTargetInfo targetedTile;
 
     }
 

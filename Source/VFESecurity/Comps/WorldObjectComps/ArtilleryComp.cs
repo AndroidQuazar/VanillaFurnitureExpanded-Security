@@ -32,58 +32,138 @@ namespace VFESecurity
             }
         }
 
+        private IEnumerable<CompLongRangeArtillery> ArtilleryComps => artillery.Select(a => a.TryGetComp<CompLongRangeArtillery>());
+
         private ThingDef ArtilleryGunDef => ArtilleryDef.building.turretGunDef;
 
-        private bool HasArtillery => ArtilleryDef != null && artilleryCount > 0;
-        private bool Attacking => bombardmentDurationTicks > 0;
+        public bool HasArtillery => ArtilleryDef != null && artilleryCount > 0;
+        public bool Attacking
+        {
+            get
+            {
+                if (parent.Faction == Faction.OfPlayer)
+                    return ArtilleryComps.Any(a => a.targetedTile != GlobalTargetInfo.Invalid);
+                return bombardmentDurationTicks > 0;
+            }
+        }
         private bool CanAttack => HasArtillery && !Attacking && bombardmentCooldownTicks <= 0;
 
         private CompProperties_LongRangeArtillery ArtilleryProps => cachedArtilleryDef.GetCompProperties<CompProperties_LongRangeArtillery>();
 
-        private IEnumerable<Settlement> PlayerSettlementsWithinRange => Find.WorldObjects.Settlements.Where(s => s.Faction == Faction.OfPlayer && Find.WorldGrid.TraversalDistanceBetween(parent.Tile, s.Tile) <= ArtilleryProps.worldTileRange);
-
-        private void TryPostInitialise()
+        public IEnumerable<GlobalTargetInfo> Targets
         {
-            if (!postInitialised)
+            get
+            {
+                if (parent.Faction == Faction.OfPlayer)
+                {
+                    foreach (var tile in ArtilleryComps.Where(a => a.targetedTile != GlobalTargetInfo.Invalid).Select(a => a.targetedTile).Distinct())
+                        yield return tile;
+                    yield break;
+                }
+
+                var settlements = Find.WorldObjects.Settlements.Where(s => s.Faction == Faction.OfPlayer && Find.WorldGrid.TraversalDistanceBetween(parent.Tile, s.Tile) <= ArtilleryProps.worldTileRange);
+                foreach (var settlement in settlements)
+                    yield return new GlobalTargetInfo(settlement);
+            }
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            if (parent.Faction == Faction.OfPlayer)
+            {
+                // Target other map tiles
+                var target = new Command_ArtilleryStrike()
+                {
+                    defaultLabel = "VFESecurity.TargetWorldTile".Translate(),
+                    defaultDesc = "VFESecurity.TargetWorldTile_Description".Translate(parent.def.label),
+                    icon = CompLongRangeArtillery.TargetWorldTileIcon,
+                    artilleryComps = ArtilleryComps.ToList()
+                };
+
+                if (!ArtilleryComps.Any())
+                    target.Disable("VFESecurity.CommandTargetTileFailNoArtillery".Translate(parent.def.label));
+
+                yield return target;
+
+                // Cancel targeting
+                if (Targets.Any())
+                {
+                    yield return new Command_Action()
+                    {
+                        defaultLabel = "CommandStopForceAttack".Translate(),
+                        defaultDesc = "CommandStopForceAttackDesc".Translate(),
+                        icon = ContentFinder<Texture2D>.Get("UI/Commands/Halt", true),
+                        action = () =>
+                        {
+                            foreach (var artilleryComp in ArtilleryComps)
+                                artilleryComp.ResetForcedTarget();
+                        }
+                    };
+                }
+            }
+        }
+
+        public override void Initialize(WorldObjectCompProperties props)
+        {
+            Find.World.GetComponent<ArtilleryLineRenderer>().TryAdd(parent);
+            base.Initialize(props);
+        }
+
+        private void TryResolveArtilleryCount()
+        {
+            if (artilleryCount == -1)
             {
                 artilleryCount = Rand.Bool ? Props.ArtilleryCountFor(parent.Faction.def) : 0;
-                postInitialised = true;
             }
         }
 
         public override void CompTick()
         {
-            TryPostInitialise();
-
-            if (Attacking)
+            if (parent.Faction != Faction.OfPlayer)
             {
-                // Try and bombard player settlements
-                if (artilleryCooldownTicks > 0)
-                    artilleryCooldownTicks--;
-                else if (PlayerSettlementsWithinRange.TryRandomElementByWeight(s => StorytellerUtility.DefaultThreatPointsNow(s.Map), out Settlement targetSettlement))
+                TryResolveArtilleryCount();
+
+                if (Attacking)
                 {
-                    var shell = ArtilleryStrikeUtility.GetRandomShellFor(ArtilleryGunDef, parent.Faction.def);
-                    if (shell != null)
+                    // Try and bombard player settlements
+                    if (artilleryCooldownTicks > 0)
+                        artilleryCooldownTicks--;
+                    else if (Targets.Select(t => t.WorldObject).Cast<Settlement>().TryRandomElementByWeight(s => StorytellerUtility.DefaultThreatPointsNow(s.Map), out Settlement targetSettlement))
                     {
-                        float missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(ArtilleryGunDef.Verbs[0].forcedMissRadius, ArtilleryProps.maxForcedMissRadiusFactor, parent.Tile, targetSettlement.Tile, ArtilleryProps.worldTileRange);
-                        var map = targetSettlement.Map;
-                        var strikeCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, missRadius);
-                        for (int i = 0; i < artilleryCount; i++)
-                            ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(shell, map, strikeCells.RandomElement());
-                        artilleryCooldownTicks = ArtilleryDef.building.turretBurstCooldownTime.SecondsToTicks();
+                        if (artilleryWarmupTicks < 0)
+                            artilleryWarmupTicks = ArtilleryDef.building.turretBurstWarmupTime.SecondsToTicks();
+                        else
+                        {
+                            artilleryWarmupTicks--;
+                            if (artilleryWarmupTicks == -1)
+                            {
+                                var shell = ArtilleryStrikeUtility.GetRandomShellFor(ArtilleryGunDef, parent.Faction.def);
+                                if (shell != null)
+                                {
+                                    float missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(ArtilleryGunDef.Verbs[0].forcedMissRadius, ArtilleryProps.maxForcedMissRadiusFactor, parent.Tile, targetSettlement.Tile, ArtilleryProps.worldTileRange);
+                                    var map = targetSettlement.Map;
+                                    var strikeCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, missRadius);
+                                    for (int i = 0; i < artilleryCount; i++)
+                                        ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(shell, map, strikeCells.RandomElement());
+                                    artilleryCooldownTicks = ArtilleryDef.building.turretBurstCooldownTime.SecondsToTicks();
+                                }
+                                else
+                                    Log.ErrorOnce($"Tried to get shell for bombardment but got null instead (artilleryGunDef={ArtilleryGunDef}, factionDef={parent.Faction.def})", 8173352);
+                            }
+                        }
                     }
                     else
-                        Log.ErrorOnce($"Tried to get shell for bombardment but got null instead (artilleryGunDef={ArtilleryGunDef}, factionDef={parent.Faction.def})", 8173352);
+                        artilleryWarmupTicks = -1;
+
+                    // Reduce the duration of the bombardment
+                    bombardmentDurationTicks--;
+                    if (bombardmentDurationTicks == 0)
+                        EndBombardment();
                 }
 
-                // Reduce the duration of the bombardment
-                bombardmentDurationTicks--;
-                if (bombardmentDurationTicks == 0)
-                    EndBombardment();
+                if (bombardmentCooldownTicks > 0)
+                    bombardmentCooldownTicks--;
             }
-
-            if (bombardmentCooldownTicks > 0)
-                bombardmentCooldownTicks--;
         }
 
         public void TryStartBombardment()
@@ -106,24 +186,27 @@ namespace VFESecurity
         {
             if (Attacking)
                 EndBombardment();
+            Find.World.GetComponent<ArtilleryLineRenderer>().TryRemove(parent);
             base.PostPostRemove();
         }
 
         public override void PostExposeData()
         {
-            Scribe_Values.Look(ref postInitialised, "postInitialised");
-            Scribe_Values.Look(ref artilleryCount, "artilleryCount");
+            Scribe_Values.Look(ref artilleryCount, "artilleryCount", -1);
+            Scribe_Values.Look(ref artilleryWarmupTicks, "artilleryWarmupTicks", -1);
             Scribe_Values.Look(ref artilleryCooldownTicks, "artilleryCooldownTicks");
             Scribe_Values.Look(ref bombardmentDurationTicks, "bombardmentDurationTicks");
             Scribe_Values.Look(ref bombardmentCooldownTicks, "bombardmentCooldownTicks");
+            Scribe_Collections.Look(ref artillery, "artillery", LookMode.Reference);
             base.PostExposeData();
         }
 
-        private bool postInitialised;
-        private int artilleryCount;
+        private int artilleryCount = -1;
+        private int artilleryWarmupTicks = -1;
         private int artilleryCooldownTicks;
         private int bombardmentDurationTicks;
         private int bombardmentCooldownTicks;
+        public HashSet<Thing> artillery = new HashSet<Thing>();
 
         private ThingDef cachedArtilleryDef;
 

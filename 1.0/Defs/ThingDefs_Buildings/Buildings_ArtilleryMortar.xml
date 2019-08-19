@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Artillery -->
+  <!-- Artillery -->
   <ThingDef ParentName="BaseArtilleryBuilding">
     <defName>VFES_Turret_Artillery</defName>
     <label>artillery</label>
@@ -16,7 +16,7 @@
         <cornerTL>Damage/Corner</cornerTL>
       </damageData>
       <shadowData>
-	      <offset>(-0.13,-0.87,-0.1)</offset>
+        <offset>(-0.13,-0.87,-0.1)</offset>
         <volume>(0.5,0.4,1.05)</volume>
       </shadowData>
     </graphicData>
@@ -54,7 +54,8 @@
       <buildingTags>
         <li>Artillery_BaseDestroyer</li>
       </buildingTags>
-      <turretBurstCooldownTime>5.8</turretBurstCooldownTime>
+      <turretBurstWarmupTime>8</turretBurstWarmupTime>
+      <turretBurstCooldownTime>8.5</turretBurstCooldownTime>
       <defaultStorageSettings Inherit="False">
         <filter>
           <categories>
@@ -71,9 +72,9 @@
     <uiIconPath>Things/Building/Artillery/TurretArtillery_MenuIcon</uiIconPath>
     <uiIconScale>0.9</uiIconScale>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_Artillery</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>VFES_Artillery</li>
+    </researchPrerequisites>
   </ThingDef>
 
   <ThingDef ParentName="BaseArtilleryWeapon">
@@ -88,7 +89,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
         <hasStandardCommand>true</hasStandardCommand>
-        <warmupTime>5.5</warmupTime>
+        <warmupTime>8</warmupTime>
         <forcedMissRadius>20</forcedMissRadius>
         <requireLineOfSight>false</requireLineOfSight>
         <minRange>29.9</minRange>

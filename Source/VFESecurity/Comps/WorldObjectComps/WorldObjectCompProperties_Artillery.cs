@@ -47,7 +47,7 @@ namespace VFESecurity
             else
                 countCurve = defaultArtilleryCountCurve;
 
-            return GenMath.RoundRandom(countCurve.Evaluate(Rand.Value));
+            return Mathf.RoundToInt(countCurve.Evaluate(Rand.Value));
         }
 
     }

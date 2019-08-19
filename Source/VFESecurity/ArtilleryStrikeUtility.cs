@@ -46,6 +46,22 @@ namespace VFESecurity
             return (ArtilleryStrikeIncoming)GenSpawn.Spawn(artilleryStrikeIncoming, position, map);
         }
 
+        public static IEnumerable<Vector3> WorldLineDrawPoints(Vector3 start, Vector3 end)
+        {
+            float dist = Vector3.Distance(start, end);
+            float distDone = 0;
+
+            while (distDone < dist)
+            {
+                var point = Vector3.Slerp(start, end, distDone / dist);
+                point += point.normalized * 0.05f;
+                yield return point;
+                distDone = Mathf.Min(distDone + 2, dist);
+            }
+
+            yield return end + end.normalized * 0.05f;
+        }
+
     }
 
 }

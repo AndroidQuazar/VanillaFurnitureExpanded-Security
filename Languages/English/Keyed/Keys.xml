@@ -7,12 +7,7 @@
     <!-- Long-range artillery -->
     <VFESecurity.TargetWorldTile>Target world tile</VFESecurity.TargetWorldTile>
     <VFESecurity.TargetWorldTile_Description>Select a world tile for this {0} to fire at.</VFESecurity.TargetWorldTile_Description>
-    <VFESecurity.CommandTargetTileFailNoPower>{0} is not powered.</VFESecurity.CommandTargetTileFailNoPower>
-    <VFESecurity.CommandTargetTileFailNoFuel>{0} does not have enough {1}.</VFESecurity.CommandTargetTileFailNoFuel>
-    <VFESecurity.CommandTargetTileFailNotLoaded>{0} does not have any ammunition loaded.</VFESecurity.CommandTargetTileFailNotLoaded>
-    <VFESecurity.CommandTargetTileFailUnmanned>{0} does not have anybody manning it.</VFESecurity.CommandTargetTileFailUnmanned>
-    <VFESecurity.CommandTargetTileFailCooldown>{0} has not finished its cooldown period.</VFESecurity.CommandTargetTileFailCooldown>
-    <VFESecurity.CommandTargetTileFailUnderRoof>{0} is underneath a roof.</VFESecurity.CommandTargetTileFailUnderRoof>
+    <VFESecurity.CommandTargetTileFailNoArtillery>This {0} does not have any suitable artillery.</VFESecurity.CommandTargetTileFailNoArtillery>
 
     <VFESecurity.TargetWorldTileOutOfRange>Tile is out of range.</VFESecurity.TargetWorldTileOutOfRange>
     <VFESecurity.TargetMap>Target map</VFESecurity.TargetMap>
