@@ -28,8 +28,9 @@
             <shaderType>CutoutFlying</shaderType>
         </graphicData>
         <skyfaller>
-            <movementType>Decelerate</movementType>
+            <movementType>ConstantSpeed</movementType>
             <reversed>true</reversed>
+            <ticksToImpactRange>-1~-1</ticksToImpactRange>
         </skyfaller>
     </ThingDef>
 

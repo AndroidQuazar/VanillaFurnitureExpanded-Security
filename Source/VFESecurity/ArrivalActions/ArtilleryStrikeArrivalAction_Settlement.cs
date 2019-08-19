@@ -57,9 +57,6 @@ namespace VFESecurity
                 Find.WorldObjects.Add(destroyedSettlement);
                 Find.WorldObjects.Remove(Settlement);
                 destroyed = true;
-
-                if (ArtilleryComp != null)
-                    ArtilleryComp.ResetForcedTarget();
             }
         }
 

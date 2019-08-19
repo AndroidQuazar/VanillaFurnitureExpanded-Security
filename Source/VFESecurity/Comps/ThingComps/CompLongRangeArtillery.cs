@@ -30,7 +30,7 @@ namespace VFESecurity
         private CompPowerTrader PowerComp => parent.GetComp<CompPowerTrader>();
         private CompMannable MannableComp => parent.GetComp<CompMannable>();
 
-        private bool CanLaunch => (PowerComp == null || PowerComp.PowerOn) && (RefuelableComp == null || RefuelableComp.HasFuel) && (ChangeableProjectile == null || ChangeableProjectile.Loaded)
+        public bool CanLaunch => (PowerComp == null || PowerComp.PowerOn) && (RefuelableComp == null || RefuelableComp.HasFuel) && (ChangeableProjectile == null || ChangeableProjectile.Loaded)
             && (MannableComp == null || MannableComp.MannedNow) && (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret) <= 0 && !parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
 
         private int CurAngle => targetedTile != GlobalTargetInfo.Invalid ? (int)Find.WorldGrid.GetDirection8WayFromTo(parent.Map.Tile, targetedTile.Tile) * 45 : -1;
@@ -48,21 +48,35 @@ namespace VFESecurity
             }
         }
 
-        private List<ArtilleryComp> ArtilleryComps(Map map)
+        private ArtilleryComp ArtilleryMapComp(Map map)
         {
-            return Find.WorldObjects.AllWorldObjects.Where(o => o.Tile == map.Tile && o.GetComponent(typeof(ArtilleryComp)) != null).Select(o => o.GetComponent<ArtilleryComp>()).ToList();
+            return Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o.Tile == map.Tile && o.GetComponent(typeof(ArtilleryComp)) != null).GetComponent<ArtilleryComp>();
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
-            ArtilleryComps(parent.Map).ForEach(c => c.artillery.Add(parent));
+            // Register to map component
+            var mapComp = ArtilleryMapComp(parent.Map);
+            if (mapComp != null)
+                mapComp.artillery.Add(parent);
+
+            // Register to world component
+            Find.World.GetComponent<WorldArtilleryTracker>().RegisterArtilleryComp(this);
+
             ResetWarmupTicks();
             base.PostSpawnSetup(respawningAfterLoad);
         }
 
         public override void PostDeSpawn(Map map)
         {
-            ArtilleryComps(map).ForEach(c => c.artillery.Remove(parent));
+            // Deregister from map component
+            var mapComp = ArtilleryMapComp(map);
+            if (mapComp != null)
+                mapComp.artillery.Remove(parent);
+
+            // Deregister from world component
+            Find.World.GetComponent<WorldArtilleryTracker>().DeregisterArtilleryComp(this);
+
             base.PostDeSpawn(map);
         }
 
@@ -103,7 +117,7 @@ namespace VFESecurity
                     defaultLabel = "VFESecurity.TargetWorldTile".Translate(),
                     defaultDesc = "VFESecurity.TargetWorldTile_Description".Translate(parent.def.label),
                     icon = TargetWorldTileIcon,
-                    action = StartChoosingTarget
+                    action = () => StartChoosingTarget()
                 };
 
                 // Cancel targeting
@@ -126,82 +140,46 @@ namespace VFESecurity
             CameraJumper.TryJump(CameraJumper.GetWorldTarget(parent));
             Find.WorldSelector.ClearSelection();
             int tile = parent.Map.Tile;
-            Find.WorldTargeter.BeginTargeting(ChooseWorldTarget, true, (Texture2D)Turret.def.building.turretTopMat.mainTexture, true, () => GenDraw.DrawWorldRadiusRing(tile, Props.worldTileRange), (GlobalTargetInfo t) =>
-            {
-                // Invalid location
-                if (!t.IsValid)
-                    return null;
-
-                // Same as map tile
-                if (t.Tile == tile)
-                {
-                    GUI.color = Color.red;
-                    return "VFESecurity.TargetWorldTileSameTile".Translate();
-                }
-                
-                // Out of range
-                if (Find.WorldGrid.TraversalDistanceBetween(tile, t.Tile) > Props.worldTileRange)
-                {
-                    GUI.color = Color.red;
-                    return "VFESecurity.TargetWorldTileOutOfRange".Translate();
-                }
-
-                else
-                {
-                    var floatMenuOptions = this.FloatMenuOptionsFor(t.Tile);
-
-                    // No options
-                    if (!floatMenuOptions.Any())
-                        return string.Empty;
-
-                    // Return first option label
-                    if (floatMenuOptions.Count() == 1)
-                    {
-                        if (floatMenuOptions.First().Disabled)
-                            GUI.color = Color.red;
-                        return floatMenuOptions.First().Label;
-                    }
-
-                    // Multiple options
-                    MapParent mapParent = t.WorldObject as MapParent;
-                    if (mapParent != null)
-                        return "ClickToSeeAvailableOrders_WorldObject".Translate(mapParent.LabelCap);
-
-                    // No orders
-                    return "ClickToSeeAvailableOrders_Empty".Translate();
-                }
-            });
+            Find.WorldTargeter.BeginTargeting(ChooseWorldTarget, true, (Texture2D)Turret.def.building.turretTopMat.mainTexture, true, () => GenDraw.DrawWorldRadiusRing(tile, Props.worldTileRange), TargetChooserLabel);
         }
 
-        public bool ChooseWorldTarget(GlobalTargetInfo target)
+        public bool ChooseWorldTarget(GlobalTargetInfo t)
         {
             // Invalid tile
-            if (!target.IsValid)
+            if (!t.IsValid)
             {
                 Messages.Message("VFESecurity.MessageTargetWorldTileInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
 
-            // Same as map tile
-            if (target.Tile == parent.Map.Tile)
-            {
-                Messages.Message("VFESecurity.TargetWorldTileSameTile".Translate(), MessageTypeDefOf.RejectInput, false);
-                return false;
-            }
-
             // Out of range
-            if (Find.WorldGrid.TraversalDistanceBetween(parent.Map.Tile, target.Tile) > Props.worldTileRange)
+            int parentMap = parent.Map.Tile;
+            if (Find.WorldGrid.TraversalDistanceBetween(parentMap, t.Tile) > Props.worldTileRange)
             {
                 Messages.Message("VFESecurity.MessageTargetWorldTileOutOfRange".Translate(parent.def.label), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
 
-            var floatMenuOptions = FloatMenuOptionsFor(target.Tile);
+            // Transport pods or artillery strike
+            if (t.WorldObject is TravellingArtilleryStrike || t.WorldObject is TravellingArtilleryStrike)
+            {
+                Messages.Message("VFESecurity.TargetWorldFlyingObject".Translate(), MessageTypeDefOf.RejectInput, false);
+                return false;
+            }
+
+            // Same as map tile
+            if (parentMap == t.Tile)
+            {
+                Messages.Message("VFESecurity.TargetWorldTileSameTile".Translate(), MessageTypeDefOf.RejectInput, false);
+                return false;
+            }
+
+            var floatMenuOptions = FloatMenuOptionsFor(t.Tile);
 
             // No options
             if (!floatMenuOptions.Any())
             {
-                SetTargetedTile(target);
+                SetTargetedTile(t);
                 return true;
             }
             else
@@ -220,7 +198,58 @@ namespace VFESecurity
             }
         }
 
-        private IEnumerable<FloatMenuOption> FloatMenuOptionsFor(int tile)
+        public string TargetChooserLabel(GlobalTargetInfo t)
+        {
+            // Invalid location
+            if (!t.IsValid)
+                return null;
+
+            // Out of range
+            int parentMap = parent.Map.Tile;
+            if (Find.WorldGrid.TraversalDistanceBetween(parentMap, t.Tile) > Props.worldTileRange)
+            {
+                GUI.color = Color.red;
+                return "VFESecurity.TargetWorldTileOutOfRange".Translate();
+            }
+
+            // Transport pods or artillery strike
+            if (t.WorldObject is TravellingArtilleryStrike || t.WorldObject is TravellingArtilleryStrike)
+            {
+                GUI.color = Color.red;
+                return "VFESecurity.TargetWorldFlyingObject".Translate();
+            }
+
+            // Same as map tile
+            if (parentMap == t.Tile)
+            {
+                GUI.color = Color.red;
+                return "VFESecurity.TargetWorldTileSameTile".Translate();
+            }
+
+            var floatMenuOptions = FloatMenuOptionsFor(t.Tile);
+
+            // No options
+            if (!floatMenuOptions.Any())
+                return string.Empty;
+
+            // Return first option label
+            if (floatMenuOptions.Count() == 1)
+            {
+                if (floatMenuOptions.First().Disabled)
+                    GUI.color = Color.red;
+                return floatMenuOptions.First().Label;
+            }
+
+            // Multiple options
+            MapParent mapParent = t.WorldObject as MapParent;
+            if (mapParent != null)
+                return "ClickToSeeAvailableOrders_WorldObject".Translate(mapParent.LabelCap);
+
+            // No orders
+            return "ClickToSeeAvailableOrders_Empty".Translate();
+        }
+
+        public IEnumerable<FloatMenuOption> FloatMenuOptionsFor(int tile)
         {
             bool anything = false;
             foreach (var worldObject in Find.WorldObjects.AllWorldObjects)
@@ -268,21 +297,15 @@ namespace VFESecurity
             }
         }
 
-        public void SetTargetedTile(GlobalTargetInfo targetInfo, CompLongRangeArtillery extComp = null, bool hideWorld = true)
+        public void SetTargetedTile(GlobalTargetInfo t)
         {
-            if (hideWorld)
-                CameraJumper.TryHideWorld();
+            CameraJumper.TryHideWorld();
 
-            var artilleryComps = new List<CompLongRangeArtillery>();
-            if (extComp != null)
-                artilleryComps.Add(extComp);
-            else
-                artilleryComps.AddRange(Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing t && t.TryGetComp<CompLongRangeArtillery>() != null).Cast<Thing>().Select(t => t.TryGetComp<CompLongRangeArtillery>()));
-
-            foreach (var comp in artilleryComps)
+            var allSelectedComps = Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing th && th.TryGetComp<CompLongRangeArtillery>() != null).Select(o => ((Thing)o).TryGetComp<CompLongRangeArtillery>());
+            foreach (var comp in allSelectedComps)
             {
                 NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
-                comp.targetedTile = targetInfo;
+                comp.targetedTile = t;
                 SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map, false));
                 comp.ResetWarmupTicks();
             }
@@ -373,12 +396,12 @@ namespace VFESecurity
         public override void PostExposeData()
         {
             Scribe_Values.Look(ref warmupTicksLeft, "warmupTicksLeft");
-            Scribe_TargetInfo.Look(ref targetedTile, "targetedTile");
+            Scribe_TargetInfo.Look(ref targetedTile, "targetedTile", GlobalTargetInfo.Invalid);
             base.PostExposeData();
         }
 
         public int warmupTicksLeft;
-        public GlobalTargetInfo targetedTile;
+        public GlobalTargetInfo targetedTile = GlobalTargetInfo.Invalid;
 
     }
 

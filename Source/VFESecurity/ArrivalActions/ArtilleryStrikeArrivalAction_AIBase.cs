@@ -56,8 +56,6 @@ namespace VFESecurity
                     PostStrikeAction(destroyed);
                 }
             }
-            else
-                ArtilleryComp.ResetForcedTarget();
         }
 
         protected virtual void PreStrikeAction()

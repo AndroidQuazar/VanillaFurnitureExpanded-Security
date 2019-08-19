@@ -16,28 +16,44 @@ namespace VFESecurity
 {
 
     [StaticConstructorOnStartup]
-    public class ArtilleryLineRenderer : WorldComponent
+    public class WorldArtilleryTracker : WorldComponent
     {
 
         private static readonly Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.WorldOverlayTransparent, new Color(1, 0.5f, 0.5f), WorldMaterials.WorldLineRenderQueue);
         private static readonly Material NonPlayerTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.WorldOverlayTransparent, new Color(0.5f, 0.5f, 1), WorldMaterials.WorldLineRenderQueue);
 
         private List<WorldObject> cachedWorldObjects;
+        private List<CompLongRangeArtillery> listerArtilleryComps;
 
-        public ArtilleryLineRenderer(World world) : base(world)
+        public WorldArtilleryTracker(World world) : base(world)
         {
         }
 
         private void TryPostInit()
         {
+            bool init = false;
             if (cachedWorldObjects == null)
             {
                 cachedWorldObjects = new List<WorldObject>();
+                init = true;
+            }
+            if (listerArtilleryComps == null)
+            {
+                listerArtilleryComps = new List<CompLongRangeArtillery>();
+                init = true;
+            }
+
+            if (init)
+            {
                 foreach (var worldObject in Find.WorldObjects.AllWorldObjects)
                 {
                     var artilleryComp = worldObject.GetComponent<ArtilleryComp>();
-                    if (artilleryComp != null && artilleryComp.HasArtillery)
-                        TryAdd(worldObject);
+                    if (artilleryComp != null)
+                    {
+                        RegisterWorldObject(worldObject);
+                        foreach (var artillery in artilleryComp.ArtilleryComps)
+                            RegisterArtilleryComp(artillery);
+                    }
                 }
             }
         }
@@ -46,7 +62,7 @@ namespace VFESecurity
         {
             TryPostInit();
 
-            // Render shoot lines
+            // Draw shoot lines
             if (WorldRendererUtility.WorldRenderedNow)
             {
                 var worldGrid = Find.WorldGrid;
@@ -74,18 +90,51 @@ namespace VFESecurity
             }
         }
 
-        public void TryAdd(WorldObject o)
+        public void Notify_WorldObjectRemoved(WorldObject o)
         {
+            foreach (var artillery in listerArtilleryComps)
+                if (artillery.targetedTile == o)
+                    artillery.ResetForcedTarget();
+        }
+
+        public void RegisterWorldObject(WorldObject o)
+        {
+            if (o == null)
+                return;
+
             if (cachedWorldObjects == null)
                 cachedWorldObjects = new List<WorldObject>();
             if (!cachedWorldObjects.Contains(o))
                 cachedWorldObjects.Add(o);
         }
 
-        public void TryRemove(WorldObject o)
+        public void DeregisterWorldObject(WorldObject o)
         {
+            if (o == null)
+                return;
+
             if (cachedWorldObjects.Contains(o))
                 cachedWorldObjects.Remove(o);
+        }
+
+        public void RegisterArtilleryComp(CompLongRangeArtillery a)
+        {
+            if (a == null)
+                return;
+
+            if (listerArtilleryComps == null)
+                listerArtilleryComps = new List<CompLongRangeArtillery>();
+            if (!listerArtilleryComps.Contains(a))
+                listerArtilleryComps.Add(a);
+        }
+
+        public void DeregisterArtilleryComp(CompLongRangeArtillery a)
+        {
+            if (a == null)
+                return;
+
+            if (listerArtilleryComps.Contains(a))
+                listerArtilleryComps.Remove(a);
         }
 
     }

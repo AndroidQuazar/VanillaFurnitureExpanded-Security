@@ -18,11 +18,12 @@ namespace VFESecurity
     public class TravellingArtilleryStrike : WorldObject, IThingHolder
     {
 
-        private const float TravelSpeedPerShellSpeed = 0.00025f / 10;
+        private const float TravelSpeedPerShellSpeed = 0.00025f / 300;
 
         private int initialTile;
         public int destinationTile;
         private float travelledPct;
+        float cachedDistance = -1;
 
         public ArtilleryStrikeArrivalAction arrivalAction;
         public ThingOwner innerContainer = new ThingOwner<Thing>();
@@ -44,7 +45,6 @@ namespace VFESecurity
         }
 
         private Vector3 Start => Find.WorldGrid.GetTileCenter(initialTile);
-
         private Vector3 End => Find.WorldGrid.GetTileCenter(destinationTile);
 
         public override Vector3 DrawPos => Vector3.Slerp(Start, End, travelledPct);
@@ -87,7 +87,7 @@ namespace VFESecurity
                 if (sphericalDist == 0)
                     return 1;
 
-                return ArtilleryStrikes.Select(s => s.Speed).Average() * TravelSpeedPerShellSpeed;
+                return ArtilleryStrikes.Select(s => s.Speed).Average() * TravelSpeedPerShellSpeed / sphericalDist;
             }
         }
 

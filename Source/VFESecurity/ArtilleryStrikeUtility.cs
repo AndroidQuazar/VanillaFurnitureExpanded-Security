@@ -9,6 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
+using RimWorld.Planet;
 using Harmony;
 
 namespace VFESecurity

@@ -7,6 +7,7 @@
     <!-- Long-range artillery -->
     <VFESecurity.TargetWorldTile>Target world tile</VFESecurity.TargetWorldTile>
     <VFESecurity.TargetWorldTile_Description>Select a world tile for this {0} to fire at.</VFESecurity.TargetWorldTile_Description>
+    <VFESecurity.TargetWorldTile_DescriptionShort>Select a world tile to fire at.</VFESecurity.TargetWorldTile_DescriptionShort>
     <VFESecurity.CommandTargetTileFailNoArtillery>This {0} does not have any suitable artillery.</VFESecurity.CommandTargetTileFailNoArtillery>
 
     <VFESecurity.TargetWorldTileOutOfRange>Tile is out of range.</VFESecurity.TargetWorldTileOutOfRange>
@@ -15,9 +16,11 @@
     <VFESecurity.TargetSettlement>Target settlement</VFESecurity.TargetSettlement>
     <VFESecurity.TargetOutpost>Target outpost</VFESecurity.TargetOutpost>
     <VFESecurity.TargetWorldTileEmpty>Target area (will have no effect)</VFESecurity.TargetWorldTileEmpty>
+    <VFESecurity.TargetWorldFlyingObject>Cannot target flying objects.</VFESecurity.TargetWorldFlyingObject>
     <VFESecurity.TargetWorldTileSameTile>Cannot target the same tile.</VFESecurity.TargetWorldTileSameTile>
 
     <VFESecurity.MessageTargetWorldTileInvalid>Targeted area is invalid.</VFESecurity.MessageTargetWorldTileInvalid>
+    <VFESecurity.Settlement>settlement</VFESecurity.Settlement>
     <VFESecurity.MessageTargetWorldTileOutOfRange>Targeted area is out of the {0}'s range.</VFESecurity.MessageTargetWorldTileOutOfRange>
 
     <!-- Messages -->

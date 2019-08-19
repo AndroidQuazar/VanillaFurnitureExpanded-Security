@@ -58,8 +58,6 @@ namespace VFESecurity
                         ArtilleryComp.ResetForcedTarget();
                 }
             }
-            else
-                ArtilleryComp.ResetForcedTarget();
         }
 
         public override void ExposeData()

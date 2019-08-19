@@ -61,7 +61,7 @@
     <Compile Include="Comps\ThingComps\CompProperties_Retractable.cs" />
     <Compile Include="Comps\ThingComps\CompLongRangeArtillery.cs" />
     <Compile Include="Comps\ThingComps\CompRetractable.cs" />
-    <Compile Include="Comps\WorldComponents\ArtilleryLineRenderer.cs" />
+    <Compile Include="Comps\WorldComponents\WorldArtilleryTracker.cs" />
     <Compile Include="Comps\WorldObjectComps\ArtilleryComp.cs" />
     <Compile Include="Comps\WorldObjectComps\WorldObjectCompProperties_Artillery.cs" />
     <Compile Include="DefModExtensions\ThingDefExtension.cs" />
@@ -72,6 +72,7 @@
     <Compile Include="HarmonyPatches\Patch_CoverUtility.cs" />
     <Compile Include="HarmonyPatches\Patch_GenGrid.cs" />
     <Compile Include="HarmonyPatches\Patch_Building_TurretGun.cs" />
+    <Compile Include="HarmonyPatches\Patch_WorldObjectsHolder.cs" />
     <Compile Include="HarmonyPatches\Patch_Thing.cs" />
     <Compile Include="HarmonyPatches\Patch_LordToil_Siege.cs" />
     <Compile Include="Reflection\NonPublicFields.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="VFESecurity.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Windows\Command_ArtilleryStrike.cs" />
     <Compile Include="WorldObjects\TravellingArtilleryStrike.cs" />
   </ItemGroup>
   <ItemGroup />

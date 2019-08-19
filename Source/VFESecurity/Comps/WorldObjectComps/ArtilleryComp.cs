@@ -32,7 +32,7 @@ namespace VFESecurity
             }
         }
 
-        private IEnumerable<CompLongRangeArtillery> ArtilleryComps => artillery.Select(a => a.TryGetComp<CompLongRangeArtillery>());
+        public IEnumerable<CompLongRangeArtillery> ArtilleryComps => artillery.Select(a => a.TryGetComp<CompLongRangeArtillery>());
 
         private ThingDef ArtilleryGunDef => ArtilleryDef.building.turretGunDef;
 
@@ -67,45 +67,9 @@ namespace VFESecurity
             }
         }
 
-        public override IEnumerable<Gizmo> GetGizmos()
-        {
-            if (parent.Faction == Faction.OfPlayer)
-            {
-                // Target other map tiles
-                var target = new Command_ArtilleryStrike()
-                {
-                    defaultLabel = "VFESecurity.TargetWorldTile".Translate(),
-                    defaultDesc = "VFESecurity.TargetWorldTile_Description".Translate(parent.def.label),
-                    icon = CompLongRangeArtillery.TargetWorldTileIcon,
-                    artilleryComps = ArtilleryComps.ToList()
-                };
-
-                if (!ArtilleryComps.Any())
-                    target.Disable("VFESecurity.CommandTargetTileFailNoArtillery".Translate(parent.def.label));
-
-                yield return target;
-
-                // Cancel targeting
-                if (Targets.Any())
-                {
-                    yield return new Command_Action()
-                    {
-                        defaultLabel = "CommandStopForceAttack".Translate(),
-                        defaultDesc = "CommandStopForceAttackDesc".Translate(),
-                        icon = ContentFinder<Texture2D>.Get("UI/Commands/Halt", true),
-                        action = () =>
-                        {
-                            foreach (var artilleryComp in ArtilleryComps)
-                                artilleryComp.ResetForcedTarget();
-                        }
-                    };
-                }
-            }
-        }
-
         public override void Initialize(WorldObjectCompProperties props)
         {
-            Find.World.GetComponent<ArtilleryLineRenderer>().TryAdd(parent);
+            Find.World.GetComponent<WorldArtilleryTracker>().RegisterWorldObject(parent);
             base.Initialize(props);
         }
 
@@ -186,7 +150,7 @@ namespace VFESecurity
         {
             if (Attacking)
                 EndBombardment();
-            Find.World.GetComponent<ArtilleryLineRenderer>().TryRemove(parent);
+            Find.World.GetComponent<WorldArtilleryTracker>().DeregisterWorldObject(parent);
             base.PostPostRemove();
         }
 

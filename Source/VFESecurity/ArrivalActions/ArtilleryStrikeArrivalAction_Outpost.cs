@@ -50,9 +50,6 @@ namespace VFESecurity
                 defeatComp.StopQuest();
                 Find.WorldObjects.Remove(worldObject);
                 destroyed = true;
-
-                if (ArtilleryComp != null)
-                    ArtilleryComp.ResetForcedTarget();
             }
         }
 

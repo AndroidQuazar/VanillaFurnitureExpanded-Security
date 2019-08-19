@@ -36,7 +36,7 @@ namespace VFESecurity
             public static void Postfix(Building_TurretGun __instance)
             {
                 var artilleryComp = __instance.TryGetComp<CompLongRangeArtillery>();
-                if (artilleryComp != null && artilleryComp.targetedTile != TargetInfo.Invalid)
+                if (artilleryComp != null && artilleryComp.targetedTile != TargetInfo.Invalid && artilleryComp.CanLaunch)
                 {
                     var edgeCell = artilleryComp.FacingEdgeCell;
                     // Warmup pie
