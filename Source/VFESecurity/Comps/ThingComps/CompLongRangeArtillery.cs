@@ -30,14 +30,17 @@ namespace VFESecurity
         private CompPowerTrader PowerComp => parent.GetComp<CompPowerTrader>();
         private CompMannable MannableComp => parent.GetComp<CompMannable>();
 
-        private bool TurretPowered => PowerComp == null || PowerComp.PowerOn;
-        private bool TurretHasFuel => RefuelableComp == null || RefuelableComp.HasFuel;
-        private bool TurretLoaded => ChangeableProjectile == null || ChangeableProjectile.Loaded;
-        private bool TurretManned => MannableComp == null || MannableComp.MannedNow;
-        private bool OnCooldownPeriod => (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret) > 0;
-        private bool UnderRoof => parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
+        private bool CanLaunch => (PowerComp == null || PowerComp.PowerOn) && (RefuelableComp == null || RefuelableComp.HasFuel) && (ChangeableProjectile == null || ChangeableProjectile.Loaded)
+            && (MannableComp == null || MannableComp.MannedNow) && (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret) <= 0 && !parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
 
-        private bool CanLaunch => TurretPowered && TurretHasFuel && TurretLoaded && TurretManned && !OnCooldownPeriod && !UnderRoof;
+        public override void CompTick()
+        {
+            // Automatically attack if there is a forced target
+            if (targetedTile != GlobalTargetInfo.Invalid && CanLaunch)
+            {
+                TryLaunch(targetedTile.Tile);
+            }
+        }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
@@ -45,7 +48,7 @@ namespace VFESecurity
             if (Turret.Faction == Faction.OfPlayer)
             {
                 // Target other map tiles
-                var targetTile = new Command_Action()
+                yield return new Command_Action()
                 {
                     defaultLabel = "VFESecurity.TargetWorldTile".Translate(),
                     defaultDesc = "VFESecurity.TargetWorldTile_Description".Translate(parent.def.label),
@@ -53,31 +56,17 @@ namespace VFESecurity
                     action = StartChoosingTarget
                 };
 
-                // No power
-                if (!TurretPowered)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailNoPower".Translate(parent.def.LabelCap));
-
-                // No fuel
-                else if (!TurretHasFuel)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailNoFuel".Translate(parent.def.LabelCap, RefuelableComp.Props.FuelLabel));
-
-                // No projectile loaded
-                else if (!TurretLoaded)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailNotLoaded".Translate(parent.def.LabelCap));
-
-                // Not manned
-                else if (!TurretManned)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailUnmanned".Translate(parent.def.LabelCap));
-
-                // Cooldown
-                else if (OnCooldownPeriod)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailCooldown".Translate(parent.def.LabelCap));
-
-                // Under a roof
-                else if (UnderRoof)
-                    targetTile.Disable("VFESecurity.CommandTargetTileFailUnderRoof".Translate(parent.def.LabelCap));
-
-                yield return targetTile;
+                // Cancel targeting
+                if (targetedTile != GlobalTargetInfo.Invalid)
+                {
+                    yield return new Command_Action()
+                    {
+                        defaultLabel = "CommandStopForceAttack".Translate(),
+                        defaultDesc = "CommandStopForceAttackDesc".Translate(),
+                        icon = ContentFinder<Texture2D>.Get("UI/Commands/Halt", true),
+                        action = () => ResetForcedTarget()
+                    };
+                }
             }
         }
 
@@ -109,29 +98,29 @@ namespace VFESecurity
 
                 else
                 {
-                    var floatMenuOptions = GetArtilleryFloatMenuOptionsAt(t.Tile);
+                    var floatMenuOptions = this.FloatMenuOptionsFor(t.Tile);
 
-                    // No float menu options (this should never be the case)
+                    // No options
                     if (!floatMenuOptions.Any())
                         return string.Empty;
 
-                    // Only one option
+                    // Return first option label
                     if (floatMenuOptions.Count() == 1)
                     {
-                        var option = floatMenuOptions.First();
-                        if (option.Disabled)
+                        if (floatMenuOptions.First().Disabled)
                             GUI.color = Color.red;
-                        return option.Label;
+                        return floatMenuOptions.First().Label;
                     }
 
                     // Multiple options
-                    var mapParent = t.WorldObject as MapParent;
+                    MapParent mapParent = t.WorldObject as MapParent;
                     if (mapParent != null)
                         return "ClickToSeeAvailableOrders_WorldObject".Translate(mapParent.LabelCap);
+
+                    // No orders
                     return "ClickToSeeAvailableOrders_Empty".Translate();
                 }
-            }
-            );
+            });
         }
 
         private bool ChooseWorldTarget(GlobalTargetInfo target)
@@ -157,131 +146,175 @@ namespace VFESecurity
                 return false;
             }
 
-            var options = GetArtilleryFloatMenuOptionsAt(target.Tile);
+            var floatMenuOptions = FloatMenuOptionsFor(target.Tile);
 
             // No options
-            if (!options.Any())
+            if (!floatMenuOptions.Any())
             {
-                TryLaunch(target.Tile, null);
+                SetTargetedTile(target);
                 return true;
             }
-
             else
             {
                 // One option
-                if (options.Count() == 1)
+                if (floatMenuOptions.Count() == 1)
                 {
-                    var option = options.First();
-                    if (!option.Disabled)
-                        option.action();
+                    if (!floatMenuOptions.First().Disabled)
+                        floatMenuOptions.First().action();
                     return false;
                 }
 
                 // Multiple options
-                Find.WindowStack.Add(new FloatMenu(options.ToList()));
+                Find.WindowStack.Add(new FloatMenu(floatMenuOptions.ToList<FloatMenuOption>()));
                 return false;
             }
         }
 
-        private IEnumerable<FloatMenuOption> GetArtilleryFloatMenuOptionsAt(int tile)
+        private IEnumerable<FloatMenuOption> FloatMenuOptionsFor(int tile)
         {
             bool anything = false;
-
-            // World objects
             foreach (var worldObject in Find.WorldObjects.AllWorldObjects)
             {
                 if (worldObject.Tile == tile)
                 {
-                    // Map - target around the centre
-                    if (worldObject is MapParent mapParent && mapParent.HasMap)
+                    if (worldObject != null)
                     {
-                        yield return new FloatMenuOption("VFESecurity.TargetMap".Translate(), () => TryLaunch(tile, new ArtilleryStrikeArrivalAction_Map(mapParent)));
-                        anything = true;
+                        if (worldObject is MapParent mapParent && mapParent.HasMap)
+                        {
+                            yield return new FloatMenuOption("VFESecurity.TargetMap".Translate(), () => SetTargetedTile(worldObject));
+                            anything = true;
+                        }
+
+                        // Peace talks - cause badwill and potentially cause a raid
+                        if (worldObject is PeaceTalks talks)
+                        {
+                            yield return new FloatMenuOption("VFESecurity.TargetPeaceTalks".Translate(), () => SetTargetedTile(worldObject));
+                            anything = true;
+                        }
+
+                        // Settlement - cause badwill, potentially cause an artillery retaliation and potentially destroy
+                        if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
+                        {
+                            yield return new FloatMenuOption("VFESecurity.TargetSettlement".Translate(), () => SetTargetedTile(worldObject));
+                            anything = true;
+                        }
+
+                        if (worldObject is Site site)
+                        {
+                            // Bandit camp - potentially destroy
+                            if (site.core.def == SiteCoreDefOf.Nothing && site.parts.Any(p => p.def == SitePartDefOf.Outpost))
+                            {
+                                yield return new FloatMenuOption("VFESecurity.TargetOutpost".Translate(), () => SetTargetedTile(worldObject));
+                                anything = true;
+                            }
+                        }
                     }
+                }
+            }
+            
+            if (!anything)
+            {
+                yield return new FloatMenuOption("VFESecurity.TargetWorldTileEmpty".Translate(), () => SetTargetedTile(new GlobalTargetInfo(tile)));
+            }
+        }
+
+        private void SetTargetedTile(GlobalTargetInfo targetInfo)
+        {
+            var artilleryComps = Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing t && t.TryGetComp<CompLongRangeArtillery>() != null).Cast<Thing>().Select(t => t.TryGetComp<CompLongRangeArtillery>());
+            foreach (var comp in artilleryComps)
+            {
+                NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
+                comp.targetedTile = targetInfo;
+            }
+            CameraJumper.TryHideWorld();
+        }
+
+        public void ResetForcedTarget()
+        {
+            targetedTile = GlobalTargetInfo.Invalid;
+        }
+
+        private ArtilleryStrikeArrivalAction CurrentArrivalAction
+        {
+            get
+            {
+                var worldObject = targetedTile.WorldObject;
+                if (worldObject != null)
+                {
+                    if (worldObject is MapParent mapParent && mapParent.HasMap)
+                        return new ArtilleryStrikeArrivalAction_Map(mapParent);
 
                     // Peace talks - cause badwill and potentially cause a raid
                     if (worldObject is PeaceTalks talks)
-                    {
-                        yield return new FloatMenuOption("VFESecurity.TargetPeaceTalks".Translate(), () => TryLaunch(tile, new ArtilleryStrikeArrivalAction_PeaceTalks(parent.Map)));
-                        anything = true;
-                    }
+                        return new ArtilleryStrikeArrivalAction_PeaceTalks(parent.Map);
 
                     // Settlement - cause badwill, potentially cause an artillery retaliation and potentially destroy
                     if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
-                    {
-                        yield return new FloatMenuOption("VFESecurity.TargetSettlement".Translate(), () => TryLaunch(tile, new ArtilleryStrikeArrivalAction_Settlement(settlement)));
-                        anything = true;
-                    }
+                        return new ArtilleryStrikeArrivalAction_Settlement(settlement);
 
                     if (worldObject is Site site)
                     {
                         // Bandit camp - potentially destroy
                         if (site.core.def == SiteCoreDefOf.Nothing && site.parts.Any(p => p.def == SitePartDefOf.Outpost))
-                        {
-                            yield return new FloatMenuOption("VFESecurity.TargetOutpost".Translate(), () => TryLaunch(tile, new ArtilleryStrikeArrivalAction_Outpost(site)));
-                            anything = true;
-                        }
+                            return new ArtilleryStrikeArrivalAction_Outpost(site);
                     }
                 }
-            }
-            if (!anything)
-            {
-                yield return new FloatMenuOption("VFESecurity.TargetWorldTileEmpty".Translate(), () => TryLaunch(tile, null));
+
+                return null;
             }
         }
 
-        public void TryLaunch(int destinationTile, ArtilleryStrikeArrivalAction arrivalAction)
+        public void TryLaunch(int destinationTile)
         {
-            CameraJumper.TryHideWorld();
-            var artilleryComps = Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing t && t.TryGetComp<CompLongRangeArtillery>() != null).Select(t => ((Thing)t).TryGetComp<CompLongRangeArtillery>()).Where(c => c.CanLaunch);
+            var arrivalAction = CurrentArrivalAction;
 
-            foreach (var comp in artilleryComps)
+            if (arrivalAction != null)
+                arrivalAction.source = parent;
+
+            // Play sounds
+            var verb = Turret.CurrentEffectiveVerb;
+            if (verb.verbProps.soundCast != null)
+                verb.verbProps.soundCast.PlayOneShot(new TargetInfo(parent.Position, parent.Map));
+            if (verb.verbProps.soundCastTail != null)
+                verb.verbProps.soundCastTail.PlayOneShotOnCamera(parent.Map);
+
+            // Make active artillery strike thing
+            var activeArtilleryStrike = (ActiveArtilleryStrike)ThingMaker.MakeThing(ThingDefOf.VFE_ActiveArtilleryStrike);
+            activeArtilleryStrike.missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(Turret.CurrentEffectiveVerb.verbProps.forcedMissRadius, Props.maxForcedMissRadiusFactor, parent.Tile, destinationTile, Props.worldTileRange);
+
+            // Simulate an attack
+            if (ChangeableProjectile != null)
             {
-                // Play sounds
-                var verb = comp.Turret.CurrentEffectiveVerb;
-                if (verb.verbProps.soundCast != null)
-                    verb.verbProps.soundCast.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map));
-                if (verb.verbProps.soundCastTail != null)
-                    verb.verbProps.soundCastTail.PlayOneShotOnCamera(comp.parent.Map);
-
-                // Make active artillery strike thing
-                var activeArtilleryStrike = (ActiveArtilleryStrike)ThingMaker.MakeThing(ThingDefOf.VFE_ActiveArtilleryStrike);
-                activeArtilleryStrike.missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(comp.Turret.CurrentEffectiveVerb.verbProps.forcedMissRadius, comp.Props.maxForcedMissRadiusFactor, comp.parent.Tile, destinationTile, comp.Props.worldTileRange);
-
-                // Simulate an attack
-                if (comp.ChangeableProjectile != null)
-                {
-                    activeArtilleryStrike.shellDef = comp.ChangeableProjectile.Projectile;
-                    activeArtilleryStrike.shellCount = 1;
-                    comp.ChangeableProjectile.Notify_ProjectileLaunched();
-                }
-                else
-                {
-                    activeArtilleryStrike.shellDef = verb.GetProjectile();
-                    for (int j = 0; j < verb.verbProps.burstShotCount; j++)
-                    {
-                        activeArtilleryStrike.shellCount++;
-                        if (verb.verbProps.consumeFuelPerShot > 0 && comp.RefuelableComp != null)
-                            comp.RefuelableComp.ConsumeFuel(verb.verbProps.consumeFuelPerShot);
-                    }
-                }
-                NonPublicMethods.Building_TurretGun_BurstComplete(comp.Turret);
-
-                var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFE_ArtilleryStrikeLeaving, activeArtilleryStrike);
-                artilleryStrikeLeaving.destinationTile = destinationTile;
-                artilleryStrikeLeaving.arrivalAction = arrivalAction;
-                artilleryStrikeLeaving.groupID = Find.TickManager.TicksGame;
-
-                int angle = (int)Find.WorldGrid.GetDirection8WayFromTo(comp.parent.Map.Tile, destinationTile) * 45;
-                var skyfallerPos = GenAdj.CellsAdjacent8Way(comp.parent).MinBy(c => Mathf.Abs(angle - (c - comp.parent.Position).AngleFlat));
-
-                var turretTop = (TurretTop)NonPublicFields.Building_TurretGun_top.GetValue(comp.Turret);
-                int cooldownTicks = (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(comp.Turret);
-                NonPublicProperties.TurretTop_set_CurRotation(turretTop, angle);
-                NonPublicFields.TurretTop_ticksUntilIdleTurn.SetValue(turretTop, (int)NonPublicFields.TurretTop_ticksUntilIdleTurn.GetValue(turretTop) + cooldownTicks);
-
-                GenSpawn.Spawn(artilleryStrikeLeaving, skyfallerPos, comp.parent.Map);
+                activeArtilleryStrike.shellDef = ChangeableProjectile.Projectile;
+                activeArtilleryStrike.shellCount = 1;
+                ChangeableProjectile.Notify_ProjectileLaunched();
             }
+            else
+            {
+                activeArtilleryStrike.shellDef = verb.GetProjectile();
+                for (int j = 0; j < verb.verbProps.burstShotCount; j++)
+                {
+                    activeArtilleryStrike.shellCount++;
+                    if (verb.verbProps.consumeFuelPerShot > 0 && RefuelableComp != null)
+                        RefuelableComp.ConsumeFuel(verb.verbProps.consumeFuelPerShot);
+                }
+            }
+            NonPublicMethods.Building_TurretGun_BurstComplete(Turret);
+
+            var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFE_ArtilleryStrikeLeaving, activeArtilleryStrike);
+            artilleryStrikeLeaving.destinationTile = destinationTile;
+            artilleryStrikeLeaving.arrivalAction = arrivalAction;
+            artilleryStrikeLeaving.groupID = Find.TickManager.TicksGame;
+
+            int angle = (int)Find.WorldGrid.GetDirection8WayFromTo(parent.Map.Tile, destinationTile) * 45;
+            var skyfallerPos = GenAdj.CellsAdjacent8Way(parent).MinBy(c => Mathf.Abs(angle - (c - parent.Position).AngleFlat));
+
+            var turretTop = (TurretTop)NonPublicFields.Building_TurretGun_top.GetValue(Turret);
+            int cooldownTicks = (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret);
+            NonPublicProperties.TurretTop_set_CurRotation(turretTop, angle);
+            NonPublicFields.TurretTop_ticksUntilIdleTurn.SetValue(turretTop, (int)NonPublicFields.TurretTop_ticksUntilIdleTurn.GetValue(turretTop) + cooldownTicks);
+
+            GenSpawn.Spawn(artilleryStrikeLeaving, skyfallerPos, parent.Map);
         }
 
         public override void PostExposeData()
@@ -290,7 +323,7 @@ namespace VFESecurity
             base.PostExposeData();
         }
 
-        public GlobalTargetInfo targetedTile;
+        private GlobalTargetInfo targetedTile;
 
     }
 

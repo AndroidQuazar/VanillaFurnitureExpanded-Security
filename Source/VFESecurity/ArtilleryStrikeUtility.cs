@@ -17,6 +17,18 @@ namespace VFESecurity
     public static class ArtilleryStrikeUtility
     {
 
+        private static List<ThingDef> allowedEnemyShellDefs;
+
+        public static void SetCache()
+        {
+            allowedEnemyShellDefs = DefDatabase<ThingDef>.AllDefsListForReading.Where(t => t.IsShell && t.projectileWhenLoaded.projectile.damageDef.harmsHealth).ToList();
+        }
+
+        public static ThingDef GetRandomShellFor(ThingDef artilleryGunDef, FactionDef faction)
+        {
+            return allowedEnemyShellDefs.Where(s => s.techLevel <= faction.techLevel && artilleryGunDef.building.defaultStorageSettings.AllowedToAccept(s)).Select(s => s.projectileWhenLoaded).RandomElement();
+        }
+
         public static float FinalisedMissRadius(float forcedMissRadius, float maxRadiusFactor, int tileA, int tileB, int range)
         {
             return forcedMissRadius * Mathf.Lerp(1, maxRadiusFactor, (float)Find.WorldGrid.TraversalDistanceBetween(tileA, tileB) / range);

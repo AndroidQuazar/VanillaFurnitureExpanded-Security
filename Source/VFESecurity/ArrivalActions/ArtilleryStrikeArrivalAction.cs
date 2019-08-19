@@ -22,7 +22,12 @@ namespace VFESecurity
 
         public virtual void ExposeData()
         {
+            Scribe_References.Look(ref source, "source");
         }
+
+        protected CompLongRangeArtillery ArtilleryComp => source.TryGetComp<CompLongRangeArtillery>();
+
+        public Thing source;
 
     }
 

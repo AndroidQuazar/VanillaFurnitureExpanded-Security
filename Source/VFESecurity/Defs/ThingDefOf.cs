@@ -22,6 +22,8 @@ namespace VFESecurity
         public static ThingDef VFE_ArtilleryStrikeLeaving;
         public static ThingDef VFE_ActiveArtilleryStrike;
 
+        public static ThingDef VFES_Turret_Artillery;
+
     }
 
 }

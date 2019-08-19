@@ -17,13 +17,19 @@ namespace VFESecurity
 
     public class ArtilleryStrikeArrivalAction_Settlement : ArtilleryStrikeArrivalAction_AIBase
     {
-        public ArtilleryStrikeArrivalAction_Settlement(WorldObject worldObject) : base(worldObject)
+
+        public ArtilleryStrikeArrivalAction_Settlement()
         {
+        }
+
+        public ArtilleryStrikeArrivalAction_Settlement(WorldObject worldObject)
+        {
+            this.worldObject = worldObject;
         }
 
         protected Settlement Settlement => worldObject as Settlement;
 
-        protected override bool CanDoArriveAction => Settlement != null && Settlement.Faction != Faction.OfPlayer;
+        protected override bool CanDoArriveAction => Settlement != null && Settlement.Spawned && Settlement.Faction != Faction.OfPlayer;
 
         protected override int MapSize => GameInitData.DefaultMapSize;
 
@@ -36,7 +42,7 @@ namespace VFESecurity
             Settlement.Faction.TryAffectGoodwillWith(Faction.OfPlayer, -99999, reason: "VFESecurity.GoodwillChangedReason_ArtilleryStrike".Translate());
         }
 
-        protected override void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect)
+        protected override void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect, ref bool destroyed)
         {
             var radialCells = GenRadial.RadialCellsAround(mapRect.RandomCell, strike.shellDef.projectile.explosionRadius, true);
             int cellsInRect = radialCells.Count(c => baseRect.Contains(c));
@@ -50,6 +56,20 @@ namespace VFESecurity
                 destroyedSettlement.Tile = Settlement.Tile;
                 Find.WorldObjects.Add(destroyedSettlement);
                 Find.WorldObjects.Remove(Settlement);
+                destroyed = true;
+
+                if (ArtilleryComp != null)
+                    ArtilleryComp.ResetForcedTarget();
+            }
+        }
+
+        protected override void PostStrikeAction(bool destroyed)
+        {
+            if (!destroyed)
+            {
+                var artilleryComp = Settlement.GetComponent<ArtilleryComp>();
+                if (artilleryComp != null)
+                    artilleryComp.TryStartBombardment();
             }
         }
 

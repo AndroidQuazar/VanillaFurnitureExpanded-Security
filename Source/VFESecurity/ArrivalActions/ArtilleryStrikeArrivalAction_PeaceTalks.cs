@@ -18,42 +18,53 @@ namespace VFESecurity
     public class ArtilleryStrikeArrivalAction_PeaceTalks : ArtilleryStrikeArrivalAction
     {
 
+        public ArtilleryStrikeArrivalAction_PeaceTalks()
+        {
+        }
+
         public ArtilleryStrikeArrivalAction_PeaceTalks(Map source)
         {
-            this.source = source;
+            sourceMap = source;
         }
 
         private static readonly IntRange RaidIntervalRange = new IntRange(GenDate.TicksPerDay, GenDate.TicksPerDay * 2);
-        private Map source;
+        private Map sourceMap;
 
         public override void Arrived(List<ActiveArtilleryStrike> artilleryStrikes, int tile)
         {
-            if (artilleryStrikes.Any(s => s.shellDef.projectile.damageDef.harmsHealth) && Find.WorldObjects.WorldObjectAt(tile, RimWorld.WorldObjectDefOf.PeaceTalks) is PeaceTalks peaceTalks)
+            if (Find.WorldObjects.WorldObjectAt(tile, RimWorld.WorldObjectDefOf.PeaceTalks) is PeaceTalks peaceTalks)
             {
-                var faction = peaceTalks.Faction;
-                faction.TryAffectGoodwillWith(Faction.OfPlayer, -99999, reason: "VFESecurity.GoodwillChangedReason_ArtilleryStrike".Translate());
-
-                // 50% chance of causing a raid
-                if (Rand.Bool)
+                if (artilleryStrikes.Any(s => s.shellDef.projectile.damageDef.harmsHealth))
                 {
-                    var parms = new IncidentParms();
-                    parms.target = source;
-                    parms.points = StorytellerUtility.DefaultThreatPointsNow(source);
-                    parms.faction = faction;
-                    parms.generateFightersOnly = true;
-                    parms.forced = true;
-                    Find.Storyteller.incidentQueue.Add(IncidentDefOf.RaidEnemy, Find.TickManager.TicksGame + RaidIntervalRange.RandomInRange, parms);
-                }
+                    var faction = peaceTalks.Faction;
+                    faction.TryAffectGoodwillWith(Faction.OfPlayer, -99999, reason: "VFESecurity.GoodwillChangedReason_ArtilleryStrike".Translate());
 
-                Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikePeaceTalks_Letter".Translate(), "VFESecurity.ArtilleryStrikePeaceTalks_LetterText".Translate(faction.Name), LetterDefOf.NegativeEvent);
-                Find.WorldObjects.Remove(peaceTalks);
+                    // 50% chance of causing a raid
+                    if (Rand.Bool)
+                    {
+                        var parms = new IncidentParms();
+                        parms.target = sourceMap;
+                        parms.points = StorytellerUtility.DefaultThreatPointsNow(sourceMap);
+                        parms.faction = faction;
+                        parms.generateFightersOnly = true;
+                        parms.forced = true;
+                        Find.Storyteller.incidentQueue.Add(IncidentDefOf.RaidEnemy, Find.TickManager.TicksGame + RaidIntervalRange.RandomInRange, parms);
+                    }
+
+                    Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikePeaceTalks_Letter".Translate(), "VFESecurity.ArtilleryStrikePeaceTalks_LetterText".Translate(faction.Name), LetterDefOf.NegativeEvent);
+                    Find.WorldObjects.Remove(peaceTalks);
+
+                    if (ArtilleryComp != null)
+                        ArtilleryComp.ResetForcedTarget();
+                }
             }
-            
+            else
+                ArtilleryComp.ResetForcedTarget();
         }
 
         public override void ExposeData()
         {
-            Scribe_References.Look(ref source, "source");
+            Scribe_References.Look(ref sourceMap, "sourceMap");
             base.ExposeData();
         }
 

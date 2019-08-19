@@ -20,6 +20,7 @@ namespace VFESecurity
 
         static StaticConstructorClass()
         {
+            ArtilleryStrikeUtility.SetCache();
         }
 
     }

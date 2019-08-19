@@ -51,6 +51,31 @@ namespace VFESecurity
 
         private IEnumerable<ActiveArtilleryStrike> ArtilleryStrikes => innerContainer.Cast<ActiveArtilleryStrike>();
 
+        public override string Label
+        {
+            get
+            {
+                int count = ArtilleryStrikes.Count();
+                if (count > 1)
+                    return base.Label + $" x{count}";
+                return base.Label;
+            }
+        }
+
+        public override string GetInspectString()
+        {
+            var inspectBuilder = new StringBuilder();
+            inspectBuilder.AppendLine(base.GetInspectString());
+
+            // Display unique shells
+            inspectBuilder.AppendLine($"{"TabShells".Translate()}:");
+            var shellCounts = ArtilleryStrikes.GroupBy(s => s.shellDef);
+            foreach (var shellCount in shellCounts)
+                inspectBuilder.AppendLine($" - {shellCount.Key.LabelCap} x{shellCount.Select(s => s.shellCount).Aggregate((s1, s2) => s1 + s2)}");
+
+            return inspectBuilder.ToString().TrimEndNewlines();
+        }
+
         private float TravelledPctStepPerTick
         {
             get

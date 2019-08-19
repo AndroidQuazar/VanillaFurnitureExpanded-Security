@@ -35,6 +35,13 @@ namespace VFESecurity
 
         public override void Tick()
         {
+            // Force impact if the tile has a thick roof
+            if (Map.roofGrid.RoofAt(Position) is RoofDef roof && roof.isThickRoof)
+            {
+                Impact();
+                return;
+            }
+
             // Sounds
             if (ticksToImpact == 60 && Find.TickManager.CurTimeSpeed == TimeSpeed.Normal && !artilleryShellDef.projectile.soundImpactAnticipate.NullOrUndefined())
                 artilleryShellDef.projectile.soundImpactAnticipate.PlayOneShot(this);

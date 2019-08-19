@@ -8,6 +8,7 @@
         <graphicData>
             <texPath>Things/Special/IncomingHighExplosive</texPath>
             <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.2</drawSize>
             <shaderType>CutoutFlying</shaderType>
         </graphicData>
         <skyfaller>
@@ -23,6 +24,7 @@
         <graphicData>
             <texPath>Things/Special/LeavingHighExplosive</texPath>
             <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.2</drawSize>
             <shaderType>CutoutFlying</shaderType>
         </graphicData>
         <skyfaller>

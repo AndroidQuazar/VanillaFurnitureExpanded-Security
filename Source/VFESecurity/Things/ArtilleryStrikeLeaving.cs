@@ -32,16 +32,10 @@ namespace VFESecurity
         {
             get
             {
-                if (ShellDef.GetModExtension<ThingDefExtension>() is ThingDefExtension thingDefExtension && thingDefExtension.incomingSkyfallerGraphicData != null)
-                    return thingDefExtension.incomingSkyfallerGraphicData.Graphic;
+                if (ShellDef.GetModExtension<ThingDefExtension>() is ThingDefExtension thingDefExtension && thingDefExtension.leavingSkyfallerGraphicData != null)
+                    return thingDefExtension.leavingSkyfallerGraphicData.Graphic;
                 return base.Graphic;
             }
-        }
-
-        public override void Tick()
-        {
-
-            base.Tick();
         }
 
         protected override void LeaveMap()

@@ -18,6 +18,10 @@ namespace VFESecurity
     public class ArtilleryStrikeArrivalAction_Map : ArtilleryStrikeArrivalAction
     {
 
+        public ArtilleryStrikeArrivalAction_Map()
+        {
+        }
+
         public ArtilleryStrikeArrivalAction_Map(MapParent mapParent)
         {
             this.mapParent = mapParent;
@@ -36,6 +40,8 @@ namespace VFESecurity
                         ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(strike.shellDef, map, potentialCells.RandomElement());
                 }
             }
+            else
+                ArtilleryComp.ResetForcedTarget();
         }
 
         public override void ExposeData()

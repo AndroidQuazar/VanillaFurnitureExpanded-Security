@@ -21,6 +21,8 @@ namespace VFESecurity
 
         public static Action<Building_TurretGun> Building_TurretGun_BurstComplete = (Action<Building_TurretGun>)
             Delegate.CreateDelegate(typeof(Action<Building_TurretGun>), null, AccessTools.Method(typeof(Building_TurretGun), "BurstComplete"));
+        public static Action<Building_TurretGun> Building_TurretGun_ResetForcedTarget = (Action<Building_TurretGun>)
+            Delegate.CreateDelegate(typeof(Action<Building_TurretGun>), null, AccessTools.Method(typeof(Building_TurretGun), "ResetForcedTarget"));
 
         public static Action<DefeatAllEnemiesQuestComp> DefeatAllEnemiesQuestComp_GiveRewardsAndSendLetter = (Action<DefeatAllEnemiesQuestComp>)
             Delegate.CreateDelegate(typeof(Action<DefeatAllEnemiesQuestComp>), null, AccessTools.Method(typeof(DefeatAllEnemiesQuestComp), "GiveRewardsAndSendLetter"));

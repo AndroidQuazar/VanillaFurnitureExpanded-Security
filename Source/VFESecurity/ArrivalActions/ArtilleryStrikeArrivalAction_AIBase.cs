@@ -38,11 +38,6 @@ namespace VFESecurity
             get;
         }
 
-        public ArtilleryStrikeArrivalAction_AIBase(WorldObject worldObject)
-        {
-            this.worldObject = worldObject;
-        }
-
         public override void Arrived(List<ActiveArtilleryStrike> artilleryStrikes, int tile)
         {
             // Boom
@@ -52,20 +47,28 @@ namespace VFESecurity
                 if (harmfulStrikes.Any())
                 {
                     PreStrikeAction();
+                    bool destroyed = false;
                     var mapRect = new CellRect(0, 0, MapSize, MapSize);
                     var baseRect = new CellRect(GenMath.RoundRandom(mapRect.Width / 2f) - GenMath.RoundRandom(BaseSize / 2f), GenMath.RoundRandom(mapRect.Height / 2f) - GenMath.RoundRandom(BaseSize / 2f), BaseSize, BaseSize);
                     foreach (var strike in harmfulStrikes)
                         for (int i = 0; i < strike.shellCount; i++)
-                            StrikeAction(strike, mapRect, baseRect);
+                            StrikeAction(strike, mapRect, baseRect, ref destroyed);
+                    PostStrikeAction(destroyed);
                 }
             }
+            else
+                ArtilleryComp.ResetForcedTarget();
         }
 
         protected virtual void PreStrikeAction()
         {
         }
 
-        protected virtual void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect)
+        protected virtual void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect, ref bool destroyed)
+        {
+        }
+
+        protected virtual void PostStrikeAction(bool destroyed)
         {
         }
 
@@ -75,7 +78,7 @@ namespace VFESecurity
             base.ExposeData();
         }
 
-        public WorldObject worldObject;
+        protected WorldObject worldObject;
 
     }
 

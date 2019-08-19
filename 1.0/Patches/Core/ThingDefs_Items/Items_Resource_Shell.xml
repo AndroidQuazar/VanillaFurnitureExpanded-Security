@@ -7,12 +7,12 @@
         <value>
             <li Class="VFESecurity.ThingDefExtension">
                 <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/IncomingIncendiary</texPath>
+                    <texPath>Things/Special/LeavingIncendiary</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingIncendiary</texPath>
+                    <texPath>Things/Special/IncomingIncendiary</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </incomingSkyfallerGraphicData>
@@ -25,12 +25,12 @@
         <value>
             <li Class="VFESecurity.ThingDefExtension">
                 <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/IncomingEMP</texPath>
+                    <texPath>Things/Special/LeavingEMP</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingEMP</texPath>
+                    <texPath>Things/Special/IncomingEMP</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </incomingSkyfallerGraphicData>
@@ -43,12 +43,12 @@
         <value>
             <li Class="VFESecurity.ThingDefExtension">
                 <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/IncomingFirefoam</texPath>
+                    <texPath>Things/Special/LeavingFirefoam</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingFirefoam</texPath>
+                    <texPath>Things/Special/IncomingFirefoam</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </incomingSkyfallerGraphicData>
@@ -61,12 +61,12 @@
         <value>
             <li Class="VFESecurity.ThingDefExtension">
                 <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/IncomingAntigrain</texPath>
+                    <texPath>Things/Special/LeavingAntigrain</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingAntigrain</texPath>
+                    <texPath>Things/Special/IncomingAntigrain</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
                     <shaderType>CutoutFlying</shaderType>
                 </incomingSkyfallerGraphicData>
