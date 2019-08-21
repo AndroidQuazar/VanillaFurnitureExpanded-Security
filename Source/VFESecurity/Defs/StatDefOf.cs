@@ -15,14 +15,12 @@ namespace VFESecurity
 {
 
     [DefOf]
-    public static class ThingDefOf
+    public static class StatDefOf
     {
 
-        public static ThingDef VFES_ArtilleryStrikeIncoming;
-        public static ThingDef VFES_ArtilleryStrikeLeaving;
-        public static ThingDef VFES_ActiveArtilleryStrike;
-
-        public static ThingDef VFES_Turret_Artillery;
+        public static StatDef VFES_EnergyShieldEnergyMax;
+        public static StatDef VFES_EnergyShieldRechargeRate;
+        public static StatDef VFES_EnergyShieldRadius;
 
     }
 

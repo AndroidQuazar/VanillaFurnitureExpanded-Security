@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Psychic Pylon -->
+  <!-- Psychic Pylon -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_PsychicPylon</defName>
     <label>psychic pylon</label>
@@ -59,10 +59,10 @@
       <WorkToBuild>50000</WorkToBuild>
     </statBases>
     <building>
-        <expandHomeArea>false</expandHomeArea>
+      <expandHomeArea>false</expandHomeArea>
     </building>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <designationCategory>Misc</designationCategory> <!-- Only for Test Purposes -->
+    <designationCategory>Misc</designationCategory>    <!-- Only for Test Purposes -->
     <fillPercent>0.7</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <pathCost>70</pathCost>
@@ -72,10 +72,10 @@
     <minifiedDef>MinifiedThing</minifiedDef>
     <specialDisplayRadius>14.9</specialDisplayRadius>
     <tradeability>Sellable</tradeability>
-    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>LongRangeMineralScanner</li>
-    </researchPrerequisites> <!-- Remove on Release -->
+    </researchPrerequisites>    <!-- Remove on Release -->
   </ThingDef>
 
 </Defs>

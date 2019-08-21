@@ -362,7 +362,7 @@ namespace VFESecurity
                 verb.verbProps.soundCastTail.PlayOneShotOnCamera(parent.Map);
 
             // Make active artillery strike thing
-            var activeArtilleryStrike = (ActiveArtilleryStrike)ThingMaker.MakeThing(ThingDefOf.VFE_ActiveArtilleryStrike);
+            var activeArtilleryStrike = (ActiveArtilleryStrike)ThingMaker.MakeThing(ThingDefOf.VFES_ActiveArtilleryStrike);
             activeArtilleryStrike.missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(Turret.CurrentEffectiveVerb.verbProps.forcedMissRadius, Props.maxForcedMissRadiusFactor, parent.Tile, destinationTile, Props.worldTileRange);
 
             // Simulate an attack
@@ -384,7 +384,7 @@ namespace VFESecurity
             }
             NonPublicMethods.Building_TurretGun_BurstComplete(Turret);
 
-            var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFE_ArtilleryStrikeLeaving, activeArtilleryStrike);
+            var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFES_ArtilleryStrikeLeaving, activeArtilleryStrike);
             artilleryStrikeLeaving.destinationTile = destinationTile;
             artilleryStrikeLeaving.arrivalAction = arrivalAction;
             artilleryStrikeLeaving.groupID = Find.TickManager.TicksGame;

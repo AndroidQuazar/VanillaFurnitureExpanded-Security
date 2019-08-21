@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Charge Turret -->
+  <!-- Charge Turret -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_ChargeTurret</defName>
     <label>charge turret</label>
-    <description>An automatic turret with a charge pulsar gun on top. Requires steel to refurbish its barrel after heavy use. May explode when damaged.</description>
+    <description>An automatic turret with a charge pulsar gun on top, utilising advanced sensors which significantly improve accuracy. Requires steel to refurbish its barrel after heavy use. May explode when damaged.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/TurretMini_Base</texPath>
@@ -35,7 +35,7 @@
       <WorkToBuild>6250</WorkToBuild>
       <Mass>2</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -99,7 +99,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_PulseChargedDefenses</li>
     </researchPrerequisites>
@@ -132,7 +132,7 @@
       <li>TurretGun</li>
     </weaponTags>
     <verbs>
-        <li>
+      <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_ChargeRifle</defaultProjectile>
@@ -148,11 +148,11 @@
     </verbs>
   </ThingDef>
 
-<!-- Charge Railgun -->
+  <!-- Charge Railgun -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_ChargeRailgunTurret</defName>
     <label>charge railgun</label>
-    <description>A heavy railgun cannon usually mounted on spacecraft. Requires components to be replaced in order to operate. May explode when damaged.</description>
+    <description>A heavy railgun cannon usually mounted on spacecraft, utilising advanced sensors which significantly improve accuracy. Requires components to be replaced in order to operate. May explode when damaged.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/TurretChargeHeavy_Base</texPath>
@@ -230,7 +230,7 @@
     <costList>
       <Steel>350</Steel>
       <Plasteel>60</Plasteel>
-	  <Uranium>80</Uranium>
+      <Uranium>80</Uranium>
       <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
@@ -239,7 +239,7 @@
     <canOverlapZones>true</canOverlapZones>
     <building>
       <expandHomeArea>false</expandHomeArea>
-	    <ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_RailgunTurret</turretGunDef>
       <turretBurstCooldownTime>2.6</turretBurstCooldownTime>
       <turretTopDrawSize>2.5</turretTopDrawSize>
@@ -249,7 +249,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_Railgun</li>
     </researchPrerequisites>
@@ -282,7 +282,7 @@
       <li>TurretGun</li>
     </weaponTags>
     <verbs>
-        <li>
+      <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_DoubleChargeLance</defaultProjectile>
@@ -315,7 +315,7 @@
     </projectile>
   </ThingDef>
 
-<!-- EMP Turret -->
+  <!-- EMP Turret -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_EMPTurret</defName>
     <label>EMP turret</label>
@@ -405,7 +405,7 @@
     <specialDisplayRadius>37.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-	    <ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_EMPTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
       <turretTopDrawSize>2.5</turretTopDrawSize>
@@ -415,7 +415,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_EMPCannon</li>
     </researchPrerequisites>
@@ -448,7 +448,7 @@
       <li>TurretGun</li>
     </weaponTags>
     <verbs>
-        <li>
+      <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_EMPCannon</defaultProjectile>

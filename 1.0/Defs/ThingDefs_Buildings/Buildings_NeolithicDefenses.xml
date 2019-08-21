@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Chunk Cover -->
-  <ThingDef ParentName="BuildingBase">
+  <!-- Chunk Cover -->
+  <!-- <ThingDef ParentName="BuildingBase">
     <defName>VFES_ChunkCover</defName>
     <label>chunk cover</label>
     <description>A simple pile of stone chunks. Acts as a mediocre cover.</description>
@@ -35,8 +35,8 @@
       <Cleanliness>-2</Cleanliness>
     </statBases>
     <building>
-			<ai_chillDestination>false</ai_chillDestination>
-			<isInert>true</isInert>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
     </building>
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <rotatable>false</rotatable>
@@ -44,9 +44,9 @@
     <neverMultiSelect>true</neverMultiSelect>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-  </ThingDef>
+  </ThingDef> -->
 
-<!-- Cavalry Spikes -->
+  <!-- Cavalry Spikes -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_CavalrySpikes</defName>
     <label>cavalry spikes</label>
@@ -84,7 +84,7 @@
       <Mass>50</Mass>
     </statBases>
     <building>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
       <repairable>true</repairable>
       <trapDamageCategory>Sharp</trapDamageCategory>
       <trapDestroyOnSpring>false</trapDestroyOnSpring>
@@ -100,7 +100,7 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>2.0</fuelConsumptionRate> <!-- 10 -->
+        <fuelConsumptionRate>2.0</fuelConsumptionRate>        <!-- 10 -->
         <fuelCapacity>20.0</fuelCapacity>
         <fuelFilter>
           <thingDefs>

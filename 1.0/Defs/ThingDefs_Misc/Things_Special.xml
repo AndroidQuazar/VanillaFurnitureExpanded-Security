@@ -2,7 +2,7 @@
 <Defs>
 
     <ThingDef>
-        <defName>VFE_ActiveArtilleryStrike</defName>
+        <defName>VFES_ActiveArtilleryStrike</defName>
         <label>artillery strike</label>
         <category>Item</category>
         <thingClass>VFESecurity.ActiveArtilleryStrike</thingClass>

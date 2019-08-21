@@ -2,7 +2,7 @@
 <Defs>
 
     <WorldObjectDef>
-        <defName>TravellingArtilleryStrike</defName>
+        <defName>VFES_TravellingArtilleryStrike</defName>
         <label>artillery strike</label>
         <description>Artillery strike in flight.</description>
         <worldObjectClass>VFESecurity.TravellingArtilleryStrike</worldObjectClass>

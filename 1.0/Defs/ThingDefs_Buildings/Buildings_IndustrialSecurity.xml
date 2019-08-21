@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Barbed Wire -->
+  <!-- Barbed Wire -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_BarbedWire</defName>
     <label>barbed wire</label>
@@ -10,7 +10,7 @@
     <graphicData>
       <texPath>Things/Security/BarbedWire/BarbedWire_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-	  <shaderType>CutoutComplex</shaderType>
+      <shaderType>CutoutComplex</shaderType>
       <linkType>Basic</linkType>
       <linkFlags>
         <li>Custom8</li>
@@ -21,19 +21,19 @@
     </graphicData>
     <techLevel>Industrial</techLevel>
     <uiIconPath>Things/Security/BarbedWire/BarbedWire_MenuIcon</uiIconPath>
-		<blockLight>false</blockLight>
-		<blockWind>false</blockWind>
-		<passability>PassThroughOnly</passability>
-		<castEdgeShadows>false</castEdgeShadows>
-		<coversFloor>false</coversFloor>
+    <blockLight>false</blockLight>
+    <blockWind>false</blockWind>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <coversFloor>false</coversFloor>
     <fillPercent>0.04</fillPercent>
-		<pathCost>210</pathCost> <!-- How difficult it is to cross the obstacle-->
-		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>	
-		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<neverMultiSelect>false</neverMultiSelect>
-		<holdsRoof>false</holdsRoof>
+    <pathCost>210</pathCost>    <!-- How difficult it is to cross the obstacle-->
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <neverMultiSelect>false</neverMultiSelect>
+    <holdsRoof>false</holdsRoof>
     <altitudeLayer>Building</altitudeLayer>
-    <drawerType>MapMeshAndRealTime</drawerType> <!-- MapMeshOnly -->
+    <drawerType>MapMeshAndRealTime</drawerType>    <!-- MapMeshOnly -->
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
     <stealable>false</stealable>
@@ -61,25 +61,24 @@
       <trapDestroyOnSpring>false</trapDestroyOnSpring>
       <trapDamageCategory>Sharp</trapDamageCategory>
       <expandHomeArea>false</expandHomeArea>
-			<ai_chillDestination>false</ai_chillDestination>
-			<blueprintGraphicData>
-				<texPath>Things/Security/BarbedWire/BarbedWire_Blueprint_Atlas</texPath>
-			</blueprintGraphicData>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>Things/Security/BarbedWire/BarbedWire_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
     </building>
-		<damageMultipliers>
-			<li>
+    <damageMultipliers>
+      <li>
         <damageDef>Cut</damageDef>
         <multiplier>2</multiplier>
-			</li>
-		</damageMultipliers>
-		<repairEffect>ConstructMetal</repairEffect>
-    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_TrenchWarfare</li>
-		</researchPrerequisites>
+      </li>
+    </damageMultipliers>
+    <repairEffect>ConstructMetal</repairEffect>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
   </ThingDef>
 
-<!-- Trench -->
+  <!-- Trench -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Trench</defName>
     <label>trench</label>
@@ -102,7 +101,7 @@
     </graphicData>
     <techLevel>Industrial</techLevel>
     <uiIconPath>Things/Security/Trench/Trench_MenuIcon</uiIconPath>
-<!-- <stuffCategories>
+    <!-- <stuffCategories>
       <li>Woody</li>
     </stuffCategories>
     <costStuffCount>10</costStuffCount> -->
@@ -122,8 +121,8 @@
     <blockWind>false</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.85</fillPercent>
-		<pathCost>140</pathCost> <!-- How difficult it is to cross the obstacle-->
-		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>	
+    <pathCost>140</pathCost>    <!-- How difficult it is to cross the obstacle-->
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
     <coversFloor>true</coversFloor>
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <tickerType>Never</tickerType>
@@ -153,15 +152,14 @@
         <multiplier>2</multiplier>
       </li>
     </damageMultipliers>
-    <constructionSkillPrerequisite>1</constructionSkillPrerequisite>
-		<researchPrerequisites>
-			<li>VFES_TrenchWarfare</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
   </ThingDef>
 
-<!-- Ammo Crate -->
-  
-   <ThingDef ParentName="FurnitureWithQualityBase">
+  <!-- Ammo Crate -->
+
+  <ThingDef ParentName="FurnitureWithQualityBase">
     <defName>VFES_AmmoCrate</defName>
     <label>ammo crate</label>
     <description>An ammo crate useful for storing shells. Improves firing rate of surrounding soldiers.</description>
@@ -179,8 +177,8 @@
       <Steel>80</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
-	<tickerType>Normal</tickerType>
-	<comps>
+    <tickerType>Normal</tickerType>
+    <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>3.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
@@ -219,7 +217,7 @@
     <researchPrerequisites>
       <li>Fabrication</li>
     </researchPrerequisites>
-	<designationCategory>Security</designationCategory>
+    <designationCategory>Security</designationCategory>
   </ThingDef>
 
 </Defs>

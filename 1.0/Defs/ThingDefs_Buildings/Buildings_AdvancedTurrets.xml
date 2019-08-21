@@ -31,7 +31,6 @@
       <WorkToBuild>20000</WorkToBuild>
       <Mass>100</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -90,7 +89,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>HeavyTurrets</li>
     </researchPrerequisites>
@@ -171,7 +170,6 @@
       <WorkToBuild>20000</WorkToBuild>
       <Mass>200</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.99</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -232,7 +230,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_MissileBarrage</li>
     </researchPrerequisites>

@@ -54,7 +54,7 @@ namespace VFESecurity
             }
 
             // Make world object
-            var travellingArtilleryStrike = (TravellingArtilleryStrike)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.TravellingArtilleryStrike);
+            var travellingArtilleryStrike = (TravellingArtilleryStrike)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.VFES_TravellingArtilleryStrike);
             travellingArtilleryStrike.Tile = Map.Tile;
             travellingArtilleryStrike.SetFaction(Faction.OfPlayer);
             travellingArtilleryStrike.destinationTile = destinationTile;

@@ -18,7 +18,7 @@ namespace VFESecurity
     public static class WorldObjectDefOf
     {
 
-        public static WorldObjectDef TravellingArtilleryStrike;
+        public static WorldObjectDef VFES_TravellingArtilleryStrike;
 
     }
 

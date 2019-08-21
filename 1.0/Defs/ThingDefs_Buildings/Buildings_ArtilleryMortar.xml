@@ -71,7 +71,7 @@
     </building>
     <uiIconPath>Things/Building/Artillery/TurretArtillery_MenuIcon</uiIconPath>
     <uiIconScale>0.9</uiIconScale>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_Artillery</li>
     </researchPrerequisites>

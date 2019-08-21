@@ -45,20 +45,6 @@ namespace VFESecurity
             }
         }
 
-        public override void PostSpawnSetup(bool respawningAfterLoad)
-        {
-            var terrainGrid = parent.Map.terrainGrid;
-            foreach (var cell in parent.OccupiedRect())
-                terrainGrid.SetTerrain(cell, TerrainDefOf.Concrete);
-        }
-
-        public override void PostDestroy(DestroyMode mode, Map previousMap)
-        {
-            var terrainGrid = previousMap.terrainGrid;
-            foreach (var cell in parent.OccupiedRect())
-                terrainGrid.RemoveTopLayer(cell, false);
-        }
-
         public override void CompTick()
         {
             if (ticksToStateChange > 0)
@@ -74,6 +60,7 @@ namespace VFESecurity
                 {
                     state = targetState;
                     parent.Map.mapDrawer.SectionAt(parent.Position).RegenerateAllLayers();
+                    parent.Map.pathGrid.RecalculatePerceivedPathCostUnderThing(parent);
                 }
                 if (cachedProgressBar != null)
                 {

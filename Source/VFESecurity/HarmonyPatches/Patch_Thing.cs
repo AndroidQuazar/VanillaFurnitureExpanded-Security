@@ -29,6 +29,18 @@ namespace VFESecurity
 
         }
 
+        [HarmonyPatch(typeof(Thing), nameof(Thing.DeSpawn))]
+        public static class DeSpawn
+        {
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                // Transpiler is flexible enough to allow for reuse
+                return Patch_PathGrid.CalculatedCostAt.Transpiler(instructions);
+            }
+
+        }
+
         [HarmonyPatch(typeof(Thing), nameof(Thing.Graphic), MethodType.Getter)]
         public static class get_Graphic
         {
@@ -41,6 +53,19 @@ namespace VFESecurity
             }
 
         }
+
+        [HarmonyPatch(typeof(Thing), nameof(Thing.SpawnSetup))]
+        public static class SpawnSetup
+        {
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                // Transpiler is flexible enough to allow for reuse
+                return Patch_PathGrid.CalculatedCostAt.Transpiler(instructions);
+            }
+
+        }
+        
 
     }
 

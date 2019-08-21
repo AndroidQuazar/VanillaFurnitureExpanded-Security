@@ -5,7 +5,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_MilitaryTurret</defName>
     <label>military turret</label>
-    <description>A military-grade double barreled automatic turret. Requires steel to refurbish its barrel after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <description>A military-grade double barreled automatic turret with enhanced sensors. Requires steel to refurbish its barrel after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/TurretMedium_Base</texPath>
@@ -35,7 +35,7 @@
       <WorkToBuild>4750</WorkToBuild>
       <Mass>14</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -96,7 +96,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
@@ -179,7 +179,6 @@
       <WorkToBuild>4750</WorkToBuild>
       <Mass>12.5</Mass>
       <Beauty>-10</Beauty>
-      <ShootingAccuracyTurret>0.99</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -221,7 +220,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
@@ -304,7 +303,6 @@
       <WorkToBuild>4750</WorkToBuild>
       <Mass>14</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -366,7 +364,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
@@ -472,7 +470,6 @@
       <WorkToBuild>6750</WorkToBuild>
       <Mass>18</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.94</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -529,7 +526,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_SentryGuns</li>
     </researchPrerequisites>

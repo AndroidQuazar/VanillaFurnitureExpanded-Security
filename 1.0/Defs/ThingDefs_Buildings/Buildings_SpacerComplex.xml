@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Barrier -->
+  <!-- Barrier -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Barrier</defName>
     <label>barrier</label>
@@ -36,7 +36,7 @@
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <neverMultiSelect>true</neverMultiSelect>
     <holdsRoof>false</holdsRoof>
-    <drawerType>MapMeshAndRealTime</drawerType> 
+    <drawerType>MapMeshAndRealTime</drawerType>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <repairEffect>ConstructMetal</repairEffect>
@@ -55,19 +55,18 @@
     <thingCategories Inherit="False">
       <li>BuildingsSecurity</li>
     </thingCategories>
-	<staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
     <building>
-        <ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
     </building>
-    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
     <researchPrerequisites>
-        <li>VFES_MetalAlloysBarricades</li>
+      <li>VFES_MetalAlloysBarricades</li>
     </researchPrerequisites>
   </ThingDef>
 
-<!-- Charge Complex -->
+  <!-- Charge Complex -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_ChargeComplex</defName>
     <label>charge complex</label>
@@ -110,7 +109,6 @@
       <WorkToBuild>20250</WorkToBuild>
       <Mass>90</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -157,7 +155,7 @@
     <specialDisplayRadius>34.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-	  <ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ChargeComplex</turretGunDef>
       <turretBurstCooldownTime>0.4</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Security/ChargeComplex/ChargeComplexGun</turretTopGraphicPath>
@@ -165,7 +163,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_PulseChargedDefenses</li>
     </researchPrerequisites>

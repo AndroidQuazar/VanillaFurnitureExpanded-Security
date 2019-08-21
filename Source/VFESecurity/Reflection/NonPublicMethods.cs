@@ -27,6 +27,9 @@ namespace VFESecurity
         public static Action<DefeatAllEnemiesQuestComp> DefeatAllEnemiesQuestComp_GiveRewardsAndSendLetter = (Action<DefeatAllEnemiesQuestComp>)
             Delegate.CreateDelegate(typeof(Action<DefeatAllEnemiesQuestComp>), null, AccessTools.Method(typeof(DefeatAllEnemiesQuestComp), "GiveRewardsAndSendLetter"));
 
+        public static Func<Explosion, IntVec3, int> Explosion_GetCellAffectTick = (Func<Explosion, IntVec3, int>)
+            Delegate.CreateDelegate(typeof(Func<Explosion, IntVec3, int>), null, AccessTools.Method(typeof(Explosion), "GetCellAffectTick"));
+
         public static Action<Projectile> Projectile_ImpactSomething = (Action<Projectile>)
             Delegate.CreateDelegate(typeof(Action<Projectile>), null, AccessTools.Method(typeof(Projectile), "ImpactSomething"));
 

@@ -5,7 +5,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Ballista</defName>
     <label>ballista</label>
-    <description>An ancient military siege engine in a form of a crossbow mounted on a wooden construct. Bolts fired from this machine explode into splinters on impact.</description>
+    <description>An ancient military siege engine in the form of a crossbow mounted on a wooden construct. Bolts fired from this machine explode into splinters on impact.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/Ballista/TurretBallista_Base</texPath>
@@ -25,11 +25,11 @@
     <size>(2,2)</size>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
     <blockWind>true</blockWind>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.95</fillPercent>
+    <fillPercent>0.5</fillPercent>
     <hasTooltip>true</hasTooltip>
     <statBases>
       <MaxHitPoints>450</MaxHitPoints>
@@ -37,7 +37,6 @@
       <WorkToBuild>7500</WorkToBuild>
       <Mass>100</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.91</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -89,7 +88,7 @@
       <expandHomeArea>false</expandHomeArea>
     </building>
 		<repairEffect>ConstructDirt</repairEffect>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_SiegeEquipment</li>
     </researchPrerequisites>
@@ -192,11 +191,11 @@
     <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
     <blockWind>true</blockWind>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.85</fillPercent>
+    <fillPercent>0.75</fillPercent>
     <tickerType>Normal</tickerType>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -215,7 +214,6 @@
       <WorkToBuild>8500</WorkToBuild>
       <Mass>100</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.92</ShootingAccuracyTurret>
     </statBases>
     <inspectorTabs>
       <li>ITab_Shells</li>

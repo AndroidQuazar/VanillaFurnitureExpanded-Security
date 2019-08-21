@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Chemfuel Barrel -->
+  <!-- Chemfuel Barrel -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_ChemfuelBarrel</defName>
     <label>chemfuel barrel</label>
@@ -17,13 +17,14 @@
     <uiIconScale>0.8</uiIconScale>
     <costList>
       <Chemfuel>75</Chemfuel>
+      <Steel>25</Steel>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>Flame</explosiveDamageType>
         <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
-		<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
         <preExplosionSpawnChance>0.2</preExplosionSpawnChance>
         <wickTicks>
           <min>0</min>
@@ -56,18 +57,17 @@
       <isTrap>true</isTrap>
       <trapPeacefulWildAnimalsSpringChanceFactor>0.01</trapPeacefulWildAnimalsSpringChanceFactor>
       <expandHomeArea>false</expandHomeArea>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
     </building>
     <placeWorkers>
       <li>PlaceWorker_NeverAdjacentTrap</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>BiofuelRefining</li>
     </researchPrerequisites>
   </ThingDef>
 
-<!-- Landmine -->
+  <!-- Landmine -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Landmine</defName>
     <label>land mine</label>
@@ -82,7 +82,7 @@
     <techLevel>Industrial</techLevel>
     <costList>
       <Shell_HighExplosive>2</Shell_HighExplosive>
-	  <ComponentIndustrial>1</ComponentIndustrial>
+      <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
@@ -120,18 +120,18 @@
       <isTrap>true</isTrap>
       <trapPeacefulWildAnimalsSpringChanceFactor>0.25</trapPeacefulWildAnimalsSpringChanceFactor>
       <expandHomeArea>false</expandHomeArea>
-			<ai_chillDestination>false</ai_chillDestination>
+      <ai_chillDestination>false</ai_chillDestination>
     </building>
     <placeWorkers>
       <li>PlaceWorker_NeverAdjacentTrap</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_PulseChargedDefenses</li>
     </researchPrerequisites>
   </ThingDef>
 
-<!-- Decoy -->
+  <!-- Decoy -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Decoy</defName>
     <label>decoy</label>
@@ -158,7 +158,6 @@
       <WorkToBuild>750</WorkToBuild>
       <Mass>8.5</Mass>
       <Beauty>-10</Beauty>
-      <ShootingAccuracyTurret>0.99</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <passability>PassThroughOnly</passability>
@@ -171,10 +170,9 @@
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>0</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_None</turretGunDef>
       <turretBurstCooldownTime>0</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Security/None</turretTopGraphicPath>
@@ -182,7 +180,6 @@
     <placeWorkers>
       <li>PlaceWorker_NeverAdjacentTrap</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_TrenchWarfare</li>
     </researchPrerequisites>
