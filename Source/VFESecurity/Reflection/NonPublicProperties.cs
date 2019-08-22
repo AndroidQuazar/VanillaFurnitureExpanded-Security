@@ -18,6 +18,9 @@ namespace VFESecurity
     public static class NonPublicProperties
     {
 
+        public static Func<Projectile, int> Projectile_get_StartingTicksToImpact = (Func<Projectile, int>)
+            Delegate.CreateDelegate(typeof(Func<Projectile, int>), null, AccessTools.Property(typeof(Projectile), "StartingTicksToImpact").GetGetMethod(true));
+
         public static Action<TurretTop, float> TurretTop_set_CurRotation = (Action<TurretTop, float>)
             Delegate.CreateDelegate(typeof(Action<TurretTop, float>), null, AccessTools.Property(typeof(TurretTop), "CurRotation").GetSetMethod(true));
 

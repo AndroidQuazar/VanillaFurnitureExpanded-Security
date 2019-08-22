@@ -1,4 +1,4 @@
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\1.0\Assemblies\VFESecurity.dll
-E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
+E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Splinter -->
+  <!-- Splinter -->
   <DamageDef ParentName="Arrow">
     <defName>VFES_SplinterArrow</defName>
     <label>splinter</label>
     <workerClass>DamageWorker_AddInjury</workerClass>
-<!-- <workerClass>NoCamShakeExplosions.DamageWorker_BombNoCamShake</workerClass> -->
+    <!-- <workerClass>NoCamShakeExplosions.DamageWorker_BombNoCamShake</workerClass> -->
     <externalViolence>true</externalViolence>
     <deathMessage>{0} has been pierced through to death by a gigantic arrow.</deathMessage>
     <hediff>VFES_Stab</hediff>
@@ -29,7 +29,7 @@
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
 
-<!-- Rock -->
+  <!-- Rock -->
   <DamageDef>
     <defName>VFES_Rock</defName>
     <label>rock</label>
@@ -57,10 +57,10 @@
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
 
-<!-- Flame -->
+  <!-- Flame -->
   <DamageDef>
     <defName>VFES_HauntingFlame</defName>
-      <workerClass>NoCamShakeExplosions.DamageWorker_FlameNoCamShake</workerClass>
+    <workerClass>NoCamShakeExplosions.DamageWorker_FlameNoCamShake</workerClass>
     <label>flame</label>
     <hasForcefulImpact>false</hasForcefulImpact>
     <makesBlood>false</makesBlood>
@@ -81,7 +81,7 @@
     <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
   </DamageDef>
 
-<!-- None -->
+  <!-- None -->
   <DamageDef>
     <defName>VFES_NoDMG</defName>
   </DamageDef>

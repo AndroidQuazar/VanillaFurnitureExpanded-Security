@@ -23,8 +23,8 @@ namespace VFESecurity
 
             public static void Postfix(Thing __instance, ref bool __result)
             {
-                if (__instance.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
-                    __result = retractableComp.Props.retractedPassability == Traversability.Impassable;
+                if (__instance.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
+                    __result = retractableComp.Props.submergedPassability == Traversability.Impassable;
             }
 
         }
@@ -48,8 +48,8 @@ namespace VFESecurity
             [HarmonyPriority(Priority.Last)]
             public static void Postfix(Thing __instance, ref Graphic __result)
             {
-                if (__instance.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted && retractableComp.RetractedGraphic != null)
-                    __result = retractableComp.RetractedGraphic;
+                if (__instance.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged && retractableComp.SubmergedGraphic != null)
+                    __result = retractableComp.SubmergedGraphic;
             }
 
         }

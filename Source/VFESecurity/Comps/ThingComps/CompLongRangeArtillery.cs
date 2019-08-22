@@ -99,6 +99,10 @@ namespace VFESecurity
                         warmupTicksLeft--;
                 }
             }
+
+            // Set warmup ticks if the turret is unmanned
+            if (MannableComp != null && !MannableComp.MannedNow)
+                ResetWarmupTicks();
         }
 
         private void ResetWarmupTicks()
@@ -305,6 +309,7 @@ namespace VFESecurity
             foreach (var comp in allSelectedComps)
             {
                 NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
+                NonPublicMethods.Building_TurretGun_ResetCurrentTarget(comp.Turret);
                 comp.targetedTile = t;
                 SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map, false));
                 comp.ResetWarmupTicks();

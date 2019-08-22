@@ -23,28 +23,20 @@ namespace VFESecurity
 
             public static bool Prefix(Explosion explosion, IntVec3 c)
             {
-                // Don't want firefoam bursting our bubbles
-                if (explosion.damType.isExplosive)
-                {
-                    var shieldGens = explosion.Map.ListerShieldGenerators(g => g.Active && g.Energy > 0);
-                    foreach (var shieldGen in shieldGens)
+                bool executeOriginal = true;
+                ShieldGeneratorUtility.CheckIntercept(explosion, explosion.Map, explosion.damAmount, explosion.damType, () => new List<IntVec3>() { c }, () => explosion.damType.AffectsShields(),
+                    s =>
                     {
-                        var coveredCells = new HashSet<IntVec3>(shieldGen.CoveredCells);
-                        if (explosion.instigator != null && !coveredCells.Contains(explosion.instigator.Position) && coveredCells.Contains(c))
-                        {
-                            // Damage absorption
-                            if (!shieldGen.affectedExplosionCache.ContainsKey(explosion))
-                            {
-                                shieldGen.AbsorbDamage(explosion.GetDamageAmountAt(c), explosion.damType, (shieldGen.TrueCenter() - explosion.TrueCenter()).AngleFlat());
-                                var cellsToAffect = (List<IntVec3>)NonPublicFields.Explosion_cellsToAffect.GetValue(explosion);
-                                int cacheDuration = cellsToAffect.Select(eC => NonPublicMethods.Explosion_GetCellAffectTick(explosion, eC)).Max();
-                                shieldGen.affectedExplosionCache.Add(explosion, cacheDuration);
-                            }
-                            return false;
-                        }
-                    }
-                }
-                return true;
+                        executeOriginal = s.WithinBoundary(explosion.Position, c);
+                        return !s.affectedThings.ContainsKey(explosion);
+                    },
+                    s =>
+                    {
+                        var cellsToAffect = (List<IntVec3>)NonPublicFields.Explosion_cellsToAffect.GetValue(explosion);
+                        int cacheDuration = cellsToAffect.Select(eC => NonPublicMethods.Explosion_GetCellAffectTick(explosion, eC)).Max();
+                        s.affectedThings.Add(explosion, cacheDuration);
+                    });
+                return executeOriginal;
             }
 
         }

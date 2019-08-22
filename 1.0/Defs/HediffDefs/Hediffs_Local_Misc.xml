@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ballista -->
+  <HediffDef ParentName="DiseaseBase">
+    <defName>VFES_Dazzled</defName>
+    <label>dazzled</label>
+    <labelNoun>a dazzled part</labelNoun>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.7</partEfficiencyOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

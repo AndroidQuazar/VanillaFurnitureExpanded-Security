@@ -26,7 +26,6 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <coversFloor>false</coversFloor>
-    <fillPercent>0.04</fillPercent>
     <pathCost>210</pathCost>    <!-- How difficult it is to cross the obstacle-->
     <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
     <placingDraggableDimensions>1</placingDraggableDimensions>

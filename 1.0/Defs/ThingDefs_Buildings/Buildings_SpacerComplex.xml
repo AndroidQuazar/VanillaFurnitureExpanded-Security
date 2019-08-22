@@ -2,10 +2,10 @@
 <Defs>
 
   <!-- Barrier -->
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef Name="VFES_Barrier" ParentName="BuildingBase">
     <defName>VFES_Barrier</defName>
     <label>barrier</label>
-    <description>A reinforced metal barricade held in place by a concrete frame. Provides high amount of cover.</description>
+    <description>A reinforced metal barricade held in place by a concrete frame. Provides an excellent amount of cover from ranged attacks.</description>
     <graphicData>
       <texPath>Things/Security/Barrier/Barrier_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -27,9 +27,9 @@
     <techLevel>Spacer</techLevel>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <fillPercent>0.75</fillPercent>
+    <fillPercent>0.7</fillPercent>
     <castEdgeShadows>false</castEdgeShadows>
-    <pathCost>75</pathCost>
+    <pathCost>70</pathCost>
     <rotatable>false</rotatable>
     <selectable>true</selectable>
     <stealable>false</stealable>
@@ -37,24 +37,19 @@
     <neverMultiSelect>true</neverMultiSelect>
     <holdsRoof>false</holdsRoof>
     <drawerType>MapMeshAndRealTime</drawerType>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <repairEffect>ConstructMetal</repairEffect>
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>40</costStuffCount>
+    <costStuffCount>8</costStuffCount>
     <statBases>
-      <MaxHitPoints>850</MaxHitPoints>
-      <Mass>30</Mass>
-      <WorkToBuild>1250</WorkToBuild>
-      <Flammability>0</Flammability>
-      <Beauty>-1</Beauty>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>900</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-10</Beauty>
     </statBases>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories Inherit="False">
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>

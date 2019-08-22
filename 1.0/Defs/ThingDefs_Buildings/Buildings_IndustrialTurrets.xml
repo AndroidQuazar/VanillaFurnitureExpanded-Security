@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Military Turret -->
-  <ThingDef ParentName="BuildingBase">
+  <!-- Military Turret -->
+  <ThingDef Name="VFES_Turret_MilitaryTurret" ParentName="BuildingBase">
     <defName>VFES_Turret_MilitaryTurret</defName>
     <label>military turret</label>
-    <description>A military-grade double barreled automatic turret with enhanced sensors. Requires steel to refurbish its barrel after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <description>A military-grade double barreled automatic turret. Requires steel to refurbish its barrels after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/TurretMedium_Base</texPath>
@@ -32,10 +32,10 @@
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>4750</WorkToBuild>
-      <Mass>14</Mass>
+      <WorkToBuild>5000</WorkToBuild>
+      <Mass>15</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -59,15 +59,15 @@
             <li>Steel</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>100</fuelCapacity>
+        <fuelCapacity>240</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>1</fuelMultiplier>
+        <fuelMultiplier>3</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
+        <outOfFuelMessage>Cannot shoot: Needs new barrels</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
     </comps>
@@ -78,19 +78,19 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>60</costStuffCount>
+    <costStuffCount>90</costStuffCount>
     <costList>
       <Steel>80</Steel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_MilitaryTurret</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>6.6</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/Military/TurretMilitary_Top</turretTopGraphicPath>
     </building>
     <placeWorkers>
@@ -116,11 +116,11 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.72</AccuracyTouch>
-      <AccuracyShort>0.68</AccuracyShort>
-      <AccuracyMedium>0.42</AccuracyMedium>
-      <AccuracyLong>0.25</AccuracyLong>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.7</AccuracyTouch>
+      <AccuracyShort>0.64</AccuracyShort>
+      <AccuracyMedium>0.41</AccuracyMedium>
+      <AccuracyLong>0.22</AccuracyLong>
+      <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
@@ -135,7 +135,7 @@
         <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
         <warmupTime>0</warmupTime>
         <range>24.9</range>
-        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
         <burstShotCount>6</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -145,11 +145,11 @@
     </verbs>
   </ThingDef>
 
-<!-- Searchlight -->
+  <!-- Searchlight -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Searchlight</defName>
     <label>searchlight</label>
-    <description>An apparatus combining an extremely luminous lamp and a mirrored parabolic reflector, useful for lighting up targets.</description>
+    <description>An apparatus combining an extremely luminous lamp and a mirrored parabolic reflector, useful for lighting up and dazzling targets.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/TurretMedium_Base</texPath>
@@ -174,26 +174,25 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>4750</WorkToBuild>
-      <Mass>12.5</Mass>
+      <WorkToBuild>3500</WorkToBuild>
+      <Mass>10</Mass>
       <Beauty>-10</Beauty>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>0.9</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
-      </li>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>120</basePowerConsumption>
+        <basePowerConsumption>250</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(240,240,228,0)</glowColor>
+      </li>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -202,9 +201,9 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>30</costStuffCount>
+    <costStuffCount>50</costStuffCount>
     <costList>
-      <Steel>40</Steel>
+      <Steel>60</Steel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
@@ -212,9 +211,9 @@
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_Searchlight</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/Searchlight/TurretSearchlight_Top</turretTopGraphicPath>
     </building>
     <placeWorkers>
@@ -240,11 +239,7 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.99</AccuracyTouch>
-      <AccuracyShort>0.88</AccuracyShort>
-      <AccuracyMedium>0.77</AccuracyMedium>
-      <AccuracyLong>0.66</AccuracyLong>
-      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>0.17</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
@@ -254,22 +249,21 @@
     </weaponTags>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <verbClass>VFESecurity.Verb_Dazzle</verbClass>
         <range>24.9</range>
-        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
-        <burstShotCount>0</burstShotCount>
-        <soundCast>GunShotA</soundCast>
-        <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>9</muzzleFlashScale>
+        <muzzleFlashScale>0</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
       </li>
     </verbs>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedVerbProperties">
+        <illuminatedRadius>3.9</illuminatedRadius>
+        <dazzleDurationTicks>300</dazzleDurationTicks>
+      </li>
+    </modExtensions>
   </ThingDef>
 
-<!-- Flame Turret -->
+  <!-- Flame Turret -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Flame</defName>
     <label>flame turret</label>
@@ -298,18 +292,20 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>4750</WorkToBuild>
-      <Mass>14</Mass>
+      <WorkToBuild>7500</WorkToBuild>
+      <Mass>20</Mass>
       <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>3.9</explosiveRadius>
+        <!-- 1.9 explosive radius when empty; 5.9 when full -->
+        <explosiveRadius>1.9</explosiveRadius>
+        <explosiveExpandPerFuel>0.1067</explosiveExpandPerFuel>        <!-- Factoring in square rooting -->
         <explosiveDamageType>Flame</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
       </li>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
@@ -327,7 +323,7 @@
           </thingDefs>
         </fuelFilter>
         <fuelCapacity>150</fuelCapacity>
-        <initialFuelPercent>1</initialFuelPercent>
+        <initialFuelPercent>0</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
@@ -345,18 +341,17 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>40</costStuffCount>
+    <costStuffCount>90</costStuffCount>
     <costList>
-      <Steel>80</Steel>
-      <Chemfuel>50</Chemfuel>
-      <ComponentIndustrial>7</ComponentIndustrial>
+      <Steel>70</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>14.9</specialDisplayRadius>
+    <specialDisplayRadius>15.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_FlameTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/Flame/TurretFlame_Top</turretTopGraphicPath>
@@ -384,10 +379,6 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.72</AccuracyTouch>
-      <AccuracyShort>0.68</AccuracyShort>
-      <AccuracyMedium>0.42</AccuracyMedium>
-      <AccuracyLong>0.25</AccuracyLong>
       <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
@@ -401,10 +392,9 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_FlameTurret</defaultProjectile>
-        <warmupTime>1.2</warmupTime>
-        <range>16.9</range>
-        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
-        <burstShotCount>25</burstShotCount>
+        <range>15.9</range>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <burstShotCount>10</burstShotCount>
         <forcedMissRadius>2.4</forcedMissRadius>
         <soundCast>VFES_Shot_Flamethrower</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -426,9 +416,9 @@
     <projectile>
       <damageDef>VFES_HauntingFlame</damageDef>
       <!-- Use default damage from explosion def -->
-      <speed>30</speed>
-      <explosionRadius>0.9</explosionRadius>
-	  <soundExplode>VFES_Explosion_Flamethrower</soundExplode>
+      <speed>50</speed>
+      <explosionRadius>1</explosionRadius>
+      <soundExplode>VFES_Explosion_Flamethrower</soundExplode>
       <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
       <preExplosionSpawnChance>0.35</preExplosionSpawnChance>
       <explosionChanceToStartFire>1.0</explosionChanceToStartFire>
@@ -436,11 +426,11 @@
     </projectile>
   </ThingDef>
 
-<!-- Sentry Gun -->
+  <!-- Sentry Gun -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_SentryGun</defName>
     <label>sentry gun</label>
-    <description>A self-powered turret that can automatically aim and eliminate targets in radius due to advanced sensors. Light enough to be carried and deployed wherever. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <description>A self-powered turret with a small gatling gun mounted on top. Light enough to be carried and deployed wherever. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/TurretMini_Base</texPath>
@@ -465,11 +455,12 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>175</MaxHitPoints>
+      <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>6750</WorkToBuild>
-      <Mass>18</Mass>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>20</Mass>
       <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -494,7 +485,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>3</fuelMultiplier>
+        <fuelMultiplier>1.5</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
@@ -508,19 +499,20 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>60</costStuffCount>
+    <costStuffCount>90</costStuffCount>
     <costList>
-      <Steel>80</Steel>
-      <ComponentIndustrial>8</ComponentIndustrial>
+      <Steel>130</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <expandHomeArea>false</expandHomeArea>
-			<ai_combatDangerous>true</ai_combatDangerous>
+      <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_SentryTurret</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/SentryGun/TurretSentry_Top</turretTopGraphicPath>
     </building>
     <placeWorkers>
@@ -535,7 +527,7 @@
   <ThingDef ParentName="BaseHumanGun">
     <defName>VFES_Gun_SentryTurret</defName>
     <label>sentry turret gun</label>
-    <description>A full automatic gatling gun made to be mounted on a turret.</description>
+    <description>A fully automatic gatling gun made to be mounted on a turret.</description>
     <graphicData>
       <texPath>Things/Building/Military/TurretMilitary_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -546,11 +538,11 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.55</AccuracyTouch>
-      <AccuracyShort>0.45</AccuracyShort>
+      <AccuracyTouch>0.35</AccuracyTouch>
+      <AccuracyShort>0.50</AccuracyShort>
       <AccuracyMedium>0.45</AccuracyMedium>
-      <AccuracyLong>0.38</AccuracyLong>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <AccuracyLong>0.20</AccuracyLong>
+      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>12</Mass>
       <Flammability>0</Flammability>
@@ -563,9 +555,9 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Minigun</defaultProjectile>
-        <warmupTime>2.5</warmupTime>
+        <warmupTime>2</warmupTime>
         <range>30.9</range>
-        <burstShotCount>5</burstShotCount>
+        <burstShotCount>6</burstShotCount>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <soundCast>Shot_Minigun</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>

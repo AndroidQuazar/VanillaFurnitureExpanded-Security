@@ -24,6 +24,7 @@ namespace VFESecurity
 
         private List<WorldObject> cachedWorldObjects;
         private List<CompLongRangeArtillery> listerArtilleryComps;
+        public List<WorldObject> bombardingWorldObjects = new List<WorldObject>();
 
         public WorldArtilleryTracker(World world) : base(world)
         {
@@ -135,6 +136,12 @@ namespace VFESecurity
 
             if (listerArtilleryComps.Contains(a))
                 listerArtilleryComps.Remove(a);
+        }
+
+        public override void ExposeData()
+        {
+            Scribe_Collections.Look(ref bombardingWorldObjects, "bombardingWorldObjects", LookMode.Reference);
+            base.ExposeData();
         }
 
     }

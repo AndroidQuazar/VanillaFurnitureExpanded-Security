@@ -9,19 +9,19 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
+using RimWorld.Planet;
 using Harmony;
 
 namespace VFESecurity
 {
 
-    public static class RetractableUtility
+    public class ExtendedVerbProperties : DefModExtension
     {
 
-        public static bool IsRetractable(this Thing thing, out CompRetractable retractableComp)
-        {
-            retractableComp = thing.TryGetComp<CompRetractable>();
-            return retractableComp != null;
-        }
+        public static readonly ExtendedVerbProperties defaultValues = new ExtendedVerbProperties();
+
+        public float illuminatedRadius;
+        public int dazzleDurationTicks;
 
     }
 

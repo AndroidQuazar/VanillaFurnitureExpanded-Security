@@ -5,7 +5,7 @@
   <ThingDef ParentName="BaseArtilleryBuilding">
     <defName>VFES_Turret_Artillery</defName>
     <label>artillery</label>
-    <description>A manned artillery that launches all kinds of shells. Capable of inflicting devastating damage to both enemy forces and structures, this military machinery excels at laying down fire support for soldiers in the field.</description>
+    <description>A manned artillery that launches all kinds of shells. Capable of inflicting devastating damage to both enemy forces and structures, this military machinery excels at laying down fire support for soldiers in the field.\n\nCapable of targeting other areas of the world within a medium radius.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/Artillery/TurretArtillery_Base</texPath>
@@ -20,6 +20,10 @@
         <volume>(0.5,0.4,1.05)</volume>
       </shadowData>
     </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>7500</WorkToBuild>
+    </statBases>
     <techLevel>Industrial</techLevel>
     <interactionCellOffset>(0,0,-2)</interactionCellOffset>
     <hasInteractionCell>true</hasInteractionCell>
@@ -29,7 +33,7 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>120</costStuffCount>
+    <costStuffCount>100</costStuffCount>
     <costList>
       <Steel>180</Steel>
       <ComponentIndustrial>10</ComponentIndustrial>
@@ -38,7 +42,6 @@
       <li Class="CompProperties_Explosive">
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.65</chanceNeverExplodeFromDamage>
       </li>
       <li Class="VFESecurity.CompProperties_LongRangeArtillery">
         <worldTileRange>20</worldTileRange>

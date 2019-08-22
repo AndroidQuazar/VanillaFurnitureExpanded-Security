@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="MoteBase">
+        <defName>VFES_Mote_SpotLight</defName>
+        <thingClass>VFESecurity.MoteSpotLight</thingClass>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <mote>
+        </mote>
+        <graphicData>
+            <texPath>Things/Mote/SpotLight_Mote</texPath>
+            <shaderType>MoteGlow</shaderType>
+        </graphicData>
+    </ThingDef>
+
+</Defs>

@@ -54,8 +54,8 @@ namespace VFESecurity
 
             private static int FinalPathCost(int original, Thing t)
             {
-                if (t.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
-                    return retractableComp.Props.retractedPathCost;
+                if (t.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
+                    return retractableComp.Props.submergedPathCost;
                 return original;
             }
 

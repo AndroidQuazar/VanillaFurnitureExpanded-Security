@@ -134,6 +134,7 @@ namespace VFESecurity
         {
             if (CanAttack)
             {
+                Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Add(parent);
                 artilleryCooldownTicks = BombardmentStartDelay;
                 bombardmentDurationTicks = Props.bombardmentDurationRange.RandomInRange;
                 bombardmentCooldownTicks = Props.bombardmentCooldownRange.RandomInRange;
@@ -143,6 +144,7 @@ namespace VFESecurity
 
         private void EndBombardment()
         {
+            Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Remove(parent);
             Messages.Message("VFESecurity.Message_ArtilleryBombardmentEnded".Translate(parent.Faction.def.pawnsPlural.CapitalizeFirst(), parent.Label), MessageTypeDefOf.PositiveEvent);
         }
 

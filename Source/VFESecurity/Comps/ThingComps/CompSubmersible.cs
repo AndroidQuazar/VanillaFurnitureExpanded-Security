@@ -14,17 +14,17 @@ using Harmony;
 namespace VFESecurity
 {
 
-    public class CompRetractable : ThingComp
+    public class CompSubmersible : ThingComp
     {
 
-        private Graphic cachedRectractedGraphic;
+        private Graphic cachedSubmergedGraphic;
         private Effecter cachedProgressBar;
 
         private int ticksToStateChange;
         private DeployedState targetState;
         private DeployedState state;
 
-        public CompProperties_Retractable Props => (CompProperties_Retractable)props;
+        public CompProperties_Submersible Props => (CompProperties_Submersible)props;
 
         public float StateChangeProgress => 1 - (float)ticksToStateChange / Props.TicksToStateChangeFor(targetState);
 
@@ -33,15 +33,15 @@ namespace VFESecurity
             return Mathf.RoundToInt(Mathf.Lerp(Props.TicksToStateChangeFor(state), 0, 1 - StateChangeProgress));
         }
 
-        public bool Retracted => state == DeployedState.Retracted;
+        public bool Submerged => state == DeployedState.Submerged;
 
-        public Graphic RetractedGraphic
+        public Graphic SubmergedGraphic
         {
             get
             {
-                if (Props.retractedGraphicData != null && cachedRectractedGraphic == null)
-                    cachedRectractedGraphic = Props.retractedGraphicData.GraphicColoredFor(parent);
-                return cachedRectractedGraphic;
+                if (Props.submergedGraphicData != null && cachedSubmergedGraphic == null)
+                    cachedSubmergedGraphic = Props.submergedGraphicData.GraphicColoredFor(parent);
+                return cachedSubmergedGraphic;
             }
         }
 
@@ -91,17 +91,17 @@ namespace VFESecurity
                 ticksToStateChange = FinalisedTicksToStateChangeFor(targetState);
             }
 
-            // Flicked off; retract building
+            // Flicked off; submerge building
             if (signal == CompFlickable.FlickedOffSignal)
             {
-                targetState = DeployedState.Retracted;
+                targetState = DeployedState.Submerged;
                 ticksToStateChange = FinalisedTicksToStateChangeFor(targetState);
             }
         }
 
         public override string TransformLabel(string label)
         {
-            if (Retracted)
+            if (Submerged)
                 label += $" ({"VFESecurity.Retracted".Translate()})";
             return label;
         }

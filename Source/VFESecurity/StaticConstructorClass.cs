@@ -21,6 +21,17 @@ namespace VFESecurity
         static StaticConstructorClass()
         {
             ArtilleryStrikeUtility.SetCache();
+
+            foreach (var tDef in DefDatabase<ThingDef>.AllDefs)
+            {
+                // Add CompPawnTracker to all Pawns
+                if (typeof(Pawn).IsAssignableFrom(tDef.thingClass))
+                {
+                    if (tDef.comps == null)
+                        tDef.comps = new List<CompProperties>();
+                    tDef.comps.Add(new CompProperties(typeof(CompPawnTracker)));
+                }
+            }
         }
 
     }

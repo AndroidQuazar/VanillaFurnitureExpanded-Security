@@ -23,10 +23,12 @@ namespace VFESecurity
 
         public static FieldInfo Explosion_cellsToAffect = AccessTools.Field(typeof(Explosion), "cellsToAffect");
 
-        public static FieldInfo Projectile_launcher = AccessTools.Field(typeof(Projectile), "launcher");
-        public static FieldInfo Projectile_usedTarget = AccessTools.Field(typeof(Projectile), "usedTarget");
+        public static FieldInfo GlowGrid_litGlowers = AccessTools.Field(typeof(GlowGrid), "litGlowers");
 
-        public static FieldInfo Projectile_Explosive_ticksToDetonation = AccessTools.Field(typeof(Projectile_Explosive), "ticksToDetonation");
+        public static FieldInfo Projectile_launcher = AccessTools.Field(typeof(Projectile), "launcher");
+        public static FieldInfo Projectile_ticksToImpact = AccessTools.Field(typeof(Projectile), "ticksToImpact");
+        public static FieldInfo Projectile_origin = AccessTools.Field(typeof(Projectile), "origin");
+        public static FieldInfo Projectile_usedTarget = AccessTools.Field(typeof(Projectile), "usedTarget");
 
         public static FieldInfo TurretTop_ticksUntilIdleTurn = AccessTools.Field(typeof(TurretTop), "ticksUntilIdleTurn");
 

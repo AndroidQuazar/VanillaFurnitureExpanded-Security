@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
- <!-- Ballista -->
+  <!-- Ballista -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Ballista</defName>
     <label>ballista</label>
@@ -29,13 +29,12 @@
     <blockWind>true</blockWind>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.4</fillPercent>
     <hasTooltip>true</hasTooltip>
     <statBases>
-      <MaxHitPoints>450</MaxHitPoints>
-      <Flammability>0.87</Flammability>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>1</Flammability>
       <WorkToBuild>7500</WorkToBuild>
-      <Mass>100</Mass>
       <Beauty>-20</Beauty>
     </statBases>
     <tickerType>Normal</tickerType>
@@ -70,9 +69,9 @@
       <li>Stony</li>
       <li>Woody</li>
     </stuffCategories>
-    <costStuffCount>20</costStuffCount>
+    <costStuffCount>90</costStuffCount>
     <costList>
-      <WoodLog>210</WoodLog>
+      <WoodLog>100</WoodLog>
       <Steel>40</Steel>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -87,7 +86,7 @@
       <turretTopOffset>(0, 0.05)</turretTopOffset>
       <expandHomeArea>false</expandHomeArea>
     </building>
-		<repairEffect>ConstructDirt</repairEffect>
+    <repairEffect>ConstructDirt</repairEffect>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_SiegeEquipment</li>
@@ -98,7 +97,7 @@
     </placeWorkers>
   </ThingDef>
 
-<ThingDef ParentName="BaseBullet">
+  <ThingDef ParentName="BaseBullet">
     <defName>VFES_Bullet_Ballista</defName>
     <label>ballista bolt</label>
     <graphicData>
@@ -113,7 +112,7 @@
       <damageAmountBase>40</damageAmountBase>
       <stoppingPower>1.5</stoppingPower>
       <explosionRadius>1.1</explosionRadius>
-	  <soundExplode>BulletImpact_Wood</soundExplode>
+      <soundExplode>BulletImpact_Wood</soundExplode>
       <armorPenetrationBase>0.15</armorPenetrationBase>
       <speed>49</speed>
     </projectile>
@@ -165,7 +164,7 @@
     <ignoreConfigErrors>true</ignoreConfigErrors>
   </ThingDef>
 
-<!-- Catapult -->
+  <!-- Catapult -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Catapult</defName>
     <label>catapult</label>
@@ -182,20 +181,19 @@
         <cornerTL>Damage/Corner</cornerTL>
       </damageData>
       <shadowData>
-	      <offset>(-0.13,-0.87,-0.1)</offset>
+        <offset>(-0.13,-0.87,-0.1)</offset>
         <volume>(0.5,0.4,1.05)</volume>
       </shadowData>
     </graphicData>
     <techLevel>Medieval</techLevel>
     <size>(3,3)</size>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>true</rotatable>
     <blockWind>true</blockWind>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.75</fillPercent>
+    <fillPercent>0.5</fillPercent>
     <tickerType>Normal</tickerType>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -203,13 +201,13 @@
       <li>Stony</li>
       <li>Woody</li>
     </stuffCategories>
-    <costStuffCount>90</costStuffCount>
+    <costStuffCount>160</costStuffCount>
     <costList>
-      <WoodLog>350</WoodLog>
-      <Steel>120</Steel>
+      <WoodLog>190</WoodLog>
+      <Steel>80</Steel>
     </costList>
     <statBases>
-      <MaxHitPoints>750</MaxHitPoints>
+      <MaxHitPoints>450</MaxHitPoints>
       <Flammability>0.87</Flammability>
       <WorkToBuild>8500</WorkToBuild>
       <Mass>100</Mass>
@@ -218,12 +216,9 @@
     <inspectorTabs>
       <li>ITab_Shells</li>
     </inspectorTabs>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <weaponTags>
       <li>ArtilleryMedieval_BaseDestroyer</li>
-    </weaponTags>  
+    </weaponTags>
     <comps>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Mannable">
@@ -235,11 +230,11 @@
     <specialDisplayRadius>17.9</specialDisplayRadius>
     <building>
       <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
-			<turretBurstCooldownTime>14.0</turretBurstCooldownTime>
-			<buildingTags>
-				<li>ArtilleryMedieval</li>
+      <turretBurstCooldownTime>14.0</turretBurstCooldownTime>
+      <buildingTags>
+        <li>ArtilleryMedieval</li>
         <li>ArtilleryMedieval_BaseDestroyer</li>
-			</buildingTags>
+      </buildingTags>
       <turretGunDef>VFES_Artillery_Catapult</turretGunDef>
       <turretTopGraphicPath>Things/Building/Catapult/TurretCatapult_Top</turretTopGraphicPath>
       <turretTopDrawSize>3</turretTopDrawSize>
@@ -248,7 +243,7 @@
     <repairEffect>ConstructDirt</repairEffect>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
-      <li>VFES_SiegeEquipment</li> <!-- Change -->
+      <li>VFES_SiegeEquipment</li>      <!-- Change -->
     </researchPrerequisites>
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
@@ -337,11 +332,11 @@
       <damageAmountBase>100</damageAmountBase>
       <stoppingPower>3</stoppingPower>
       <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
-	  <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+      <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
       <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-      <soundExplode>VFES_Explosion_Catapult</soundExplode> <!-- Change -->
+      <soundExplode>VFES_Explosion_Catapult</soundExplode>      <!-- Change -->
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-      <soundAmbient>MortarRound_Ambient</soundAmbient> <!-- Change -->
+      <soundAmbient>MortarRound_Ambient</soundAmbient>      <!-- Change -->
     </projectile>
   </ThingDef>
 

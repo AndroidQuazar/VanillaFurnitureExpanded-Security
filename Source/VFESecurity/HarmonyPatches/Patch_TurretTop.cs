@@ -25,7 +25,7 @@ namespace VFESecurity
             public static bool Prefix(Building_Turret ___parentTurret)
             {
                 // Don't draw the turret top if the turret is retracted
-                if (___parentTurret.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
+                if (___parentTurret.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
                     return false;
                 return true;
             }

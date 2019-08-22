@@ -51,8 +51,8 @@ namespace VFESecurity
 
             private static Traversability ActualPassability(Traversability original, Thing thing)
             {
-                if (thing.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
-                    return retractableComp.Props.retractedPassability;
+                if (thing.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
+                    return retractableComp.Props.submergedPassability;
                 return original;
             }
 

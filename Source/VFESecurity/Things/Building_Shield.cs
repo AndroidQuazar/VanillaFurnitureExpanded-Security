@@ -19,15 +19,15 @@ namespace VFESecurity
     public class Building_Shield : Building, IAttackTarget
     {
 
+        private const int CacheUpdateInterval = 15;
         private const float MaxEnergyFactorInactive = 0.2f;
-        private const int ContinueDrawingForTicks = 1000;
         private const int RechargeTicksWhenDepleted = 3200;
         private const float EnergyLossPerDamage = 0.033f;
         private static readonly Material BaseBubbleMat = MaterialPool.MatFrom("Other/ShieldBubble", ShaderDatabase.Transparent);
 
         public ExtendedBuildingProperties ExtendedBuildingProps => def.GetModExtension<ExtendedBuildingProperties>() ?? ExtendedBuildingProperties.defaultValues;
         public float MaxEnergy => this.GetStatValue(StatDefOf.VFES_EnergyShieldEnergyMax);
-        private float CurMaxEnergy => MaxEnergy * (Active ? 1 : MaxEnergyFactorInactive);
+        private float CurMaxEnergy => MaxEnergy * (active ? 1 : MaxEnergyFactorInactive);
         public float EnergyGainPerTick => this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60;
         public float ShieldRadius => this.GetStatValue(StatDefOf.VFES_EnergyShieldRadius);
 
@@ -45,7 +45,7 @@ namespace VFESecurity
         }
 
         private bool CanFunction => PowerTraderComp == null || PowerTraderComp.PowerOn;
-        public bool Active => ParentHolder is Map && CanFunction && GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction);
+        //public bool Active => ParentHolder is Map && CanFunction && GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction);
         public float Energy
         {
             get => energy;
@@ -56,12 +56,11 @@ namespace VFESecurity
                     Notify_EnergyDepleted();
             }
         }
-        public IEnumerable<IntVec3> CoveredCells => Active ? GenRadial.RadialCellsAround(PositionHeld, ShieldRadius, true) : null;
         public IEnumerable<Thing> ThingsWithinRadius
         {
             get
             {
-                foreach (var cell in CoveredCells)
+                foreach (var cell in coveredCells)
                     foreach (var thing in cell.GetThingList(MapHeld))
                         yield return thing;
             }
@@ -82,9 +81,29 @@ namespace VFESecurity
             ticksToRecharge = RechargeTicksWhenDepleted;
         }
 
+        public bool WithinBoundary(IntVec3 sourcePos, IntVec3 checkedPos)
+        {
+            return (coveredCells.Contains(sourcePos) && coveredCells.Contains(checkedPos)) || (!coveredCells.Contains(sourcePos) && !coveredCells.Contains(checkedPos));
+        }
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            map.GetComponent<ListerThingsExtended>().listerShieldGens.Add(this);
+            coveredCells = new HashSet<IntVec3>(GenRadial.RadialCellsAround(PositionHeld, ShieldRadius, true));
+        }
+
+        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+        {
+            Map.GetComponent<ListerThingsExtended>().listerShieldGens.Remove(this);
+            coveredCells = null;
+            base.DeSpawn(mode);
+        }
+
         public override void Tick()
         {
-            UpdateExplosionCache();
+            if (this.IsHashIntervalTick(CacheUpdateInterval))
+                UpdateCache();
 
             if (CanFunction)
             {
@@ -99,7 +118,7 @@ namespace VFESecurity
                     Energy += EnergyGainPerTick;
 
                 // If shield is active
-                if (Active)
+                if (active)
                 {
                     // Power consumption
                     if (PowerTraderComp != null)
@@ -115,16 +134,21 @@ namespace VFESecurity
             base.Tick();
         }
 
-        private void UpdateExplosionCache()
+        private void UpdateCache()
         {
-            for (int i = 0; i < affectedExplosionCache.Count; i++)
+            for (int i = 0; i < affectedThings.Count; i++)
             {
-                var curKey = affectedExplosionCache.Keys.ToList()[i];
-                if (affectedExplosionCache[curKey] <= 0)
-                    affectedExplosionCache.Remove(curKey);
+                var curKey = affectedThings.Keys.ToList()[i];
+                if (affectedThings[curKey] <= 0)
+                    affectedThings.Remove(curKey);
                 else
-                    affectedExplosionCache[curKey]--;
+                    affectedThings[curKey] -= CacheUpdateInterval;
             }
+
+            active = ParentHolder is Map && CanFunction &&
+                (Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any() || 
+                GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction) || 
+                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any());
         }
 
         private void EnergyShieldTick()
@@ -133,7 +157,7 @@ namespace VFESecurity
             foreach (var thing in thingsWithinRadius)
             {
                 // Try and block projectiles from outside
-                if (thing is Projectile proj)
+                if (thing is Projectile proj && proj.BlockableByShield(this))
                 {
                     var launcher = NonPublicFields.Projectile_launcher.GetValue(proj) as Thing;
                     if (launcher != null && !thingsWithinRadius.Contains(launcher))
@@ -141,10 +165,9 @@ namespace VFESecurity
                         // Explosives are handled separately
                         if (!(proj is Projectile_Explosive))
                             AbsorbDamage(proj.DamageAmount, proj.def.projectile.damageDef, proj.ExactRotation.eulerAngles.y);
+                        proj.Position += Rot4.FromAngleFlat((Position - proj.Position).AngleFlat).Opposite.FacingCell;
                         NonPublicFields.Projectile_usedTarget.SetValue(proj, new LocalTargetInfo(proj.Position));
                         NonPublicMethods.Projectile_ImpactSomething(proj);
-                        if (proj.Spawned && proj is Projectile_Explosive)
-                            NonPublicFields.Projectile_Explosive_ticksToDetonation.SetValue(proj, 1);
                     }
                 }
             }
@@ -157,6 +180,11 @@ namespace VFESecurity
                 return 4;
 
             return 1;
+        }
+
+        public void AbsorbDamage(float amount, DamageDef def, Thing source)
+        {
+            AbsorbDamage(amount, def, (this.TrueCenter() - source.TrueCenter()).AngleFlat());
         }
 
         public void AbsorbDamage(float amount, DamageDef def, float angle)
@@ -180,7 +208,7 @@ namespace VFESecurity
             base.Draw();
 
             // Draw shield bubble
-            if (Active && Energy > 0)
+            if (active && Energy > 0)
             {
                 float size = ShieldRadius * 2 * Mathf.Lerp(0.9f, 1.1f, Energy / MaxEnergy);
                 Vector3 pos = DrawPos;
@@ -216,7 +244,7 @@ namespace VFESecurity
             var inspectBuilder = new StringBuilder();
 
             // Inactive
-            if (!Active)
+            if (!active)
                 inspectBuilder.AppendLine("InactiveFacility".Translate().CapitalizeFirst());
 
             inspectBuilder.AppendLine(base.GetInspectString());
@@ -243,26 +271,38 @@ namespace VFESecurity
         {
             Scribe_Values.Look(ref ticksToRecharge, "ticksToRecharge");
             Scribe_Values.Look(ref energy, "energy");
+            Scribe_Values.Look(ref active, "active");
+            Scribe_Collections.Look(ref affectedThings, "affectedThings", LookMode.Reference, LookMode.Value, ref affectedThingsKeysWorkingList, ref affectedThingsValuesWorkingList);
             base.ExposeData();
         }
 
         public bool ThreatDisabled(IAttackTargetSearcher disabledFor)
         {
+            // No energy
             if (Energy == 0)
                 return true;
+
+            // Attacker isn't using EMPs
             if (!disabledFor.CurrentEffectiveVerb.IsEMP())
                 return true;
-            return !CanFunction ;
+
+            // Return whether or not the shield can function
+            return !CanFunction;
         }
 
         private int ticksToRecharge;
         private float energy;
+        public bool active;
 
         private Vector3 impactAngleVect;
         private int lastAbsorbDamageTick;
         private bool checkedPowerComp;
         private CompPowerTrader cachedPowerComp;
-        public Dictionary<Explosion, int> affectedExplosionCache = new Dictionary<Explosion, int>();
+        public HashSet<IntVec3> coveredCells;
+
+        private List<Thing> affectedThingsKeysWorkingList;
+        private List<int> affectedThingsValuesWorkingList;
+        public Dictionary<Thing, int> affectedThings = new Dictionary<Thing, int>();
 
     }
 

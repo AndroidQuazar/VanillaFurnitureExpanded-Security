@@ -32,13 +32,12 @@
       <Plasteel>50</Plasteel>
       <ComponentSpacer>8</ComponentSpacer>
     </costList>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>4.9</explosiveRadius>
+        <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>EMP</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.6</chanceNeverExplodeFromDamage>
       </li>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
@@ -51,10 +50,10 @@
     <altitudeLayer>Building</altitudeLayer>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
-      <Flammability>0.2</Flammability>
+      <Flammability>0.5</Flammability>
       <Beauty>-20</Beauty>
       <Mass>50</Mass>
-      <WorkToBuild>40000</WorkToBuild>
+      <WorkToBuild>15000</WorkToBuild>
       <VFES_EnergyShieldEnergyMax>11</VFES_EnergyShieldEnergyMax>
       <VFES_EnergyShieldRechargeRate>1.04</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>7.9</VFES_EnergyShieldRadius>
@@ -98,10 +97,10 @@
     </graphicData>
     <thingClass>VFESecurity.Building_Shield</thingClass>
     <statBases>
-      <MaxHitPoints>500</MaxHitPoints>
-      <Flammability>0.2</Flammability>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Flammability>0.5</Flammability>
       <Beauty>-20</Beauty>
-      <WorkToBuild>80000</WorkToBuild>
+      <WorkToBuild>30000</WorkToBuild>
       <VFES_EnergyShieldEnergyMax>7.7</VFES_EnergyShieldEnergyMax>
       <VFES_EnergyShieldRechargeRate>0.73</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>31.9</VFES_EnergyShieldRadius>
@@ -121,9 +120,8 @@
     <designationCategory>Security</designationCategory>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>19.9</explosiveRadius>
+        <explosiveRadius>9.9</explosiveRadius>
         <explosiveDamageType>EMP</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
@@ -172,12 +170,12 @@
     </graphicData>
     <thingClass>VFESecurity.Building_Shield</thingClass>
     <statBases>
-      <MarketValue>4000</MarketValue>
-      <MaxHitPoints>400</MaxHitPoints>
-      <Flammability>0.2</Flammability>
-      <Beauty>0</Beauty>
-      <Mass>75</Mass>
-      <WorkToBuild>40000</WorkToBuild>
+      <MarketValue>2800</MarketValue>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+      <Mass>40</Mass>
+      <WorkToBuild>20000</WorkToBuild>
       <VFES_EnergyShieldEnergyMax>18.7</VFES_EnergyShieldEnergyMax>
       <VFES_EnergyShieldRechargeRate>1.35</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>3.9</VFES_EnergyShieldRadius>
@@ -185,7 +183,7 @@
     <techLevel>Archotech</techLevel>
     <passability>PassThroughOnly</passability>
     <tickerType>Normal</tickerType>
-    <stealable>true</stealable>
+    <stealable>false</stealable>
     <rotatable>false</rotatable>
     <thingCategories>
       <li>BuildingsSpecial</li>
@@ -194,23 +192,21 @@
       <li>RewardSpecial</li>
     </thingSetMakerTags>
     <costList>
-      <Steel>150</Steel>
-      <Plasteel>80</Plasteel>
-      <Uranium>50</Uranium>
-      <ComponentSpacer>12</ComponentSpacer>
+      <Plasteel>70</Plasteel>
+      <Uranium>30</Uranium>
+      <ComponentSpacer>10</ComponentSpacer>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>9.9</explosiveRadius>
+        <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>EMP</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.25</chanceNeverExplodeFromDamage>
       </li>
       <li Class="CompProperties_Breakdownable"/>
     </comps>
     <altitudeLayer>Building</altitudeLayer>
-    <fillPercent>0.35</fillPercent>
-    <pathCost>70</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>50</pathCost>
     <canOverlapZones>true</canOverlapZones>
     <minifiedDef>MinifiedThing</minifiedDef>
     <specialDisplayRadius>3.9</specialDisplayRadius>

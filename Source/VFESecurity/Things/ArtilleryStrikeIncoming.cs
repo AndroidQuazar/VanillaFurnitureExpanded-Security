@@ -33,6 +33,18 @@ namespace VFESecurity
             }
         }
 
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            var projectileProps = ShellDef.projectile;
+            ShieldGeneratorUtility.CheckIntercept(this, map, projectileProps.GetDamageAmount(1), projectileProps.damageDef, () => this.OccupiedRect().Cells,
+            postIntercept: s =>
+            {
+                if (s.Energy > 0)
+                    Destroy();
+            });
+        }
+
         public override void Tick()
         {
             // Force impact if the tile has a thick roof

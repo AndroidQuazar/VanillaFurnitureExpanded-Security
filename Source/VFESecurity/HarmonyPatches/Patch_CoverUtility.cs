@@ -24,8 +24,8 @@ namespace VFESecurity
             public static void Postfix(Thing thing, ref float __result)
             {
                 // Modify base block chance of retracted things
-                if (__result > 0 && thing.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
-                    __result *= retractableComp.Props.retractedProjectileBlockChance / __result;
+                if (__result > 0 && thing.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
+                    __result *= retractableComp.Props.submergedProjectileBlockChance / __result;
             }
 
         }

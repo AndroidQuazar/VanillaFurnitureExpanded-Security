@@ -38,7 +38,7 @@ namespace VFESecurity
                 Widgets.Label(rect2, shieldGenerator.LabelCap);
                 Rect rect3 = rect;
                 rect3.yMin = overRect.height / 2f;
-                float displayEnergy = shieldGenerator.Active ? shieldGenerator.Energy : 0;
+                float displayEnergy = shieldGenerator.active ? shieldGenerator.Energy : 0;
                 float fillPercent = displayEnergy / shieldGenerator.MaxEnergy;
                 Widgets.FillableBar(rect3, fillPercent, FullShieldBarTex, EmptyShieldBarTex, false);
                 Text.Font = GameFont.Small;

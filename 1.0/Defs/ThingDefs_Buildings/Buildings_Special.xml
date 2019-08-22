@@ -29,10 +29,10 @@
       <li>RewardSpecial</li>
     </thingSetMakerTags>
     <costList>
-      <Plasteel>40</Plasteel>
-      <Uranium>40</Uranium>
-      <Gold>20</Gold>
-      <ComponentSpacer>5</ComponentSpacer>
+      <Steel>70</Steel>
+      <Plasteel>30</Plasteel>
+      <Gold>10</Gold>
+      <ComponentSpacer>6</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Power">
@@ -46,8 +46,6 @@
         <explosiveDamageType>Flame</explosiveDamageType>
         <chanceNeverExplodeFromDamage>0.25</chanceNeverExplodeFromDamage>
       </li>
-      <li Class="CompProperties_PsychicDrone" />
-      <!-- <li Class="CompProperties_AnimalInsanityPulser" /> -->
     </comps>
     <altitudeLayer>Building</altitudeLayer>
     <statBases>
@@ -62,7 +60,6 @@
       <expandHomeArea>false</expandHomeArea>
     </building>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <designationCategory>Misc</designationCategory>    <!-- Only for Test Purposes -->
     <fillPercent>0.7</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <pathCost>70</pathCost>
@@ -70,12 +67,8 @@
     <stealable>false</stealable>
     <canOverlapZones>false</canOverlapZones>
     <minifiedDef>MinifiedThing</minifiedDef>
-    <specialDisplayRadius>14.9</specialDisplayRadius>
+    <specialDisplayRadius>15</specialDisplayRadius>
     <tradeability>Sellable</tradeability>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-    <researchPrerequisites>
-      <li>LongRangeMineralScanner</li>
-    </researchPrerequisites>    <!-- Remove on Release -->
   </ThingDef>
 
 </Defs>

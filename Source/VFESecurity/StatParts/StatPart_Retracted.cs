@@ -19,7 +19,7 @@ namespace VFESecurity
 
         public override string ExplanationPart(StatRequest req)
         {
-            if (req.Thing != null && req.Thing.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
+            if (req.Thing != null && req.Thing.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
             {
                 if (valueWhenRetracted != -99999)
                 {
@@ -40,7 +40,7 @@ namespace VFESecurity
 
         public override void TransformValue(StatRequest req, ref float val)
         {
-            if (req.Thing != null && req.Thing.IsRetractable(out CompRetractable retractableComp) && retractableComp.Retracted)
+            if (req.Thing != null && req.Thing.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
             {
                 if (valueWhenRetracted != -99999)
                     val = valueWhenRetracted;

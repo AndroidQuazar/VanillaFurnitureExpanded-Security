@@ -18,7 +18,7 @@ namespace VFESecurity
     {
 
         Deployed,
-        Retracted
+        Submerged
 
     }
 

@@ -14,29 +14,30 @@ using Harmony;
 namespace VFESecurity
 {
 
-    public class CompProperties_Retractable : CompProperties
+    public class CompProperties_Submersible : CompProperties
     {
 
-        public CompProperties_Retractable()
+        public CompProperties_Submersible()
         {
-            compClass = typeof(CompRetractable);
+            compClass = typeof(CompSubmersible);
         }
 
-        public int retractedPathCost;
-        public float retractedProjectileBlockChance;
-        public Traversability retractedPassability;
-        public GraphicData retractedGraphicData;
-        private int ticksToRetract;
+        public int submergedPathCost;
+        public float submergedDamageFactor = 1;
+        public float submergedProjectileBlockChance;
+        public Traversability submergedPassability;
+        public GraphicData submergedGraphicData;
+        private int ticksToSubmerge;
         private int ticksToDeploy;
 
         public int TicksToStateChangeFor(DeployedState state)
         {
             switch (state)
             {
-                case DeployedState.Retracted:
-                    return ticksToRetract;
+                case DeployedState.Submerged:
+                    return ticksToSubmerge;
                 default:
-                    return ticksToRetract;
+                    return ticksToSubmerge;
             }
         }
 

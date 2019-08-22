@@ -49,7 +49,7 @@
       <MaxHitPoints>20</MaxHitPoints>
       <WorkToBuild>1400</WorkToBuild>
       <Flammability>1</Flammability>
-      <Beauty>-5</Beauty>
+      <Beauty>-10</Beauty>
       <TrapSpringChance>0.05</TrapSpringChance>
     </statBases>
     <designationCategory>Security</designationCategory>
@@ -89,10 +89,7 @@
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
         <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
-        <wickTicks>
-          <min>0</min>
-          <max>1</max>
-        </wickTicks>
+        <wickTicks>1~1</wickTicks>
       </li>
     </comps>
     <specialDisplayRadius>5.9</specialDisplayRadius>
@@ -112,7 +109,7 @@
       <MaxHitPoints>40</MaxHitPoints>
       <WorkToBuild>1400</WorkToBuild>
       <Flammability>1</Flammability>
-      <Beauty>-2</Beauty>
+      <Beauty>-4</Beauty>
       <TrapSpringChance>1.0</TrapSpringChance>
     </statBases>
     <designationCategory>Security</designationCategory>
