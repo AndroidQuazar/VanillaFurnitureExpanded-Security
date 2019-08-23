@@ -91,10 +91,6 @@
       <WorkToBuild>6500</WorkToBuild>
     </statBases>
     <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>120</basePowerConsumption>
-      </li>
       <li Class="VFESecurity.CompProperties_Submersible">
         <submergedPassability>Standable</submergedPassability>
         <submergedGraphicData>
@@ -119,10 +115,6 @@
     <passability>PassThroughOnly</passability>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <building>
-      <expandHomeArea>false</expandHomeArea>
-      <ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>VFES_Gun_MilitaryTurret</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
       <turretTopGraphicPath>Things/Building/Floor/TurretFloor_Top</turretTopGraphicPath>
       <turretTopOffset>(0, 0.3)</turretTopOffset>
     </building>

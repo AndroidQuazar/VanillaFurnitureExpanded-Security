@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
   <!-- Military Turret -->
@@ -100,7 +100,7 @@
     <researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
-  </ThingDef>
+  </ThingDef> 
 
   <ThingDef ParentName="BaseHumanGun">
     <defName>VFES_Gun_MilitaryTurret</defName>
@@ -344,7 +344,7 @@
     <costStuffCount>90</costStuffCount>
     <costList>
       <Steel>70</Steel>
-      <Chemfuel>75</Steel>
+      <Chemfuel>75</Chemfuel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
