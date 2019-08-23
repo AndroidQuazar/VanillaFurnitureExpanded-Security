@@ -19,6 +19,7 @@
     </graphicData>
     <uiIconPath>Things/Security/BarrierDeployed/BarrierDeployed_south</uiIconPath>
     <tickerType>Normal</tickerType>
+    <neverMultiSelect>false</neverMultiSelect>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <statBases>

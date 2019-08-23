@@ -135,7 +135,7 @@
         <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
         <warmupTime>0</warmupTime>
         <range>24.9</range>
-        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
         <burstShotCount>6</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -323,7 +323,7 @@
           </thingDefs>
         </fuelFilter>
         <fuelCapacity>150</fuelCapacity>
-        <initialFuelPercent>0</initialFuelPercent>
+        <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
@@ -344,6 +344,7 @@
     <costStuffCount>90</costStuffCount>
     <costList>
       <Steel>70</Steel>
+      <Chemfuel>75</Steel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>

@@ -30,8 +30,6 @@
     </thingSetMakerTags>
     <costList>
       <Steel>70</Steel>
-      <Plasteel>30</Plasteel>
-      <Gold>10</Gold>
       <ComponentSpacer>6</ComponentSpacer>
     </costList>
     <comps>
@@ -41,28 +39,23 @@
       </li>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>2.9</explosiveRadius>
-        <explosiveDamageType>Flame</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.25</chanceNeverExplodeFromDamage>
-      </li>
     </comps>
     <altitudeLayer>Building</altitudeLayer>
     <statBases>
-      <MarketValue>1500</MarketValue>
-      <MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>1300</MarketValue>
+      <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0</Flammability>
       <Beauty>0</Beauty>
       <Mass>20</Mass>
-      <WorkToBuild>50000</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
     </statBases>
     <building>
       <expandHomeArea>false</expandHomeArea>
     </building>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <fillPercent>0.7</fillPercent>
+    <fillPercent>0.25</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-    <pathCost>70</pathCost>
+    <pathCost>25</pathCost>
     <rotatable>false</rotatable>
     <stealable>false</stealable>
     <canOverlapZones>false</canOverlapZones>

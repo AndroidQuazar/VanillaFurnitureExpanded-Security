@@ -13,4 +13,18 @@
         </graphicData>
     </ThingDef>
 
+    <!-- Copied from Vanilla Weapons Expanded -->
+    <ThingDef ParentName="MoteBase">
+        <defName>Mote_FTSmoketrail</defName>
+        <graphicData>
+            <texPath>Things/Mote/Mote_FireSmoked</texPath>
+        </graphicData>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <mote>
+            <fadeInTime>0.1</fadeInTime>
+            <fadeOutTime>0.2</fadeOutTime>
+            <growthRate>0.3</growthRate>
+        </mote>
+    </ThingDef>
+
 </Defs>

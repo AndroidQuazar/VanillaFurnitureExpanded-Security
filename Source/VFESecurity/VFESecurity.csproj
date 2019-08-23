@@ -59,6 +59,7 @@
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction.cs" />
     <Compile Include="Comps\MapComponents\ListerThingsExtended.cs" />
     <Compile Include="Comps\ThingComps\CompPawnTracker.cs" />
+    <Compile Include="DefModExtensions\ExtendedProjectileProperties.cs" />
     <Compile Include="DefModExtensions\ExtendedVerbProperties.cs" />
     <Compile Include="Defs\HediffDefOf.cs" />
     <Compile Include="HarmonyPatches\Patch_Building.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="ArtilleryStrikeUtility.cs" />
     <Compile Include="SubmersibleUtility.cs" />
     <Compile Include="StatParts\StatPart_Retracted.cs" />
+    <Compile Include="Things\Projectile_ExplosiveAlt.cs" />
     <Compile Include="Things\MoteSpotLight.cs" />
     <Compile Include="Things\Building_Shield.cs" />
     <Compile Include="Things\ArtilleryStrikeSkyfaller.cs" />

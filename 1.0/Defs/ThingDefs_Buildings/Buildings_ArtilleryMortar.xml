@@ -36,7 +36,7 @@
     <costStuffCount>100</costStuffCount>
     <costList>
       <Steel>180</Steel>
-      <ComponentIndustrial>10</ComponentIndustrial>
+      <ComponentIndustrial>9</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
