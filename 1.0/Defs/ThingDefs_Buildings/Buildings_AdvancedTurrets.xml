@@ -294,7 +294,7 @@
       <damageDef>Bomb</damageDef>
       <!-- Use default damage from explosion def -->
       <flyOverhead>true</flyOverhead>
-      <explosionRadius>2.4</explosionRadius>
+      <explosionRadius>2.9</explosionRadius>
       <speed>50</speed>
     </projectile>
   </ThingDef>

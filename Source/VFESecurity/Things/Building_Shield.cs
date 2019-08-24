@@ -20,14 +20,12 @@ namespace VFESecurity
     {
 
         private const int CacheUpdateInterval = 15;
-        private const float MaxEnergyFactorInactive = 0.2f;
-        private const int RechargeTicksWhenDepleted = 3200;
         private const float EnergyLossPerDamage = 0.033f;
         private static readonly Material BaseBubbleMat = MaterialPool.MatFrom("Other/ShieldBubble", ShaderDatabase.Transparent);
 
         public ExtendedBuildingProperties ExtendedBuildingProps => def.GetModExtension<ExtendedBuildingProperties>() ?? ExtendedBuildingProperties.defaultValues;
         public float MaxEnergy => this.GetStatValue(StatDefOf.VFES_EnergyShieldEnergyMax);
-        private float CurMaxEnergy => MaxEnergy * (active ? 1 : MaxEnergyFactorInactive);
+        private float CurMaxEnergy => MaxEnergy * (active ? 1 : ExtendedBuildingProps.initialEnergyPercentage);
         public float EnergyGainPerTick => this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60;
         public float ShieldRadius => this.GetStatValue(StatDefOf.VFES_EnergyShieldRadius);
 
@@ -78,7 +76,7 @@ namespace VFESecurity
                 Vector3 loc = this.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f);
                 MoteMaker.ThrowDustPuff(loc, Map, Rand.Range(0.8f, 1.2f));
             }
-            ticksToRecharge = RechargeTicksWhenDepleted;
+            ticksToRecharge = ExtendedBuildingProps.rechargeTicksWhenDepleted;
         }
 
         public bool WithinBoundary(IntVec3 sourcePos, IntVec3 checkedPos)
@@ -112,7 +110,7 @@ namespace VFESecurity
                 {
                     ticksToRecharge--;
                     if (ticksToRecharge == 0)
-                        Energy = MaxEnergy * MaxEnergyFactorInactive;
+                        Energy = MaxEnergy * ExtendedBuildingProps.initialEnergyPercentage;
                 }
                 else
                     Energy += EnergyGainPerTick;

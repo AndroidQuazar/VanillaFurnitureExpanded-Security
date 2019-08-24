@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\JobDriver_RearmTrap.cs" />
+    <Compile Include="AI\WorkGiver_RearmTrap.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_AIBase.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Outpost.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Insectoid.cs" />
@@ -59,14 +61,21 @@
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Map.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction.cs" />
     <Compile Include="Comps\MapComponents\ListerThingsExtended.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_Rearmable.cs" />
+    <Compile Include="Comps\ThingComps\CompRearmable.cs" />
     <Compile Include="Comps\ThingComps\CompPawnTracker.cs" />
     <Compile Include="Comps\WorldObjectComps\RetaliationTracker.cs" />
     <Compile Include="DefModExtensions\ExtendedProjectileProperties.cs" />
     <Compile Include="DefModExtensions\ExtendedVerbProperties.cs" />
     <Compile Include="DefModExtensions\TerrainDefExtension.cs" />
+    <Compile Include="Defs\DesignationDefOf.cs" />
     <Compile Include="Defs\HediffDefOf.cs" />
+    <Compile Include="Defs\RecordDefOf.cs" />
     <Compile Include="Defs\ShaderTypeDefOf.cs" />
     <Compile Include="Defs\FactionDefOf.cs" />
+    <Compile Include="Defs\JobDefOf.cs" />
+    <Compile Include="Defs\WorkGiverDefOf.cs" />
+    <Compile Include="Designators\Designator_RearmTrap.cs" />
     <Compile Include="HarmonyPatches\Patch_Building.cs" />
     <Compile Include="HarmonyPatches\Patch_Building_Turret.cs" />
     <Compile Include="HarmonyPatches\Patch_CastPositionFinder.cs" />
@@ -79,6 +88,7 @@
     <Compile Include="HarmonyPatches\Patch_PathFinder.cs" />
     <Compile Include="HarmonyPatches\Patch_Skyfaller.cs" />
     <Compile Include="HarmonyPatches\Patch_JobGiver_AIDefendPawn.cs" />
+    <Compile Include="HarmonyPatches\Patch_ReverseDesignatorDatabase.cs" />
     <Compile Include="HarmonyPatches\Patch_VerbProperties.cs" />
     <Compile Include="HarmonyPatches\Patch_Verb.cs" />
     <Compile Include="HarmonyPatches\Patch_Tornado.cs" />
@@ -89,6 +99,7 @@
     <Compile Include="StatParts\StatPart_AmmoCrate.cs" />
     <Compile Include="StatParts\StatPart_PylonExposure.cs" />
     <Compile Include="StatParts\StatPart_ValueOffsetFactor.cs" />
+    <Compile Include="Things\Building_TrapBear.cs" />
     <Compile Include="Utilities\ShieldGeneratorUtility.cs" />
     <Compile Include="Comps\ThingComps\CompProperties_LongRangeArtillery.cs" />
     <Compile Include="Comps\ThingComps\CompProperties_TerrainSetter.cs" />

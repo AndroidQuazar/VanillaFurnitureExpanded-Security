@@ -18,6 +18,8 @@ namespace VFESecurity
     public static class NonPublicFields
     {
 
+        public static FieldInfo Building_Trap_autoRearm = AccessTools.Field(typeof(Building_Trap), "autoRearm");
+
         public static FieldInfo Building_TurretGun_burstCooldownTicksLeft = AccessTools.Field(typeof(Building_TurretGun), "burstCooldownTicksLeft");
         public static FieldInfo Building_TurretGun_top = AccessTools.Field(typeof(Building_TurretGun), "top");
 

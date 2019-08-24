@@ -78,6 +78,8 @@
     <specialDisplayRadius>7.9</specialDisplayRadius>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
         <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
         <inactivePowerConsumption>300</inactivePowerConsumption>
       </li>
@@ -133,6 +135,8 @@
     <specialDisplayRadius>31.9</specialDisplayRadius>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
         <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
         <inactivePowerConsumption>500</inactivePowerConsumption>
         <shieldColour>(1, 1, 1, 0.7)</shieldColour>
@@ -194,6 +198,8 @@
     <tradeability>Sellable</tradeability>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
         <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
         <shieldColour>(0.7, 1, 0.7, 1)</shieldColour>
       </li>

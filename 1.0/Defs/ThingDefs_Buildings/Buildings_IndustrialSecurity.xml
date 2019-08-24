@@ -26,7 +26,7 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <coversFloor>false</coversFloor>
-    <pathCost>210</pathCost>    <!-- How difficult it is to cross the obstacle-->
+    <pathCost>200</pathCost>
     <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <neverMultiSelect>false</neverMultiSelect>
@@ -34,21 +34,14 @@
     <altitudeLayer>Building</altitudeLayer>
     <drawerType>MapMeshAndRealTime</drawerType>    <!-- MapMeshOnly -->
     <rotatable>false</rotatable>
-    <tickerType>Normal</tickerType>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <statBases>
-      <Mass>1.5</Mass>
       <MaxHitPoints>80</MaxHitPoints>
-      <WorkToBuild>225</WorkToBuild>
-      <Flammability>0</Flammability>
-      <Beauty>-4</Beauty>
-      <TrapMeleeDamage>8</TrapMeleeDamage>
-      <TrapSpringChance>0.95</TrapSpringChance>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-15</Beauty>
+      <TrapMeleeDamage>3</TrapMeleeDamage>
+      <TrapSpringChance>0.5</TrapSpringChance>
     </statBases>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
@@ -118,7 +111,7 @@
     <passability>Standable</passability>
     <blockWind>false</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
-    <pathCost>0</pathCost>
+    <pathCost>0</pathCost> <!-- Handled through VFES_TrenchTerrain -->
     <coversFloor>true</coversFloor>
     <placingDraggableDimensions>2</placingDraggableDimensions>
     <tickerType>Never</tickerType>
@@ -132,6 +125,7 @@
     <staticSunShadowHeight>0</staticSunShadowHeight>
     <blockLight>false</blockLight>
     <canOverlapZones>false</canOverlapZones>
+    <repairEffect>ConstructDirt</repairEffect>
     <building>
       <isInert>true</isInert>
       <ai_chillDestination>false</ai_chillDestination>

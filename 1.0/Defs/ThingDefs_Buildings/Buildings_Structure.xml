@@ -29,6 +29,7 @@
             <MaxHitPoints>250</MaxHitPoints>
             <WorkToBuild>65</WorkToBuild>
         </statBases>
+        <pathCost>70</pathCost>
         <costStuffCount>3</costStuffCount>
         <passability>PassThroughOnly</passability>
         <blockWind>false</blockWind>

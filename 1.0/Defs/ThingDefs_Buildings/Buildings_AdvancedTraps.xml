@@ -23,17 +23,17 @@
       <li Class="CompProperties_Explosive">
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>Flame</explosiveDamageType>
-        <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
+        <startWickHitPointsPercent>0.95</startWickHitPointsPercent>
         <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-        <preExplosionSpawnChance>0.2</preExplosionSpawnChance>
+        <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
         <wickTicks>
           <min>0</min>
           <max>30</max>
         </wickTicks>
       </li>
     </comps>
+    <fillPercent>0.4</fillPercent>
     <specialDisplayRadius>5.9</specialDisplayRadius>
-    <thingClass>Building_TrapExplosive</thingClass>
     <uiIconOffset>(0,-0.14)</uiIconOffset>
     <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
@@ -45,17 +45,16 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <Mass>3.5</Mass>
-      <MaxHitPoints>20</MaxHitPoints>
+      <Mass>10</Mass>
+      <MaxHitPoints>150</MaxHitPoints>
       <WorkToBuild>1400</WorkToBuild>
-      <Flammability>1</Flammability>
+      <Flammability>2</Flammability>
       <Beauty>-10</Beauty>
       <TrapSpringChance>0.05</TrapSpringChance>
     </statBases>
     <designationCategory>Security</designationCategory>
     <building>
       <isTrap>true</isTrap>
-      <trapPeacefulWildAnimalsSpringChanceFactor>0.01</trapPeacefulWildAnimalsSpringChanceFactor>
       <expandHomeArea>false</expandHomeArea>
       <ai_chillDestination>false</ai_chillDestination>
     </building>
@@ -81,14 +80,15 @@
     </graphicData>
     <techLevel>Industrial</techLevel>
     <costList>
-      <Shell_HighExplosive>2</Shell_HighExplosive>
-      <ComponentIndustrial>1</ComponentIndustrial>
+      <Shell_HighExplosive>1</Shell_HighExplosive>
+      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>15</Steel>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveRadius>2.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
-        <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
         <wickTicks>1~1</wickTicks>
       </li>
     </comps>
@@ -105,9 +105,9 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <Mass>2.2</Mass>
+      <Mass>2.5</Mass>
       <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>1400</WorkToBuild>
+      <WorkToBuild>2500</WorkToBuild>
       <Flammability>1</Flammability>
       <Beauty>-4</Beauty>
       <TrapSpringChance>1.0</TrapSpringChance>
@@ -150,8 +150,8 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>115</MaxHitPoints>
-      <Flammability>0.85</Flammability>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.2</Flammability>
       <WorkToBuild>750</WorkToBuild>
       <Mass>8.5</Mass>
       <Beauty>-10</Beauty>
@@ -159,7 +159,7 @@
     <tickerType>Normal</tickerType>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.25</fillPercent>
     <hasTooltip>false</hasTooltip>
     <costList>
       <Cloth>40</Cloth>

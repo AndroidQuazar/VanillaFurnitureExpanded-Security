@@ -50,8 +50,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_CavalrySpikes</defName>
     <label>cavalry spikes</label>
-    <description>Wooden stakes placed in a row to build defensive fort. Some parts needs to replaced after a while.</description>
-    <thingClass>Building_TrapDamager</thingClass>
+    <description>Wooden stakes placed in a row to build defensive fortifications. Very cheap and quick to build, provides basic cover and is also very difficult to traverse. Some part needs to replaced after a while.</description>
     <category>Building</category>
     <graphicData>
       <texPath>Things/Security/CavalrySpikes/CavalrySpikes</texPath>
@@ -65,29 +64,24 @@
     <uiIconPath>Things/Security/CavalrySpikes/CavalrySpikes_south</uiIconPath>
     <tickerType>Normal</tickerType>
     <altitudeLayer>Building</altitudeLayer>
-    <pathCost>40</pathCost>
+    <pathCost>200</pathCost>
     <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <!-- <staticSunShadowHeight>0.35</staticSunShadowHeight> -->
-    <fillPercent>0.70</fillPercent>
+    <fillPercent>0.40</fillPercent>
     <canOverlapZones>false</canOverlapZones>
     <costList>
-      <WoodLog>10</WoodLog>
+      <WoodLog>6</WoodLog>
     </costList>
     <statBases>
-      <TrapMeleeDamage>5</TrapMeleeDamage>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>200</MaxHitPoints>
       <Flammability>1.0</Flammability>
-      <Beauty>1</Beauty>
-      <WorkToBuild>800</WorkToBuild>
-      <Mass>50</Mass>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>120</WorkToBuild>
     </statBases>
     <building>
       <ai_chillDestination>false</ai_chillDestination>
       <repairable>true</repairable>
-      <trapDamageCategory>Sharp</trapDamageCategory>
-      <trapDestroyOnSpring>false</trapDestroyOnSpring>
     </building>
     <coversFloor>false</coversFloor>
     <filthLeaving>Filth_RubbleBuilding</filthLeaving>
@@ -100,8 +94,8 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>2.0</fuelConsumptionRate>        <!-- 10 -->
-        <fuelCapacity>20.0</fuelCapacity>
+        <fuelConsumptionRate>0.6</fuelConsumptionRate>        <!-- 10 -->
+        <fuelCapacity>6.0</fuelCapacity>
         <fuelFilter>
           <thingDefs>
             <li>WoodLog</li>
@@ -110,7 +104,6 @@
         <initialFuelPercent>1</initialFuelPercent>
       </li>
     </comps>
-    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
   </ThingDef>
 
 </Defs>
