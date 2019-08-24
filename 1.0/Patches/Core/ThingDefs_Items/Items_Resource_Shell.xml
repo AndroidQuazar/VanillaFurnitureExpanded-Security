@@ -6,11 +6,6 @@
         <xpath>/Defs/ThingDef[defName="Bullet_Shell_Incendiary"]</xpath>
         <value>
             <li Class="VFESecurity.ThingDefExtension">
-                <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingIncendiary</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <shaderType>CutoutFlying</shaderType>
-                </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
                     <texPath>Things/Special/IncomingIncendiary</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
@@ -24,11 +19,6 @@
         <xpath>/Defs/ThingDef[defName="Bullet_Shell_EMP"]</xpath>
         <value>
             <li Class="VFESecurity.ThingDefExtension">
-                <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingEMP</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <shaderType>CutoutFlying</shaderType>
-                </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
                     <texPath>Things/Special/IncomingEMP</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
@@ -42,11 +32,6 @@
         <xpath>/Defs/ThingDef[defName="Bullet_Shell_Firefoam"]</xpath>
         <value>
             <li Class="VFESecurity.ThingDefExtension">
-                <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingFirefoam</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <shaderType>CutoutFlying</shaderType>
-                </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
                     <texPath>Things/Special/IncomingFirefoam</texPath>
                     <graphicClass>Graphic_Single</graphicClass>
@@ -60,11 +45,6 @@
         <xpath>/Defs/ThingDef[defName="Bullet_Shell_AntigrainWarhead"]</xpath>
         <value>
             <li Class="VFESecurity.ThingDefExtension">
-                <leavingSkyfallerGraphicData>
-                    <texPath>Things/Special/LeavingAntigrain</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <shaderType>CutoutFlying</shaderType>
-                </leavingSkyfallerGraphicData>
                 <incomingSkyfallerGraphicData>
                     <texPath>Things/Special/IncomingAntigrain</texPath>
                     <graphicClass>Graphic_Single</graphicClass>

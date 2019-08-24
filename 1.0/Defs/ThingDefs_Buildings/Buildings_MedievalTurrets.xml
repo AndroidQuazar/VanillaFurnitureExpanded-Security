@@ -86,7 +86,6 @@
       <turretTopGraphicPath>Things/Building/Ballista/TurretBallista_Top</turretTopGraphicPath>
       <turretTopDrawSize>3</turretTopDrawSize>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
-      <expandHomeArea>false</expandHomeArea>
     </building>
     <repairEffect>ConstructDirt</repairEffect>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
@@ -245,7 +244,6 @@
       <turretGunDef>VFES_Artillery_Catapult</turretGunDef>
       <turretTopGraphicPath>Things/Building/Catapult/TurretCatapult_Top</turretTopGraphicPath>
       <turretTopDrawSize>3</turretTopDrawSize>
-      <expandHomeArea>false</expandHomeArea>
     </building>
     <repairEffect>ConstructDirt</repairEffect>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>

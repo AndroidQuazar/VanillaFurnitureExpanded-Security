@@ -5,6 +5,9 @@
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/WorldObjectDef[defName="Settlement"]/comps</xpath>
         <value>
+            <li>
+                <compClass>VFESecurity.RetaliationTracker</compClass>
+            </li>
             <li Class="VFESecurity.WorldObjectCompProperties_Artillery">
                 <bombardmentDurationRange>60000~120000</bombardmentDurationRange>
                 <bombardmentCooldownRange>300000~480000</bombardmentCooldownRange>
@@ -12,7 +15,8 @@
                 <defaultArtilleryCountCurve>
                     <points>
                         <li>(0, 1)</li>
-                        <li>(1, 1)</li>
+                        <li>(0.5, 1)</li>
+                        <li>(1, 2)</li>
                     </points>
                 </defaultArtilleryCountCurve>
             </li>

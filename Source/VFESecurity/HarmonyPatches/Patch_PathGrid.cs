@@ -30,21 +30,37 @@ namespace VFESecurity
                 
                 var pathCostInfo = AccessTools.Field(typeof(BuildableDef), nameof(BuildableDef.pathCost));
 
-                var finalPathCostInfo = AccessTools.Method(typeof(CalculatedCostAt), nameof(FinalPathCost));
+                var mapInfo = AccessTools.Field(typeof(PathGrid), "map");
+
+                var finalTerrainPathCostInfo = AccessTools.Method(typeof(CalculatedCostAt), nameof(FinalTerrainPathCost));
+                var finalThingPathCostInfo = AccessTools.Method(typeof(CalculatedCostAt), nameof(FinalThingPathCost));
 
                 for (int i = 0; i < instructionList.Count; i++)
                 {
                     var instruction = instructionList[i];
 
-                    // Add our helper method call to each reference to pathCost from a ThingDef
+                    // Add our helper method call to each reference to pathCost from...
                     if (instruction.opcode == OpCodes.Ldfld && instruction.operand == pathCostInfo)
                     {
                         var prevInstruction = instructionList[i - 1];
+
+                        // ...a ThingDef
                         if (prevInstruction.opcode == OpCodes.Ldfld && prevInstruction.operand == defInfo)
                         {
                             yield return instruction; // thing.def.pathCost
                             yield return instructionList[i - 2].Clone(); // thing
-                            instruction = new CodeInstruction(OpCodes.Call, finalPathCostInfo); // FinalPathCost(thing.def.pathCost, thing)
+                            instruction = new CodeInstruction(OpCodes.Call, finalThingPathCostInfo); // FinalPathCost(thing.def.pathCost, thing)
+                        }
+
+                        // ...a TerrainDef
+                        if (prevInstruction.opcode == OpCodes.Ldloc_2)
+                        {
+                            yield return instruction; // terrainDef.pathCost
+                            yield return prevInstruction.Clone(); // terrain
+                            yield return new CodeInstruction(OpCodes.Ldarg_3); // prevCell
+                            yield return new CodeInstruction(OpCodes.Ldarg_0); // this
+                            yield return new CodeInstruction(OpCodes.Ldfld, mapInfo); // this.map
+                            instruction = new CodeInstruction(OpCodes.Call, finalTerrainPathCostInfo); // FinalTerrainPathCost(terrainDef.pathCost, terrain, prevCell, this.map)
                         }
                     }
 
@@ -52,7 +68,28 @@ namespace VFESecurity
                 }
             }
 
-            private static int FinalPathCost(int original, Thing t)
+            private static int FinalTerrainPathCost(int original, TerrainDef terrain, IntVec3 prevCell, Map map)
+            {
+                if (prevCell.IsValid)
+                {
+                    var prevTerrain = map.terrainGrid.TerrainAt(prevCell);
+                    if (terrain != prevTerrain)
+                    {
+                        // Entering terrain
+                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        if (terrainDefExtension.pathCostEntering > -1)
+                            return terrainDefExtension.pathCostEntering;
+
+                        // Exiting terrain
+                        var prevTerrainDefExtension = prevTerrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        if (prevTerrainDefExtension.pathCostLeaving > -1)
+                            return prevTerrainDefExtension.pathCostLeaving;
+                    }
+                }
+                return original;
+            }
+
+            private static int FinalThingPathCost(int original, Thing t)
             {
                 if (t.IsSubmersible(out CompSubmersible retractableComp) && retractableComp.Submerged)
                     return retractableComp.Props.submergedPathCost;

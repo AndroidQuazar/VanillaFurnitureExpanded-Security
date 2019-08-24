@@ -44,7 +44,7 @@ namespace VFESecurity
             }
         }
 
-        private bool CanFunction => PowerTraderComp == null || PowerTraderComp.PowerOn;
+        private bool CanFunction => (PowerTraderComp == null || PowerTraderComp.PowerOn) && !this.IsBrokenDown();
         //public bool Active => ParentHolder is Map && CanFunction && GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction);
         public float Energy
         {
@@ -128,7 +128,7 @@ namespace VFESecurity
                         EnergyShieldTick();
                 }
                 else if (PowerTraderComp != null)
-                    PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactiveShieldGenPowerConsumption;
+                    PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactivePowerConsumption;
             }
 
             base.Tick();
@@ -199,7 +199,13 @@ namespace VFESecurity
             {
                 MoteMaker.ThrowDustPuff(loc, Map, Rand.Range(0.8f, 1.2f));
             }
-            Energy -= amount * EnergyLossMultiplier(def) * EnergyLossPerDamage;
+            float energyLoss = amount * EnergyLossMultiplier(def) * EnergyLossPerDamage;
+            Energy -= energyLoss;
+
+            // try to do short circuit
+            if (Rand.Chance(energyLoss * ExtendedBuildingProps.shortCircuitChancePerEnergyLost))
+                GenExplosion.DoExplosion(this.OccupiedRect().RandomCell, Map, 1.9f, DamageDefOf.Flame, null);
+
             lastAbsorbDamageTick = Find.TickManager.TicksGame;
         }
 
@@ -220,7 +226,7 @@ namespace VFESecurity
                     pos += impactAngleVect * sizeMod;
                     size -= sizeMod;
                 }
-                float angle = Rand.Range(0, 360);
+                float angle = Rand.Range(0, 45);
                 Vector3 s = new Vector3(size, 1f, size);
                 Matrix4x4 matrix = default;
                 matrix.SetTRS(pos, Quaternion.AngleAxis(angle, Vector3.up), s);

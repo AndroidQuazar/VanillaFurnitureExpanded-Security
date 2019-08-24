@@ -33,6 +33,15 @@ namespace VFESecurity
                 yield return "parentDef is not a turret.";
         }
 
+        public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
+        {
+            foreach (var entry in base.SpecialDisplayStats(req))
+                yield return entry;
+
+            // World tile range
+            yield return new StatDrawEntry(StatCategoryDefOf.Weapon, "VFESecurity.WorldTileRange".Translate(), worldTileRange.ToString());
+        }
+
     }
 
 }

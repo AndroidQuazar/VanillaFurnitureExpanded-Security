@@ -21,11 +21,13 @@ namespace VFESecurity
         public static readonly ThingDefExtension defaultValues = new ThingDefExtension();
 
         // Mortar shell projectile defs
-        public GraphicData leavingSkyfallerGraphicData;
         public GraphicData incomingSkyfallerGraphicData;
 
         // Skyfaller defs
         public int shieldDamageIntercepted = -1;
+
+        // Turrets
+        public bool? affectedByEMPs;
 
     }
 

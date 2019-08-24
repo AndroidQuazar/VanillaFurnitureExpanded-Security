@@ -22,21 +22,22 @@ namespace VFESecurity
         {
 
             private const float Radius = 15;
+
             public static void Postfix(Pawn p, ref ThoughtState __result)
             {
                 var pawnTracker = p.GetComp<CompPawnTracker>();
-                if (p.Spawned && __result.StageIndex < pawnTracker.PsychicPylonThoughtDegree)
+                if (p.Spawned && __result.StageIndex < 4)
                 {
                     var psychicPylons = p.Map.listerThings.ThingsOfDef(ThingDefOf.VFES_PsychicPylon);
                     foreach (var pylon in psychicPylons)
                     {
                         var faction = pylon.Faction;
                         var powerComp = pylon.TryGetComp<CompPowerTrader>();
-                        if ((powerComp == null || powerComp.PowerOn) && p.GetStatValue(RimWorld.StatDefOf.PsychicSensitivity) > 0 && (p.Faction == null || p.Faction.HostileTo(pylon.Faction)) && p.Position.InHorDistOf(pylon.Position, Radius))
+                        if ((powerComp == null || powerComp.PowerOn) && p.GetStatValue(RimWorld.StatDefOf.PsychicSensitivity) > 0 && (p.Faction == null || p.Faction.HostileTo(pylon.Faction)) 
+                            && (p.guest == null || !p.guest.IsPrisoner || PrisonBreakUtility.IsPrisonBreaking(p)) && p.Position.InHorDistOf(pylon.Position, Radius))
                         {
-                            __result = ThoughtState.ActiveAtStage(pawnTracker.PsychicPylonThoughtDegree);
+                            __result = ThoughtState.ActiveAtStage(4);
                             pawnTracker.psychicPylonExposureTicks += 300; // Thoughts update every 150 ticks
-                            return;
                         }
                     }
                 }

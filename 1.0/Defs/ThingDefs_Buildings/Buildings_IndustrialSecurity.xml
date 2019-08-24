@@ -59,7 +59,6 @@
       <trapPeacefulWildAnimalsSpringChanceFactor>0</trapPeacefulWildAnimalsSpringChanceFactor>
       <trapDestroyOnSpring>false</trapDestroyOnSpring>
       <trapDamageCategory>Sharp</trapDamageCategory>
-      <expandHomeArea>false</expandHomeArea>
       <ai_chillDestination>false</ai_chillDestination>
       <blueprintGraphicData>
         <texPath>Things/Security/BarbedWire/BarbedWire_Blueprint_Atlas</texPath>
@@ -82,8 +81,6 @@
     <defName>VFES_Trench</defName>
     <label>trench</label>
     <description>A long, narrow ditch dug into the ground. Crossing it requires climbing up and down, therefore it significantly slows down movement speed.</description>
-    <thingClass>Building</thingClass>
-    <category>Building</category>
     <graphicData>
       <texPath>Things/Security/Trench/Trench_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -91,12 +88,12 @@
       <linkFlags>
         <li>Custom6</li>
       </linkFlags>
-      <damageData>
+      <!-- <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
         <cornerBL>Damage/Corner</cornerBL>
         <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
+      </damageData> -->
     </graphicData>
     <techLevel>Industrial</techLevel>
     <uiIconPath>Things/Security/Trench/Trench_MenuIcon</uiIconPath>
@@ -104,35 +101,32 @@
       <li>Woody</li>
     </stuffCategories>
     <costStuffCount>10</costStuffCount> -->
+    <comps>
+      <li Class="VFESecurity.CompProperties_TerrainSetter">
+        <terrainDef>VFES_TrenchTerrain</terrainDef>
+      </li>
+    </comps>
     <costList>
       <WoodLog>5</WoodLog>
     </costList>
     <statBases>
-      <Mass>2</Mass>
-      <MaxHitPoints>1500</MaxHitPoints>
-      <WorkToBuild>1200</WorkToBuild>
-      <Flammability>0</Flammability>
+      <MaxHitPoints>750</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0.2</Flammability>
     </statBases>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <altitudeLayer>Floor</altitudeLayer>
     <passability>Standable</passability>
     <blockWind>false</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
-    <fillPercent>0.85</fillPercent>
-    <pathCost>140</pathCost>    <!-- How difficult it is to cross the obstacle-->
-    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <pathCost>0</pathCost>
     <coversFloor>true</coversFloor>
-    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <placingDraggableDimensions>2</placingDraggableDimensions>
     <tickerType>Never</tickerType>
     <rotatable>false</rotatable>
     <selectable>true</selectable>
     <stealable>false</stealable>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <neverMultiSelect>false</neverMultiSelect>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
     <holdsRoof>false</holdsRoof>
     <designationCategory>Security</designationCategory>
     <staticSunShadowHeight>0</staticSunShadowHeight>
@@ -170,10 +164,10 @@
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <fillPercent>0.4</fillPercent>
+    <fillPercent>0.25</fillPercent>
     <castEdgeShadows>true</castEdgeShadows>
     <costList>
-      <Steel>80</Steel>
+      <Steel>150</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <tickerType>Normal</tickerType>
@@ -181,18 +175,17 @@
       <li Class="CompProperties_Explosive">
         <explosiveRadius>3.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
-        <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
         <wickTicks>
-          <min>0</min>
+          <min>20</min>
           <max>60</max>
         </wickTicks>
       </li>
     </comps>
     <statBases>
-      <MaxHitPoints>1000</MaxHitPoints>
+      <MaxHitPoints>100</MaxHitPoints>
       <Mass>15</Mass>
       <WorkToBuild>1000</WorkToBuild>
-      <Flammability>1</Flammability>
+      <Flammability>0.5</Flammability>
     </statBases>
     <size>(1,1)</size>
     <building>
@@ -210,9 +203,10 @@
     <inspectorTabs>
       <li>ITab_Storage</li>
     </inspectorTabs>
-    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
+    <specialDisplayRadius>2.9</specialDisplayRadius>
     <researchPrerequisites>
       <li>Fabrication</li>
     </researchPrerequisites>

@@ -102,7 +102,7 @@ namespace VFESecurity
         public override string TransformLabel(string label)
         {
             if (Submerged)
-                label += $" ({"VFESecurity.Retracted".Translate()})";
+                label += $" ({"VFESecurity.Submerged".Translate()})";
             return label;
         }
 

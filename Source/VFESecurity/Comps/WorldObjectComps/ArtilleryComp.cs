@@ -21,6 +21,7 @@ namespace VFESecurity
         private const int BombardmentStartDelay = GenTicks.TicksPerRealSecond * 5;
 
         private WorldObjectCompProperties_Artillery Props => (WorldObjectCompProperties_Artillery)props;
+        private RetaliationTracker RetaliationTracker => parent.GetComponent<RetaliationTracker>();
 
         private ThingDef ArtilleryDef
         {
@@ -46,7 +47,7 @@ namespace VFESecurity
                 return bombardmentDurationTicks > 0;
             }
         }
-        private bool CanAttack => HasArtillery && !Attacking && bombardmentCooldownTicks <= 0;
+        private bool CanAttack => HasArtillery && !Attacking && RetaliationTracker.recentRetaliationTicks <= 0;
 
         private CompProperties_LongRangeArtillery ArtilleryProps => cachedArtilleryDef.GetCompProperties<CompProperties_LongRangeArtillery>();
 
@@ -124,9 +125,6 @@ namespace VFESecurity
                     if (bombardmentDurationTicks == 0)
                         EndBombardment();
                 }
-
-                if (bombardmentCooldownTicks > 0)
-                    bombardmentCooldownTicks--;
             }
         }
 
@@ -137,7 +135,7 @@ namespace VFESecurity
                 Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Add(parent);
                 artilleryCooldownTicks = BombardmentStartDelay;
                 bombardmentDurationTicks = Props.bombardmentDurationRange.RandomInRange;
-                bombardmentCooldownTicks = Props.bombardmentCooldownRange.RandomInRange;
+                RetaliationTracker.recentRetaliationTicks = Props.bombardmentCooldownRange.RandomInRange;
                 Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikeSettlement_Letter".Translate(), "VFESecurity.ArtilleryStrikeSettlement_LetterText".Translate(parent.Faction.def.pawnsPlural, parent.Label), LetterDefOf.ThreatBig, parent);
             }
         }
@@ -162,7 +160,6 @@ namespace VFESecurity
             Scribe_Values.Look(ref artilleryWarmupTicks, "artilleryWarmupTicks", -1);
             Scribe_Values.Look(ref artilleryCooldownTicks, "artilleryCooldownTicks");
             Scribe_Values.Look(ref bombardmentDurationTicks, "bombardmentDurationTicks");
-            Scribe_Values.Look(ref bombardmentCooldownTicks, "bombardmentCooldownTicks");
             Scribe_Collections.Look(ref artillery, "artillery", LookMode.Reference);
             base.PostExposeData();
         }
@@ -171,7 +168,6 @@ namespace VFESecurity
         private int artilleryWarmupTicks = -1;
         private int artilleryCooldownTicks;
         private int bombardmentDurationTicks;
-        private int bombardmentCooldownTicks;
         public HashSet<Thing> artillery = new HashSet<Thing>();
 
         private ThingDef cachedArtilleryDef;

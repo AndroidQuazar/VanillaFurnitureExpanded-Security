@@ -17,7 +17,7 @@ namespace VFESecurity
     public class CompPawnTracker : ThingComp
     {
 
-        private const int BaseExposureForExtremeDrone = 1800;
+        private const int HighPylonExposureThreshold = 1800;
 
         private Pawn Pawn => (Pawn)parent;
 
@@ -30,12 +30,17 @@ namespace VFESecurity
                 psychicPylonExposureTicks--;
         }
 
-        public int PsychicPylonThoughtDegree
+        public bool HighPsychicPylonExposure
         {
             get
             {
-                int finalExposureTicks = Mathf.RoundToInt(BaseExposureForExtremeDrone * Pawn.GetStatValue(RimWorld.StatDefOf.PsychicSensitivity));
-                return psychicPylonExposureTicks < finalExposureTicks ? 3 : 4;
+                float psychicSensitivity = Pawn.GetStatValue(RimWorld.StatDefOf.PsychicSensitivity);
+                if (psychicSensitivity > 0)
+                {
+                    int finalExposureTicks = Mathf.RoundToInt(HighPylonExposureThreshold / psychicSensitivity);
+                    return psychicPylonExposureTicks >= finalExposureTicks;
+                }
+                return false;
             }
         }
 

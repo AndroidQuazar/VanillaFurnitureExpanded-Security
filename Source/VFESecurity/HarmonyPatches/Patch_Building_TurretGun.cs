@@ -25,12 +25,16 @@ namespace VFESecurity
             public static void Postfix(Building_TurretGun __instance)
             {
                 var artilleryComp = __instance.TryGetComp<CompLongRangeArtillery>();
-                if (artilleryComp != null && artilleryComp.targetedTile != TargetInfo.Invalid && artilleryComp.CanLaunch)
+                if (artilleryComp != null && artilleryComp.targetedTile != TargetInfo.Invalid)
                 {
                     var edgeCell = artilleryComp.FacingEdgeCell;
+
                     // Warmup pie
-                    if (artilleryComp.warmupTicksLeft > 0)
-                        GenDraw.DrawAimPie(__instance, edgeCell, (int)(artilleryComp.warmupTicksLeft * 0.5f), __instance.def.size.x * 0.5f);
+                    if (artilleryComp.CanLaunch)
+                    {
+                        if (artilleryComp.warmupTicksLeft > 0)
+                            GenDraw.DrawAimPie(__instance, edgeCell, (int)(artilleryComp.warmupTicksLeft * 0.5f), __instance.def.size.x * 0.5f);
+                    }
 
                     // Targeting lines
                     var a = __instance.TrueCenter();

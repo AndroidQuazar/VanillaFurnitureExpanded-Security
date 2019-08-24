@@ -21,21 +21,53 @@ namespace VFESecurity
 
         private static List<ArtilleryStrikeLeaving> tmpActiveArtilleryStrikes = new List<ArtilleryStrikeLeaving>();
 
+        public LocalTargetInfo startCell;
+        public LocalTargetInfo edgeCell;
+        public float rotation;
         public int groupID;
         private bool alreadyLeft;
         public int destinationTile;
         public ArtilleryStrikeArrivalAction arrivalAction;
 
+        private Graphic cachedShellGraphic;
+
         protected override ThingDef ShellDef => ((ActiveArtilleryStrike)innerContainer[0]).shellDef;
+
+        public override Vector3 DrawPos => Vector3.Lerp(startCell.CenterVector3, edgeCell.CenterVector3, (float)ticksToImpact / 220);
 
         public override Graphic Graphic
         {
             get
             {
-                if (ShellDef.GetModExtension<ThingDefExtension>() is ThingDefExtension thingDefExtension && thingDefExtension.leavingSkyfallerGraphicData != null)
-                    return thingDefExtension.leavingSkyfallerGraphicData.Graphic;
-                return base.Graphic;
+                if (cachedShellGraphic == null)
+                {
+                    var impliedGraphicData = new GraphicData();
+                    impliedGraphicData.CopyFrom(ShellDef.graphicData);
+                    impliedGraphicData.shaderType = ShaderTypeDefOf.CutoutFlying;
+                    cachedShellGraphic = impliedGraphicData.Graphic;
+                }
+                return cachedShellGraphic;
             }
+        }
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            if (!respawningAfterLoad)
+            {
+                angle = rotation;
+            }
+        }
+
+        public override void Tick()
+        {
+            Position = DrawPos.ToIntVec3();
+            base.Tick();
+        }
+
+        public override void DrawAt(Vector3 drawLoc, bool flip = false)
+        {
+            base.DrawAt(drawLoc, flip);
         }
 
         protected override void LeaveMap()
@@ -77,6 +109,9 @@ namespace VFESecurity
 
         public override void ExposeData()
         {
+            Scribe_TargetInfo.Look(ref startCell, "startCell");
+            Scribe_TargetInfo.Look(ref edgeCell, "edgeCell");
+            Scribe_Values.Look(ref rotation, "rotation");
             Scribe_Values.Look(ref groupID, "groupID");
             Scribe_Values.Look(ref destinationTile, "destinationTile");
             Scribe_Deep.Look(ref arrivalAction, "arrivalAction");

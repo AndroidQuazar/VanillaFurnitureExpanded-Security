@@ -22,6 +22,10 @@ namespace VFESecurity
 
         public static readonly Texture2D TargetWorldTileIcon = ContentFinder<Texture2D>.Get("UI/Commands/ArtilleryTargetTile");
 
+        private static IEnumerable<CompLongRangeArtillery> SelectedComps =>
+            Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing th && th.TryGetComp<CompLongRangeArtillery>() != null).Select(o => ((Thing)o).TryGetComp<CompLongRangeArtillery>());
+        private static int ShortestSelectedCompRange => SelectedComps.MinBy(a => a.Props.worldTileRange).Props.worldTileRange;
+
         public CompProperties_LongRangeArtillery Props => (CompProperties_LongRangeArtillery)props;
 
         private Building_TurretGun Turret => (Building_TurretGun)parent;
@@ -144,7 +148,7 @@ namespace VFESecurity
             CameraJumper.TryJump(CameraJumper.GetWorldTarget(parent));
             Find.WorldSelector.ClearSelection();
             int tile = parent.Map.Tile;
-            Find.WorldTargeter.BeginTargeting(ChooseWorldTarget, true, (Texture2D)Turret.def.building.turretTopMat.mainTexture, true, () => GenDraw.DrawWorldRadiusRing(tile, Props.worldTileRange), TargetChooserLabel);
+            Find.WorldTargeter.BeginTargeting(ChooseWorldTarget, true, (Texture2D)Turret.def.building.turretTopMat.mainTexture, true, () => GenDraw.DrawWorldRadiusRing(tile, ShortestSelectedCompRange), TargetChooserLabel);
         }
 
         public bool ChooseWorldTarget(GlobalTargetInfo t)
@@ -158,14 +162,14 @@ namespace VFESecurity
 
             // Out of range
             int parentMap = parent.Map.Tile;
-            if (Find.WorldGrid.TraversalDistanceBetween(parentMap, t.Tile) > Props.worldTileRange)
+            if (Find.WorldGrid.TraversalDistanceBetween(parentMap, t.Tile) > ShortestSelectedCompRange)
             {
                 Messages.Message("VFESecurity.MessageTargetWorldTileOutOfRange".Translate(parent.def.label), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
 
             // Transport pods or artillery strike
-            if (t.WorldObject is TravellingArtilleryStrike || t.WorldObject is TravellingArtilleryStrike)
+            if (t.WorldObject is TravelingTransportPods || t.WorldObject is TravellingArtilleryStrike)
             {
                 Messages.Message("VFESecurity.TargetWorldFlyingObject".Translate(), MessageTypeDefOf.RejectInput, false);
                 return false;
@@ -305,8 +309,7 @@ namespace VFESecurity
         {
             CameraJumper.TryHideWorld();
 
-            var allSelectedComps = Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing th && th.TryGetComp<CompLongRangeArtillery>() != null).Select(o => ((Thing)o).TryGetComp<CompLongRangeArtillery>());
-            foreach (var comp in allSelectedComps)
+            foreach (var comp in SelectedComps)
             {
                 NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
                 NonPublicMethods.Building_TurretGun_ResetCurrentTarget(comp.Turret);
@@ -338,7 +341,14 @@ namespace VFESecurity
 
                     // Settlement - cause badwill, potentially cause an artillery retaliation and potentially destroy
                     if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
+                    {
+                        // Special case: Insectoids from Vanilla Factions Expanded
+                        if (ModCompatibilityCheck.VanillaFactionsExpanded && settlement.Faction.def == FactionDefNamed.VFE_Insectoids)
+                            return new ArtilleryStrikeArrivalAction_Insectoid(settlement, parent.Map);
+
+                        // Standard
                         return new ArtilleryStrikeArrivalAction_Settlement(settlement);
+                    }
 
                     if (worldObject is Site site)
                     {
@@ -390,12 +400,14 @@ namespace VFESecurity
             NonPublicMethods.Building_TurretGun_BurstComplete(Turret);
 
             var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFES_ArtilleryStrikeLeaving, activeArtilleryStrike);
+            artilleryStrikeLeaving.startCell = parent.Position;
+            artilleryStrikeLeaving.edgeCell = FacingEdgeCell;
+            artilleryStrikeLeaving.rotation = CurAngle;
             artilleryStrikeLeaving.destinationTile = destinationTile;
             artilleryStrikeLeaving.arrivalAction = arrivalAction;
             artilleryStrikeLeaving.groupID = Find.TickManager.TicksGame;
 
-            var skyfallerPos = GenAdj.CellsAdjacent8Way(parent).MinBy(c => Mathf.Abs(CurAngle - (c - parent.Position).AngleFlat));
-            GenSpawn.Spawn(artilleryStrikeLeaving, skyfallerPos, parent.Map);
+            GenSpawn.Spawn(artilleryStrikeLeaving, parent.Position, parent.Map);
         }
 
         public override void PostExposeData()

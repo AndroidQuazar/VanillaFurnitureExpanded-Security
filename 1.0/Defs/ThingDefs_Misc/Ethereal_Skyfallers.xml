@@ -31,6 +31,7 @@
             <movementType>ConstantSpeed</movementType>
             <reversed>true</reversed>
             <ticksToImpactRange>-1~-1</ticksToImpactRange>
+            <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
         </skyfaller>
     </ThingDef>
 

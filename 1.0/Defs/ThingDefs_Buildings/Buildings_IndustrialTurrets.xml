@@ -87,7 +87,6 @@
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_MilitaryTurret</turretGunDef>
       <turretBurstCooldownTime>6.6</turretBurstCooldownTime>
@@ -210,7 +209,6 @@
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_Searchlight</turretGunDef>
       <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
@@ -351,7 +349,6 @@
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>15.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_FlameTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
@@ -509,7 +506,6 @@
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_SentryTurret</turretGunDef>
       <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
@@ -523,6 +519,11 @@
     <researchPrerequisites>
       <li>VFES_SentryGuns</li>
     </researchPrerequisites>
+    <modExtensions>
+      <li Class="VFESecurity.ThingDefExtension">
+        <affectedByEMPs>true</affectedByEMPs>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BaseHumanGun">

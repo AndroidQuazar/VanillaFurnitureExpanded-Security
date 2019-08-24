@@ -83,58 +83,50 @@
     <uiIconPath>Things/Security/ChargeComplex/ChargeComplex_MenuIcon</uiIconPath>
     <uiIconScale>0.90</uiIconScale>
     <size>(3,1)</size>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>true</rotatable>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>120</costStuffCount>
+    <costStuffCount>25</costStuffCount>
     <costList>
-      <Plasteel>80</Plasteel>
+      <Plasteel>50</Plasteel>
       <ComponentSpacer>2</ComponentSpacer>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <statBases>
-      <MaxHitPoints>850</MaxHitPoints>
-      <Flammability>0.3</Flammability>
-      <WorkToBuild>20250</WorkToBuild>
-      <Mass>90</Mass>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkToBuild>14000</WorkToBuild>
       <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_Mannable">
         <manWorkType>Violent</manWorkType>
       </li>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>1.4</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.85</chanceNeverExplodeFromDamage>
-      </li>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Refuelable">
-        <fuelLabel>Shots until barrel change</fuelLabel>
-        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelLabel>Shots until battery replacement</fuelLabel>
+        <fuelGizmoLabel>Shots remaining</fuelGizmoLabel>
         <fuelFilter>
           <thingDefs>
-            <li>Steel</li>
+            <li>ComponentIndustrial</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>100</fuelCapacity>
+        <fuelCapacity>200</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
-        <autoRefuelPercent>0.75</autoRefuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>1</fuelMultiplier>
+        <fuelMultiplier>100</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
+        <outOfFuelMessage>Cannot shoot: Needs new battery</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
     </comps>
@@ -142,23 +134,23 @@
     <hasInteractionCell>true</hasInteractionCell>
     <castEdgeShadows>true</castEdgeShadows>
     <passability>PassThroughOnly</passability>
-    <pathCost>60</pathCost>
+    <pathCost>70</pathCost>
     <fillPercent>0.70</fillPercent>
     <hasTooltip>true</hasTooltip>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>34.9</specialDisplayRadius>
+    <specialDisplayRadius>25.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ChargeComplex</turretGunDef>
-      <turretBurstCooldownTime>0.4</turretBurstCooldownTime>
+      <turretBurstCooldownTime>0.7</turretBurstCooldownTime>
+      <turretBurstWarmupTime>0.35</turretBurstWarmupTime>
       <turretTopGraphicPath>Things/Security/ChargeComplex/ChargeComplexGun</turretTopGraphicPath>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>VFES_PulseChargedDefenses</li>
     </researchPrerequisites>
@@ -166,7 +158,7 @@
 
   <ThingDef ParentName="BaseHumanGun">
     <defName>VFES_Gun_ChargeComplex</defName>
-    <label>charge turret gun</label>
+    <label>charge gun emplacement</label>
     <description>A charge gun made to be mounted on a turret.</description>
     <graphicData>
       <texPath>Things/Security/ChargeComplex/ChargeComplexGun</texPath>
@@ -178,11 +170,11 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.48</AccuracyTouch>
-      <AccuracyShort>0.55</AccuracyShort>
-      <AccuracyMedium>0.55</AccuracyMedium>
-      <AccuracyLong>0.45</AccuracyLong>
-      <RangedWeapon_Cooldown>0.4</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.7</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>6</Mass>
       <Flammability>0</Flammability>
@@ -195,8 +187,8 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_ChargeComplex</defaultProjectile>
-        <warmupTime>0</warmupTime>
-        <range>34.9</range>
+        <warmupTime>0.35</warmupTime>
+        <range>25.9</range>
         <burstShotCount>1</burstShotCount>
         <soundCast>Shot_ChargeBlaster</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
@@ -215,10 +207,9 @@
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>10</damageAmountBase>
-      <armorPenetrationBase>0.25</armorPenetrationBase>
-      <stoppingPower>1.5</stoppingPower>
-      <speed>60</speed>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationBase>0.35</armorPenetrationBase>
+      <speed>70</speed>
     </projectile>
   </ThingDef>
 

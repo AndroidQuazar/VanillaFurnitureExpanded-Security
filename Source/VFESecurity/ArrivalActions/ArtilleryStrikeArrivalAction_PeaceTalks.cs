@@ -51,7 +51,7 @@ namespace VFESecurity
                         Find.Storyteller.incidentQueue.Add(IncidentDefOf.RaidEnemy, Find.TickManager.TicksGame + RaidIntervalRange.RandomInRange, parms);
                     }
 
-                    Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikePeaceTalks_Letter".Translate(), "VFESecurity.ArtilleryStrikePeaceTalks_LetterText".Translate(faction.Name), LetterDefOf.NegativeEvent);
+                    Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikeProvokedGeneric_Letter".Translate(peaceTalks.def.label), "VFESecurity.ArtilleryStrikePeaceTalks_LetterText".Translate(faction.Name), LetterDefOf.NegativeEvent);
                     Find.WorldObjects.Remove(peaceTalks);
 
                     if (ArtilleryComp != null)

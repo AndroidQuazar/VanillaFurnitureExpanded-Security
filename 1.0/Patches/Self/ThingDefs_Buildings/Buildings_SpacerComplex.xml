@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- If Turret Extensions is active, make the charge complex use the manning pawn's stats -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>[XND] Turret Extensions</li>
+        </mods>
+        <match Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="VFES_Turret_ChargeComplex"]</xpath>
+            <value>
+                <li Class="TurretExtensions.TurretFrameworkExtension">
+                    <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
+                    <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+                </li>
+            </value>
+        </match>
+    </Operation>
+
+</Patch

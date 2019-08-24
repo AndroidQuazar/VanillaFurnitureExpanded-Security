@@ -20,7 +20,8 @@ namespace VFESecurity
 
         public static readonly ExtendedBuildingProperties defaultValues = new ExtendedBuildingProperties();
 
-        public float inactiveShieldGenPowerConsumption;
+        public float shortCircuitChancePerEnergyLost;
+        public float inactivePowerConsumption;
         public Color shieldColour = Color.white;
 
     }

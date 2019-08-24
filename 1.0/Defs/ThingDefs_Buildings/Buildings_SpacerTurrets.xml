@@ -89,7 +89,6 @@
     <specialDisplayRadius>25.9</specialDisplayRadius>
     <canOverlapZones>true</canOverlapZones>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ChargeTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
@@ -229,7 +228,6 @@
     <specialDisplayRadius>44.9</specialDisplayRadius>
     <canOverlapZones>true</canOverlapZones>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_RailgunTurret</turretGunDef>
       <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
@@ -388,7 +386,6 @@
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>44.9</specialDisplayRadius>
     <building>
-      <expandHomeArea>false</expandHomeArea>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_EMPTurret</turretGunDef>
       <turretBurstCooldownTime>3.5</turretBurstCooldownTime>

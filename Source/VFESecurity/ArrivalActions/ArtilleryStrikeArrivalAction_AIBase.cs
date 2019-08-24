@@ -73,10 +73,12 @@ namespace VFESecurity
         public override void ExposeData()
         {
             Scribe_References.Look(ref worldObject, "worldObject");
+            Scribe_References.Look(ref sourceMap, "sourceMap");
             base.ExposeData();
         }
 
         protected WorldObject worldObject;
+        protected Map sourceMap;
 
     }
 

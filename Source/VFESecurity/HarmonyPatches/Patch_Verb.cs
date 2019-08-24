@@ -29,7 +29,43 @@ namespace VFESecurity
             }
 
         }
-        
+
+        [HarmonyPatch(typeof(Verb), nameof(Verb.TryFindShootLineFromTo))]
+        public static class TryFindShootLineFromTo
+        {
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                var instructionList = instructions.ToList();
+
+                var rangeInfo = AccessTools.Field(typeof(VerbProperties), nameof(VerbProperties.range));
+
+                var finaliseAdjustedRangeInfo = AccessTools.Method(typeof(TryFindShootLineFromTo), nameof(FinaliseAdjustedRange));
+
+                for (int i = 0; i < instructionList.Count; i++)
+                {
+                    var instruction = instructionList[i];
+
+                    if (instruction.opcode == OpCodes.Ldfld && instruction.operand == rangeInfo)
+                    {
+                        yield return instruction; // this.verbProps.range
+                        yield return new CodeInstruction(OpCodes.Ldarg_0); // this
+                        yield return new CodeInstruction(OpCodes.Ldarg_2); // targ
+
+                        instruction = new CodeInstruction(OpCodes.Call, finaliseAdjustedRangeInfo); // FinaliseAdjustedRange(this.verbProps.range, this, targ)
+                    }
+
+                    yield return instruction;
+                }
+            }
+
+            private static float FinaliseAdjustedRange(float original, Verb instance, LocalTargetInfo targ)
+            {
+                return TrenchUtility.FinalAdjustedRangeFromTerrain(original, instance.verbProps.minRange, targ, instance.caster.Map);
+            }
+
+        }
+
 
     }
 

@@ -64,6 +64,7 @@ namespace VFESecurity
         {
             if (!destroyed)
             {
+                // Otherwise artillery retaliation
                 var artilleryComp = Settlement.GetComponent<ArtilleryComp>();
                 if (artilleryComp != null)
                     artilleryComp.TryStartBombardment();

@@ -30,6 +30,54 @@ namespace VFESecurity
 
         }
 
+        [HarmonyPatch(typeof(CoverUtility), nameof(CoverUtility.CalculateCoverGiverSet))]
+        public static class CalculateCoverGiverSet
+        {
+
+            public static void Postfix(LocalTargetInfo target, Map map, ref List<CoverInfo> __result)
+            {
+                var things = target.Cell.GetThingList(map);
+                foreach (var thing in things)
+                {
+                    var terrainSetter = thing.def.GetCompProperties<CompProperties_TerrainSetter>();
+                    if (terrainSetter != null)
+                    {
+                        var terrain = terrainSetter.terrainDef;
+                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        if (terrainDefExtension.coverEffectiveness > 0)
+                        {
+                            __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
+                        }
+                    }
+                }
+            }
+
+        }
+
+        [HarmonyPatch(typeof(CoverUtility), nameof(CoverUtility.CalculateOverallBlockChance))]
+        public static class CalculateOverallBlockChance
+        {
+
+            public static void Postfix(LocalTargetInfo target, Map map, ref float __result)
+            {
+                var things = target.Cell.GetThingList(map);
+                foreach (var thing in things)
+                {
+                    var terrainSetter = thing.def.GetCompProperties<CompProperties_TerrainSetter>();
+                    if (terrainSetter != null)
+                    {
+                        var terrain = terrainSetter.terrainDef;
+                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        if (terrainDefExtension.coverEffectiveness > 0)
+                        {
+                            __result += (1 - __result) * terrainDefExtension.coverEffectiveness;
+                        }
+                    }
+                }
+            }
+
+        }
+
     }
 
 }

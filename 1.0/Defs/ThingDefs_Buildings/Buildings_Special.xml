@@ -49,9 +49,6 @@
       <Mass>20</Mass>
       <WorkToBuild>3000</WorkToBuild>
     </statBases>
-    <building>
-      <expandHomeArea>false</expandHomeArea>
-    </building>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <fillPercent>0.25</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>

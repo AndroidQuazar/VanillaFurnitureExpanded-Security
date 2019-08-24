@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
-    <!-- Add StatPart_Retracted -->
+    <!-- Add StatPart_Submerged -->
     <Operation Class="PatchOperationSequence">
         <success>Always</success>
         <operations>
@@ -21,8 +21,8 @@
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/StatDef[defName="Flammability"]/parts</xpath>
         <value>
-            <li Class="VFESecurity.StatPart_Retracted">
-                <valueWhenRetracted>0</valueWhenRetracted>
+            <li Class="VFESecurity.StatPart_Submerged">
+                <value>0</value>
             </li>
         </value>
     </Operation>

@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <ThingDef Name="VFES_ShieldGeneratorBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>VFESecurity.Building_Shield</thingClass>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <techLevel>Spacer</techLevel>
+    <tickerType>Normal</tickerType>
+    <drawOffscreen>true</drawOffscreen>
+    <passability>PassThroughOnly</passability>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+  </ThingDef>
+
+  <ThingDef Name="VFES_BuildableShieldGeneratorBase" ParentName="VFES_ShieldGeneratorBase" Abstract="True">
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_RepulsorTechnology</li>
+    </researchPrerequisites>
+  </ThingDef>
+
   <!-- Small Shield Generator -->
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="VFES_BuildableShieldGeneratorBase">
     <defName>VFES_ShieldGenerator_Small</defName>
     <label>small shield generator</label>
     <description>An ultratech device that projects a potent energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.</description>
@@ -18,36 +42,26 @@
         <rect>(0,0.75,1.0,0.5)</rect>
       </damageData>
     </graphicData>
-    <techLevel>Spacer</techLevel>
-    <thingClass>VFESecurity.Building_Shield</thingClass>
-    <tickerType>Normal</tickerType>
-    <passability>PassThroughOnly</passability>
-    <stealable>false</stealable>
-    <rotatable>true</rotatable>
     <thingCategories>
-      <li>BuildingsSpecial</li>
+      <li>BuildingsSecurity</li>
     </thingCategories>
     <costList>
       <Steel>150</Steel>
       <Plasteel>50</Plasteel>
       <ComponentSpacer>8</ComponentSpacer>
     </costList>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>EMP</explosiveDamageType>
       </li>
-      <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>2900</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
       </li>
       <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
     </comps>
-    <altitudeLayer>Building</altitudeLayer>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>0.5</Flammability>
@@ -58,28 +72,20 @@
       <VFES_EnergyShieldRechargeRate>1.04</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>7.9</VFES_EnergyShieldRadius>
     </statBases>
-    <fillPercent>0.35</fillPercent>
-    <pathCost>70</pathCost>
-    <canOverlapZones>true</canOverlapZones>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>50</pathCost>
     <minifiedDef>MinifiedThing</minifiedDef>
     <specialDisplayRadius>7.9</specialDisplayRadius>
-    <tradeability>Sellable</tradeability>
-    <building>
-      <expandHomeArea>false</expandHomeArea>
-    </building>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-    <researchPrerequisites>
-      <li>VFES_RepulsorTechnology</li>
-    </researchPrerequisites>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
-        <inactiveShieldGenPowerConsumption>300</inactiveShieldGenPowerConsumption>
+        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>300</inactivePowerConsumption>
       </li>
     </modExtensions>
   </ThingDef>
 
   <!-- Large Shield Generator -->
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="VFES_BuildableShieldGeneratorBase">
     <defName>VFES_ShieldGenerator_Large</defName>
     <label>large shield generator</label>
     <description>An ultratech device that projects a large energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.</description>
@@ -95,7 +101,6 @@
         <rect>(0,0.75,1.0,0.5)</rect>
       </damageData>
     </graphicData>
-    <thingClass>VFESecurity.Building_Shield</thingClass>
     <statBases>
       <MaxHitPoints>450</MaxHitPoints>
       <Flammability>0.5</Flammability>
@@ -105,19 +110,12 @@
       <VFES_EnergyShieldRechargeRate>0.73</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>31.9</VFES_EnergyShieldRadius>
     </statBases>
-    <techLevel>Spacer</techLevel>
-    <passability>PassThroughOnly</passability>
-    <tickerType>Normal</tickerType>
-    <stealable>false</stealable>
-    <rotatable>true</rotatable>
     <size>(3,3)</size>
     <costList>
       <Steel>350</Steel>
       <Plasteel>100</Plasteel>
       <ComponentSpacer>14</ComponentSpacer>
     </costList>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>9.9</explosiveRadius>
@@ -126,33 +124,24 @@
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>4800</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
       </li>
       <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
     </comps>
-    <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
     <pathCost>150</pathCost>
-    <canOverlapZones>true</canOverlapZones>
     <specialDisplayRadius>31.9</specialDisplayRadius>
-    <tradeability>Sellable</tradeability>
-    <building>
-      <expandHomeArea>false</expandHomeArea>
-    </building>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-    <researchPrerequisites>
-      <li>VFES_RepulsorTechnology</li>
-    </researchPrerequisites>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
-        <inactiveShieldGenPowerConsumption>500</inactiveShieldGenPowerConsumption>
+        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>500</inactivePowerConsumption>
         <shieldColour>(1, 1, 1, 0.7)</shieldColour>
       </li>
     </modExtensions>
   </ThingDef>
 
   <!-- Archotech Shield Generator -->
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="VFES_ShieldGeneratorBase">
     <defName>VFES_ShieldGenerator_Archotech</defName>
     <label>archotech shield generator</label>
     <description>A self-powered archotech device that projects a very potent energy field around itself to protect everything inside. Works through walls.</description>
@@ -168,7 +157,6 @@
         <rect>(0,0.75,1.0,0.5)</rect>
       </damageData>
     </graphicData>
-    <thingClass>VFESecurity.Building_Shield</thingClass>
     <statBases>
       <MarketValue>2800</MarketValue>
       <MaxHitPoints>250</MaxHitPoints>
@@ -181,9 +169,6 @@
       <VFES_EnergyShieldRadius>3.9</VFES_EnergyShieldRadius>
     </statBases>
     <techLevel>Archotech</techLevel>
-    <passability>PassThroughOnly</passability>
-    <tickerType>Normal</tickerType>
-    <stealable>false</stealable>
     <rotatable>false</rotatable>
     <thingCategories>
       <li>BuildingsSpecial</li>
@@ -196,26 +181,20 @@
       <Uranium>30</Uranium>
       <ComponentSpacer>10</ComponentSpacer>
     </costList>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>5.9</explosiveRadius>
         <explosiveDamageType>EMP</explosiveDamageType>
       </li>
-      <li Class="CompProperties_Breakdownable"/>
     </comps>
-    <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.4</fillPercent>
     <pathCost>50</pathCost>
-    <canOverlapZones>true</canOverlapZones>
     <minifiedDef>MinifiedThing</minifiedDef>
     <specialDisplayRadius>3.9</specialDisplayRadius>
     <tradeability>Sellable</tradeability>
-    <building>
-      <expandHomeArea>false</expandHomeArea>
-    </building>
     <modExtensions>
       <li Class="VFESecurity.ExtendedBuildingProperties">
+        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
         <shieldColour>(0.7, 1, 0.7, 1)</shieldColour>
       </li>
     </modExtensions>

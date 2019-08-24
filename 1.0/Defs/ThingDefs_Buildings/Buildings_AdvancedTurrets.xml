@@ -214,6 +214,7 @@
       <Steel>400</Steel>
       <Plasteel>50</Plasteel>
       <ComponentIndustrial>7</ComponentIndustrial>
+      <Shell_HighExplosive>6</Shell_HighExplosive>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
