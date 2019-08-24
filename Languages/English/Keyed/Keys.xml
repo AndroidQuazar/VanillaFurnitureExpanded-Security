@@ -44,7 +44,9 @@
     <!-- Ammo crate -->
     <VFESecurity.AmmoCrate>Ammo crate</VFESecurity.AmmoCrate>
 
-    <!-- Designators -->
+    <!-- Rearmable traps -->
+    <VFESecurity.Armed>Armed</VFESecurity.Armed>
+    <VFESecurity.NeedsRearming>Needs rearming</VFESecurity.NeedsRearming>
     <VFESecurity.DesignatorRearmTraps>Rearm</VFESecurity.DesignatorRearmTraps>
     <VFESecurity.DesignatorRearmTraps_Description>Mark unarmed rearmable traps to be rearmed by your colonists.</VFESecurity.DesignatorRearmTraps_Description>
     <VFESecurity.MessageMustDesignateRearmables>Must designate unarmed rearmable traps.</VFESecurity.MessageMustDesignateRearmables>

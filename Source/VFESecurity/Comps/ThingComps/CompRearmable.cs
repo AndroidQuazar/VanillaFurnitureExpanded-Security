@@ -33,6 +33,11 @@ namespace VFESecurity
             }
         }
 
+        public override string CompInspectStringExtra()
+        {
+            return (armed ? "VFESecurity.Armed" : "VFESecurity.NeedsRearming").Translate();
+        }
+
         public void Rearm()
         {
             armed = true;

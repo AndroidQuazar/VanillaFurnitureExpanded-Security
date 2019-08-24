@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
-    <!-- If Turret Extensions is active, make the HMG complex use the manning pawn's stats -->
+    <!-- If Turret Extensions is active, make the HMG complex use the manning pawn's stats and add CompSmartForcedTarget -->
     <Operation Class="PatchOperationFindMod">
         <mods>
             <li>[XND] Turret Extensions</li>
         </mods>
-        <match Class="PatchOperationAddModExtension">
-            <xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]</xpath>
-            <value>
-                <li Class="TurretExtensions.TurretFrameworkExtension">
-                    <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
-                    <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <!-- Factor manning pawn -->
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]</xpath>
+                    <value>
+                        <li Class="TurretExtensions.TurretFrameworkExtension">
+                            <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
+                            <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+                        </li>
+                    </value>
                 </li>
-            </value>
+
+                <!-- CompSmartForcedTarget -->
+                <li Class="PatchOperationSequence">
+                    <success>Always</success>
+                    <operations>
+                        <li Class="PatchOperationTest">
+                            <xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]/comps</xpath>
+                            <success>Invert</success>
+                        </li>
+                        <li Class="PatchOperationAdd">
+                            <xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]</xpath>
+                            <value>
+                                <comps/>
+                            </value>
+                        </li>
+                    </operations>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]/comps</xpath>
+                    <value>
+                        <li Class="TurretExtensions.CompProperties_SmartForcedTarget"/>
+                    </value>
+                </li>
+            </operations>
         </match>
     </Operation>
 
