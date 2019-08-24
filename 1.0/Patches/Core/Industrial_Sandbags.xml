@@ -12,9 +12,9 @@
 				</value>
 			</li>
 			<!-- Make them Medieval if Patch gets removed -->
-			<li Class="PatchOperationRemove">
+			<!-- <li Class="PatchOperationRemove">
 				<xpath>/Defs/ThingDef[defName="VFES_CavalrySpikes"]/constructionSkillPrerequisite</xpath>
-			</li>
+			</li> -->
 		</operations>	
 	</Operation>
 

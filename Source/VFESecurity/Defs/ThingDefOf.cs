@@ -27,6 +27,8 @@ namespace VFESecurity
         public static ThingDef VFES_PsychicPylon;
         public static ThingDef VFES_AmmoCrate;
 
+        public static ThingDef VFES_Artillery_Rock;
+
         // Motes
         public static ThingDef VFES_Mote_SpotLight;
 

@@ -31,6 +31,10 @@ namespace VFESecurity
                         tDef.comps = new List<CompProperties>();
                     tDef.comps.Add(new CompProperties(typeof(CompPawnTracker)));
                 }
+
+                // Make stone chunks catapult ammo
+                else if (tDef.IsWithinCategory(ThingCategoryDefOf.StoneChunks))
+                    tDef.projectileWhenLoaded = ThingDefOf.VFES_Artillery_Rock;
             }
         }
 
