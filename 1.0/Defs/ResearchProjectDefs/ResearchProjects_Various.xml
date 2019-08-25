@@ -87,6 +87,9 @@
 		<description>Construct reinforced metal barricades.</description>
 		<baseCost>2000</baseCost>
 		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>AdvancedFabrication</li>
+		</prerequisites>
 		<requiredResearchFacilities>
 			<li>MultiAnalyzer</li>
 		</requiredResearchFacilities>
@@ -148,6 +151,7 @@
 		<techLevel>Spacer</techLevel>
 		<prerequisites>
 			<li>AdvancedFabrication</li>
+			<li>ShieldBelt</li>
 		</prerequisites>
 		<requiredResearchFacilities>
 			<li>MultiAnalyzer</li>

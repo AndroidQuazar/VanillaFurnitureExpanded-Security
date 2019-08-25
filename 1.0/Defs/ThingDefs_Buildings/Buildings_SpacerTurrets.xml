@@ -380,7 +380,6 @@
       <Plasteel>80</Plasteel>
       <Uranium>40</Uranium>
       <ComponentSpacer>5</ComponentSpacer>
-      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>

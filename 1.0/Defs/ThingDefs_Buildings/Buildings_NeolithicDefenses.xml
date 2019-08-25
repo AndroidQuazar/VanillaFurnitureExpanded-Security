@@ -50,7 +50,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_CavalrySpikes</defName>
     <label>cavalry spikes</label>
-    <description>Wooden stakes placed in a row to build defensive fortifications. Very cheap and quick to build, provides basic cover and is also very difficult to traverse. Some part needs to replaced after a while.</description>
+    <description>Wooden stakes placed in a row to build defensive fortifications. Very cheap and quick to build, provides basic cover and deals damage to people trying to traverse them. Breaks after some time.</description>
     <category>Building</category>
     <graphicData>
       <texPath>Things/Security/CavalrySpikes/CavalrySpikes</texPath>
@@ -60,6 +60,7 @@
         <rect>(0,0,1,0.15)</rect>
       </damageData>
     </graphicData>
+    <thingClass>Building_TrapDamager</thingClass>
     <size>(2,1)</size>
     <uiIconPath>Things/Security/CavalrySpikes/CavalrySpikes_south</uiIconPath>
     <tickerType>Normal</tickerType>
@@ -77,7 +78,9 @@
       <MaxHitPoints>200</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Beauty>-10</Beauty>
-      <WorkToBuild>120</WorkToBuild>
+      <WorkToBuild>80</WorkToBuild>
+      <TrapMeleeDamage>8</TrapMeleeDamage>
+      <TrapSpringChance>0.5</TrapSpringChance>
     </statBases>
     <building>
       <ai_chillDestination>false</ai_chillDestination>
@@ -93,15 +96,8 @@
     <repairEffect>ConstructDirt</repairEffect>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <comps>
-      <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>0.6</fuelConsumptionRate>        <!-- 10 -->
-        <fuelCapacity>6.0</fuelCapacity>
-        <fuelFilter>
-          <thingDefs>
-            <li>WoodLog</li>
-          </thingDefs>
-        </fuelFilter>
-        <initialFuelPercent>1</initialFuelPercent>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>180000</lifespanTicks> <!-- 3 days -->
       </li>
     </comps>
   </ThingDef>

@@ -17,7 +17,6 @@
     <uiIconScale>0.8</uiIconScale>
     <costList>
       <Chemfuel>75</Chemfuel>
-      <Steel>25</Steel>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">

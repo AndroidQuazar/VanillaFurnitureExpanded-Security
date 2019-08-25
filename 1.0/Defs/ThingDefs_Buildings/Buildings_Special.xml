@@ -5,7 +5,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_PsychicPylon</defName>
     <label>psychic pylon</label>
-    <description>An ancient device that projects a strong psychic drone around itself. Works through walls.</description>
+    <description>An ancient device that projects a strong psychic drone around itself. Only seems to target those who mean you harm. Works through walls.</description>
     <graphicData>
       <texPath>Things/Security/Psychic/PsychicPylon_south</texPath>
       <graphicClass>Graphic_Single</graphicClass>

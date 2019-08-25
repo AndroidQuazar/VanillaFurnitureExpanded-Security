@@ -73,7 +73,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Trench</defName>
     <label>trench</label>
-    <description>A long, narrow ditch dug into the ground. Crossing it requires climbing up and down, therefore it significantly slows down movement speed.</description>
+    <description>A long, narrow ditch dug into the ground. Crossing it requires climbing up and down, therefore it significantly slows down movement speed. Soldiers inside the trench suffer weapon range penalty, but gain significant cover.</description>
     <graphicData>
       <texPath>Things/Security/Trench/Trench_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>

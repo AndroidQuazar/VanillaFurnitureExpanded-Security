@@ -8,8 +8,8 @@
         <layerable>true</layerable>
         <pathCost>12</pathCost>
         <fertility>0</fertility>
-        <edgeType>Hard</edgeType>
-        <renderPrecedence>400</renderPrecedence>
+        <edgeType>Fade</edgeType>
+        <renderPrecedence>320</renderPrecedence>
         <destroyEffect>Bridge_Collapse</destroyEffect>
         <modExtensions>
             <li Class="VFESecurity.TerrainDefExtension">

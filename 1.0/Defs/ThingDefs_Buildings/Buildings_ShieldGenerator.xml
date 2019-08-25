@@ -94,7 +94,7 @@
     <graphicData>
       <texPath>Things/Security/ShieldGenerator/Large/ShieldGenerator3x3</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3.5, 3.5)</drawSize>
+      <drawSize>(4, 4)</drawSize>
       <shadowData>
         <volume>(0.3, 0.6, 0.3)</volume>
         <offset>(0.0, 0.0, -0.1)</offset>
