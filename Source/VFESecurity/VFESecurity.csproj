@@ -81,6 +81,7 @@
     <Compile Include="HarmonyPatches\Patch_CastPositionFinder.cs" />
     <Compile Include="HarmonyPatches\Patch_DamageWorker.cs" />
     <Compile Include="HarmonyPatches\Patch_AttackTargetFinder.cs" />
+    <Compile Include="HarmonyPatches\Patch_SectionLayer_SunShadows.cs" />
     <Compile Include="HarmonyPatches\Patch_Toils_Combat.cs" />
     <Compile Include="HarmonyPatches\Patch_JobGiver_ConfigurableHostilityResponse.cs" />
     <Compile Include="HarmonyPatches\Patch_JobGiver_AIFightEnemies.cs" />

@@ -5,7 +5,7 @@
   <ThingDef ParentName="VFES_Barrier">
     <defName>VFES_DeployableBarrier</defName>
     <label>deployable barrier</label>
-    <description>A submersible barrier which acts as a normal floor tile when turned off. Provides excellent cover from ranged attacks. It only takes half as much damage when submerged.</description>
+    <description>A submersible barrier which acts as a normal floor tile when unpowered. Provides excellent cover from ranged attacks. It only takes half as much damage when submerged.</description>
     <graphicData Inherit="False">
       <texPath>Things/Security/BarrierDeployed/BarrierDeployed_south</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -33,6 +33,10 @@
     </costList>
     <comps>
       <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>15</basePowerConsumption>
+      </li>
       <li Class="VFESecurity.CompProperties_Submersible">
         <submergedPassability>Standable</submergedPassability>
         <submergedGraphicData>
@@ -64,7 +68,7 @@
   <ThingDef ParentName="VFES_Turret_MilitaryTurret">
     <defName>VFES_Turret_FloorTurret</defName>
     <label>floor turret</label>
-    <description>A submersible military-grade double barreled automatic turret which acts as a normal floor tile when turned off. It only takes half as much damage when submerged. Requires steel to refurbish its barrels after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <description>A submersible military-grade double barreled automatic turret which acts as a normal floor tile when unpowered. It only takes half as much damage when submerged. Requires steel to refurbish its barrels after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData Inherit="False">
       <texPath>Things/Building/Floor/TurretFloor_Base</texPath>

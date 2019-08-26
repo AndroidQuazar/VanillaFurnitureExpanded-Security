@@ -19,6 +19,7 @@ namespace VFESecurity
 
         private Graphic cachedSubmergedGraphic;
         private Effecter cachedProgressBar;
+        private CompPowerTrader cachedPowerComp;
 
         private int ticksToStateChange;
         private DeployedState targetState;
@@ -43,6 +44,12 @@ namespace VFESecurity
                     cachedSubmergedGraphic = Props.submergedGraphicData.GraphicColoredFor(parent);
                 return cachedSubmergedGraphic;
             }
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            cachedPowerComp = parent.GetComp<CompPowerTrader>();
         }
 
         public override void CompTick()
@@ -84,15 +91,17 @@ namespace VFESecurity
 
         public override void ReceiveCompSignal(string signal)
         {
-            // Flicked on; deploy building
-            if (signal == CompFlickable.FlickedOnSignal)
+            bool hasPowerComp = cachedPowerComp != null;
+
+            // Flicked or powered on; deploy building
+            if ((!hasPowerComp && signal == CompFlickable.FlickedOnSignal) || signal == CompPowerTrader.PowerTurnedOnSignal)
             {
                 targetState = DeployedState.Deployed;
                 ticksToStateChange = FinalisedTicksToStateChangeFor(targetState);
             }
 
-            // Flicked off; submerge building
-            if (signal == CompFlickable.FlickedOffSignal)
+            // Flicked or powered off; submerge building
+            if ((!hasPowerComp && signal == CompFlickable.FlickedOffSignal) || signal == CompPowerTrader.PowerTurnedOffSignal)
             {
                 targetState = DeployedState.Submerged;
                 ticksToStateChange = FinalisedTicksToStateChangeFor(targetState);
@@ -108,7 +117,7 @@ namespace VFESecurity
 
         public override string ToString()
         {
-            return base.ToString() + $"state={state}, targetState={targetState} ticksToStateChange={ticksToStateChange}";
+            return base.ToString() + $"state={state}, targetState={targetState}, ticksToStateChange={ticksToStateChange}";
         }
 
         public override void PostExposeData()

@@ -22,6 +22,7 @@ namespace VFESecurity
             compClass = typeof(CompSubmersible);
         }
 
+        public float submergedStaticSunShadowHeight;
         public int submergedPathCost;
         public float submergedDamageFactor = 1;
         public float submergedProjectileBlockChance;

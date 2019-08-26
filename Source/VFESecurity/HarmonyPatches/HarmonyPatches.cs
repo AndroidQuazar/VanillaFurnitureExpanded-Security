@@ -31,6 +31,10 @@ namespace VFESecurity
             // Patch the InitAction for Toils_Combat.GoToCastPosition
             var initActionType = typeof(Toils_Combat).GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.Name.Contains("GotoCastPosition"));
             VFESecurity.HarmonyInstance.Patch(initActionType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(), transpiler: new HarmonyMethod(typeof(Patch_Toils_Combat.manual_GoToCastPosition_initAction), "Transpiler"));
+
+            // Why, oh why does this class have to be internal?
+            var sectionLayerSunShadows = GenTypes.GetTypeInAnyAssemblyNew("Verse.SectionLayer_SunShadows", "Verse");
+            VFESecurity.HarmonyInstance.Patch(AccessTools.Method(sectionLayerSunShadows, "Regenerate"), transpiler: new HarmonyMethod(typeof(Patch_SectionLayer_SunShadows.manual_Regenerate), "Transpiler"));
         }
 
     }
