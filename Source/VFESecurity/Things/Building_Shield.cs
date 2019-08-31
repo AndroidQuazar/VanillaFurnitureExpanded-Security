@@ -19,6 +19,7 @@ namespace VFESecurity
     public class Building_Shield : Building, IAttackTarget
     {
 
+        private const float EdgeCellRadius = 5;
         private const int CacheUpdateInterval = 15;
         private const float EnergyLossPerDamage = 0.033f;
         private static readonly Material BaseBubbleMat = MaterialPool.MatFrom("Other/ShieldBubble", ShaderDatabase.Transparent);
@@ -58,7 +59,7 @@ namespace VFESecurity
         {
             get
             {
-                foreach (var cell in coveredCells)
+                foreach (var cell in scanCells)
                     foreach (var thing in cell.GetThingList(MapHeld))
                         yield return thing;
             }
@@ -89,12 +90,20 @@ namespace VFESecurity
             base.SpawnSetup(map, respawningAfterLoad);
             map.GetComponent<ListerThingsExtended>().listerShieldGens.Add(this);
             coveredCells = new HashSet<IntVec3>(GenRadial.RadialCellsAround(PositionHeld, ShieldRadius, true));
+            if (ShieldRadius < EdgeCellRadius + 1)
+                scanCells = coveredCells;
+            else
+            {
+                var interiorCells = GenRadial.RadialCellsAround(PositionHeld, ShieldRadius - EdgeCellRadius, true);
+                scanCells = new HashSet<IntVec3>(coveredCells.Where(c => !interiorCells.Contains(c)));
+            }
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             Map.GetComponent<ListerThingsExtended>().listerShieldGens.Remove(this);
             coveredCells = null;
+            scanCells = null;
             base.DeSpawn(mode);
         }
 
@@ -122,7 +131,8 @@ namespace VFESecurity
                     if (PowerTraderComp != null)
                         PowerTraderComp.PowerOutput = -PowerTraderComp.Props.basePowerConsumption;
 
-                    if (Energy > 0)
+                    // Check intercept every 2 ticks instead of every tick if the shield radius is 6 or greater and CE isn't active
+                    if ((ModCompatibilityCheck.CombatExtended || ShieldRadius < EdgeCellRadius + 1 || Find.TickManager.TicksGame % 2 == 0) && Energy > 0)
                         EnergyShieldTick();
                 }
                 else if (PowerTraderComp != null)
@@ -303,6 +313,7 @@ namespace VFESecurity
         private bool checkedPowerComp;
         private CompPowerTrader cachedPowerComp;
         public HashSet<IntVec3> coveredCells;
+        public HashSet<IntVec3> scanCells;
 
         private List<Thing> affectedThingsKeysWorkingList;
         private List<int> affectedThingsValuesWorkingList;

@@ -18,7 +18,9 @@ namespace VFESecurity
     public static class ModCompatibilityCheck
     {
 
-        public static readonly bool VanillaFactionsExpanded = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Vanilla Factions Expanded");
+        public static readonly bool CombatExtended = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Combat Extended");
+
+        public static readonly bool VanillaFactionsExpandedInsectoids = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Vanilla Factions Expanded - Insectoids");
 
     }
 

@@ -18,7 +18,7 @@ namespace VFESecurity
     public static class FactionDefNamed
     {
 
-        public static readonly FactionDef VFE_Insectoids = DefDatabase<FactionDef>.GetNamedSilentFail("VFE_Insectoids");
+        public static readonly FactionDef VFEI_Insect = DefDatabase<FactionDef>.GetNamedSilentFail("VFEI_Insect");
 
     }
 

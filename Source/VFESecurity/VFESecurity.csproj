@@ -97,6 +97,7 @@
     <Compile Include="HediffGivers\HediffGiver_Dazzled.cs" />
     <Compile Include="ExtendedMoteMaker.cs" />
     <Compile Include="ModCompatibilityCheck.cs" />
+    <Compile Include="Reflection\NonPublicTypes.cs" />
     <Compile Include="StatParts\StatPart_AmmoCrate.cs" />
     <Compile Include="StatParts\StatPart_PylonExposure.cs" />
     <Compile Include="StatParts\StatPart_ValueOffsetFactor.cs" />

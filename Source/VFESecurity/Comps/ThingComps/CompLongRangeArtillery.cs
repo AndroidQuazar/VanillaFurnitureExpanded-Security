@@ -343,7 +343,7 @@ namespace VFESecurity
                     if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
                     {
                         // Special case: Insectoids from Vanilla Factions Expanded
-                        if (ModCompatibilityCheck.VanillaFactionsExpanded && settlement.Faction.def == FactionDefNamed.VFE_Insectoids)
+                        if (ModCompatibilityCheck.VanillaFactionsExpandedInsectoids && settlement.Faction.def == FactionDefNamed.VFEI_Insect)
                             return new ArtilleryStrikeArrivalAction_Insectoid(settlement, parent.Map);
 
                         // Standard
