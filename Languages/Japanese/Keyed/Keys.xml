@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Submersible -->
+  <VFESecurity.Submerged>収納</VFESecurity.Submerged>
+
+  <!-- Long-range artillery -->
+  <VFESecurity.WorldTileRange>ワールドマップ上の射程(タイル)</VFESecurity.WorldTileRange>
+
+  <VFESecurity.TargetWorldTile>目標：ワールドタイル</VFESecurity.TargetWorldTile>
+  <VFESecurity.TargetWorldTile_Description>{0}から砲撃するワールドマップ上のタイルを選択します。</VFESecurity.TargetWorldTile_Description>
+  <VFESecurity.TargetWorldTile_DescriptionShort>砲撃するワールドタイルを選択</VFESecurity.TargetWorldTile_DescriptionShort>
+  <VFESecurity.CommandTargetTileFailNoArtillery>{0}には適切な大砲がありません。</VFESecurity.CommandTargetTileFailNoArtillery>
+
+  <VFESecurity.TargetWorldTileOutOfRange>タイルが射程外です。</VFESecurity.TargetWorldTileOutOfRange>
+  <VFESecurity.TargetMap>目標：マップ</VFESecurity.TargetMap>
+  <VFESecurity.TargetPeaceTalks>目標：和平会談</VFESecurity.TargetPeaceTalks>
+  <VFESecurity.TargetSettlement>目標：拠点</VFESecurity.TargetSettlement>
+  <VFESecurity.TargetOutpost>目標：前哨基地</VFESecurity.TargetOutpost>
+  <VFESecurity.TargetWorldTileEmpty>目標：エリア（効果はないでしょう）</VFESecurity.TargetWorldTileEmpty>
+  <VFESecurity.TargetWorldFlyingObject>飛行物体は目標に指定できません。</VFESecurity.TargetWorldFlyingObject>
+  <VFESecurity.TargetWorldTileSameTile>同一タイルを目標に指定できません。</VFESecurity.TargetWorldTileSameTile>
+
+  <VFESecurity.MessageTargetWorldTileInvalid>無効な目標地点です。</VFESecurity.MessageTargetWorldTileInvalid>
+  <VFESecurity.Settlement>入植地</VFESecurity.Settlement>
+  <VFESecurity.MessageTargetWorldTileOutOfRange>目標のエリアは{0}の射程外です。</VFESecurity.MessageTargetWorldTileOutOfRange>
+
+  <!-- Messages -->
+  <VFESecurity.GoodwillChangedReason_ArtilleryStrike>大砲による砲撃</VFESecurity.GoodwillChangedReason_ArtilleryStrike>
+  <VFESecurity.Message_ArtilleryBombardmentEnded>{1}の{0}はあなたのコロニーへの砲撃を停止しました。</VFESecurity.Message_ArtilleryBombardmentEnded>
+
+  <!-- Letters -->
+  <VFESecurity.ArtilleryStrikeProvokedGeneric_Letter>{0}を挑発した</VFESecurity.ArtilleryStrikeProvokedGeneric_Letter>
+  <VFESecurity.ArtilleryStrikePeaceTalks_LetterText>彼らの和平交渉交渉団に対して大砲による砲撃を行ったことによって、あなたと{0}との友好関係は悪化しました。彼らは砲撃に対する報復として襲撃部隊を送ってくるでしょう。</VFESecurity.ArtilleryStrikePeaceTalks_LetterText>
+
+  <VFESecurity.ArtilleryStrikeSettlement_Letter>報復砲撃</VFESecurity.ArtilleryStrikeSettlement_Letter>
+  <VFESecurity.ArtilleryStrikeSettlement_LetterText>{1}の{0}は、あなたたちの砲撃による挑発に対して、あなた方のコロニーに自分たちが持つ大砲で報復砲撃を行うことにしました！\n\nこの砲撃は数日間、あるいはあなたが相手の拠点を破壊するまで続きます。</VFESecurity.ArtilleryStrikeSettlement_LetterText>
+
+  <VFESecurity.LetterFactionBaseDefeatedStrike>敵の拠点{0}は破壊されました。</VFESecurity.LetterFactionBaseDefeatedStrike>
+
+  <!-- Psychic pylon -->
+  <VFESecurity.PsychicPylonExposure>サイキックパイロン放射</VFESecurity.PsychicPylonExposure>
+
+  <!-- Ammo crate -->
+  <VFESecurity.AmmoCrate>弾薬作成</VFESecurity.AmmoCrate>
+
+  <!-- Rearmable traps -->
+  <VFESecurity.Armed>仕掛済</VFESecurity.Armed>
+  <VFESecurity.NeedsRearming>再設置が必要</VFESecurity.NeedsRearming>
+  <VFESecurity.DesignatorRearmTraps>罠再設置</VFESecurity.DesignatorRearmTraps>
+  <VFESecurity.DesignatorRearmTraps_Description>入植者に再度罠を仕掛けさせるために、使用済みの罠で再設置が可能な罠に対して印を付けます。</VFESecurity.DesignatorRearmTraps_Description>
+  <VFESecurity.MessageMustDesignateRearmables>使用済みの罠で、再設置可能なものを指定する必要があります。</VFESecurity.MessageMustDesignateRearmables>
+
+</LanguageData>

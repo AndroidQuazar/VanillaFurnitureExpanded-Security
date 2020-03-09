@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="SkyfallerBase">
+        <defName>VFES_ArtilleryStrikeIncoming</defName>
+        <label>artillery strike (incoming)</label>
+        <thingClass>VFESecurity.ArtilleryStrikeIncoming</thingClass>
+        <graphicData>
+            <texPath>Things/Special/IncomingHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.2</drawSize>
+            <shaderType>CutoutFlying</shaderType>
+        </graphicData>
+        <skyfaller>
+            <movementType>Accelerate</movementType>
+            <motesPerCell>0</motesPerCell>
+        </skyfaller>
+    </ThingDef>
+
+    <ThingDef ParentName="SkyfallerBase">
+        <defName>VFES_ArtilleryStrikeLeaving</defName>
+        <label>artillery strike (leaving)</label>
+        <thingClass>VFESecurity.ArtilleryStrikeLeaving</thingClass>
+        <graphicData>
+            <texPath>Things/Special/LeavingHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.2</drawSize>
+            <shaderType>CutoutFlying</shaderType>
+        </graphicData>
+        <skyfaller>
+            <movementType>ConstantSpeed</movementType>
+            <reversed>true</reversed>
+            <ticksToImpactRange>-1~-1</ticksToImpactRange>
+            <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+        </skyfaller>
+    </ThingDef>
+
+</Defs>

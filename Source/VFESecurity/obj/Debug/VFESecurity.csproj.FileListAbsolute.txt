@@ -2,3 +2,18 @@ E:\Documents\GitHub\VanillaFurnitureExpanded-Security\1.0\Assemblies\VFESecurity
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
 E:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security\1.0\Assemblies\VFESecurity.dll
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security CE\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security CE\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security CE\Source\VFESecurity\obj\Debug\VFESecurity.dll
+C:\Users\danie\Downloads\VanillaFurnitureExpanded-Security CE\1.0\Assemblies\VFESecurity.dll
+E:\Documents\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\1.0\Assemblies\VFESecurity.dll
+E:\Documents\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+E:\Documents\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
+E:\Documents\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
+D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
+D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\1.1\Assemblies\VFESecurity.dll

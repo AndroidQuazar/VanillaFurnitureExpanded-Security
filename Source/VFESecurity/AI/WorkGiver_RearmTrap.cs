@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -37,9 +37,13 @@ namespace VFESecurity
                 return false;
 
             // No movable items off trap
-            foreach (var thing in t.Position.GetThingList(t.Map))
+            var thingList = t.Position.GetThingList(t.Map);
+            for (int i = 0; i < thingList.Count; i++)
+            {
+                var thing = thingList[i];
                 if (thing != t && thing.def.category == ThingCategory.Item && (thing.IsForbidden(pawn) || thing.IsInValidStorage() || !HaulAIUtility.CanHaulAside(pawn, thing, out IntVec3 storeCell)))
                     return false;
+            }
 
             return true;
         }
@@ -47,8 +51,10 @@ namespace VFESecurity
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             // Move things off trap
-            foreach (var thing in t.Position.GetThingList(t.Map))
+            var thingList = t.Position.GetThingList(t.Map);
+            for (int i = 0; i < thingList.Count; i++)
             {
+                var thing = thingList[i];
                 if (thing != t && thing.def.category == ThingCategory.Item)
                 {
                     var haulAsideJob = HaulAIUtility.HaulAsideJobFor(pawn, thing);

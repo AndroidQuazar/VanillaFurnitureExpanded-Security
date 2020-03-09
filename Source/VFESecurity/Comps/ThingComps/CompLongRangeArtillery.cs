@@ -11,7 +11,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -22,8 +22,20 @@ namespace VFESecurity
 
         public static readonly Texture2D TargetWorldTileIcon = ContentFinder<Texture2D>.Get("UI/Commands/ArtilleryTargetTile");
 
-        private static IEnumerable<CompLongRangeArtillery> SelectedComps =>
-            Find.Selector.SelectedObjectsListForReading.Where(o => o is Thing th && th.TryGetComp<CompLongRangeArtillery>() != null).Select(o => ((Thing)o).TryGetComp<CompLongRangeArtillery>());
+        private static IEnumerable<CompLongRangeArtillery> SelectedComps
+        {
+            get
+            {
+                var selectedObjects = Find.Selector.SelectedObjectsListForReading;
+                for (int i = 0; i < selectedObjects.Count; i++)
+                {
+                    var obj = selectedObjects[i];
+                    if (obj is Thing thing && thing.TryGetComp<CompLongRangeArtillery>() is CompLongRangeArtillery artilleryComp)
+                        yield return artilleryComp;
+                }
+            }
+        }
+
         private static int ShortestSelectedCompRange => SelectedComps.MinBy(a => a.Props.worldTileRange).Props.worldTileRange;
 
         public CompProperties_LongRangeArtillery Props => (CompProperties_LongRangeArtillery)props;
@@ -54,7 +66,9 @@ namespace VFESecurity
 
         private ArtilleryComp ArtilleryMapComp(Map map)
         {
-            return Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o.Tile == map.Tile && o.GetComponent(typeof(ArtilleryComp)) != null).GetComponent<ArtilleryComp>();
+            if (map != null)
+                return Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o.Tile == map.Tile && o.GetComponent(typeof(ArtilleryComp)) != null).GetComponent<ArtilleryComp>();
+            return null;
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -260,8 +274,10 @@ namespace VFESecurity
         public IEnumerable<FloatMenuOption> FloatMenuOptionsFor(int tile)
         {
             bool anything = false;
-            foreach (var worldObject in Find.WorldObjects.AllWorldObjects)
+            var worldObjects = Find.WorldObjects.AllWorldObjects;
+            for (int i = 0; i < worldObjects.Count; i++)
             {
+                var worldObject = worldObjects[i];
                 if (worldObject.Tile == tile)
                 {
                     if (worldObject != null)
@@ -289,9 +305,9 @@ namespace VFESecurity
                         if (worldObject is Site site)
                         {
                             // Bandit camp - potentially destroy
-                            if (site.core.def == SiteCoreDefOf.Nothing && site.parts.Any(p => p.def == SitePartDefOf.Outpost))
+                            if (site.parts.Any(p => p.def == SitePartDefOf.BanditCamp))
                             {
-                                yield return new FloatMenuOption("VFESecurity.TargetOutpost".Translate(), () => SetTargetedTile(worldObject));
+                                    yield return new FloatMenuOption("VFESecurity.TargetOutpost".Translate(), () => SetTargetedTile(worldObject));
                                 anything = true;
                             }
                         }
@@ -309,8 +325,10 @@ namespace VFESecurity
         {
             CameraJumper.TryHideWorld();
 
-            foreach (var comp in SelectedComps)
+            var compList = SelectedComps.ToList();
+            for (int i = 0; i < compList.Count; i++)
             {
+                var comp = compList[i];
                 NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
                 NonPublicMethods.Building_TurretGun_ResetCurrentTarget(comp.Turret);
                 comp.targetedTile = t;
@@ -353,7 +371,7 @@ namespace VFESecurity
                     if (worldObject is Site site)
                     {
                         // Bandit camp - potentially destroy
-                        if (site.core.def == SiteCoreDefOf.Nothing && site.parts.Any(p => p.def == SitePartDefOf.Outpost))
+                        if (site.parts.Any(p => p.def == SitePartDefOf.BanditCamp))
                             return new ArtilleryStrikeArrivalAction_Outpost(site);
                     }
                 }

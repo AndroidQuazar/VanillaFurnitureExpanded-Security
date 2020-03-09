@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- Add skyfaller textures -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/ThingDef[defName="Bullet_Shell_Incendiary"]</xpath>
+        <value>
+            <li Class="VFESecurity.ThingDefExtension">
+                <incomingSkyfallerGraphicData>
+                    <texPath>Things/Special/IncomingIncendiary</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>CutoutFlying</shaderType>
+                </incomingSkyfallerGraphicData>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/ThingDef[defName="Bullet_Shell_EMP"]</xpath>
+        <value>
+            <li Class="VFESecurity.ThingDefExtension">
+                <incomingSkyfallerGraphicData>
+                    <texPath>Things/Special/IncomingEMP</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>CutoutFlying</shaderType>
+                </incomingSkyfallerGraphicData>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/ThingDef[defName="Bullet_Shell_Firefoam"]</xpath>
+        <value>
+            <li Class="VFESecurity.ThingDefExtension">
+                <incomingSkyfallerGraphicData>
+                    <texPath>Things/Special/IncomingFirefoam</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>CutoutFlying</shaderType>
+                </incomingSkyfallerGraphicData>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/ThingDef[defName="Bullet_Shell_AntigrainWarhead"]</xpath>
+        <value>
+            <li Class="VFESecurity.ThingDefExtension">
+                <incomingSkyfallerGraphicData>
+                    <texPath>Things/Special/IncomingAntigrain</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>CutoutFlying</shaderType>
+                </incomingSkyfallerGraphicData>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Splinter -->
+  <DamageDef ParentName="Arrow">
+    <defName>VFES_SplinterArrow</defName>
+    <label>splinter</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <!-- <workerClass>NoCamShakeExplosions.DamageWorker_BombNoCamShake</workerClass> -->
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been pierced through to death by a gigantic arrow.</deathMessage>
+    <hediff>VFES_Stab</hediff>
+    <hediffSkin>Cut</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Slice</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.71</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <isExplosive>true</isExplosive>
+    <minDamageToFragment>8</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <defaultArmorPenetration>0.1</defaultArmorPenetration>
+    <explosionCellMote>Mote_BlastDry</explosionCellMote>
+    <explosionColorCenter>(1, 1, 1, 0.6)</explosionColorCenter>
+    <explosionColorEdge>(1, 1, 1, 0.4)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
+
+  <!-- Rock -->
+  <DamageDef>
+    <defName>VFES_Rock</defName>
+    <label>rock</label>
+    <!-- <workerClass>DamageWorker_AddInjury</workerClass> -->
+    <workerClass>NoCamShakeExplosions.DamageWorker_BombNoCamShake</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been squashed to death by a gigantic rock.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Bruise</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <overkillPctToDestroyPart>0~0.67</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <isExplosive>true</isExplosive>
+    <minDamageToFragment>4</minDamageToFragment>
+    <defaultDamage>20</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <explosionCellMote>Mote_BlastDry</explosionCellMote>
+    <explosionColorCenter>(1, 1, 1, 0.9)</explosionColorCenter>
+    <explosionColorEdge>(1, 1, 1, 0.6)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
+
+  <!-- Flame -->
+  <DamageDef>
+    <defName>VFES_HauntingFlame</defName>
+    <workerClass>NoCamShakeExplosions.DamageWorker_FlameNoCamShake</workerClass>
+    <label>flame</label>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has burned to death.</deathMessage>
+    <hediff>Burn</hediff>
+    <armorCategory>Heat</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>4</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_BlastFlame</explosionCellMote>
+    <explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter>
+    <explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+    <soundExplosion>Explosion_Flame</soundExplosion>
+    <combatLogRules>Damage_Flame</combatLogRules>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+  </DamageDef>
+
+  <!-- None -->
+  <DamageDef>
+    <defName>VFES_NoDMG</defName>
+  </DamageDef>
+
+</Defs>

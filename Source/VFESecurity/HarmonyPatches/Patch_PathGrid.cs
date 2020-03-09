@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -24,6 +24,10 @@ namespace VFESecurity
             [HarmonyPriority(Priority.First)]
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
+                #if DEBUG
+                    Log.Message("Transpiler start: PathGrid.CalculatedCostAt (3 matches)");
+                #endif
+
                 var instructionList = instructions.ToList();
 
                 var defInfo = AccessTools.Field(typeof(Thing), nameof(Thing.def));
@@ -40,13 +44,21 @@ namespace VFESecurity
                     var instruction = instructionList[i];
 
                     // Add our helper method call to each reference to pathCost from...
-                    if (instruction.opcode == OpCodes.Ldfld && instruction.operand == pathCostInfo)
+                    if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(pathCostInfo))
                     {
+                        #if DEBUG
+                            Log.Message("PathGrid.CalculatedCostAt match 1 of 3");
+                        #endif
+
                         var prevInstruction = instructionList[i - 1];
 
                         // ...a ThingDef
-                        if (prevInstruction.opcode == OpCodes.Ldfld && prevInstruction.operand == defInfo)
+                        if (prevInstruction.opcode == OpCodes.Ldfld && prevInstruction.OperandIs(defInfo))
                         {
+                            #if DEBUG
+                                Log.Message("PathGrid.CalculatedCostAt match 2 of 3");
+                            #endif
+
                             yield return instruction; // thing.def.pathCost
                             yield return instructionList[i - 2].Clone(); // thing
                             instruction = new CodeInstruction(OpCodes.Call, finalThingPathCostInfo); // FinalPathCost(thing.def.pathCost, thing)
@@ -55,6 +67,10 @@ namespace VFESecurity
                         // ...a TerrainDef
                         if (prevInstruction.opcode == OpCodes.Ldloc_2)
                         {
+                            #if DEBUG
+                                Log.Message("PathGrid.CalculatedCostAt match 3 of 3");
+                            #endif
+
                             yield return instruction; // terrainDef.pathCost
                             yield return prevInstruction.Clone(); // terrain
                             yield return new CodeInstruction(OpCodes.Ldarg_3); // prevCell
@@ -76,12 +92,12 @@ namespace VFESecurity
                     if (terrain != prevTerrain)
                     {
                         // Entering terrain
-                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        var terrainDefExtension = TerrainDefExtension.Get(terrain);
                         if (terrainDefExtension.pathCostEntering > -1)
                             return terrainDefExtension.pathCostEntering;
 
                         // Exiting terrain
-                        var prevTerrainDefExtension = prevTerrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        var prevTerrainDefExtension = TerrainDefExtension.Get(prevTerrain);
                         if (prevTerrainDefExtension.pathCostLeaving > -1)
                             return prevTerrainDefExtension.pathCostLeaving;
                     }

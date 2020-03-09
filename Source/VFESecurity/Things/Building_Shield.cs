@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using Verse.Sound;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -59,14 +59,33 @@ namespace VFESecurity
         {
             get
             {
+                foreach (var cell in coveredCells)
+                {
+                    var thingList = cell.GetThingList(MapHeld);
+                    for (int i = 0; i < thingList.Count; i++)
+                        yield return thingList[i];
+                }
+            }
+        }
+        public IEnumerable<Thing> ThingsWithinScanArea
+        {
+            get
+            {
                 foreach (var cell in scanCells)
-                    foreach (var thing in cell.GetThingList(MapHeld))
-                        yield return thing;
+                {
+                    var thingList = cell.GetThingList(MapHeld);
+                    for (int i = 0; i < thingList.Count; i++)
+                        yield return thingList[i];
+                }
+                    
             }
         }
 
-        Thing IAttackTarget.Thing => this;
-        LocalTargetInfo IAttackTarget.TargetCurrentlyAimingAt => LocalTargetInfo.Invalid;
+        public Thing Thing => this;
+
+        public LocalTargetInfo TargetCurrentlyAimingAt => LocalTargetInfo.Invalid;
+
+        public float TargetPriorityFactor => 1;
 
         private void Notify_EnergyDepleted()
         {
@@ -131,8 +150,7 @@ namespace VFESecurity
                     if (PowerTraderComp != null)
                         PowerTraderComp.PowerOutput = -PowerTraderComp.Props.basePowerConsumption;
 
-                    // Check intercept every 2 ticks instead of every tick if the shield radius is 6 or greater and CE isn't active
-                    if ((ModCompatibilityCheck.CombatExtended || ShieldRadius < EdgeCellRadius + 1 || Find.TickManager.TicksGame % 2 == 0) && Energy > 0)
+                    if ((ShieldRadius < EdgeCellRadius + 1 || Find.TickManager.TicksGame % 2 == 0) && Energy > 0)
                         EnergyShieldTick();
                 }
                 else if (PowerTraderComp != null)
@@ -156,13 +174,22 @@ namespace VFESecurity
             active = ParentHolder is Map && CanFunction &&
                 (Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any() || 
                 GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction) || 
-                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any());
+                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any() ||
+                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any() || shieldBuffer > 0);
+
+            if((Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any() || GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction) || Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any() || Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()) && shieldBuffer < 15)
+                shieldBuffer = 15;
+            else 
+                shieldBuffer-=1;
+
+
         }
 
         private void EnergyShieldTick()
         {
             var thingsWithinRadius = new HashSet<Thing>(ThingsWithinRadius);
-            foreach (var thing in thingsWithinRadius)
+            var thingsWithinScanArea = new HashSet<Thing>(ThingsWithinScanArea);
+            foreach (var thing in thingsWithinScanArea)
             {
                 // Try and block projectiles from outside
                 if (thing is Projectile proj && proj.BlockableByShield(this))
@@ -177,6 +204,11 @@ namespace VFESecurity
                         NonPublicFields.Projectile_usedTarget.SetValue(proj, new LocalTargetInfo(proj.Position));
                         NonPublicMethods.Projectile_ImpactSomething(proj);
                     }
+                }
+                if (thing is Skyfaller skyfaller)
+                {
+
+                
                 }
             }
         }
@@ -209,6 +241,7 @@ namespace VFESecurity
             }
             float energyLoss = amount * EnergyLossMultiplier(def) * EnergyLossPerDamage;
             Energy -= energyLoss;
+            //Log.Message("lost Energy: " + energyLoss + " remaining: " + Energy);
 
             // try to do short circuit
             if (Rand.Chance(energyLoss * ExtendedBuildingProps.shortCircuitChancePerEnergyLost))
@@ -285,6 +318,7 @@ namespace VFESecurity
         {
             Scribe_Values.Look(ref ticksToRecharge, "ticksToRecharge");
             Scribe_Values.Look(ref energy, "energy");
+            Scribe_Values.Look(ref shieldBuffer, "shieldBuffer");
             Scribe_Values.Look(ref active, "active");
             Scribe_Collections.Look(ref affectedThings, "affectedThings", LookMode.Reference, LookMode.Value, ref affectedThingsKeysWorkingList, ref affectedThingsValuesWorkingList);
             base.ExposeData();
@@ -306,6 +340,7 @@ namespace VFESecurity
 
         private int ticksToRecharge;
         private float energy;
+        private int shieldBuffer = 0;
         public bool active;
 
         private Vector3 impactAngleVect;

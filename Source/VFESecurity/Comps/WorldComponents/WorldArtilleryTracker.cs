@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -46,14 +46,20 @@ namespace VFESecurity
 
             if (init)
             {
-                foreach (var worldObject in Find.WorldObjects.AllWorldObjects)
+                var worldObjects = Find.WorldObjects.AllWorldObjects;
+                for (int i = 0; i < worldObjects.Count; i++)
                 {
+                    var worldObject = worldObjects[i];
                     var artilleryComp = worldObject.GetComponent<ArtilleryComp>();
                     if (artilleryComp != null)
                     {
                         RegisterWorldObject(worldObject);
-                        foreach (var artillery in artilleryComp.ArtilleryComps)
+                        var artilleryComps = artilleryComp.ArtilleryComps.ToList();
+                        for (int j = 0; j < artilleryComps.Count; j++)
+                        {
+                            var artillery = artilleryComps[j];
                             RegisterArtilleryComp(artillery);
+                        }
                     }
                 }
             }
@@ -67,22 +73,26 @@ namespace VFESecurity
             if (WorldRendererUtility.WorldRenderedNow)
             {
                 var worldGrid = Find.WorldGrid;
-                foreach (var worldObject in cachedWorldObjects)
+                var worldObjectList = cachedWorldObjects.ToList();
+                for (int i = 0; i < worldObjectList.Count; i++)
                 {
+                    var worldObject = worldObjectList[i];
                     var artilleryComp = worldObject.GetComponent<ArtilleryComp>();
                     if (artilleryComp != null && artilleryComp.Attacking)
                     {
                         var material = worldObject.Faction == Faction.OfPlayer ? ForcedTargetLineMat : NonPlayerTargetLineMat;
-                        foreach (var target in artilleryComp.Targets)
+                        var targetList = artilleryComp.Targets.ToList();
+                        for (int j = 0; j < targetList.Count; j++)
                         {
+                            var target = targetList[j];
                             var start = worldGrid.GetTileCenter(worldObject.Tile);
                             var end = worldGrid.GetTileCenter(target.Tile);
 
                             var drawPoints = ArtilleryStrikeUtility.WorldLineDrawPoints(start, end).ToList();
-                            for (int i = 1; i < drawPoints.Count; i++)
+                            for (int k = 1; k < drawPoints.Count; k++)
                             {
-                                var a = drawPoints[i - 1];
-                                var b = drawPoints[i];
+                                var a = drawPoints[k - 1];
+                                var b = drawPoints[k];
                                 GenDraw.DrawWorldLineBetween(a, b, material);
                             }
                         }
@@ -93,9 +103,12 @@ namespace VFESecurity
 
         public void Notify_WorldObjectRemoved(WorldObject o)
         {
-            foreach (var artillery in listerArtilleryComps)
+            for (int i = 0; i < listerArtilleryComps.Count; i++)
+            {
+                var artillery = listerArtilleryComps[i];
                 if (artillery.targetedTile == o)
                     artillery.ResetForcedTarget();
+            }                
         }
 
         public void RegisterWorldObject(WorldObject o)
@@ -114,6 +127,8 @@ namespace VFESecurity
             if (o == null)
                 return;
 
+            if (cachedWorldObjects == null)
+                cachedWorldObjects = new List<WorldObject>();
             if (cachedWorldObjects.Contains(o))
                 cachedWorldObjects.Remove(o);
         }
@@ -134,6 +149,8 @@ namespace VFESecurity
             if (a == null)
                 return;
 
+            if (listerArtilleryComps == null)
+                listerArtilleryComps = new List<CompLongRangeArtillery>();
             if (listerArtilleryComps.Contains(a))
                 listerArtilleryComps.Remove(a);
         }

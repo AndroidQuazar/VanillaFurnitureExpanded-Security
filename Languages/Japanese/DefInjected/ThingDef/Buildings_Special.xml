@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Psychic Pylon -->
+
+  <VFES_PsychicPylon.label>サイコパイロン</VFES_PsychicPylon.label>
+  <VFES_PsychicPylon.description>強力なサイコウェーブを周囲に放射する古代の装置です。あなたに危害を加えようとする相手だけを目標とするようです。壁を貫通して作用します。</VFES_PsychicPylon.description>
+  <Blueprint_Install_VFES_PsychicPylon.label>サイコパイロン(移動先)</Blueprint_Install_VFES_PsychicPylon.label>
+
+</LanguageData>

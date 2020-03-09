@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <VFES_EnergyShieldEnergyMax.label>シールド:最大エネルギー</VFES_EnergyShieldEnergyMax.label>
+  <VFES_EnergyShieldEnergyMax.description>シールド発生器が溜められる最大エネルギー量です。エネルギーがより多ければそれだけ多くのダメージを吸収可能です。</VFES_EnergyShieldEnergyMax.description>
+
+  <VFES_EnergyShieldRechargeRate.label>シールド:再チャージ率</VFES_EnergyShieldRechargeRate.label>
+  <VFES_EnergyShieldRechargeRate.description>シールドが壊れてない限り、1秒ごとにシールドがエネルギー回復する量です。</VFES_EnergyShieldRechargeRate.description>
+  <VFES_EnergyShieldRechargeRate.formatString>{0}/秒</VFES_EnergyShieldRechargeRate.formatString>
+
+  <VFES_EnergyShieldRadius.label>シールド:範囲</VFES_EnergyShieldRadius.label>
+  <VFES_EnergyShieldRadius.description>エネルギーシールドが有効な際に防御される範囲です。</VFES_EnergyShieldRadius.description>
+  <VFES_EnergyShieldRadius.formatString>{0}セル</VFES_EnergyShieldRadius.formatString>
+
+</LanguageData>

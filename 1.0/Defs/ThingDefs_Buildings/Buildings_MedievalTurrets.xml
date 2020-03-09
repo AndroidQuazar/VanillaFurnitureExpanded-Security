@@ -238,7 +238,7 @@
       <turretBurstWarmupTime>6</turretBurstWarmupTime>
       <turretBurstCooldownTime>42</turretBurstCooldownTime>
       <buildingTags>
-        <li>Artillery</li>
+        <li>ArtilleryMedieval</li>
         <li>ArtilleryMedieval_BaseDestroyer</li>
       </buildingTags>
       <turretGunDef>VFES_Artillery_Catapult</turretGunDef>

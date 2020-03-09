@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <VFES_ShortWall.label>腰壁</VFES_ShortWall.label>
+  <VFES_ShortWall.description>通過可能な胸の高さほどある壁です。屋根を支えることができません。</VFES_ShortWall.description>
+  <Blueprint_VFES_ShortWall.label>腰壁(設計)</Blueprint_VFES_ShortWall.label>
+  <Frame_VFES_ShortWall.label>腰壁(施行)</Frame_VFES_ShortWall.label>
+  <Frame_VFES_ShortWall.description>通過可能な胸の高さほどある壁です。屋根を支えることができません。</Frame_VFES_ShortWall.description>
+
+</LanguageData>

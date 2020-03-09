@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -23,6 +23,10 @@ namespace VFESecurity
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
+                #if DEBUG
+                    Log.Message("Transpiler start: GenGrid.Standable (1 match)");
+                #endif
+
                 // Decided to do as a transpiler for performance reasons
                 var instructionList = instructions.ToList();
 
@@ -36,8 +40,12 @@ namespace VFESecurity
                 {
                     var instruction = instructionList[i];
 
-                    if (instruction.opcode == OpCodes.Ldfld && instruction.operand == passabilityInfo)
+                    if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(passabilityInfo))
                     {
+                        #if DEBUG
+                            Log.Message("GenGrid.Standable match 1 of 1");
+                        #endif
+
                         yield return instruction; // list[i].def.passability
                         yield return new CodeInstruction(OpCodes.Ldloc_0); // list
                         yield return new CodeInstruction(OpCodes.Ldloc_1); // i

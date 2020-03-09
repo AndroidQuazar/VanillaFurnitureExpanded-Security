@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -18,9 +18,18 @@ namespace VFESecurity
     public static class ModCompatibilityCheck
     {
 
-        public static readonly bool CombatExtended = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Combat Extended");
+        static ModCompatibilityCheck()
+        {
+            var activeModList = ModsConfig.ActiveModsInLoadOrder.ToList();
+            for (int i = 0; i < activeModList.Count; i++)
+            {
+                var mod = activeModList[i];
+                if (mod.Name == "Vanilla Factions Expanded - Insectoids")
+                    VanillaFactionsExpandedInsectoids = true;
+            }
+        }
 
-        public static readonly bool VanillaFactionsExpandedInsectoids = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Vanilla Factions Expanded - Insectoids");
+        public static bool VanillaFactionsExpandedInsectoids;
 
     }
 

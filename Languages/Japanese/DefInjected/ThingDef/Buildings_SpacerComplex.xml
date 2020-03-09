@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Barrier -->
+
+  <VFES_Barrier.label>バリケード</VFES_Barrier.label>
+  <VFES_Barrier.description>鉄筋コンクリートで固めて補強された金属製のバリケードです。遠距離攻撃に対して高い遮蔽効果があります。</VFES_Barrier.description>
+  <Blueprint_VFES_Barrier.label>バリケード(設計)</Blueprint_VFES_Barrier.label>
+  <Frame_VFES_Barrier.label>バリケード(施行)</Frame_VFES_Barrier.label>
+  <Frame_VFES_Barrier.description>鉄筋コンクリートで固めて補強された金属製のバリケードです。遠距離攻撃に対して高い遮蔽効果があります。</Frame_VFES_Barrier.description>
+
+
+  <!-- Charge Complex -->
+
+  <VFES_Turret_ChargeComplex.label>チャージガン 固定銃座</VFES_Turret_ChargeComplex.label>
+  <VFES_Turret_ChargeComplex.description>金属製のバリケードに取り付けられたチャージキャノンです。バレルの交換が必要になるまで射撃することが可能です。</VFES_Turret_ChargeComplex.description>
+  <Blueprint_VFES_Turret_ChargeComplex.label>チャージガン 固定銃座(設計)</Blueprint_VFES_Turret_ChargeComplex.label>
+  <Frame_VFES_Turret_ChargeComplex.label>チャージガン 固定銃座(施行)</Frame_VFES_Turret_ChargeComplex.label>
+  <Frame_VFES_Turret_ChargeComplex.description>金属製のバリケードに取り付けられたチャージキャノンです。バレルの交換が必要になるまで射撃することが可能です。</Frame_VFES_Turret_ChargeComplex.description>
+
+  <VFES_Gun_ChargeComplex.label>銃座用チャージガン</VFES_Gun_ChargeComplex.label>
+  <VFES_Gun_ChargeComplex.description>タレットに設置するように作られたチャージガンです。</VFES_Gun_ChargeComplex.description>
+
+  <VFES_Bullet_ChargeComplex.label>チャージ弾</VFES_Bullet_ChargeComplex.label>
+
+</LanguageData>

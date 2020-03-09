@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Military Turret -->
+
+  <VFES_Turret_MilitaryTurret.label>軍用 二連装タレット</VFES_Turret_MilitaryTurret.label>
+  <VFES_Turret_MilitaryTurret.description>軍用レベルの二連装タレットです。射撃回数が多い場合、バレルの交換にスチールが大量に必要です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</VFES_Turret_MilitaryTurret.description>
+  <Blueprint_VFES_Turret_MilitaryTurret.label>軍用 二連装タレット(設計)</Blueprint_VFES_Turret_MilitaryTurret.label>
+  <Blueprint_Install_VFES_Turret_MilitaryTurret.label>軍用 二連装タレット(移動先)</Blueprint_Install_VFES_Turret_MilitaryTurret.label>
+  <Frame_VFES_Turret_MilitaryTurret.label>軍用 二連装タレット(施行)</Frame_VFES_Turret_MilitaryTurret.label>
+  <Frame_VFES_Turret_MilitaryTurret.description>軍用レベルの二連装タレットです。射撃回数が多い場合、バレルの交換にスチールが大量に必要です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_MilitaryTurret.description>
+
+  <VFES_Gun_MilitaryTurret.label>軍用 二連装タレット</VFES_Gun_MilitaryTurret.label>
+  <VFES_Gun_MilitaryTurret.description>タレットに搭載するために作られた二連装式の自動銃です。</VFES_Gun_MilitaryTurret.description>
+
+
+  <!-- Searchlight -->
+
+  <VFES_Turret_Searchlight.label>サーチライト</VFES_Turret_Searchlight.label>
+  <VFES_Turret_Searchlight.description>非常に明るい照明ランプと反射鏡が付いたパラボラ型の反射鏡を組み合わせた装置で、目標を照らしたり目を眩ませるのに役立ちます。</VFES_Turret_Searchlight.description>
+  <Blueprint_VFES_Turret_Searchlight.label>サーチライト(設計)</Blueprint_VFES_Turret_Searchlight.label>
+  <Blueprint_Install_VFES_Turret_Searchlight.label>サーチライト(移動先)</Blueprint_Install_VFES_Turret_Searchlight.label>
+  <Frame_VFES_Turret_Searchlight.label>サーチライト(施行)</Frame_VFES_Turret_Searchlight.label>
+  <Frame_VFES_Turret_Searchlight.description>非常に明るい照明ランプと反射鏡が付いたパラボラ型の反射鏡を組み合わせた装置で、目標を照らしたり目を眩ませるのに役立ちます。</Frame_VFES_Turret_Searchlight.description>
+
+  <VFES_Gun_Searchlight.label>サーチライト</VFES_Gun_Searchlight.label>
+  <VFES_Gun_Searchlight.description>タレットに取り付けるサーチライトです。</VFES_Gun_Searchlight.description>
+
+
+  <!-- Flame Turret -->
+
+  <VFES_Turret_Flame.label>火炎放射 タレット</VFES_Turret_Flame.label>
+  <VFES_Turret_Flame.description>小型火炎放射器が搭載されたタレットです。破壊されると爆発する可能性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</VFES_Turret_Flame.description>
+  <Blueprint_VFES_Turret_Flame.label>火炎放射 タレット(設計)</Blueprint_VFES_Turret_Flame.label>
+  <Blueprint_Install_VFES_Turret_Flame.label>火炎放射 タレット(移動先)</Blueprint_Install_VFES_Turret_Flame.label>
+  <Frame_VFES_Turret_Flame.label>火炎放射 タレット(施行)</Frame_VFES_Turret_Flame.label>
+  <Frame_VFES_Turret_Flame.description>小型火炎放射器が搭載されたタレットです。破壊されると爆発する可能性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_Flame.description>
+
+  <VFES_Gun_FlameTurret.label>タレット用 火炎放射器</VFES_Gun_FlameTurret.label>
+  <VFES_Gun_FlameTurret.description>タレットに搭載するための火炎放射器です。</VFES_Gun_FlameTurret.description>
+
+  <VFES_Bullet_FlameTurret.label>火炎放射器燃料</VFES_Bullet_FlameTurret.label>
+
+
+  <!-- Sentry Gun -->
+
+  <VFES_Turret_SentryGun.label>セントリー ガン</VFES_Turret_SentryGun.label>
+  <VFES_Turret_SentryGun.description>小型のガトリング銃を搭載した携帯型の自家発電タレットです。どこへでも運べて設置できるほど軽量です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</VFES_Turret_SentryGun.description>
+  <Blueprint_VFES_Turret_SentryGun.label>セントリーガン(設計)</Blueprint_VFES_Turret_SentryGun.label>
+  <Blueprint_Install_VFES_Turret_SentryGun.label>セントリーガン(移動先)</Blueprint_Install_VFES_Turret_SentryGun.label>
+  <Frame_VFES_Turret_SentryGun.label>セントリーガン(施行)</Frame_VFES_Turret_SentryGun.label>
+  <Frame_VFES_Turret_SentryGun.description>小型のガトリング銃を搭載した携帯型の自家発電タレットです。どこへでも運べて設置できるほど軽量です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_SentryGun.description>
+
+  <VFES_Gun_SentryTurret.label>セントリーガン</VFES_Gun_SentryTurret.label>
+  <VFES_Gun_SentryTurret.description>タレットに搭載できるように作られた全自動型ガトリング銃です。</VFES_Gun_SentryTurret.description>
+
+</LanguageData>

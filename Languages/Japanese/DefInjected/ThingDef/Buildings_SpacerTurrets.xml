@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Charge Turret -->
+
+  <VFES_Turret_ChargeTurret.label>チャージ タレット</VFES_Turret_ChargeTurret.label>
+  <VFES_Turret_ChargeTurret.description>チャージパルスガンを上部に搭載された自動タレットで、命中精度を向上させる高度なセンサーが装備されています。沢山射撃した後は、プラスチールを使いバレルを交換する必要があります。ダメージを受けて壊れる際に爆発する可能性があります。</VFES_Turret_ChargeTurret.description>
+  <Blueprint_VFES_Turret_ChargeTurret.label>チャージ タレット(設計)</Blueprint_VFES_Turret_ChargeTurret.label>
+  <Blueprint_Install_VFES_Turret_ChargeTurret.label>チャージ タレット(移動先)</Blueprint_Install_VFES_Turret_ChargeTurret.label>
+  <Frame_VFES_Turret_ChargeTurret.label>チャージ タレット(施行)</Frame_VFES_Turret_ChargeTurret.label>
+  <Frame_VFES_Turret_ChargeTurret.description>チャージパルスガンを上部に搭載された自動タレットで、命中精度を向上させる高度なセンサーが装備されています。沢山射撃した後は、プラスチールを使いバレルを交換する必要があります。ダメージを受けて壊れる際に爆発する可能性があります。</Frame_VFES_Turret_ChargeTurret.description>
+
+  <VFES_Gun_ChargeTurret.label>タレット用チャージライフル</VFES_Gun_ChargeTurret.label>
+  <VFES_Gun_ChargeTurret.description>タレットに搭載するように作られたチャージライフルです。</VFES_Gun_ChargeTurret.description>
+
+
+  <!-- Charge Railgun -->
+
+  <VFES_Turret_ChargeRailgunTurret.label>チャージ レイルガン</VFES_Turret_ChargeRailgunTurret.label>
+  <VFES_Turret_ChargeRailgunTurret.description>高度なセンサー類を利用して最高クラスの命中精度を与えて、通常は宇宙船に搭載される強力なレールガン砲です。整備するのにコンポーネントを交換する必要があります。ダメージを受けて壊れる際に爆発する可能性があります。</VFES_Turret_ChargeRailgunTurret.description>
+  <Blueprint_VFES_Turret_ChargeRailgunTurret.label>チャージレイルガン(設計)</Blueprint_VFES_Turret_ChargeRailgunTurret.label>
+  <Frame_VFES_Turret_ChargeRailgunTurret.label>チャージレイルガン(施行)</Frame_VFES_Turret_ChargeRailgunTurret.label>
+  <Frame_VFES_Turret_ChargeRailgunTurret.description>高度なセンサー類を利用して最高クラスの命中精度を与えて、通常は宇宙船に搭載される強力なレールガン砲です。整備するのにコンポーネントを交換する必要があります。ダメージを受けて壊れる際に爆発する可能性があります。</Frame_VFES_Turret_ChargeRailgunTurret.description>
+
+  <VFES_Gun_RailgunTurret.label>チャージレイルガン</VFES_Gun_RailgunTurret.label>
+  <VFES_Gun_RailgunTurret.description>タレットに搭載するように作られたチャージライフルです。</VFES_Gun_RailgunTurret.description>
+
+  <VFES_Bullet_DoubleChargeLance.label>チャージレイルガン弾</VFES_Bullet_DoubleChargeLance.label>
+
+
+  <!-- EMP Cannon -->
+
+  <VFES_Turret_EMPTurret.label>EMPキャノン</VFES_Turret_EMPTurret.label>
+  <VFES_Turret_EMPTurret.description>通常は宇宙船に搭載される電磁パルス砲です。整備するのにウランを交換する必要があります。メカノイドだけを目標にする事が可能で、ダメージを受けて壊れる際に爆発する可能性があります。</VFES_Turret_EMPTurret.description>
+  <Blueprint_VFES_Turret_EMPTurret.label>EMPキャノン(設計)</Blueprint_VFES_Turret_EMPTurret.label>
+  <Frame_VFES_Turret_EMPTurret.label>EMPキャノン(施行)</Frame_VFES_Turret_EMPTurret.label>
+  <Frame_VFES_Turret_EMPTurret.description>通常は宇宙船に搭載される電磁パルス砲です。整備するのにウランを交換する必要があります。メカノイドだけを目標にする事が可能で、ダメージを受けて壊れる際に爆発する可能性があります。</Frame_VFES_Turret_EMPTurret.description>
+
+  <VFES_Gun_EMPTurret.label>EMPキャノン</VFES_Gun_EMPTurret.label>
+  <VFES_Gun_EMPTurret.description>タレットに搭載できるように作られたEMPコイルガンです。</VFES_Gun_EMPTurret.description>
+
+  <VFES_Bullet_EMPCannon.label>電磁パルス弾</VFES_Bullet_EMPCannon.label>
+
+</LanguageData>

@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using Verse.Sound;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -48,8 +48,9 @@ namespace VFESecurity
 
         public override void DesignateSingleCell(IntVec3 c)
         {
-            foreach (var thing in c.GetThingList(Map))
-                DesignateThing(thing);
+            var thingList = c.GetThingList(Map);
+            for (int i = 0; i < thingList.Count; i++)
+                DesignateThing(thingList[i]);
         }
 
         public override void DesignateThing(Thing t)
@@ -64,9 +65,13 @@ namespace VFESecurity
             if (!c.InBounds(Map))
                 yield break;
 
-            foreach (var thing in c.GetThingList(Map))
+            var thingList = c.GetThingList(Map);
+            for (int i = 0; i < thingList.Count; i++)
+            {
+                var thing = thingList[i];
                 if (CanDesignateThing(thing).Accepted)
                     yield return thing;
+            }
         }
 
         public override AcceptanceReport CanDesignateThing(Thing t)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- Add HediffGiver_Dazzled -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/HediffGiverSetDef[defName="OrganicStandard"]/hediffGivers</xpath>
+        <value>
+            <li Class="VFESecurity.HediffGiver_Dazzled">
+                <hediff>VFES_Dazzled</hediff>
+                <partsToAffect>
+                    <li>Eye</li>
+                </partsToAffect>
+                <countToAffect>2</countToAffect>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

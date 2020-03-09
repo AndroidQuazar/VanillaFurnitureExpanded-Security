@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Psychic Pylon -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_PsychicPylon</defName>
+    <label>psychic pylon</label>
+    <description>An ancient device that projects a strong psychic drone around itself. Only seems to target those who mean you harm. Works through walls.</description>
+    <graphicData>
+      <texPath>Things/Security/Psychic/PsychicPylon_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(5,5)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <uiIconPath>Things/Security/Psychic/PsychicPylon_MenuIcon</uiIconPath>
+    <uiIconScale>0.9</uiIconScale>
+    <tickerType>Normal</tickerType>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <costList>
+      <Steel>70</Steel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MarketValue>1300</MarketValue>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>0</Beauty>
+      <Mass>20</Mass>
+      <WorkToBuild>3000</WorkToBuild>
+    </statBases>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <fillPercent>0.25</fillPercent>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <pathCost>25</pathCost>
+    <rotatable>false</rotatable>
+    <stealable>false</stealable>
+    <canOverlapZones>false</canOverlapZones>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <specialDisplayRadius>15</specialDisplayRadius>
+    <tradeability>Sellable</tradeability>
+  </ThingDef>
+
+</Defs>

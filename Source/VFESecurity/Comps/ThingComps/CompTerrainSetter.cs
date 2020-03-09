@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -22,15 +22,23 @@ namespace VFESecurity
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             var terrainGrid = parent.Map.terrainGrid;
-            foreach (var cell in parent.OccupiedRect())
+            var occupiedCells = parent.OccupiedRect().ToList();
+            for (int i = 0; i < occupiedCells.Count; i++)
+            {
+                var cell = occupiedCells[i];
                 terrainGrid.SetTerrain(cell, Props.terrainDef);
+            }
         }
 
         public override void PostDeSpawn(Map map)
         {
             var terrainGrid = map.terrainGrid;
-            foreach (var cell in parent.OccupiedRect())
+            var occupiedCells = parent.OccupiedRect().ToList();
+            for (int i = 0; i < occupiedCells.Count; i++)
+            {
+                var cell = occupiedCells[i];
                 terrainGrid.RemoveTopLayer(cell, false);
+            }
         }
 
     }

@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -18,8 +18,14 @@ namespace VFESecurity
     public class TerrainDefExtension : DefModExtension
     {
 
-        public static readonly TerrainDefExtension defaultValues = new TerrainDefExtension();
+        private static readonly TerrainDefExtension defaultValues = new TerrainDefExtension();
 
+        public static TerrainDefExtension Get(Def def)
+        {
+            return def.GetModExtension<TerrainDefExtension>() ?? defaultValues;
+        }
+
+        public bool allowCrouching;
         public int pathCostEntering = -1;
         public int pathCostLeaving = -1;
         public float coverEffectiveness;

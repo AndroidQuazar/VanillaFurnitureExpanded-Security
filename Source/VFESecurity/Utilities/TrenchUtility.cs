@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -56,7 +56,7 @@ namespace VFESecurity
         {
             float original = range;
             var terrain = map.terrainGrid.TerrainAt(pos);
-            var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+            var terrainDefExtension = TerrainDefExtension.Get(terrain);
             if (terrainDefExtension.rangeFactor != 1)
                 range *= terrainDefExtension.rangeFactor;
             return original - Mathf.RoundToInt(original - range);

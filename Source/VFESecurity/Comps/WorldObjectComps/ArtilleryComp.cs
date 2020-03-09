@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -62,9 +62,13 @@ namespace VFESecurity
                     yield break;
                 }
 
-                var settlements = Find.WorldObjects.Settlements.Where(s => s.Faction == Faction.OfPlayer && Find.WorldGrid.TraversalDistanceBetween(parent.Tile, s.Tile) <= ArtilleryProps.worldTileRange);
-                foreach (var settlement in settlements)
-                    yield return new GlobalTargetInfo(settlement);
+                var settlementList = Find.WorldObjects.Settlements;
+                for (int i = 0; i < settlementList.Count; i++)
+                {
+                    var settlement = settlementList[i];
+                    if (settlement.Faction == Faction.OfPlayer && Find.WorldGrid.TraversalDistanceBetween(parent.Tile, settlement.Tile) <= ArtilleryProps.worldTileRange)
+                        yield return new GlobalTargetInfo(settlement);
+                }
             }
         }
 

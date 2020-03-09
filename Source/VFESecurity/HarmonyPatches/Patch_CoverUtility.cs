@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -37,13 +37,14 @@ namespace VFESecurity
             public static void Postfix(LocalTargetInfo target, Map map, ref List<CoverInfo> __result)
             {
                 var things = target.Cell.GetThingList(map);
-                foreach (var thing in things)
+                for (int i = 0; i < things.Count; i++)
                 {
+                    var thing = things[i];
                     var terrainSetter = thing.def.GetCompProperties<CompProperties_TerrainSetter>();
                     if (terrainSetter != null)
                     {
                         var terrain = terrainSetter.terrainDef;
-                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        var terrainDefExtension = TerrainDefExtension.Get(terrain);
                         if (terrainDefExtension.coverEffectiveness > 0)
                         {
                             __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
@@ -61,13 +62,14 @@ namespace VFESecurity
             public static void Postfix(LocalTargetInfo target, Map map, ref float __result)
             {
                 var things = target.Cell.GetThingList(map);
-                foreach (var thing in things)
+                for (int i = 0; i < things.Count; i++)
                 {
+                    var thing = things[i];
                     var terrainSetter = thing.def.GetCompProperties<CompProperties_TerrainSetter>();
                     if (terrainSetter != null)
                     {
                         var terrain = terrainSetter.terrainDef;
-                        var terrainDefExtension = terrain.GetModExtension<TerrainDefExtension>() ?? TerrainDefExtension.defaultValues;
+                        var terrainDefExtension = TerrainDefExtension.Get(terrain);
                         if (terrainDefExtension.coverEffectiveness > 0)
                         {
                             __result += (1 - __result) * terrainDefExtension.coverEffectiveness;

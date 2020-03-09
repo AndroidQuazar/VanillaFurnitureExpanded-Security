@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -51,6 +51,7 @@ namespace VFESecurity
                         Find.Storyteller.incidentQueue.Add(IncidentDefOf.RaidEnemy, Find.TickManager.TicksGame + RaidIntervalRange.RandomInRange, parms);
                     }
 
+                    Find.QuestManager.QuestsListForReading.Where(q => q.QuestLookTargets.Contains(peaceTalks)).ToList().ForEach(q => q.End(QuestEndOutcome.Fail));
                     Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikeProvokedGeneric_Letter".Translate(peaceTalks.def.label), "VFESecurity.ArtilleryStrikePeaceTalks_LetterText".Translate(faction.Name), LetterDefOf.NegativeEvent);
                     Find.WorldObjects.Remove(peaceTalks);
 

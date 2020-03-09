@@ -9,7 +9,8 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using RimWorld.Planet;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -31,6 +32,8 @@ namespace VFESecurity
         public static FieldInfo Projectile_ticksToImpact = AccessTools.Field(typeof(Projectile), "ticksToImpact");
         public static FieldInfo Projectile_origin = AccessTools.Field(typeof(Projectile), "origin");
         public static FieldInfo Projectile_usedTarget = AccessTools.Field(typeof(Projectile), "usedTarget");
+
+        public static FieldInfo Site_allEnemiesDefeatedSignalSent = AccessTools.Field(typeof(Site), "allEnemiesDefeatedSignalSent");
 
         public static FieldInfo TurretTop_ticksUntilIdleTurn = AccessTools.Field(typeof(TurretTop), "ticksUntilIdleTurn");
 

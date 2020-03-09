@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ballista -->
+
+  <VFES_Stab.label>炸裂</VFES_Stab.label>
+  <VFES_Stab.description>突き刺さった傷です.</VFES_Stab.description>
+  <VFES_Stab.labelNoun>炸裂</VFES_Stab.labelNoun>
+  <VFES_Stab.labelNounPretty>{1}内の{0}</VFES_Stab.labelNounPretty>
+  <VFES_Stab.comps.HediffComp_GetsPermanent.permanentLabel>炸裂痕</VFES_Stab.comps.HediffComp_GetsPermanent.permanentLabel>
+  <VFES_Stab.comps.HediffComp_TendDuration.labelTendedWell>包帯</VFES_Stab.comps.HediffComp_TendDuration.labelTendedWell>
+  <VFES_Stab.comps.HediffComp_TendDuration.labelTendedWellInner>縫合</VFES_Stab.comps.HediffComp_TendDuration.labelTendedWellInner>
+  <VFES_Stab.comps.HediffComp_TendDuration.labelSolidTendedWell>セット</VFES_Stab.comps.HediffComp_TendDuration.labelSolidTendedWell>
+  <VFES_Stab.injuryProps.destroyedLabel>切り落とされた</VFES_Stab.injuryProps.destroyedLabel>
+  <VFES_Stab.injuryProps.destroyedOutLabel>切り裂かれた</VFES_Stab.injuryProps.destroyedOutLabel>
+
+</LanguageData>

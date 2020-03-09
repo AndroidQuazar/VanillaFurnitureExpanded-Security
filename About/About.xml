@@ -2,7 +2,8 @@
 <ModMetaData>
 	<name>Vanilla Furniture Expanded - Security</name>
 	<author>Oskar Potocki, Trunken, XeoNovaDan</author>
-	<supportedVersions><li>1.0</li></supportedVersions>
+	<supportedVersions><li>1.0</li><li>1.1</li></supportedVersions>
+	<packageId>VanillaExpanded.VFESecurity</packageId>
 	<description>
 Vanilla Furniture Expanded - Security module is a result of hours upon hours of hard work. It has been a long time since we began working on this mod, and with a team of brilliant programmers, I am not honored to present to you a Vanilla Expanded approach to base defenses. Every word and every stat in this mod have been carefully prepared to be as balanced and as “vanilla” as possible. 
 

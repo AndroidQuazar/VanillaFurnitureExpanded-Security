@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -22,8 +22,11 @@ namespace VFESecurity
         {
             ArtilleryStrikeUtility.SetCache();
 
-            foreach (var tDef in DefDatabase<ThingDef>.AllDefs)
+            var thingDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < thingDefs.Count; i++)
             {
+                var tDef = thingDefs[i];
+
                 // Add CompPawnTracker to all Pawns
                 if (typeof(Pawn).IsAssignableFrom(tDef.thingClass))
                 {

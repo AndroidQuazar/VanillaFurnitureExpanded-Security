@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ballista -->
+
+  <VFES_Dazzled.label>目が眩んだ</VFES_Dazzled.label>
+  <VFES_Dazzled.description>強い光に曝された結果視力が大きく低下した状態です。</VFES_Dazzled.description>
+  <VFES_Dazzled.labelNoun>少し目がくらんだ</VFES_Dazzled.labelNoun>
+
+</LanguageData>

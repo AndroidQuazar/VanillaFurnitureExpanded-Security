@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -33,10 +33,11 @@ namespace VFESecurity
             var map = mapParent.Map;
             if (map != null)
             {
-                foreach (var strike in artilleryStrikes)
+                for (int i = 0; i < artilleryStrikes.Count; i++)
                 {
+                    var strike = artilleryStrikes[i];
                     var potentialCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, strike.missRadius);
-                    for (int i = 0; i < strike.shellCount; i++)
+                    for (int j = 0; j < strike.shellCount; j++)
                         ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(strike.shellDef, map, potentialCells.RandomElement());
                 }
             }

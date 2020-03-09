@@ -320,12 +320,12 @@
             <li>Chemfuel</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>150</fuelCapacity>
+        <fuelCapacity>100</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>2</fuelMultiplier>
+        <fuelMultiplier>1</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs chemfuel</outOfFuelMessage>
@@ -477,7 +477,7 @@
             <li>Steel</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>120</fuelCapacity>
+        <fuelCapacity>60</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>

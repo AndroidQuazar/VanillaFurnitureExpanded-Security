@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -29,8 +29,9 @@ namespace VFESecurity
                 if (p.Spawned && __result.StageIndex < 4)
                 {
                     var psychicPylons = p.Map.listerThings.ThingsOfDef(ThingDefOf.VFES_PsychicPylon);
-                    foreach (var pylon in psychicPylons)
+                    for (int i = 0; i < psychicPylons.Count; i++)
                     {
+                        var pylon = psychicPylons[i];
                         var faction = pylon.Faction;
                         var powerComp = pylon.TryGetComp<CompPowerTrader>();
                         if ((powerComp == null || powerComp.PowerOn) && p.GetStatValue(RimWorld.StatDefOf.PsychicSensitivity) > 0 && (p.Faction == null || p.Faction.HostileTo(pylon.Faction)) 

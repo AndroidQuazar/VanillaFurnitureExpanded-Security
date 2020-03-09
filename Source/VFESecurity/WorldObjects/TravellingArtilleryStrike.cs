@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -69,9 +69,12 @@ namespace VFESecurity
 
             // Display unique shells
             inspectBuilder.AppendLine($"{"TabShells".Translate()}:");
-            var shellCounts = ArtilleryStrikes.GroupBy(s => s.shellDef);
-            foreach (var shellCount in shellCounts)
+            var shellCounts = ArtilleryStrikes.GroupBy(s => s.shellDef).ToList();
+            for (int i = 0; i < shellCounts.Count; i++)
+            {
+                var shellCount = shellCounts[i];
                 inspectBuilder.AppendLine($" - {shellCount.Key.LabelCap} x{shellCount.Select(s => s.shellCount).Aggregate((s1, s2) => s1 + s2)}");
+            }
 
             return inspectBuilder.ToString().TrimEndNewlines();
         }

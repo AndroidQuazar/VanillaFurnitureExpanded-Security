@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -26,6 +26,9 @@ namespace VFESecurity
         public float shortCircuitChancePerEnergyLost;
         public float inactivePowerConsumption;
         public Color shieldColour = Color.white;
+
+        // Traps
+        public float trapDestroyOnSpringChance;
 
     }
 

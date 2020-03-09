@@ -6,7 +6,7 @@
     <defName>VFES_BarbedWire</defName>
     <label>barbed wire</label>
     <description>A type of steel fencing wire consisting of sharp edges and points arranged at intervals. Not only does it slow movement of enemies, but it inflicts cuts and puncture wounds.</description>
-    <thingClass>Building_TrapDamager</thingClass>
+    <thingClass>VFESecurity.Building_BarbedWire</thingClass>
     <graphicData>
       <texPath>Things/Security/BarbedWire/BarbedWire_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -19,28 +19,29 @@
         <rect>(0,0,1,0.15)</rect>
       </damageData>
     </graphicData>
+    <tickerType>Normal</tickerType>
     <techLevel>Industrial</techLevel>
     <uiIconPath>Things/Security/BarbedWire/BarbedWire_MenuIcon</uiIconPath>
     <blockLight>false</blockLight>
     <blockWind>false</blockWind>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
-    <coversFloor>false</coversFloor>
-    <pathCost>200</pathCost>
+    <pathCost>100</pathCost>
     <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <neverMultiSelect>false</neverMultiSelect>
     <holdsRoof>false</holdsRoof>
     <altitudeLayer>Building</altitudeLayer>
-    <drawerType>MapMeshAndRealTime</drawerType>    <!-- MapMeshOnly -->
+    <drawerType>MapMeshAndRealTime</drawerType>
     <rotatable>false</rotatable>
     <statBases>
       <MaxHitPoints>80</MaxHitPoints>
       <WorkToBuild>300</WorkToBuild>
       <Flammability>1</Flammability>
       <Beauty>-15</Beauty>
-      <TrapMeleeDamage>3</TrapMeleeDamage>
-      <TrapSpringChance>0.5</TrapSpringChance>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>4</TrapMeleeDamage>
+      <TrapSpringChance>1</TrapSpringChance>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
@@ -67,6 +68,11 @@
     <researchPrerequisites>
       <li>VFES_TrenchWarfare</li>
     </researchPrerequisites>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedBuildingProperties">
+        <trapDestroyOnSpringChance>0.2</trapDestroyOnSpringChance>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <!-- Trench -->
@@ -111,7 +117,7 @@
     <passability>Standable</passability>
     <blockWind>false</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
-    <pathCost>0</pathCost> <!-- Handled through VFES_TrenchTerrain -->
+    <pathCost>0</pathCost>    <!-- Handled through VFES_TrenchTerrain -->
     <coversFloor>true</coversFloor>
     <placingDraggableDimensions>2</placingDraggableDimensions>
     <tickerType>Never</tickerType>
@@ -146,7 +152,7 @@
 
   <!-- Ammo Crate -->
 
-  <ThingDef ParentName="FurnitureWithQualityBase">
+  <ThingDef ParentName="FurnitureBase">
     <defName>VFES_AmmoCrate</defName>
     <label>ammo crate</label>
     <description>An ammo crate useful for storing shells. Improves firing rate of surrounding soldiers.</description>

@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -20,21 +20,27 @@ namespace VFESecurity
 
         static HarmonyPatches()
         {
-            VFESecurity.HarmonyInstance.PatchAll();
+            #if DEBUG
+                Harmony.DEBUG = true;
+            #endif
+
+            VFESecurity.harmonyInstance.PatchAll();
 
             // Anonymous types...
             var bestAttackTargetAnon = typeof(AttackTargetFinder).GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).
-                Where(t => t.Name.Contains("BestAttackTarget")).MaxBy(t => t.GetMembers(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Count());
+                Where(t => t.GetMembers(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).Any(m => m.Name.Contains("BestAttackTarget"))).
+                MaxBy(t => t.GetMembers(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Count());
             Patch_AttackTargetFinder.manual_BestAttackTarget.firstAnonymousType = bestAttackTargetAnon;
-            VFESecurity.HarmonyInstance.Patch(AccessTools.Method(typeof(AttackTargetFinder), nameof(AttackTargetFinder.BestAttackTarget)), transpiler: new HarmonyMethod(typeof(Patch_AttackTargetFinder.manual_BestAttackTarget), "Transpiler"));
+            VFESecurity.harmonyInstance.Patch(AccessTools.Method(typeof(AttackTargetFinder), nameof(AttackTargetFinder.BestAttackTarget)), transpiler: new HarmonyMethod(typeof(Patch_AttackTargetFinder.manual_BestAttackTarget), "Transpiler"));
 
             // Patch the InitAction for Toils_Combat.GoToCastPosition
-            var initActionType = typeof(Toils_Combat).GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.Name.Contains("GotoCastPosition"));
-            VFESecurity.HarmonyInstance.Patch(initActionType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(), transpiler: new HarmonyMethod(typeof(Patch_Toils_Combat.manual_GoToCastPosition_initAction), "Transpiler"));
+            var initActionType = typeof(Toils_Combat).GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).
+                First(t => t.GetMembers(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).Any(m => m.Name.Contains("GotoCastPosition")));
+            VFESecurity.harmonyInstance.Patch(initActionType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(), transpiler: new HarmonyMethod(typeof(Patch_Toils_Combat.manual_GoToCastPosition_initAction), "Transpiler"));
 
             // Why, oh why does this class have to be internal?
-            var sectionLayerSunShadows = GenTypes.GetTypeInAnyAssemblyNew("Verse.SectionLayer_SunShadows", "Verse");
-            VFESecurity.HarmonyInstance.Patch(AccessTools.Method(sectionLayerSunShadows, "Regenerate"), transpiler: new HarmonyMethod(typeof(Patch_SectionLayer_SunShadows.manual_Regenerate), "Transpiler"));
+            var sectionLayerSunShadows = GenTypes.GetTypeInAnyAssembly("Verse.SectionLayer_SunShadows", "Verse");
+            VFESecurity.harmonyInstance.Patch(AccessTools.Method(sectionLayerSunShadows, "Regenerate"), transpiler: new HarmonyMethod(typeof(Patch_SectionLayer_SunShadows.manual_Regenerate), "Transpiler"));
         }
 
     }

@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -25,8 +25,9 @@ namespace VFESecurity
             {
                 // If anything at that point in the map has CompTerrainSetter, the terrain can't be removed
                 var things = c.GetThingList(___map);
-                foreach (var thing in things)
+                for (int i = 0; i < things.Count; i++)
                 {
+                    var thing = things[i];
                     if (thing.TryGetComp<CompTerrainSetter>() != null)
                         __result = false;
                 }

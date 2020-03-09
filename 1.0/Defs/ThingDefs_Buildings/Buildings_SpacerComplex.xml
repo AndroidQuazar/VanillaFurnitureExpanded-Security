@@ -54,7 +54,11 @@
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
     <building>
-      <ai_chillDestination>false</ai_chillDestination>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
     </building>
     <researchPrerequisites>
       <li>VFES_MetalAlloysBarricades</li>

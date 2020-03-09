@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -19,10 +19,14 @@ namespace VFESecurity
 
         public VFESecurity(ModContentPack content) : base(content)
         {
-            HarmonyInstance = HarmonyInstance.Create("OskarPotocki.VanillaFurnitureExpanded.Security");
+            #if DEBUG
+                Log.Error("Somebody left debugging enabled in Vanilla Furniture Expanded Security - please let the team know!");
+            #endif
+
+            harmonyInstance = new Harmony("OskarPotocki.VanillaFurnitureExpanded.Security");
         }
 
-        public static HarmonyInstance HarmonyInstance;
+        public static Harmony harmonyInstance;
 
     }
 

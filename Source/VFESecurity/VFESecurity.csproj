@@ -9,18 +9,20 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VFESecurity</RootNamespace>
     <AssemblyName>VFESecurity</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\1.0\Assemblies\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\1.1\Assemblies\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,24 +31,38 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\1.0\Assemblies\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\294100\2009463077\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -64,6 +80,7 @@
     <Compile Include="Comps\ThingComps\CompProperties_Rearmable.cs" />
     <Compile Include="Comps\ThingComps\CompRearmable.cs" />
     <Compile Include="Comps\ThingComps\CompPawnTracker.cs" />
+    <Compile Include="Comps\ThingComps\CompLifespanAutoReplace.cs" />
     <Compile Include="Comps\WorldObjectComps\RetaliationTracker.cs" />
     <Compile Include="DefModExtensions\ExtendedProjectileProperties.cs" />
     <Compile Include="DefModExtensions\ExtendedVerbProperties.cs" />
@@ -74,10 +91,11 @@
     <Compile Include="Defs\ShaderTypeDefOf.cs" />
     <Compile Include="Defs\FactionDefOf.cs" />
     <Compile Include="Defs\JobDefOf.cs" />
+    <Compile Include="Defs\SitePartDefOf.cs" />
     <Compile Include="Defs\WorkGiverDefOf.cs" />
     <Compile Include="Designators\Designator_RearmTrap.cs" />
     <Compile Include="HarmonyPatches\Patch_Building.cs" />
-    <Compile Include="HarmonyPatches\Patch_Building_Turret.cs" />
+    <Compile Include="HarmonyPatches\Patch_Building_Trap.cs" />
     <Compile Include="HarmonyPatches\Patch_CastPositionFinder.cs" />
     <Compile Include="HarmonyPatches\Patch_DamageWorker.cs" />
     <Compile Include="HarmonyPatches\Patch_AttackTargetFinder.cs" />
@@ -97,10 +115,10 @@
     <Compile Include="HediffGivers\HediffGiver_Dazzled.cs" />
     <Compile Include="ExtendedMoteMaker.cs" />
     <Compile Include="ModCompatibilityCheck.cs" />
-    <Compile Include="Reflection\NonPublicTypes.cs" />
     <Compile Include="StatParts\StatPart_AmmoCrate.cs" />
     <Compile Include="StatParts\StatPart_PylonExposure.cs" />
     <Compile Include="StatParts\StatPart_ValueOffsetFactor.cs" />
+    <Compile Include="Things\Building_BarbedWire.cs" />
     <Compile Include="Things\Building_TrapBear.cs" />
     <Compile Include="Utilities\ShieldGeneratorUtility.cs" />
     <Compile Include="Comps\ThingComps\CompProperties_LongRangeArtillery.cs" />
@@ -121,14 +139,12 @@
     <Compile Include="Gizmos\Gizmo_EnergyShieldGeneratorStatus.cs" />
     <Compile Include="HarmonyPatches\Patch_TerrainGrid.cs" />
     <Compile Include="HarmonyPatches\Patch_PathGrid.cs" />
-    <Compile Include="HarmonyPatches\Patch_JobDriver_ManTurret.cs" />
     <Compile Include="HarmonyPatches\Patch_CoverUtility.cs" />
     <Compile Include="HarmonyPatches\Patch_GenGrid.cs" />
     <Compile Include="HarmonyPatches\Patch_Building_TurretGun.cs" />
     <Compile Include="HarmonyPatches\Patch_TurretTop.cs" />
     <Compile Include="HarmonyPatches\Patch_WorldObjectsHolder.cs" />
     <Compile Include="HarmonyPatches\Patch_Thing.cs" />
-    <Compile Include="HarmonyPatches\Patch_LordToil_Siege.cs" />
     <Compile Include="Reflection\NonPublicFields.cs" />
     <Compile Include="Reflection\NonPublicProperties.cs" />
     <Compile Include="Reflection\NonPublicMethods.cs" />
@@ -150,6 +166,5 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorldObjects\TravellingArtilleryStrike.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

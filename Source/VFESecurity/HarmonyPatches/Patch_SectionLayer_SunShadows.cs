@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -23,18 +23,26 @@ namespace VFESecurity
             [HarmonyPriority(Priority.First)]
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
+                #if DEBUG
+                    Log.Message("Transpiler start: SectionLayer_SunShadows.manual_Regenerate (1 match)");
+                #endif
+                
                 var instructionList = instructions.ToList();
 
                 var staticSunShadowHeightInfo = AccessTools.Field(typeof(ThingDef), nameof(ThingDef.staticSunShadowHeight));
 
-                var adjustedStatisSunShadowHeightInfo = AccessTools.Method(typeof(manual_Regenerate), nameof(AdjustedStatisSunShadowHeight));
+                var adjustedStatisSunShadowHeightInfo = AccessTools.Method(typeof(manual_Regenerate), nameof(AdjustedStaticSunShadowHeight));
 
                 for (int i = 0; i < instructionList.Count; i++)
                 {
                     var instruction = instructionList[i];
 
-                    if (instruction.opcode == OpCodes.Ldfld && instruction.operand == staticSunShadowHeightInfo)
+                    if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(staticSunShadowHeightInfo))
                     {
+                        #if DEBUG
+                            Log.Message("SectionLayer_SunShadows.manual_Regenerate match 1 of 1");
+                        #endif
+
                         yield return instruction; // thing.def.staticSunShadowHeight
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 4); // thing
                         instruction = new CodeInstruction(OpCodes.Call, adjustedStatisSunShadowHeightInfo); // AdjustedStatisSunShadowHeight(thing.def.staticSunShadowHeight, thing)
@@ -44,7 +52,7 @@ namespace VFESecurity
                 }
             }
 
-            private static float AdjustedStatisSunShadowHeight(float original, Thing thing)
+            private static float AdjustedStaticSunShadowHeight(float original, Thing thing)
             {
                 if (thing.IsSubmersible(out CompSubmersible submersibleComp) && submersibleComp.Submerged)
                     return submersibleComp.Props.submergedStaticSunShadowHeight;

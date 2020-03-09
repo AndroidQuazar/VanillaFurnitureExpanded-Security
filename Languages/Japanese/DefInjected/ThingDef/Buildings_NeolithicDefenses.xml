@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Cavalry Spikes -->
+
+  <VFES_CavalrySpikes.label>馬防柵</VFES_CavalrySpikes.label>
+  <VFES_CavalrySpikes.description>防御陣地を構築するために並べられた木製の杭です。非常に安価で迅速に建築でき、一般的な遮蔽効果を提供し柵を越えようとする敵にダメージを与えます。時間がたつ自然に壊れます。</VFES_CavalrySpikes.description>
+  <Blueprint_VFES_CavalrySpikes.label>馬防柵(設計)</Blueprint_VFES_CavalrySpikes.label>
+  <Frame_VFES_CavalrySpikes.label>馬防柵(施行)</Frame_VFES_CavalrySpikes.label>
+  <Frame_VFES_CavalrySpikes.description>防御陣地を構築するために並べられた木製の杭です。非常に安価で迅速に建築でき、一般的な遮蔽効果を提供し柵を越えようとする敵にダメージを与えます。時間がたつ自然に壊れます。</Frame_VFES_CavalrySpikes.description>
+
+</LanguageData>

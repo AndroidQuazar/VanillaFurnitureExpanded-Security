@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef>
+        <defName>VFES_ActiveArtilleryStrike</defName>
+        <label>artillery strike</label>
+        <category>Item</category>
+        <thingClass>VFESecurity.ActiveArtilleryStrike</thingClass>
+        <scatterableOnMapGen>false</scatterableOnMapGen>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>Things/Special/DropPod</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.9</drawSize>
+            <shadowData>
+                <volume>(0.8, 0.6, 0.8)</volume>
+            </shadowData>
+        </graphicData>
+        <altitudeLayer>Building</altitudeLayer>
+        <blockWind>true</blockWind>
+        <useHitPoints>true</useHitPoints>
+        <statBases>
+            <MaxHitPoints>500</MaxHitPoints>
+            <Flammability>0</Flammability>
+        </statBases>
+        <selectable>true</selectable>
+    </ThingDef>
+
+</Defs>

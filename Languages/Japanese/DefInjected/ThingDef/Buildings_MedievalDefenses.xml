@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Bear Trap -->
+
+  <VFES_BearTrap.label>トラバサミ</VFES_BearTrap.label>
+  <VFES_BearTrap.description>接触式トリガー式で張力がかかったスパイクが付いた罠です。獲物が引き金に触れると、スパイクが飛び跳ねて通常は脚や足を攻撃します。トラバサミは、小さすぎる獲物には反応せず通過させて、大き過ぎる獲物の場合は簡単に壊されてしまいます。実際には設置された周囲に罠が隠されて展開しているために、他のトラップと隣接して配置することはできません。</VFES_BearTrap.description>
+  <Blueprint_VFES_BearTrap.label>トラバサミ(設計)</Blueprint_VFES_BearTrap.label>
+  <Blueprint_Install_VFES_BearTrap.label>トラバサミ(移動先)</Blueprint_Install_VFES_BearTrap.label>
+  <Frame_VFES_BearTrap.label>トラバサミ(施行)</Frame_VFES_BearTrap.label>
+  <Frame_VFES_BearTrap.description>接触式トリガー式で張力がかかったスパイクが付いた罠です。獲物が引き金に触れると、スパイクが飛び跳ねて通常は脚や足を攻撃します。トラバサミは、小さすぎる獲物には反応せず通過させて、大き過ぎる獲物の場合は簡単に壊されてしまいます。実際には設置された周囲に罠が隠されて展開しているために、他のトラップと隣接して配置することはできません。</Frame_VFES_BearTrap.description>
+
+</LanguageData>

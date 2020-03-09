@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Chemfuel Barrel -->
+
+  <VFES_ChemfuelBarrel.label>燃料缶</VFES_ChemfuelBarrel.label>
+  <VFES_ChemfuelBarrel.description>バイオ化学燃料で満タンのドラム缶です。撃たれると発火して、大爆発を起こします。</VFES_ChemfuelBarrel.description>
+  <Blueprint_VFES_ChemfuelBarrel.label>燃料缶(設計)</Blueprint_VFES_ChemfuelBarrel.label>
+  <Blueprint_Install_VFES_ChemfuelBarrel.label>燃料缶(移動先)</Blueprint_Install_VFES_ChemfuelBarrel.label>
+  <Frame_VFES_ChemfuelBarrel.label>燃料缶(施行)</Frame_VFES_ChemfuelBarrel.label>
+  <Frame_VFES_ChemfuelBarrel.description>バイオ化学燃料で満タンのドラム缶です。撃たれると発火して、大爆発を起こします。</Frame_VFES_ChemfuelBarrel.description>
+
+
+  <!-- Landmine -->
+
+  <VFES_Landmine.label>地雷</VFES_Landmine.label>
+  <VFES_Landmine.description>装甲車両と敵兵を無力化するために設計された爆発物が入った対戦車用の地雷です。即座に爆発します。</VFES_Landmine.description>
+  <Blueprint_VFES_Landmine.label>地雷(設計)</Blueprint_VFES_Landmine.label>
+  <Blueprint_Install_VFES_Landmine.label>地雷(移動先)</Blueprint_Install_VFES_Landmine.label>
+  <Frame_VFES_Landmine.label>地雷(施行)</Frame_VFES_Landmine.label>
+  <Frame_VFES_Landmine.description>装甲車両と敵兵を無力化するために設計された爆発物が入った対戦車用の地雷です。即座に爆発します。</Frame_VFES_Landmine.description>
+
+
+  <!-- Decoy -->
+
+  <VFES_Turret_Decoy.label>デコイ</VFES_Turret_Decoy.label>
+  <VFES_Turret_Decoy.description>木製のライフルを抱えている布製のダミー人形です。敵の注意を引き付けます。</VFES_Turret_Decoy.description>
+  <Blueprint_VFES_Turret_Decoy.label>デコイ(設計)</Blueprint_VFES_Turret_Decoy.label>
+  <Blueprint_Install_VFES_Turret_Decoy.label>デコイ(移動先)</Blueprint_Install_VFES_Turret_Decoy.label>
+  <Frame_VFES_Turret_Decoy.label>デコイ(施行)</Frame_VFES_Turret_Decoy.label>
+  <Frame_VFES_Turret_Decoy.description>木製のライフルを抱えている布製のダミー人形です。敵の注意を引き付けます。</Frame_VFES_Turret_Decoy.description>
+  <VFES_Gun_None.verbs.Verb_Shoot.label>デコイ銃</VFES_Gun_None.verbs.Verb_Shoot.label>
+
+  <VFES_Gun_None.label>デコイ銃</VFES_Gun_None.label>
+  <VFES_Gun_None.description>タレット用の木製モデルガンです。</VFES_Gun_None.description>
+
+  <VFES_Bullet_Invisible.label>空砲</VFES_Bullet_Invisible.label>
+
+</LanguageData>

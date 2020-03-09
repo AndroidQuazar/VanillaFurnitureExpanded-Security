@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using Verse.Sound;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -35,12 +35,13 @@ namespace VFESecurity
             ExtendedMoteMaker.SearchlightEffect(currentTarget.CenterVector3, caster.Map, ExtendedVerbProps.illuminatedRadius, verbProps.AdjustedFullCycleTime(this, null) - 1.TicksToSeconds());
 
             // Update each pawn's tracker to state that they are currently dazzled
-            var curDazzledCells = GenRadial.RadialCellsAround(currentTarget.Cell, ExtendedVerbProps.illuminatedRadius, true);
-            foreach (var cell in curDazzledCells)
+            var curDazzledCells = GenRadial.RadialCellsAround(currentTarget.Cell, ExtendedVerbProps.illuminatedRadius, true).ToList();
+            for (int i = 0; i < curDazzledCells.Count; i++)
             {
-                foreach (var thing in cell.GetThingList(caster.Map))
+                var thingList = curDazzledCells[i].GetThingList(caster.Map);
+                for (int j = 0; j < thingList.Count; j++)
                 {
-                    if (thing is Pawn pawn)
+                    if (thingList[j] is Pawn pawn)
                     {
                         var pawnTracker = pawn.GetComp<CompPawnTracker>();
                         if (pawnTracker != null)

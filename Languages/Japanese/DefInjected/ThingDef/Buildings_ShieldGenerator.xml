@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Small Shield Generator -->
+
+  <VFES_ShieldGenerator_Small.label>シールド装置 (小型)</VFES_ShieldGenerator_Small.label>
+  <VFES_ShieldGenerator_Small.description>強力なエネルギーフィールドを周囲に展開してシールド内を防御しますが、動作時には大量の電力を消費する超高度な小型装置で、シールドは壁を貫通します。\n\nシールド発生器は、襲撃や砲撃などの攻撃的な脅威がマップ内に存在する場合にだけ稼働します。それ以外の場合は休止状態となり、消費電力がとても少なくなります。\n\n短時間で過剰なダメージが吸収された場合、周辺のエリアを発火させることがあります。</VFES_ShieldGenerator_Small.description>
+  <Blueprint_VFES_ShieldGenerator_Small.label>シールド装置 (小型)(設計)</Blueprint_VFES_ShieldGenerator_Small.label>
+  <Blueprint_Install_VFES_ShieldGenerator_Small.label>シールド装置 (小型)(移動先)</Blueprint_Install_VFES_ShieldGenerator_Small.label>
+  <Frame_VFES_ShieldGenerator_Small.label>シールド装置 (小型)(施行)</Frame_VFES_ShieldGenerator_Small.label>
+  <Frame_VFES_ShieldGenerator_Small.description>強力なエネルギーフィールドを周囲に展開してシールド内を防御しますが、動作時には大量の電力を消費する超高度な小型装置で、シールドは壁を貫通します。\n\nシールド発生器は、襲撃や砲撃などの攻撃的な脅威がマップ内に存在する場合にだけ稼働します。それ以外の場合は休止状態となり、消費電力がとても少なくなります。\n\n短時間で過剰なダメージが吸収された場合、周辺のエリアを発火させることがあります。</Frame_VFES_ShieldGenerator_Small.description>
+
+
+  <!-- Large Shield Generator -->
+
+  <VFES_ShieldGenerator_Large.label>シールド装置 (大型)</VFES_ShieldGenerator_Large.label>
+  <VFES_ShieldGenerator_Large.description>強力で範囲の広いエネルギーフィールドを周囲に展開してシルード内のすべてを防御しますが、動作時には大量の電力を消費する超高度な大型装置です。シールドは壁を越えます。\n\nシールド発生器は、襲撃や砲撃などの攻撃的な脅威がマップ内に存在する場合にだけ稼働します。それ以外の場合は休止状態となり、消費電力がとても少なくなります。</VFES_ShieldGenerator_Large.description>
+  <Blueprint_VFES_ShieldGenerator_Large.label>シールド装置 (大型)(設計)</Blueprint_VFES_ShieldGenerator_Large.label>
+  <Frame_VFES_ShieldGenerator_Large.label>シールド装置 (大型)(施行)</Frame_VFES_ShieldGenerator_Large.label>
+  <Frame_VFES_ShieldGenerator_Large.description>強力で範囲の広いエネルギーフィールドを周囲に展開してシルード内のすべてを防御しますが、動作時には大量の電力を消費する超高度な大型装置です。シールドは壁を越えます。\n\nシールド発生器は、襲撃や砲撃などの攻撃的な脅威がマップ内に存在する場合にだけ稼働します。それ以外の場合は休止状態となり、消費電力がとても少なくなります。</Frame_VFES_ShieldGenerator_Large.description>
+
+
+  <!-- Archotech Shield Generator -->
+
+  <VFES_ShieldGenerator_Archotech.label>シールド装置 (アルコテック)</VFES_ShieldGenerator_Archotech.label>
+  <VFES_ShieldGenerator_Archotech.description>強力なエネルギーフィールドを周囲に展開してシルード内のすべてを防御する、自家発電式の超高度な装置です。シールドは壁を越えます。\n\nシールド発生器は、襲撃や砲撃などの攻撃的な脅威がマップ内に存在する場合にだけ稼働します。それ以外の場合は休止状態となり、消費電力がとても少なくなります。\n\n短時間で過剰なダメージが吸収された場合、周辺のエリアを発火させることがあります。</VFES_ShieldGenerator_Archotech.description>
+  <Blueprint_Install_VFES_ShieldGenerator_Archotech.label>シールド装置 (アルコテック)(移動先)</Blueprint_Install_VFES_ShieldGenerator_Archotech.label>
+
+</LanguageData>

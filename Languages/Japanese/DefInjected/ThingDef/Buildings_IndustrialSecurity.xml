@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Barbed Wire -->
+
+  <VFES_BarbedWire.label>有刺鉄線</VFES_BarbedWire.label>
+  <VFES_BarbedWire.description>鋭い刃とトゲが等間隔に配置された鉄条網の一種です。敵の移動を遅くするだけでなく切り傷や刺し傷を与えます。</VFES_BarbedWire.description>
+  <Blueprint_VFES_BarbedWire.label>有刺鉄線(設計)</Blueprint_VFES_BarbedWire.label>
+  <Frame_VFES_BarbedWire.label>有刺鉄線(施行)</Frame_VFES_BarbedWire.label>
+  <Frame_VFES_BarbedWire.description>鋭い刃とトゲが等間隔に配置された鉄条網の一種です。敵の移動を遅くするだけでなく切り傷や刺し傷を与えます。</Frame_VFES_BarbedWire.description>
+
+
+  <!-- Trench -->
+
+  <VFES_Trench.label>塹壕</VFES_Trench.label>
+  <VFES_Trench.description>地面に深く掘られた細長い溝です。それわ乗り越えるには上り下りする必要があるため移動速度が大幅に遅くなります。塹壕の中の兵士は武器の射程距離に対してペナルティを受けますが、強力な遮蔽効果を得ます。</VFES_Trench.description>
+  <Blueprint_VFES_Trench.label>塹壕(設計)</Blueprint_VFES_Trench.label>
+  <Frame_VFES_Trench.label>塹壕(施行)</Frame_VFES_Trench.label>
+  <Frame_VFES_Trench.description>地面に深く掘られた細長い溝です。それわ乗り越えるには上り下りする必要があるため移動速度が大幅に遅くなります。塹壕の中の兵士は武器の射程距離に対してペナルティを受けますが、強力な遮蔽効果を得ます。</Frame_VFES_Trench.description>
+
+
+  <!-- Ammo Crate -->
+
+  <VFES_AmmoCrate.label>弾薬箱</VFES_AmmoCrate.label>
+  <VFES_AmmoCrate.description>弾薬を収納するのに便利な弾薬箱です。周囲の兵士の発射速度を増強します。</VFES_AmmoCrate.description>
+  <Blueprint_VFES_AmmoCrate.label>弾薬箱(設計)</Blueprint_VFES_AmmoCrate.label>
+  <Blueprint_Install_VFES_AmmoCrate.label>弾薬箱(移動先)</Blueprint_Install_VFES_AmmoCrate.label>
+  <Frame_VFES_AmmoCrate.label>弾薬箱(施行)</Frame_VFES_AmmoCrate.label>
+  <Frame_VFES_AmmoCrate.description>弾薬を収納するのに便利な弾薬箱です。周囲の兵士の発射速度を増強します。</Frame_VFES_AmmoCrate.description>
+
+</LanguageData>

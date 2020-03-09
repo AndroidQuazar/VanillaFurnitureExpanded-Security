@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -26,9 +26,10 @@ namespace VFESecurity
                 // Shield-covered cells are immune to damage
                 if (!__result)
                 {
-                    var shieldGens = __instance.Map.GetComponent<ListerThingsExtended>().ListerShieldGensActive;
-                    foreach (var gen in shieldGens)
+                    var shieldGens = __instance.Map.GetComponent<ListerThingsExtended>().ListerShieldGensActive.ToList();
+                    for (int i = 0; i < shieldGens.Count; i++)
                     {
+                        var gen = shieldGens[i];
                         if (gen.coveredCells.Contains(c))
                         {
                             if (!gen.affectedThings.ContainsKey(__instance))

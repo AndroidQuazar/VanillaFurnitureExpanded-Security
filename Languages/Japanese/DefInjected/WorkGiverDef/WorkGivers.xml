@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <VFES_ConstructRearmTrap.label>トラップ再セット</VFES_ConstructRearmTrap.label>
+  <VFES_ConstructRearmTrap.verb>再セット</VFES_ConstructRearmTrap.verb>
+  <VFES_ConstructRearmTrap.gerund>再セット</VFES_ConstructRearmTrap.gerund>
+
+  <VFES_RearmTrap.label>トラップ再セット</VFES_RearmTrap.label>
+  <VFES_RearmTrap.verb>再セット</VFES_RearmTrap.verb>
+  <VFES_RearmTrap.gerund>再セット</VFES_RearmTrap.gerund>
+
+</LanguageData>

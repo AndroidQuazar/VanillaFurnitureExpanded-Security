@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Artillery -->
+
+  <VFES_Turret_Artillery.label>野戦砲</VFES_Turret_Artillery.label>
+  <VFES_Turret_Artillery.description>あらゆる種類の砲弾を発射可能な手動式の大砲です。敵兵と建築物の両方に対して壊滅的なダメージを与えることができるこの軍用の長距離野戦砲は戦場で兵士への火力支援を行うのに適しています。\n\n中程度の射程を持ちワールドマップ上の他の場所(敵の拠点など)を目標に砲撃可能です。</VFES_Turret_Artillery.description>
+  <Blueprint_VFES_Turret_Artillery.label>野戦砲(設計)</Blueprint_VFES_Turret_Artillery.label>
+  <Blueprint_Install_VFES_Turret_Artillery.label>野戦砲(移動先)</Blueprint_Install_VFES_Turret_Artillery.label>
+  <Frame_VFES_Turret_Artillery.label>野戦砲(施行)</Frame_VFES_Turret_Artillery.label>
+  <Frame_VFES_Turret_Artillery.description>あらゆる種類の砲弾を発射可能な手動式の大砲です。敵兵と建築物の両方に対して壊滅的なダメージを与えることができるこの軍用の長距離野戦砲は戦場で兵士への火力支援を行うのに適しています。\n\n中程度の射程を持ちワールドマップ上の他の場所(敵の拠点など)を目標に砲撃可能です。</Frame_VFES_Turret_Artillery.description>
+
+  <VFES_Artillery_Weapon.label>野戦砲</VFES_Artillery_Weapon.label>
+  <VFES_Artillery_Weapon.description>長距離砲撃が可能な大砲です。</VFES_Artillery_Weapon.description>
+
+</LanguageData>

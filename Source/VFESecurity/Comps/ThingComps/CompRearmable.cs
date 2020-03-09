@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using Verse.Sound;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {

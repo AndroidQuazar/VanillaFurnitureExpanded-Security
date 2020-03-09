@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -23,6 +23,10 @@ namespace VFESecurity
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
+                #if DEBUG
+                    Log.Message("Transpiler start: VerbProperties.DrawRadiusRing (1 match)");
+                #endif
+
                 var instructionList = instructions.ToList();
 
                 var rangeInfo = AccessTools.Field(typeof(VerbProperties), nameof(VerbProperties.range));
@@ -34,8 +38,12 @@ namespace VFESecurity
                 {
                     var instruction = instructionList[i];
 
-                    if (instruction.opcode == OpCodes.Ldfld && instruction.operand == rangeInfo)
+                    if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(rangeInfo))
                     {
+                        #if DEBUG
+                            Log.Message("VerbProperties.DrawRadiusRing match 1 of 1");
+                        #endif
+
                         yield return instruction; // this.range
                         yield return new CodeInstruction(OpCodes.Ldarg_0); // this
                         yield return new CodeInstruction(OpCodes.Ldfld, minRangeInfo); // this.minRange

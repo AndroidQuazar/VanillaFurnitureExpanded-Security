@@ -11,7 +11,7 @@ using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -96,8 +96,9 @@ namespace VFESecurity
             // Transfer artillery strikes to world object
             tmpActiveArtilleryStrikes.Clear();
             tmpActiveArtilleryStrikes.AddRange(Map.listerThings.ThingsInGroup(ThingRequestGroup.ThingHolder).Where(t => t is ArtilleryStrikeLeaving).Cast<ArtilleryStrikeLeaving>());
-            foreach (var strike in tmpActiveArtilleryStrikes)
+            for (int i = 0; i < tmpActiveArtilleryStrikes.Count; i++)
             {
+                var strike = tmpActiveArtilleryStrikes[i];
                 if (strike != null && strike.groupID == groupID)
                 {
                     strike.alreadyLeft = true;

@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -39,7 +39,7 @@ namespace VFESecurity
                 yield return entry;
 
             // World tile range
-            yield return new StatDrawEntry(StatCategoryDefOf.Weapon, "VFESecurity.WorldTileRange".Translate(), worldTileRange.ToString());
+            yield return new StatDrawEntry(StatCategoryDefOf.Weapon, "VFESecurity.WorldTileRange".Translate(), worldTileRange.ToString(), String.Empty, 0);
         }
 
     }
