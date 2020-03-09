@@ -27,13 +27,17 @@ namespace VFESecurity
             {
                 var tDef = thingDefs[i];
 
-                // Add CompPawnTracker to all Pawns
-                if (typeof(Pawn).IsAssignableFrom(tDef.thingClass))
+                // Add CompPawnTracker and CompThingTracker
+                if (typeof(ThingWithComps).IsAssignableFrom(tDef.thingClass))
                 {
                     if (tDef.comps == null)
                         tDef.comps = new List<CompProperties>();
-                    tDef.comps.Add(new CompProperties(typeof(CompPawnTracker)));
+
+                    if (typeof(Pawn).IsAssignableFrom(tDef.thingClass))
+                        tDef.comps.Add(new CompProperties(typeof(CompPawnTracker)));
+                    tDef.comps.Add(new CompProperties(typeof(CompThingTracker)));
                 }
+                
 
                 // Make stone chunks catapult ammo
                 else if (tDef.IsWithinCategory(ThingCategoryDefOf.StoneChunks))

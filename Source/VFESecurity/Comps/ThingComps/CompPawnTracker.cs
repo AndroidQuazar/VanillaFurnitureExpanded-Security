@@ -23,9 +23,6 @@ namespace VFESecurity
 
         public override void CompTick()
         {
-            if (dazzledTicks > 0)
-                dazzledTicks--;
-
             if (psychicPylonExposureTicks > 0)
                 psychicPylonExposureTicks--;
         }
@@ -46,11 +43,9 @@ namespace VFESecurity
 
         public override void PostExposeData()
         {
-            Scribe_Values.Look(ref dazzledTicks, "dazzledTicks");
             Scribe_Values.Look(ref psychicPylonExposureTicks, "psychicPylonExposureTicks");
         }
 
-        public int dazzledTicks;
         public int psychicPylonExposureTicks;
 
     }

@@ -34,20 +34,23 @@ namespace VFESecurity
             // Throw mote at target cell
             ExtendedMoteMaker.SearchlightEffect(currentTarget.CenterVector3, caster.Map, ExtendedVerbProps.illuminatedRadius, verbProps.AdjustedFullCycleTime(this, null) - 1.TicksToSeconds());
 
-            // Update each pawn's tracker to state that they are currently dazzled
+            // Update each thing's tracker to state that they are currently illuminated and dazzled
             var curDazzledCells = GenRadial.RadialCellsAround(currentTarget.Cell, ExtendedVerbProps.illuminatedRadius, true).ToList();
             for (int i = 0; i < curDazzledCells.Count; i++)
             {
                 var thingList = curDazzledCells[i].GetThingList(caster.Map);
                 for (int j = 0; j < thingList.Count; j++)
                 {
-                    if (thingList[j] is Pawn pawn)
+                    var thing = thingList[j];
+                    if (thing is ThingWithComps thingWComps)
                     {
-                        var pawnTracker = pawn.GetComp<CompPawnTracker>();
-                        if (pawnTracker != null)
-                            pawnTracker.dazzledTicks = ExtendedVerbProps.dazzleDurationTicks;
-                        else
-                            Log.Warning($"Pawn {pawn} has null CompPawnTracker.");
+                        var thingTracker = thingList[j].TryGetComp<CompThingTracker>();
+                        if (thingTracker != null)
+                        {
+                            if (ExtendedVerbProps.dazzleDurationTicks > thingTracker.dazzledTicks)
+                                thingTracker.dazzledTicks = ExtendedVerbProps.dazzleDurationTicks;
+                            thingTracker.Illuminated = true;
+                        }
                     }
                 }
             }

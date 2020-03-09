@@ -17,3 +17,6 @@ E:\Documents\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\
 D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
 D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
 D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\1.1\Assemblies\VFESecurity.dll
+D:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+D:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
+D:\Documents\GitHub\VanillaFurnitureExpanded-Security\1.1\Assemblies\VFESecurity.dll

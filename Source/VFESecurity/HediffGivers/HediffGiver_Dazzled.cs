@@ -20,10 +20,10 @@ namespace VFESecurity
 
         public override void OnIntervalPassed(Pawn pawn, Hediff cause)
         {
-            var pawnTracker = pawn.GetComp<CompPawnTracker>();
-            if (pawnTracker != null)
+            var thingTracker = pawn.GetComp<CompThingTracker>();
+            if (thingTracker != null)
             {
-                if (pawnTracker.dazzledTicks > 0)
+                if (thingTracker.Dazzled)
                     TryApply(pawn);
                 else if (pawn.health.hediffSet.HasHediff(hediff))
                     pawn.health.hediffSet.hediffs.RemoveAll(h => h.def == hediff);
