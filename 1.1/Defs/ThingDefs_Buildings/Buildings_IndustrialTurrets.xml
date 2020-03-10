@@ -30,10 +30,10 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>5000</WorkToBuild>
-      <Mass>15</Mass>
+      <WorkToBuild>3300</WorkToBuild>
+      <Mass>12</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
@@ -64,7 +64,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>3</fuelMultiplier>
+        <fuelMultiplier>2</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new barrels</outOfFuelMessage>
@@ -83,9 +83,7 @@
       <Steel>80</Steel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_MilitaryTurret</turretGunDef>
@@ -93,12 +91,13 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
-    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
-  </ThingDef> 
+  </ThingDef>
 
   <ThingDef Name="VFES_Gun_MilitaryTurret" ParentName="BaseWeaponTurret">
     <defName>VFES_Gun_MilitaryTurret</defName>
@@ -109,30 +108,23 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
-    <menuHidden>true</menuHidden>
-    <destroyOnDrop>true</destroyOnDrop>
-    <tradeability>None</tradeability>
-    <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.7</AccuracyTouch>
-      <AccuracyShort>0.64</AccuracyShort>
-      <AccuracyMedium>0.41</AccuracyMedium>
-      <AccuracyLong>0.22</AccuracyLong>
+      <AccuracyTouch>0.63</AccuracyTouch>
+      <AccuracyShort>0.59</AccuracyShort>
+      <AccuracyMedium>0.37</AccuracyMedium>
+      <AccuracyLong>0.20</AccuracyLong>
       <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
     </statBases>
-    <weaponTags Inherit="false">
-      <li>TurretGun</li>
-    </weaponTags>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
         <warmupTime>0</warmupTime>
-        <range>24.9</range>
+        <range>28.9</range>
         <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
         <burstShotCount>4</burstShotCount>
         <soundCast>GunShotA</soundCast>
@@ -172,10 +164,10 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>120</MaxHitPoints>
+      <MaxHitPoints>100</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>3500</WorkToBuild>
-      <Mass>10</Mass>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>8</Mass>
       <Beauty>-10</Beauty>
     </statBases>
     <tickerType>Normal</tickerType>
@@ -204,16 +196,16 @@
       <Steel>60</Steel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_Searchlight</turretGunDef>
       <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
     </building>
+    <specialDisplayRadius>23.9</specialDisplayRadius>
     <placeWorkers>
-      <li>PlaceWorker_TurretTop</li>
+      <!-- <li>PlaceWorker_TurretTop</li> -->
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -288,10 +280,10 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>2</Flammability>
-      <WorkToBuild>7500</WorkToBuild>
-      <Mass>20</Mass>
+      <WorkToBuild>4800</WorkToBuild>
+      <Mass>18</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
@@ -318,7 +310,7 @@
             <li>Chemfuel</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>75</fuelCapacity>
+        <fuelCapacity>80</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
@@ -343,16 +335,15 @@
       <Chemfuel>75</Chemfuel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>15.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_FlameTurret</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>6.6</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -374,7 +365,7 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
@@ -450,10 +441,10 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>10000</WorkToBuild>
-      <Mass>20</Mass>
+      <WorkToBuild>6500</WorkToBuild>
+      <Mass>18</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
     </statBases>
@@ -479,7 +470,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>1.5</fuelMultiplier>
+        <fuelMultiplier>0.5</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
@@ -498,17 +489,16 @@
       <Steel>130</Steel>
       <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_SentryTurret</turretGunDef>
       <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
-      <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>7.2</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -535,11 +525,11 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.35</AccuracyTouch>
-      <AccuracyShort>0.50</AccuracyShort>
-      <AccuracyMedium>0.45</AccuracyMedium>
-      <AccuracyLong>0.20</AccuracyLong>
-      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.25</AccuracyTouch>
+      <AccuracyShort>0.40</AccuracyShort>
+      <AccuracyMedium>0.35</AccuracyMedium>
+      <AccuracyLong>0.15</AccuracyLong>
+      <RangedWeapon_Cooldown>7.2</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>12</Mass>
       <Flammability>0</Flammability>

@@ -26,10 +26,10 @@
     <rotatable>false</rotatable>
     <size>(2,2)</size>
     <statBases>
-      <MaxHitPoints>450</MaxHitPoints>
+      <MaxHitPoints>380</MaxHitPoints>
       <Flammability>0.7</Flammability>
       <WorkToBuild>20000</WorkToBuild>
-      <Mass>100</Mass>
+      <Mass>140</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
     </statBases>
@@ -60,7 +60,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>0.75</fuelMultiplier>
+        <fuelMultiplier>0.5</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
@@ -78,11 +78,10 @@
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>32.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_TurretDoubleAutocannon_Top</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>5.6</turretBurstCooldownTime>
       <turretTopDrawSize>2.7</turretTopDrawSize>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
     </building>
@@ -106,23 +105,16 @@
       <drawSize>(2,2)</drawSize>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
-    <menuHidden>true</menuHidden>
-    <destroyOnDrop>true</destroyOnDrop>
-    <tradeability>None</tradeability>
-    <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.25</AccuracyTouch>
-      <AccuracyShort>0.65</AccuracyShort>
-      <AccuracyMedium>0.60</AccuracyMedium>
-      <AccuracyLong>0.45</AccuracyLong>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.24</AccuracyTouch>
+      <AccuracyShort>0.52</AccuracyShort>
+      <AccuracyMedium>0.57</AccuracyMedium>
+      <AccuracyLong>0.43</AccuracyLong>
+      <RangedWeapon_Cooldown>5.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
-      <Mass>40</Mass>
+      <Mass>80</Mass>
       <Flammability>0</Flammability>
     </statBases>
-    <weaponTags Inherit="false">
-      <li>TurretGun</li>
-    </weaponTags>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -131,7 +123,7 @@
         <warmupTime>0</warmupTime>
         <minRange>8.9</minRange>
         <range>32.9</range>
-        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
         <burstShotCount>6</burstShotCount>
         <soundCast>Shot_Autocannon</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -166,7 +158,7 @@
     <rotatable>false</rotatable>
     <size>(2,2)</size>
     <statBases>
-      <MaxHitPoints>450</MaxHitPoints>
+      <MaxHitPoints>380</MaxHitPoints>
       <Flammability>0.7</Flammability>
       <WorkToBuild>20000</WorkToBuild>
       <Mass>100</Mass>
@@ -219,11 +211,10 @@
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>35.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_TurretTriRocket_Top</turretGunDef>
-      <turretBurstCooldownTime>12.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>14</turretBurstCooldownTime>
       <turretTopDrawSize>2.7</turretTopDrawSize>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
     </building>
@@ -247,19 +238,12 @@
       <drawSize>(2,2)</drawSize>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
-    <menuHidden>true</menuHidden>
-    <destroyOnDrop>true</destroyOnDrop>
-    <tradeability>None</tradeability>
-    <useHitPoints>false</useHitPoints>
     <statBases>
-      <RangedWeapon_Cooldown>12.5</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>14</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>40</Mass>
       <Flammability>0</Flammability>
     </statBases>
-    <weaponTags Inherit="false">
-      <li>TurretGun</li>
-    </weaponTags>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -274,7 +258,7 @@
         <muzzleFlashScale>16</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
         <requireLineOfSight>false</requireLineOfSight>
-        <forcedMissRadius>3.5</forcedMissRadius>
+        <forcedMissRadius>4.6</forcedMissRadius>
         <targetParams>
           <canTargetLocations>true</canTargetLocations>
         </targetParams>

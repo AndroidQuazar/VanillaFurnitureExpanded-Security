@@ -77,7 +77,6 @@
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>47.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_BallistaTurret</turretGunDef>
@@ -93,6 +92,7 @@
     </researchPrerequisites>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <placeWorkers>
+      <li>PlaceWorker_ShowTurretRadius</li>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
   </ThingDef>
@@ -232,7 +232,6 @@
     </comps>
     <interactionCellOffset>(0,0,-2)</interactionCellOffset>
     <hasInteractionCell>true</hasInteractionCell>
-    <specialDisplayRadius>17.9</specialDisplayRadius>
     <building>
       <turretBurstWarmupTime>6</turretBurstWarmupTime>
       <turretBurstCooldownTime>42</turretBurstCooldownTime>
@@ -251,6 +250,7 @@
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
   </ThingDef>
 

@@ -26,14 +26,14 @@
         </graphicData>
         <uiIconPath>Things/Building/Linked/ShortWallSmooth_MenuIcon</uiIconPath>
         <statBases>
-            <MaxHitPoints>250</MaxHitPoints>
+            <MaxHitPoints>240</MaxHitPoints>
             <WorkToBuild>65</WorkToBuild>
         </statBases>
         <pathCost>70</pathCost>
-        <costStuffCount>3</costStuffCount>
+        <costStuffCount>4</costStuffCount>
         <passability>PassThroughOnly</passability>
         <blockWind>false</blockWind>
-        <fillPercent>0.65</fillPercent>
+        <fillPercent>0.57</fillPercent>
         <holdsRoof>false</holdsRoof>
         <staticSunShadowHeight>0.5</staticSunShadowHeight>
         <blockLight>false</blockLight>

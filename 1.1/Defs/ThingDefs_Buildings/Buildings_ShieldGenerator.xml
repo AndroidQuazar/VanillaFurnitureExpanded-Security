@@ -80,7 +80,7 @@
       <li Class="VFESecurity.ExtendedBuildingProperties">
         <initialEnergyPercentage>0.2</initialEnergyPercentage>
         <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
-        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
         <inactivePowerConsumption>300</inactivePowerConsumption>
       </li>
     </modExtensions>
@@ -137,7 +137,7 @@
       <li Class="VFESecurity.ExtendedBuildingProperties">
         <initialEnergyPercentage>0.2</initialEnergyPercentage>
         <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
-        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
         <inactivePowerConsumption>500</inactivePowerConsumption>
         <shieldColour>(1, 1, 1, 0.7)</shieldColour>
       </li>
@@ -200,7 +200,7 @@
       <li Class="VFESecurity.ExtendedBuildingProperties">
         <initialEnergyPercentage>0.2</initialEnergyPercentage>
         <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
-        <shortCircuitChancePerEnergyLost>0.05</shortCircuitChancePerEnergyLost>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
         <shieldColour>(0.7, 1, 0.7, 1)</shieldColour>
       </li>
     </modExtensions>

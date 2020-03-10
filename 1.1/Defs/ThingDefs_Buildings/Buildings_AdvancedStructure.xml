@@ -28,7 +28,7 @@
     <costStuffCount>0</costStuffCount>
     <stuffCategories Inherit="False"/>
     <costList>
-      <Steel>8</Steel>
+      <Steel>10</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <comps>
@@ -59,15 +59,15 @@
       </li>
     </comps>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <researchPrerequisites>
+    <researchPrerequisites Inherit="False">
       <li>VFES_ConcealedDefenses</li>
     </researchPrerequisites>
   </ThingDef>
 
-  <!-- Floor Turret -->
+  <!-- Deployable Turret -->
   <ThingDef ParentName="VFES_Turret_MilitaryTurret">
     <defName>VFES_Turret_FloorTurret</defName>
-    <label>floor turret</label>
+    <label>deployable turret</label>
     <description>A submersible military-grade double barreled automatic turret which acts as a normal floor tile when unpowered. It only takes half as much damage when submerged. Requires steel to refurbish its barrels after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData Inherit="False">
@@ -124,18 +124,37 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-    <researchPrerequisites>
+    <researchPrerequisites Inherit="False">
       <li>VFES_ConcealedDefenses</li>
     </researchPrerequisites>
   </ThingDef>
 
   <ThingDef ParentName="VFES_Gun_MilitaryTurret">
     <defName>VFES_Gun_FloorTurret</defName>
+    <label>submersible military turret doublegun</label>
     <graphicData>
       <texPath>Things/Building/Floor/TurretFloor_Top</texPath>
     </graphicData>
+
+    <!-- Only thing different about verbs is ticksBetweenBurstShots is 8 instead of 4 -->
+    <verbs Inherit="False">
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>28.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
   </ThingDef>
 
   <!-- HMG Complex (3.15,1.45) -->
@@ -168,7 +187,7 @@
       <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
     <statBases>
-      <MaxHitPoints>450</MaxHitPoints>
+      <MaxHitPoints>300</MaxHitPoints>
       <Flammability>0</Flammability>
       <WorkToBuild>11000</WorkToBuild>
       <Beauty>-20</Beauty>
@@ -211,7 +230,6 @@
     <hasTooltip>true</hasTooltip>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>24.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_HMGComplex</turretGunDef>
@@ -220,6 +238,7 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>

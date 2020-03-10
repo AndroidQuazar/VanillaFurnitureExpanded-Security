@@ -5,7 +5,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_ChargeTurret</defName>
     <label>charge turret</label>
-    <description>An automatic turret with a charge pulsar gun on top, utilising advanced sensors which offer improved accuracy. Requires plasteel to refurbish its barrel after heavy use. May explode when damaged.</description>
+    <description>An automatic turret with a charge pulser gun on top, utilising advanced sensors which offer improved accuracy. Requires plasteel to refurbish its barrel after heavy use. May explode when damaged.</description>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/TurretMini_Base</texPath>
@@ -32,10 +32,10 @@
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0.5</Flammability>
-      <WorkToBuild>7000</WorkToBuild>
-      <Mass>10</Mass>
+      <WorkToBuild>4000</WorkToBuild>
+      <Mass>12</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.965</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -64,7 +64,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>9</fuelMultiplier>
+        <fuelMultiplier>6</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
@@ -84,18 +84,17 @@
       <ComponentSpacer>2</ComponentSpacer>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>25.9</specialDisplayRadius>
     <canOverlapZones>true</canOverlapZones>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ChargeTurret</turretGunDef>
-      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>5.6</turretBurstCooldownTime>
       <turretTopDrawSize>1.5</turretTopDrawSize>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -121,7 +120,7 @@
       <AccuracyShort>0.64</AccuracyShort>
       <AccuracyMedium>0.55</AccuracyMedium>
       <AccuracyLong>0.45</AccuracyLong>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>5.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>4.6</Mass>
       <Flammability>0</Flammability>
@@ -136,7 +135,7 @@
         <defaultProjectile>Bullet_ChargeRifle</defaultProjectile>
         <range>25.9</range>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-        <burstShotCount>3</burstShotCount>
+        <burstShotCount>2</burstShotCount>
         <soundCast>Shot_ChargeRifle</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -171,12 +170,12 @@
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>500</MaxHitPoints>
       <Flammability>0.5</Flammability>
       <WorkToBuild>30000</WorkToBuild>
       <Mass>150</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.995</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.99</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -200,12 +199,12 @@
             <li>ComponentIndustrial</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>40</fuelCapacity>
+        <fuelCapacity>90</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.5</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>40</fuelMultiplier>
+        <fuelMultiplier>30</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs new components</outOfFuelMessage>
@@ -224,17 +223,17 @@
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>44.9</specialDisplayRadius>
     <canOverlapZones>true</canOverlapZones>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_RailgunTurret</turretGunDef>
-      <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>9.6</turretBurstCooldownTime>
       <turretTopDrawSize>2.5</turretTopDrawSize>
       <turretTopOffset>(0, 0.1)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -245,7 +244,7 @@
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>VFES_Gun_RailgunTurret</defName>
     <label>charge railgun</label>
-    <description>A charge rifle made to be mounted on a turret.</description>
+    <description>An advanced railgun designed to launch two electromagnetically accelerated projectiles simultaneously.</description>
     <graphicData>
       <texPath>Things/Building/Railgun/TurretChargeRailgun_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -257,12 +256,12 @@
     <useHitPoints>false</useHitPoints>
     <statBases>
       <AccuracyTouch>0.35</AccuracyTouch>
-      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyShort>0.55</AccuracyShort>
       <AccuracyMedium>0.85</AccuracyMedium>
       <AccuracyLong>0.75</AccuracyLong>
-      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>9.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
-      <Mass>4.6</Mass>
+      <Mass>40</Mass>
       <Flammability>0</Flammability>
     </statBases>
     <weaponTags Inherit="false">
@@ -275,7 +274,7 @@
         <defaultProjectile>VFES_Bullet_DoubleChargeLance</defaultProjectile>
         <warmupTime>0</warmupTime>
         <minRange>10.9</minRange>
-        <range>44.9</range>
+        <range>36.9</range>
         <soundCast>ChargeLance_Fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>12</muzzleFlashScale>
@@ -296,7 +295,8 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>60</damageAmountBase>
-      <stoppingPower>2</stoppingPower>
+      <armorPenetrationBase>0.45</armorPenetrationBase> <!-- Same as charge lance -->
+      <stoppingPower>1.5</stoppingPower>
       <speed>120</speed>
     </projectile>
   </ThingDef>
@@ -327,12 +327,12 @@
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>500</MaxHitPoints>
       <Flammability>0.5</Flammability>
       <WorkToBuild>30000</WorkToBuild>
       <Mass>150</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.995</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.99</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -381,16 +381,16 @@
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>44.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_EMPTurret</turretGunDef>
-      <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>7.2</turretBurstCooldownTime>
       <turretTopDrawSize>2.5</turretTopDrawSize>
       <turretTopOffset>(0, 0.1)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -412,9 +412,9 @@
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>7.2</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
-      <Mass>4.6</Mass>
+      <Mass>40</Mass>
       <Flammability>0</Flammability>
     </statBases>
     <weaponTags Inherit="false">
@@ -427,7 +427,7 @@
         <defaultProjectile>VFES_Bullet_EMPCannon</defaultProjectile>
         <warmupTime>0</warmupTime>
         <minRange>9.9</minRange>
-        <range>44.9</range>
+        <range>36.9</range>
         <forcedMissRadius>2.4</forcedMissRadius>
         <soundCast>EnergyShield_AbsorbDamage</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>

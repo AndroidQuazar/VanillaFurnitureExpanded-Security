@@ -26,7 +26,7 @@
     <blockWind>false</blockWind>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
-    <pathCost>100</pathCost>
+    <pathCost>140</pathCost>
     <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
     <placingDraggableDimensions>1</placingDraggableDimensions>
     <neverMultiSelect>false</neverMultiSelect>

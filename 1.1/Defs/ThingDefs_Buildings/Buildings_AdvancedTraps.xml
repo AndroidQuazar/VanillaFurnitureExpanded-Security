@@ -149,7 +149,7 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
+      <MaxHitPoints>30</MaxHitPoints>
       <Flammability>1.2</Flammability>
       <WorkToBuild>750</WorkToBuild>
       <Mass>8.5</Mass>
@@ -161,8 +161,8 @@
     <fillPercent>0.25</fillPercent>
     <hasTooltip>false</hasTooltip>
     <costList>
-      <Cloth>40</Cloth>
-      <WoodLog>40</WoodLog>
+      <Cloth>30</Cloth>
+      <WoodLog>30</WoodLog>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>

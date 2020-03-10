@@ -27,9 +27,9 @@
     <techLevel>Spacer</techLevel>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <fillPercent>0.7</fillPercent>
+    <fillPercent>0.65</fillPercent>
     <castEdgeShadows>false</castEdgeShadows>
-    <pathCost>70</pathCost>
+    <pathCost>100</pathCost>
     <rotatable>false</rotatable>
     <selectable>true</selectable>
     <stealable>false</stealable>
@@ -43,9 +43,9 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>8</costStuffCount>
+    <costStuffCount>10</costStuffCount>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>400</MaxHitPoints>
       <WorkToBuild>900</WorkToBuild>
       <Flammability>0.5</Flammability>
       <Beauty>-10</Beauty>
@@ -100,7 +100,7 @@
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
+      <MaxHitPoints>400</MaxHitPoints>
       <Flammability>0.5</Flammability>
       <WorkToBuild>14000</WorkToBuild>
       <Beauty>-20</Beauty>
@@ -138,12 +138,11 @@
     <hasInteractionCell>true</hasInteractionCell>
     <castEdgeShadows>true</castEdgeShadows>
     <passability>PassThroughOnly</passability>
-    <pathCost>70</pathCost>
-    <fillPercent>0.70</fillPercent>
+    <pathCost>100</pathCost>
+    <fillPercent>0.65</fillPercent>
     <hasTooltip>true</hasTooltip>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
-    <specialDisplayRadius>25.9</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ChargeComplex</turretGunDef>
@@ -152,6 +151,7 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
