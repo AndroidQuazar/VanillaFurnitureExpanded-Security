@@ -332,7 +332,7 @@
     <costStuffCount>90</costStuffCount>
     <costList>
       <Steel>70</Steel>
-      <Chemfuel>75</Chemfuel>
+      <Chemfuel>80</Chemfuel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
     <designationCategory>Security</designationCategory>
