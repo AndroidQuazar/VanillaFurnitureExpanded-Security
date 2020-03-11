@@ -110,7 +110,7 @@
     <soundInteract>Interact_Rifle</soundInteract>
     <statBases>
       <AccuracyTouch>0.63</AccuracyTouch>
-      <AccuracyShort>0.59</AccuracyShort>
+      <AccuracyShort>0.58</AccuracyShort>
       <AccuracyMedium>0.37</AccuracyMedium>
       <AccuracyLong>0.20</AccuracyLong>
       <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
@@ -202,7 +202,7 @@
       <turretGunDef>VFES_Gun_Searchlight</turretGunDef>
       <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
     </building>
-    <specialDisplayRadius>23.9</specialDisplayRadius>
+    <specialDisplayRadius>24.9</specialDisplayRadius>
     <placeWorkers>
       <!-- <li>PlaceWorker_TurretTop</li> -->
       <li>PlaceWorker_ShowTurretRadius</li>
@@ -282,7 +282,7 @@
     <statBases>
       <MaxHitPoints>120</MaxHitPoints>
       <Flammability>2</Flammability>
-      <WorkToBuild>4800</WorkToBuild>
+      <WorkToBuild>3300</WorkToBuild>
       <Mass>18</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
@@ -292,7 +292,7 @@
       <li Class="CompProperties_Explosive">
         <!-- 1.9 explosive radius when empty; 5.9 when full -->
         <explosiveRadius>1.9</explosiveRadius>
-        <explosiveExpandPerFuel>0.1067</explosiveExpandPerFuel>        <!-- Factoring in square rooting -->
+        <explosiveExpandPerFuel>0.2</explosiveExpandPerFuel>        <!-- Factoring in square rooting -->
         <explosiveDamageType>Flame</explosiveDamageType>
       </li>
       <li Class="CompProperties_Forbiddable"/>
@@ -443,7 +443,7 @@
     <statBases>
       <MaxHitPoints>120</MaxHitPoints>
       <Flammability>0.7</Flammability>
-      <WorkToBuild>6500</WorkToBuild>
+      <WorkToBuild>4000</WorkToBuild>
       <Mass>18</Mass>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
@@ -493,8 +493,8 @@
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_SentryTurret</turretGunDef>
-      <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
-      <turretBurstCooldownTime>7.2</turretBurstCooldownTime>
+      <turretBurstWarmupTime>1.6</turretBurstWarmupTime>
+      <turretBurstCooldownTime>6.6</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -529,7 +529,7 @@
       <AccuracyShort>0.40</AccuracyShort>
       <AccuracyMedium>0.35</AccuracyMedium>
       <AccuracyLong>0.15</AccuracyLong>
-      <RangedWeapon_Cooldown>7.2</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>12</Mass>
       <Flammability>0</Flammability>
@@ -542,7 +542,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Minigun</defaultProjectile>
-        <warmupTime>2</warmupTime>
+        <warmupTime>1.6</warmupTime>
         <range>30.9</range>
         <burstShotCount>6</burstShotCount>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>

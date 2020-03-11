@@ -22,7 +22,7 @@
     </graphicData>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
-      <WorkToBuild>7500</WorkToBuild>
+      <WorkToBuild>3600</WorkToBuild>
     </statBases>
     <techLevel>Industrial</techLevel>
     <interactionCellOffset>(0,0,-2)</interactionCellOffset>
@@ -87,6 +87,9 @@
       <texPath>Things/Building/Artillery/TurretArtillery_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+    <statBases>
+      <RangedWeapon_Cooldown>8.5</RangedWeapon_Cooldown>
+    </statBases>
     <weaponTags>
       <li>Artillery_BaseDestroyer</li>
     </weaponTags>

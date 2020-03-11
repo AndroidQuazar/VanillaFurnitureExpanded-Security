@@ -34,7 +34,7 @@
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>1</Flammability>
-      <WorkToBuild>7500</WorkToBuild>
+      <WorkToBuild>3600</WorkToBuild>
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
@@ -56,7 +56,7 @@
         <fuelCapacity>20</fuelCapacity>
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>0.5</fuelMultiplier>
+        <fuelMultiplier>0.2</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs ballista bolts</outOfFuelMessage>
@@ -215,7 +215,7 @@
     <statBases>
       <MaxHitPoints>450</MaxHitPoints>
       <Flammability>1</Flammability>
-      <WorkToBuild>7500</WorkToBuild>
+      <WorkToBuild>3600</WorkToBuild>
       <Beauty>-20</Beauty>
     </statBases>
     <inspectorTabs>
@@ -271,6 +271,9 @@
       <texPath>Things/Building/Catapult/TurretCatapult_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+    <statBases>
+      <RangedWeapon_Cooldown>42</RangedWeapon_Cooldown>
+    </statBases>
     <weaponTags>
       <li>Artillery</li>
       <li>Artillery_BaseDestroyer</li>
@@ -280,7 +283,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
         <hasStandardCommand>true</hasStandardCommand>
-        <warmupTime>4.0</warmupTime>
+        <warmupTime>6.0</warmupTime>
         <forcedMissRadius>16</forcedMissRadius>
         <requireLineOfSight>false</requireLineOfSight>
         <minRange>29.9</minRange>

@@ -193,7 +193,7 @@
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
         <fuelMultiplier>1</fuelMultiplier>
-        <factorByDifficulty>true</factorByDifficulty>
+        <!-- <factorByDifficulty>true</factorByDifficulty> -->
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Needs shells</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/FuelRockets</fuelIconPath>

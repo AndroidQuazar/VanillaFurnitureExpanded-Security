@@ -30,7 +30,7 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>0.5</Flammability>
       <WorkToBuild>4000</WorkToBuild>
       <Mass>12</Mass>
@@ -81,7 +81,7 @@
     <costStuffCount>60</costStuffCount>
     <costList>
       <Plasteel>50</Plasteel>
-      <ComponentSpacer>2</ComponentSpacer>
+      <ComponentSpacer>1</ComponentSpacer>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <designationCategory>Security</designationCategory>
@@ -219,7 +219,7 @@
       <Steel>350</Steel>
       <Plasteel>60</Plasteel>
       <Uranium>80</Uranium>
-      <ComponentSpacer>4</ComponentSpacer>
+      <ComponentSpacer>5</ComponentSpacer>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -295,7 +295,9 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>60</damageAmountBase>
-      <armorPenetrationBase>0.45</armorPenetrationBase> <!-- Same as charge lance -->
+
+      <!-- Same as charge lance -->
+      <armorPenetrationBase>0.45</armorPenetrationBase>
       <stoppingPower>1.5</stoppingPower>
       <speed>120</speed>
     </projectile>
@@ -361,7 +363,7 @@
         <autoRefuelPercent>0.75</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>1</fuelMultiplier>
+        <fuelMultiplier>0.5</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Cannot shoot: Need uranium</outOfFuelMessage>
@@ -377,7 +379,7 @@
       <Steel>350</Steel>
       <Plasteel>80</Plasteel>
       <Uranium>40</Uranium>
-      <ComponentSpacer>5</ComponentSpacer>
+      <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>

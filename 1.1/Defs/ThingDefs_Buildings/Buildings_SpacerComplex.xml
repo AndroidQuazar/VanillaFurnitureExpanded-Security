@@ -37,7 +37,6 @@
     <neverMultiSelect>true</neverMultiSelect>
     <holdsRoof>false</holdsRoof>
     <drawerType>MapMeshAndRealTime</drawerType>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <repairEffect>ConstructMetal</repairEffect>
     <stuffCategories>
@@ -141,7 +140,6 @@
     <pathCost>100</pathCost>
     <fillPercent>0.65</fillPercent>
     <hasTooltip>true</hasTooltip>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>

@@ -25,6 +25,7 @@
     <statBases>
       <WorkToBuild>1900</WorkToBuild>
     </statBases>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <costStuffCount>0</costStuffCount>
     <stuffCategories Inherit="False"/>
     <costList>
@@ -92,7 +93,7 @@
     </costList>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
-      <WorkToBuild>6500</WorkToBuild>
+      <WorkToBuild>4500</WorkToBuild>
     </statBases>
     <comps>
       <li Class="VFESecurity.CompProperties_Submersible">

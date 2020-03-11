@@ -11,7 +11,6 @@
     <tickerType>Normal</tickerType>
     <drawOffscreen>true</drawOffscreen>
     <passability>PassThroughOnly</passability>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <stealable>false</stealable>
     <rotatable>true</rotatable>
     <altitudeLayer>Building</altitudeLayer>
@@ -72,6 +71,7 @@
       <VFES_EnergyShieldRechargeRate>1.04</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>7.9</VFES_EnergyShieldRadius>
     </statBases>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <fillPercent>0.4</fillPercent>
     <pathCost>50</pathCost>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -112,6 +112,7 @@
       <VFES_EnergyShieldRechargeRate>0.73</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>31.9</VFES_EnergyShieldRadius>
     </statBases>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <size>(3,3)</size>
     <costList>
       <Steel>350</Steel>
@@ -173,6 +174,7 @@
       <VFES_EnergyShieldRadius>3.9</VFES_EnergyShieldRadius>
     </statBases>
     <techLevel>Archotech</techLevel>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <rotatable>false</rotatable>
     <thingCategories>
       <li>BuildingsSpecial</li>

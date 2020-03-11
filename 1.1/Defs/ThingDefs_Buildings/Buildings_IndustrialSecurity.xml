@@ -112,6 +112,7 @@
       <MaxHitPoints>750</MaxHitPoints>
       <WorkToBuild>5000</WorkToBuild>
       <Flammability>0.2</Flammability>
+      <Beauty>-30</Beauty>
     </statBases>
     <altitudeLayer>Floor</altitudeLayer>
     <passability>Standable</passability>
