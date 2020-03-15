@@ -162,7 +162,7 @@
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
 		<defName>VFES_RepulsorTechnology</defName>
-		<label>shield generators</label>
+		<label>repulsor technology</label>
 		<description>Build shield generators that project energy fields capable of repelling projectiles.</description>
 		<baseCost>6000</baseCost>
 		<techLevel>Ultra</techLevel>

@@ -227,7 +227,7 @@
     <castEdgeShadows>true</castEdgeShadows>
     <passability>PassThroughOnly</passability>
     <pathCost>40</pathCost>
-    <fillPercent>0.65</fillPercent>
+    <fillPercent>0.57</fillPercent>
     <hasTooltip>true</hasTooltip>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
