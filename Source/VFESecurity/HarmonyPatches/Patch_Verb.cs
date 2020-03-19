@@ -58,18 +58,18 @@ namespace VFESecurity
 
                         yield return instruction; // this.verbProps.range
                         yield return new CodeInstruction(OpCodes.Ldarg_0); // this
-                        yield return new CodeInstruction(OpCodes.Ldarg_2); // targ
+                        yield return new CodeInstruction(OpCodes.Ldarg_1); // root
 
-                        instruction = new CodeInstruction(OpCodes.Call, finaliseAdjustedRangeInfo); // FinaliseAdjustedRange(this.verbProps.range, this, targ)
+                        instruction = new CodeInstruction(OpCodes.Call, finaliseAdjustedRangeInfo); // FinaliseAdjustedRange(this.verbProps.range, this, root)
                     }
 
                     yield return instruction;
                 }
             }
 
-            private static float FinaliseAdjustedRange(float original, Verb instance, LocalTargetInfo targ)
+            private static float FinaliseAdjustedRange(float original, Verb instance, IntVec3 root)
             {
-                return TrenchUtility.FinalAdjustedRangeFromTerrain(original, instance.verbProps.minRange, targ, instance.caster.Map);
+                return TrenchUtility.FinalAdjustedRangeFromTerrain(original, instance.verbProps.minRange, root, instance.caster.Map);
             }
 
         }
