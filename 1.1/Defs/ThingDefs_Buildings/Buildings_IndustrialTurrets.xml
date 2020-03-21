@@ -204,8 +204,8 @@
     </building>
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <placeWorkers>
-      <!-- <li>PlaceWorker_TurretTop</li> -->
-      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>PlaceWorker_TurretTop</li>
+      <!-- <li>PlaceWorker_ShowTurretRadius</li> -->
     </placeWorkers>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <researchPrerequisites>

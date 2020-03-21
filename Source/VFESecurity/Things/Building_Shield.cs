@@ -44,7 +44,7 @@ namespace VFESecurity
         }
 
         private bool CanFunction => (PowerTraderComp == null || PowerTraderComp.PowerOn) && !this.IsBrokenDown();
-        //public bool Active => ParentHolder is Map && CanFunction && GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction);
+
         public float Energy
         {
             get => energy;
@@ -108,6 +108,8 @@ namespace VFESecurity
         {
             base.SpawnSetup(map, respawningAfterLoad);
             map.GetComponent<ListerThingsExtended>().listerShieldGens.Add(this);
+
+            // Set up shield coverage
             coveredCells = new HashSet<IntVec3>(GenRadial.RadialCellsAround(PositionHeld, ShieldRadius, true));
             if (ShieldRadius < EdgeCellRadius + 1)
                 scanCells = coveredCells;
@@ -156,6 +158,8 @@ namespace VFESecurity
                 else if (PowerTraderComp != null)
                     PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactivePowerConsumption;
             }
+            else if (PowerTraderComp != null)
+                PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactivePowerConsumption;
 
             base.Tick();
         }
