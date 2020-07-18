@@ -324,6 +324,17 @@ namespace VFESecurity
 
         public override void ExposeData()
         {
+            if (Scribe.mode == LoadSaveMode.Saving)
+            {
+                foreach (Thing thing in affectedThings.Keys)
+                {
+                    if (thing.Destroyed)
+                    {
+                        affectedThings.Remove(thing);
+                    }
+                }
+            }
+
             Scribe_Values.Look(ref ticksToRecharge, "ticksToRecharge");
             Scribe_Values.Look(ref energy, "energy");
             Scribe_Values.Look(ref shieldBuffer, "shieldBuffer");
