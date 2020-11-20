@@ -233,7 +233,6 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -273,8 +272,8 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_DoubleChargeLance</defaultProjectile>
         <warmupTime>0</warmupTime>
-        <minRange>10.9</minRange>
-        <range>36.9</range>
+        <minRange>6.9</minRange>
+        <range>66.9</range>
         <soundCast>ChargeLance_Fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>12</muzzleFlashScale>

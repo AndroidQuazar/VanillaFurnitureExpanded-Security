@@ -9,10 +9,15 @@
   <Frame_VFES_Turret_Ballista.label>バリスタ(施行)</Frame_VFES_Turret_Ballista.label>
   <Frame_VFES_Turret_Ballista.description>木製の土台に取り付けられた大きなクロスボウの形をした古代の攻囲戦用の攻城兵器です。この兵器から発射されたバリスタボルトは、衝撃で爆発して破片を散乱します。</Frame_VFES_Turret_Ballista.description>
 
+  <VFES_Turret_Ballista.comps.CompRefuelable.fuelGizmoLabel>残弾数</VFES_Turret_Ballista.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_Ballista.comps.CompRefuelable.fuelLabel>残弾数</VFES_Turret_Ballista.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_Ballista.comps.CompRefuelable.outOfFuelMessage>射撃不可: バリスタボルトの補給が必要</VFES_Turret_Ballista.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Bullet_Ballista.label>バリスタボルト</VFES_Bullet_Ballista.label>
 
   <VFES_Gun_BallistaTurret.label>バリスタ</VFES_Gun_BallistaTurret.label>
   <VFES_Gun_BallistaTurret.description>木製の土台に取り付けられた大きなクロスボウの形をした古代の攻囲戦用の攻城兵器です。</VFES_Gun_BallistaTurret.description>
+  <VFES_Gun_BallistaTurret.verbs.Verb_Shoot.label>バリスタ</VFES_Gun_BallistaTurret.verbs.Verb_Shoot.label>
 
 
   <!-- Catapult -->
@@ -25,6 +30,7 @@
 
   <VFES_Artillery_Catapult.label>カタパルト</VFES_Artillery_Catapult.label>
   <VFES_Artillery_Catapult.description>カタパルトは、火薬や他の推進剤の補助なしに、ミサイルを遠くに発射するために使われる原始的な弾道装置です。古代から使用されているカタパルトは、戦争において最も継続して攻撃可能な攻城戦兵器の1つであることが証明されています。</VFES_Artillery_Catapult.description>
+  <VFES_Artillery_Catapult.verbs.Verb_Shoot.label>カタパルト</VFES_Artillery_Catapult.verbs.Verb_Shoot.label>
 
   <VFES_Artillery_Rock.label>巨大な岩</VFES_Artillery_Rock.label>
 

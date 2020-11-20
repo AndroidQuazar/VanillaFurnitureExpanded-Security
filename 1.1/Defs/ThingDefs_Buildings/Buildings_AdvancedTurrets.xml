@@ -259,9 +259,6 @@
         <consumeFuelPerShot>1</consumeFuelPerShot>
         <requireLineOfSight>false</requireLineOfSight>
         <forcedMissRadius>4.6</forcedMissRadius>
-        <targetParams>
-          <canTargetLocations>true</canTargetLocations>
-        </targetParams>
       </li>
     </verbs>
   </ThingDef>

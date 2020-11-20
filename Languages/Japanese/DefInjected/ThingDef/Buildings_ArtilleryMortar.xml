@@ -12,5 +12,6 @@
 
   <VFES_Artillery_Weapon.label>野戦砲</VFES_Artillery_Weapon.label>
   <VFES_Artillery_Weapon.description>長距離砲撃が可能な大砲です。</VFES_Artillery_Weapon.description>
+  <VFES_Artillery_Weapon.verbs.Verb_Shoot.label>野戦砲</VFES_Artillery_Weapon.verbs.Verb_Shoot.label>
 
 </LanguageData>

@@ -1,20 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <!-- Medieval -->
+
   <VFES_SiegeEquipment.label>攻城設備</VFES_SiegeEquipment.label>
   <VFES_SiegeEquipment.description>中世時代の攻城装備を建設できます。</VFES_SiegeEquipment.description>
 
 
   <!-- Industrial -->
 
-  <VFES_SentryGuns.label>セントリーガン</VFES_SentryGuns.label>
-  <VFES_SentryGuns.description>防衛現場で利用される、信頼性の高い自動防衛用のセントリーガンを作成します。</VFES_SentryGuns.description>
-
-  <!-- <VFES_TrenchWarfare.label>塹壕戦</VFES_TrenchWarfare.label>
-  <VFES_TrenchWarfare.description>近接戦闘用の武器を使った塹壕戦ドクトリンを学びます。</VFES_TrenchWarfare.description> -->
+  <VFES_TrenchWarfare.label>塹壕戦</VFES_TrenchWarfare.label>
+  <VFES_TrenchWarfare.description>近接戦闘用の武器を使った塹壕戦ドクトリンを学びます。</VFES_TrenchWarfare.description>
 
   <VFES_Artillery.label>野戦砲</VFES_Artillery.label>
   <VFES_Artillery.description>野戦用の火砲を建設する方法を研究します。</VFES_Artillery.description>
+
+  <VFES_SentryGuns.label>セントリーガン</VFES_SentryGuns.label>
+  <VFES_SentryGuns.description>防衛現場で利用される、信頼性の高い自動防衛用のセントリーガンを作成します。</VFES_SentryGuns.description>
+
+  <VFES_MetalAlloysBarricades.label>合金製バリケード</VFES_MetalAlloysBarricades.label>
+  <VFES_MetalAlloysBarricades.description>強化された金属バリケードを建設します。</VFES_MetalAlloysBarricades.description>
 
   <VFES_ConcealedDefenses.label>トーチカ防衛</VFES_ConcealedDefenses.label>
   <VFES_ConcealedDefenses.description>屋内防衛に最適な防衛用バリケードと防衛用タレットを建設します。</VFES_ConcealedDefenses.description>
@@ -24,9 +29,6 @@
 
 
   <!-- Spacer -->
-
-  <VFES_MetalAlloysBarricades.label>合金製バリケード</VFES_MetalAlloysBarricades.label>
-  <VFES_MetalAlloysBarricades.description>強化された金属バリケードを建設します。</VFES_MetalAlloysBarricades.description>
 
   <VFES_PulseChargedDefenses.label>防衛用チャージ砲</VFES_PulseChargedDefenses.label>
   <VFES_PulseChargedDefenses.description>一定の発射速度を維持できる先進的なチャージキャノンを研究します。</VFES_PulseChargedDefenses.description>

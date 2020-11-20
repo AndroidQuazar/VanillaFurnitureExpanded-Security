@@ -9,8 +9,13 @@
   <Frame_VFES_Turret_AutocannonDouble.label>連装 オートキャノン(施行)</Frame_VFES_Turret_AutocannonDouble.label>
   <Frame_VFES_Turret_AutocannonDouble.description>自動化されたタレット砲を2つ繋げて二連装オートキャノンにしました。大口径の砲弾はかなりの射程があり大きなダメージを与えますが、使用後にバレルを交換しなければなりません。近接距離の目標には発砲できず、ダメージを受けると爆発する可能性があります。</Frame_VFES_Turret_AutocannonDouble.description>
 
+  <VFES_Turret_AutocannonDouble.comps.CompRefuelable.fuelGizmoLabel>銃身耐久力</VFES_Turret_AutocannonDouble.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_AutocannonDouble.comps.CompRefuelable.fuelLabel>銃身耐久力</VFES_Turret_AutocannonDouble.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_AutocannonDouble.comps.CompRefuelable.outOfFuelMessage>射撃不可: 銃身の交換が必要</VFES_Turret_AutocannonDouble.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_TurretDoubleAutocannon_Top.label>連装 オートキャノン</VFES_TurretDoubleAutocannon_Top.label>
   <VFES_TurretDoubleAutocannon_Top.description>タレットに搭載できるように設計された自動装填式の大口径二連装砲です。</VFES_TurretDoubleAutocannon_Top.description>
+  <VFES_TurretDoubleAutocannon_Top.verbs.Verb_Shoot.label>連装 オートキャノン</VFES_TurretDoubleAutocannon_Top.verbs.Verb_Shoot.label>
 
 
   <!-- Rocket Turret -->
@@ -21,8 +26,13 @@
   <Frame_VFES_Turret_TriRocket.label>ロケット タレット(施行)</Frame_VFES_Turret_TriRocket.label>
   <Frame_VFES_Turret_TriRocket.description>敵に向けて地対地ロケットの三連装一斉発射による弾幕を張る事が可能な重装タレットです。近接距離の目標には発砲不可能で、ダメージを受けると爆発する可能性があります。</Frame_VFES_Turret_TriRocket.description>
 
+  <VFES_Turret_TriRocket.comps.CompRefuelable.fuelGizmoLabel>ロケットの残弾</VFES_Turret_TriRocket.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_TriRocket.comps.CompRefuelable.fuelLabel>ロケットの残弾数</VFES_Turret_TriRocket.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_TriRocket.comps.CompRefuelable.outOfFuelMessage>射撃不可: ロケット弾の補給が必要</VFES_Turret_TriRocket.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_TurretTriRocket_Top.label>ロケット 斉射タレット</VFES_TurretTriRocket_Top.label>
   <VFES_TurretTriRocket_Top.description>タレットに搭載できるように設計された自動装填式の大口径三連ロケット発射器です。</VFES_TurretTriRocket_Top.description>
+  <VFES_TurretTriRocket_Top.verbs.Verb_Shoot.label>ロケット 斉射タレット</VFES_TurretTriRocket_Top.verbs.Verb_Shoot.label>
 
   <VFES_Bullet_HighExplosiveMissile.label>ロケット弾</VFES_Bullet_HighExplosiveMissile.label>
 

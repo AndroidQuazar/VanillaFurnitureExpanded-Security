@@ -18,8 +18,13 @@
   <Frame_VFES_Turret_ChargeComplex.label>チャージガン 固定銃座(施行)</Frame_VFES_Turret_ChargeComplex.label>
   <Frame_VFES_Turret_ChargeComplex.description>金属製のバリケードに取り付けられたチャージキャノンです。バレルの交換が必要になるまで射撃することが可能です。</Frame_VFES_Turret_ChargeComplex.description>
 
+  <VFES_Turret_ChargeComplex.comps.CompRefuelable.fuelGizmoLabel>バッテリー電力量</VFES_Turret_ChargeComplex.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_ChargeComplex.comps.CompRefuelable.fuelLabel>バッテリー残電力量</VFES_Turret_ChargeComplex.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_ChargeComplex.comps.CompRefuelable.outOfFuelMessage>射撃不可: バッテリーの交換が必要</VFES_Turret_ChargeComplex.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Gun_ChargeComplex.label>銃座用チャージガン</VFES_Gun_ChargeComplex.label>
   <VFES_Gun_ChargeComplex.description>タレットに設置するように作られたチャージガンです。</VFES_Gun_ChargeComplex.description>
+  <VFES_Gun_ChargeComplex.verbs.Verb_Shoot.label>銃座用チャージガン</VFES_Gun_ChargeComplex.verbs.Verb_Shoot.label>
 
   <VFES_Bullet_ChargeComplex.label>チャージ弾</VFES_Bullet_ChargeComplex.label>
 

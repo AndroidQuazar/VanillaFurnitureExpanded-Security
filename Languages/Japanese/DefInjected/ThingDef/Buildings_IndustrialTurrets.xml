@@ -10,8 +10,13 @@
   <Frame_VFES_Turret_MilitaryTurret.label>軍用 二連装タレット(施行)</Frame_VFES_Turret_MilitaryTurret.label>
   <Frame_VFES_Turret_MilitaryTurret.description>軍用レベルの二連装タレットです。射撃回数が多い場合、バレルの交換にスチールが大量に必要です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_MilitaryTurret.description>
 
+  <VFES_Turret_MilitaryTurret.comps.CompRefuelable.fuelGizmoLabel>銃身耐久力</VFES_Turret_MilitaryTurret.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_MilitaryTurret.comps.CompRefuelable.fuelLabel>銃身耐久力</VFES_Turret_MilitaryTurret.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_MilitaryTurret.comps.CompRefuelable.outOfFuelMessage>射撃不可: 銃身の交換が必要</VFES_Turret_MilitaryTurret.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Gun_MilitaryTurret.label>軍用 二連装タレット</VFES_Gun_MilitaryTurret.label>
   <VFES_Gun_MilitaryTurret.description>タレットに搭載するために作られた二連装式の自動銃です。</VFES_Gun_MilitaryTurret.description>
+  <VFES_Gun_MilitaryTurret.verbs.Verb_Shoot.label>軍用 二連装タレット</VFES_Gun_MilitaryTurret.verbs.Verb_Shoot.label>
 
 
   <!-- Searchlight -->
@@ -25,6 +30,7 @@
 
   <VFES_Gun_Searchlight.label>サーチライト</VFES_Gun_Searchlight.label>
   <VFES_Gun_Searchlight.description>タレットに取り付けるサーチライトです。</VFES_Gun_Searchlight.description>
+  <VFES_Gun_Searchlight.verbs.Verb_Dazzle.label>サーチライト</VFES_Gun_Searchlight.verbs.Verb_Dazzle.label>
 
 
   <!-- Flame Turret -->
@@ -36,8 +42,13 @@
   <Frame_VFES_Turret_Flame.label>火炎放射 タレット(施行)</Frame_VFES_Turret_Flame.label>
   <Frame_VFES_Turret_Flame.description>小型火炎放射器が搭載されたタレットです。破壊されると爆発する可能性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_Flame.description>
 
+  <VFES_Turret_Flame.comps.CompRefuelable.fuelGizmoLabel>残り燃料</VFES_Turret_Flame.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_Flame.comps.CompRefuelable.fuelLabel>残り燃料</VFES_Turret_Flame.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_Flame.comps.CompRefuelable.outOfFuelMessage>射撃不可: 化学燃料の補給が必要</VFES_Turret_Flame.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Gun_FlameTurret.label>タレット用 火炎放射器</VFES_Gun_FlameTurret.label>
   <VFES_Gun_FlameTurret.description>タレットに搭載するための火炎放射器です。</VFES_Gun_FlameTurret.description>
+  <VFES_Gun_FlameTurret.verbs.Verb_Shoot.label>タレット用 火炎放射器</VFES_Gun_FlameTurret.verbs.Verb_Shoot.label>
 
   <VFES_Bullet_FlameTurret.label>火炎放射器燃料</VFES_Bullet_FlameTurret.label>
 
@@ -51,7 +62,12 @@
   <Frame_VFES_Turret_SentryGun.label>セントリーガン(施行)</Frame_VFES_Turret_SentryGun.label>
   <Frame_VFES_Turret_SentryGun.description>小型のガトリング銃を搭載した携帯型の自家発電タレットです。どこへでも運べて設置できるほど軽量です。破損されると爆発する危険性があります。性能の低いAIによって制御されており、味方への誤射には注意してください。</Frame_VFES_Turret_SentryGun.description>
 
+  <VFES_Turret_SentryGun.comps.CompRefuelable.fuelGizmoLabel>銃身耐久力</VFES_Turret_SentryGun.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_SentryGun.comps.CompRefuelable.fuelLabel>銃身耐久力</VFES_Turret_SentryGun.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_SentryGun.comps.CompRefuelable.outOfFuelMessage>射撃不可: 銃身の交換が必要</VFES_Turret_SentryGun.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Gun_SentryTurret.label>セントリーガン</VFES_Gun_SentryTurret.label>
   <VFES_Gun_SentryTurret.description>タレットに搭載できるように作られた全自動型ガトリング銃です。</VFES_Gun_SentryTurret.description>
+  <VFES_Gun_SentryTurret.verbs.Verb_Shoot.label>セントリーガン</VFES_Gun_SentryTurret.verbs.Verb_Shoot.label>
 
 </LanguageData>

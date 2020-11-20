@@ -2,7 +2,7 @@
 <Defs>
 
 	<ResearchProjectDef Name="VFES_ResearchBase" Abstract="True">
-		<tab>VanillaFurnitureExpanded_Security</tab>
+		<tab>VanillaExpanded</tab>
 	</ResearchProjectDef>
 
 	<!-- Medieval -->
@@ -15,8 +15,8 @@
 		<prerequisites>
 			<li>Smithing</li>
 		</prerequisites>
-		<researchViewX>0</researchViewX>
-		<researchViewY>0</researchViewY>
+  <researchViewX>0.00</researchViewX>
+  <researchViewY>2.75</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- Industrial -->
@@ -43,8 +43,8 @@
 		<prerequisites>
 			<li>Mortars</li>
 		</prerequisites>
-		<researchViewX>2</researchViewX>
-		<researchViewY>0.7</researchViewY>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>1.25</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -57,8 +57,8 @@
 			<li>GunTurrets</li>
 			<li>GasOperation</li>
 		</prerequisites>
-		<researchViewX>2</researchViewX>
-		<researchViewY>1.4</researchViewY>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>0.75</researchViewY>
 	</ResearchProjectDef>
 
 
@@ -72,8 +72,8 @@
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>3</researchViewX>
-		<researchViewY>0</researchViewY>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>2.45</researchViewY>
 	</ResearchProjectDef>
 
 
@@ -88,8 +88,8 @@
 			<li>VFES_MetalAlloysBarricades</li>
 		</prerequisites>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>4</researchViewX>
-		<researchViewY>0</researchViewY>
+  <researchViewX>6.00</researchViewX>
+  <researchViewY>3.10</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -101,8 +101,8 @@
 		<prerequisites>
 			<li>HeavyTurrets</li>
 		</prerequisites>
-		<researchViewX>3</researchViewX>
-		<researchViewY>0.7</researchViewY>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>3.00</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- Spacer -->
@@ -120,8 +120,8 @@
 			<li>MultiAnalyzer</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>4</researchViewX>
-		<researchViewY>0.7</researchViewY>
+  <researchViewX>6.00</researchViewX>
+  <researchViewY>2.45</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -138,8 +138,8 @@
 			<li>MultiAnalyzer</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>4</researchViewX>
-		<researchViewY>2.8</researchViewY>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>2.50</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -156,8 +156,8 @@
 			<li>MultiAnalyzer</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>4</researchViewX>
-		<researchViewY>3.5</researchViewY>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -166,11 +166,6 @@
 		<description>Build shield generators that project energy fields capable of repelling projectiles.</description>
 		<baseCost>6000</baseCost>
 		<techLevel>Ultra</techLevel>
-		<techprintCount>1</techprintCount>
-		<heldByFactionCategoryTags>
-			<li>Outlander</li>
-			<li>Empire</li>
-		</heldByFactionCategoryTags>
 		<prerequisites>
 			<li>AdvancedFabrication</li>
 			<li>ShieldBelt</li>
@@ -179,8 +174,8 @@
 			<li>MultiAnalyzer</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-		<researchViewX>5.5</researchViewX>
-		<researchViewY>2</researchViewY>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>1.50</researchViewY>
 	</ResearchProjectDef>
 
 </Defs>

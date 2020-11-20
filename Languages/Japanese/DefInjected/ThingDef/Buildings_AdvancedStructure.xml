@@ -19,8 +19,13 @@
   <Frame_VFES_Turret_FloorTurret.label>防衛用タレット(施行)</Frame_VFES_Turret_FloorTurret.label>
   <Frame_VFES_Turret_FloorTurret.description>電源が入っていないときは通常の床タイルとして機能して稼働すると隠されていた軍事防衛用の連装タレットがせり出します。タレットが隠れている状態で受けるダメージは半分です。発砲が激しい場合、バレルを交換するのにスチールが必要です。ダメージを受けると爆発する可能性があります。低性能なAI頭脳を直接制御不可能なので、味方への誤射に注意してください。</Frame_VFES_Turret_FloorTurret.description>
 
+  <VFES_Turret_FloorTurret.comps.CompRefuelable.fuelGizmoLabel>銃身耐久力</VFES_Turret_FloorTurret.comps.CompRefuelable.fuelGizmoLabel>
+  <VFES_Turret_FloorTurret.comps.CompRefuelable.fuelLabel>銃身耐久力</VFES_Turret_FloorTurret.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_FloorTurret.comps.CompRefuelable.outOfFuelMessage>射撃不可: 銃身の交換が必要</VFES_Turret_FloorTurret.comps.CompRefuelable.outOfFuelMessage>
+
   <VFES_Gun_FloorTurret.label>防衛タレット二連装銃</VFES_Gun_FloorTurret.label>
   <VFES_Gun_FloorTurret.description>タレットに取り付けられるように作られたシンプルな二連装自動銃です。</VFES_Gun_FloorTurret.description>
+  <VFES_Gun_FloorTurret.verbs.Verb_Shoot.label>防衛タレット二連装銃</VFES_Gun_FloorTurret.verbs.Verb_Shoot.label>
 
 
   <!-- HMG Complex (3.15,1.45) -->
@@ -30,6 +35,9 @@
   <Blueprint_VFES_Turret_HMGComplex.label>重機関銃 銃座(設計)</Blueprint_VFES_Turret_HMGComplex.label>
   <Frame_VFES_Turret_HMGComplex.label>重機関銃 銃座(施行)</Frame_VFES_Turret_HMGComplex.label>
   <Frame_VFES_Turret_HMGComplex.description>土嚢で保護して遮蔽を高めた重機関銃の固定式銃座です。</Frame_VFES_Turret_HMGComplex.description>
+
+  <VFES_Turret_HMGComplex.comps.CompRefuelable.fuelLabel>残弾数</VFES_Turret_HMGComplex.comps.CompRefuelable.fuelLabel>
+  <VFES_Turret_HMGComplex.comps.CompRefuelable.outOfFuelMessage>射撃不可: 弾の補給が必要</VFES_Turret_HMGComplex.comps.CompRefuelable.outOfFuelMessage>
 
   <VFES_Gun_HMGComplex.label>搭載HMG</VFES_Gun_HMGComplex.label>
   <VFES_Gun_HMGComplex.description>搭載して使うタイプの重機関銃です。</VFES_Gun_HMGComplex.description>
