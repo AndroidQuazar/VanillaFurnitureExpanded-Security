@@ -25,10 +25,10 @@ namespace VFESecurity
         private static readonly Material BaseBubbleMat = MaterialPool.MatFrom("Other/ShieldBubble", ShaderDatabase.Transparent);
 
         public ExtendedBuildingProperties ExtendedBuildingProps => def.GetModExtension<ExtendedBuildingProperties>() ?? ExtendedBuildingProperties.defaultValues;
-        public float MaxEnergy => this.GetStatValue(StatDefOf.VFES_EnergyShieldEnergyMax);
+        public float MaxEnergy { get; private set; }
         private float CurMaxEnergy => MaxEnergy * (active ? 1 : ExtendedBuildingProps.initialEnergyPercentage);
-        public float EnergyGainPerTick => this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60;
-        public float ShieldRadius => this.GetStatValue(StatDefOf.VFES_EnergyShieldRadius);
+        public float EnergyGainPerTick { get; private set; }
+        public float ShieldRadius { get; private set; }
 
         private CompPowerTrader PowerTraderComp
         {
@@ -107,6 +107,10 @@ namespace VFESecurity
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            MaxEnergy = this.GetStatValue(StatDefOf.VFES_EnergyShieldEnergyMax);
+            EnergyGainPerTick = this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60;
+            ShieldRadius = this.GetStatValue(StatDefOf.VFES_EnergyShieldRadius);
+
             map.GetComponent<ListerThingsExtended>().listerShieldGens.Add(this);
 
             // Set up shield coverage
@@ -320,6 +324,17 @@ namespace VFESecurity
 
         public override void ExposeData()
         {
+            if (Scribe.mode == LoadSaveMode.Saving)
+            {
+                foreach (Thing thing in affectedThings.Keys)
+                {
+                    if (thing.Destroyed)
+                    {
+                        affectedThings.Remove(thing);
+                    }
+                }
+            }
+
             Scribe_Values.Look(ref ticksToRecharge, "ticksToRecharge");
             Scribe_Values.Look(ref energy, "energy");
             Scribe_Values.Look(ref shieldBuffer, "shieldBuffer");
