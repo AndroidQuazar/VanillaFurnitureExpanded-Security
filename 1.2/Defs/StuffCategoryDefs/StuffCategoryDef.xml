@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Chunk Cover with stone chunks -->
+  <StuffCategoryDef>
+    <defName>Rocks</defName>
+    <label>rock</label>
+  </StuffCategoryDef>
+
+</Defs>

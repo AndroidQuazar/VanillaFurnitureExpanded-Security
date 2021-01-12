@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Barbed Wire -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_BarbedWire</defName>
+    <label>barbed wire</label>
+    <description>A type of steel fencing wire consisting of sharp edges and points arranged at intervals. Not only does it slow movement of enemies, but it inflicts cuts and puncture wounds.</description>
+    <thingClass>VFESecurity.Building_BarbedWire</thingClass>
+    <graphicData>
+      <texPath>Things/Security/BarbedWire/BarbedWire_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom8</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>Things/Security/BarbedWire/BarbedWire_MenuIcon</uiIconPath>
+    <blockLight>false</blockLight>
+    <blockWind>false</blockWind>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <pathCost>140</pathCost>
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <neverMultiSelect>false</neverMultiSelect>
+    <holdsRoof>false</holdsRoof>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-15</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>4</TrapMeleeDamage>
+      <TrapSpringChance>1</TrapSpringChance>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapPeacefulWildAnimalsSpringChanceFactor>0</trapPeacefulWildAnimalsSpringChanceFactor>
+      <trapDestroyOnSpring>false</trapDestroyOnSpring>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>Things/Security/BarbedWire/BarbedWire_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <damageMultipliers>
+      <li>
+        <damageDef>Cut</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+    <repairEffect>ConstructMetal</repairEffect>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedBuildingProperties">
+        <trapDestroyOnSpringChance>0.2</trapDestroyOnSpringChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- Trench -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Trench</defName>
+    <label>trench</label>
+    <description>A long, narrow ditch dug into the ground. Crossing it requires climbing up and down, therefore it significantly slows down movement speed. Soldiers inside the trench suffer weapon range penalty, but gain significant cover.</description>
+    <graphicData>
+      <texPath>Things/Security/Trench/Trench_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom6</li>
+      </linkFlags>
+      <!-- <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData> -->
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>Things/Security/Trench/Trench_MenuIcon</uiIconPath>
+    <!-- <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount> -->
+    <comps>
+      <li Class="VFESecurity.CompProperties_TerrainSetter">
+        <terrainDef>VFES_TrenchTerrain</terrainDef>
+      </li>
+    </comps>
+    <costList>
+      <WoodLog>5</WoodLog>
+    </costList>
+    <statBases>
+      <MaxHitPoints>750</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0.2</Flammability>
+      <Beauty>-30</Beauty>
+    </statBases>
+    <altitudeLayer>Floor</altitudeLayer>
+    <passability>Standable</passability>
+    <blockWind>false</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <pathCost>0</pathCost>    <!-- Handled through VFES_TrenchTerrain -->
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <coversFloor>true</coversFloor>
+    <placingDraggableDimensions>2</placingDraggableDimensions>
+    <tickerType>Never</tickerType>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <stealable>false</stealable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <holdsRoof>false</holdsRoof>
+    <designationCategory>Security</designationCategory>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <blockLight>false</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <repairEffect>ConstructDirt</repairEffect>
+    <building>
+      <isInert>true</isInert>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>Things/Security/Trench/Trench_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Ammo Crate -->
+
+  <ThingDef ParentName="FurnitureBase">
+    <defName>VFES_AmmoCrate</defName>
+    <label>ammo crate</label>
+    <description>An ammo crate useful for storing shells. Improves firing rate of surrounding soldiers.</description>
+    <thingClass>Building_Storage</thingClass>
+    <graphicData>
+      <texPath>Things/Security/AmmoCrate/AmmoCrate_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.25</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <wickTicks>
+          <min>20</min>
+          <max>60</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>15</Mass>
+      <WorkToBuild>1000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <specialDisplayRadius>2.9</specialDisplayRadius>
+    <researchPrerequisites>
+      <li>Fabrication</li>
+    </researchPrerequisites>
+    <designationCategory>Security</designationCategory>
+  </ThingDef>
+
+</Defs>

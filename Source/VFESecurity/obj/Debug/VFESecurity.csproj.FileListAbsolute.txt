@@ -20,3 +20,7 @@ D:\Game Stuff\RimWorld\Modding\Misc\VanillaFurnitureExpanded-Security\1.1\Assemb
 D:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
 D:\Documents\GitHub\VanillaFurnitureExpanded-Security\Source\VFESecurity\obj\Debug\VFESecurity.dll
 D:\Documents\GitHub\VanillaFurnitureExpanded-Security\1.1\Assemblies\VFESecurity.dll
+D:\Steam\steamapps\common\RimWorld\Mods\Vanilla Security Expanded\Source\VFESecurity\obj\Debug\VFESecurity.csprojAssemblyReference.cache
+D:\Steam\steamapps\common\RimWorld\Mods\Vanilla Security Expanded\Source\VFESecurity\obj\Debug\VFESecurity.csproj.CoreCompileInputs.cache
+D:\Steam\steamapps\common\RimWorld\Mods\Vanilla Security Expanded\Source\VFESecurity\obj\Debug\VFESecurity.dll
+D:\Steam\steamapps\common\RimWorld\Mods\Vanilla Security Expanded\1.2\Assemblies\VFESecurity.dll

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Artillery -->
+  <ThingDef ParentName="BaseArtilleryBuilding">
+    <defName>VFES_Turret_Artillery</defName>
+    <label>artillery</label>
+    <description>A manned artillery that launches all kinds of shells. Capable of inflicting devastating damage to both enemy forces and structures, this military machinery excels at laying down fire support for soldiers in the field.\n\nCapable of targeting other areas of the world within a medium radius.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Artillery/TurretArtillery_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.38,0.2,0.56375,0.8)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+      </damageData>
+      <shadowData>
+        <offset>(-0.13,-0.87,-0.1)</offset>
+        <volume>(0.5,0.4,1.05)</volume>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>3600</WorkToBuild>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <size>(3,3)</size>
+    <rotatable>true</rotatable>
+    <stealable>false</stealable>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList>
+      <Steel>180</Steel>
+      <ComponentIndustrial>9</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="VFESecurity.CompProperties_LongRangeArtillery">
+        <worldTileRange>20</worldTileRange>
+        <maxForcedMissRadiusFactor>2.5</maxForcedMissRadiusFactor>
+        <gizmoIconTexPath>Things/Building/Artillery/TurretArtillery_Top</gizmoIconTexPath>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <building>
+      <turretGunDef>VFES_Artillery_Weapon</turretGunDef>
+      <turretTopDrawSize>3</turretTopDrawSize>
+      <buildingTags>
+        <li>Artillery_BaseDestroyer</li>
+      </buildingTags>
+      <turretBurstWarmupTime>8</turretBurstWarmupTime>
+      <turretBurstCooldownTime>8.5</turretBurstCooldownTime>
+      <defaultStorageSettings Inherit="False">
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+          <disallowedThingDefs>
+            <li>Shell_Incendiary</li>
+            <li>Shell_Firefoam</li>
+            <li>Shell_AntigrainWarhead</li>
+          </disallowedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <uiIconPath>Things/Building/Artillery/TurretArtillery_MenuIcon</uiIconPath>
+    <uiIconScale>0.9</uiIconScale>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_Artillery</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>VFES_Artillery_Weapon</defName>
+    <label>artillery</label>
+    <description>Artillery cannon capable of long range bombardment.</description>
+    <graphicData>
+      <texPath>Things/Building/Artillery/TurretArtillery_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <RangedWeapon_Cooldown>8.5</RangedWeapon_Cooldown>
+    </statBases>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>8</warmupTime>
+        <forcedMissRadius>20</forcedMissRadius>
+        <requireLineOfSight>false</requireLineOfSight>
+        <minRange>29.9</minRange>
+        <range>500</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>VFES_Shot_Artillery</soundCast>
+        <muzzleFlashScale>32</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+          <disallowedThingDefs>
+            <li>Shell_Firefoam</li>
+            <li>Shell_AntigrainWarhead</li>
+          </disallowedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+  </ThingDef>
+
+</Defs>

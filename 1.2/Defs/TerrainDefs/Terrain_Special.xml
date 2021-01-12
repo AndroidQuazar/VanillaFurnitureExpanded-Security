@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <TerrainDef>
+        <defName>VFES_TrenchTerrain</defName>
+        <label>trench floor</label>
+        <texturePath>Terrain/Surfaces/Soil</texturePath>
+        <layerable>true</layerable>
+        <pathCost>12</pathCost>
+        <fertility>0</fertility>
+        <edgeType>Fade</edgeType>
+        <renderPrecedence>320</renderPrecedence>
+        <destroyEffect>Bridge_Collapse</destroyEffect>
+        <modExtensions>
+            <li Class="VFESecurity.TerrainDefExtension">
+                <allowCrouching>true</allowCrouching>
+                <pathCostEntering>50</pathCostEntering>
+                <pathCostLeaving>150</pathCostLeaving>
+                <coverEffectiveness>0.5</coverEffectiveness>
+                <rangeFactor>0.8</rangeFactor>
+            </li>
+        </modExtensions>
+    </TerrainDef>
+
+</Defs>

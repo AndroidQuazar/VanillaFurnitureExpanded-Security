@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecordDef>
+    <defName>VFES_TrapsRearmed</defName>
+    <label>Traps Rearmed</label>
+    <description>The number of traps I have rearmed.</description>
+    <type>Int</type>
+  </RecordDef>
+
+</Defs>

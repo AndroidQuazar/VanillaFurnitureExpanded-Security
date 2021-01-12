@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!-- Add techLevel to Mortar -->
+    <Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="Turret_Mortar"]/techLevel</xpath>
+        <match Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="Turret_Mortar"]/techLevel</xpath>
+			<value>
+				<techLevel>Industrial</techLevel>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="Turret_Mortar"]</xpath>
+			<value>
+				<techLevel>Industrial</techLevel>
+			</value>
+		</nomatch>
+    </Operation>
+</Patch>

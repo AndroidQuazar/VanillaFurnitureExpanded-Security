@@ -19,7 +19,15 @@ namespace VFESecurity
 
         public static bool IsSubmersible(this Thing thing, out CompSubmersible submersibleComp)
         {
-            submersibleComp = thing.TryGetComp<CompSubmersible>();
+            submersibleComp = null;
+            if (thing is Submersible || thing is SubmersibleBuilding_TurretGun)
+            {
+                submersibleComp = thing.TryGetComp<CompSubmersible>();
+                if (submersibleComp is null)
+                {
+                    Log.Warning($"Tried to get non-existant CompSubmersible for {thing} when thing uses Submersible thingClass. This will cause performance issues.");
+                }
+            }
             return submersibleComp != null;
         }
 

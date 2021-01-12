@@ -17,11 +17,10 @@ namespace VFESecurity
     [StaticConstructorOnStartup]
     public static class StaticConstructorClass
     {
-
         static StaticConstructorClass()
         {
             ArtilleryStrikeUtility.SetCache();
-
+            
             var thingDefs = DefDatabase<ThingDef>.AllDefsListForReading;
             for (int i = 0; i < thingDefs.Count; i++)
             {
@@ -31,20 +30,24 @@ namespace VFESecurity
                 if (typeof(ThingWithComps).IsAssignableFrom(tDef.thingClass))
                 {
                     if (tDef.comps == null)
+                    {
                         tDef.comps = new List<CompProperties>();
+                    }
 
                     if (typeof(Pawn).IsAssignableFrom(tDef.thingClass))
+                    {
                         tDef.comps.Add(new CompProperties(typeof(CompPawnTracker)));
+                    }
                     tDef.comps.Add(new CompProperties(typeof(CompThingTracker)));
                 }
-                
-
-                // Make stone chunks catapult ammo
                 else if (tDef.IsWithinCategory(ThingCategoryDefOf.StoneChunks))
+                {
                     tDef.projectileWhenLoaded = ThingDefOf.VFES_Artillery_Rock;
+                }
             }
         }
 
+        
     }
 
 }

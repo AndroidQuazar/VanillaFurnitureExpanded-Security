@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Bear Trap -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_BearTrap</defName>
+    <label>bear trap</label>
+    <description>A set of spikes under tension, connected to a touch-activated trigger. When the victim disturbs the trigger, the spikes spring forth and typically strike their legs or feet. The spikes will harmlessly go over vitims that are too small, while victims that are too large will simply crush this trap. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps.</description>
+    <thingClass>VFESecurity.Building_TrapBear</thingClass>
+    <graphicData>
+      <texPath>Things/Security/BearTrap/BearTrapArmed</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <comps>
+      <li Class="VFESecurity.CompProperties_Rearmable">
+        <initiallyArmed>true</initiallyArmed>
+        <unarmedGraphicData>
+          <texPath>Things/Security/BearTrap/BearTrapDisarmed</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <shaderType>Cutout</shaderType>
+        </unarmedGraphicData>
+        <workToRearm>600</workToRearm>
+        <rearmSound>TrapArm</rearmSound>
+      </li>
+    </comps>
+    <statBases>
+      <Mass>2.5</Mass>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>3200</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-18</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>35</TrapMeleeDamage>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>65</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDestroyOnSpring>false</trapDestroyOnSpring>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+    <placeWorkers>
+      <li>PlaceWorker_NeverAdjacentTrap</li>
+    </placeWorkers>
+  </ThingDef>
+
+</Defs>

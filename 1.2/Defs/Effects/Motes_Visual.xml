@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="MoteBase">
+        <defName>VFES_Mote_SpotLight</defName>
+        <thingClass>VFESecurity.MoteSpotLight</thingClass>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <mote>
+        </mote>
+        <graphicData>
+            <texPath>Things/Mote/SpotLight_Mote</texPath>
+            <shaderType>MoteGlow</shaderType>
+        </graphicData>
+    </ThingDef>
+
+    <!-- Copied from Vanilla Weapons Expanded -->
+    <ThingDef ParentName="MoteBase">
+        <defName>Mote_Firetrail</defName>
+        <graphicData>
+            <texPath>Things/Mote/Mote_FireSmoked</texPath>
+        </graphicData>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <mote>
+            <fadeInTime>0.05</fadeInTime>
+            <fadeOutTime>0.4</fadeOutTime>
+            <growthRate>0.3</growthRate>
+        </mote>
+    </ThingDef>
+
+    <ThingDef ParentName="MoteBase">
+        <defName>Mote_FTSmoketrail</defName>
+        <graphicData>
+            <texPath>Things/Mote/Mote_FireSmoked</texPath>
+        </graphicData>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <mote>
+            <fadeInTime>0.1</fadeInTime>
+            <fadeOutTime>0.2</fadeOutTime>
+            <growthRate>0.3</growthRate>
+        </mote>
+    </ThingDef>
+
+</Defs>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Chunk Cover -->
+  <!-- <ThingDef ParentName="BuildingBase">
+    <defName>VFES_ChunkCover</defName>
+    <label>chunk cover</label>
+    <description>A simple pile of stone chunks. Acts as a mediocre cover.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Security/Rock</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.2)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>55</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.45</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <stuffCategories>
+      <li>Rocks</li>
+    </stuffCategories>
+    <costStuffCount>1</costStuffCount>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-8</Beauty>
+      <WorkToBuild>25</WorkToBuild>
+      <Cleanliness>-2</Cleanliness>
+    </statBases>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+    </building>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+  </ThingDef> -->
+
+  <!-- Cavalry Spikes -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_CavalrySpikes</defName>
+    <label>cavalry spikes</label>
+    <description>Wooden stakes placed in a row to build defensive fortifications. Very cheap and quick to build, provides basic cover and deals damage to people trying to traverse them. Breaks after some time.</description>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Security/CavalrySpikes/CavalrySpikes</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>2,1</drawSize>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <thingClass>Building_TrapDamager</thingClass>
+    <size>(2,1)</size>
+    <uiIconPath>Things/Security/CavalrySpikes/CavalrySpikes_south</uiIconPath>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>200</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.40</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <costList>
+      <WoodLog>6</WoodLog>
+    </costList>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>80</WorkToBuild>
+      <TrapMeleeDamage>8</TrapMeleeDamage>
+      <TrapSpringChance>0.5</TrapSpringChance>
+    </statBases>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <repairable>true</repairable>
+    </building>
+    <coversFloor>false</coversFloor>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <repairEffect>ConstructDirt</repairEffect>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <comps>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>300000</lifespanTicks> <!-- 5 days -->
+        <compClass>VFESecurity.CompLifespanAutoReplace</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ballista -->
+  <HediffDef ParentName="DiseaseBase">
+    <defName>VFES_Dazzled</defName>
+    <label>dazzled</label>
+    <labelNoun>a dazzled eye</labelNoun>
+    <description>Significant impairment of vision as a result of over-exposure to light.</description>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.7</partEfficiencyOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

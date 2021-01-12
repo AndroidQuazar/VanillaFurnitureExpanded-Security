@@ -41,8 +41,21 @@ namespace VFESecurity
             // Why, oh why does this class have to be internal?
             var sectionLayerSunShadows = GenTypes.GetTypeInAnyAssembly("Verse.SectionLayer_SunShadows", "Verse");
             VFESecurity.harmonyInstance.Patch(AccessTools.Method(sectionLayerSunShadows, "Regenerate"), transpiler: new HarmonyMethod(typeof(Patch_SectionLayer_SunShadows.manual_Regenerate), "Transpiler"));
+
+            //VFESecurity.harmonyInstance.Patch(AccessTools.Method(typeof(StorageSettings), nameof(StorageSettings.AllowedToAccept), new Type[] { typeof(Thing) }),
+            //    prefix: new HarmonyMethod(typeof(HarmonyPatches),
+            //    nameof(TestPrefix)),
+            //    postfix: new HarmonyMethod(typeof(HarmonyPatches),
+            //    nameof(TestPostfix)));
         }
 
+        public static void TestPrefix()
+        {
+        }
+
+        public static void TestPostfix()
+        {
+        }
     }
 
 }

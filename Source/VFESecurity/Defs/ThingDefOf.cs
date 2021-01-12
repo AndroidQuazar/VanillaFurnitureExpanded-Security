@@ -22,6 +22,8 @@ namespace VFESecurity
         public static ThingDef VFES_ArtilleryStrikeLeaving;
         public static ThingDef VFES_ActiveArtilleryStrike;
 
+        public static ThingDef VFES_Turret_Catapult;
+
         public static ThingDef VFES_Turret_Artillery;
         public static ThingDef VFES_Gun_Searchlight;
         public static ThingDef VFES_PsychicPylon;
