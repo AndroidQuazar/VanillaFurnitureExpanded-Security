@@ -14,6 +14,7 @@
         <skyfaller>
             <movementType>Accelerate</movementType>
             <motesPerCell>0</motesPerCell>
+			<shadow/>
         </skyfaller>
     </ThingDef>
 
@@ -32,6 +33,7 @@
             <reversed>true</reversed>
             <ticksToImpactRange>-1~-1</ticksToImpactRange>
             <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+			<shadow/>
         </skyfaller>
     </ThingDef>
 

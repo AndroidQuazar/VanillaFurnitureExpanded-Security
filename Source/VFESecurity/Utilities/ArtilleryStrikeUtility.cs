@@ -42,6 +42,7 @@ namespace VFESecurity
 
         public static ArtilleryStrikeIncoming SpawnArtilleryStrikeSkyfaller(ThingDef shellDef, Map map, IntVec3 position)
         {
+            Log.Message("Spawning shell");
             var artilleryStrikeIncoming = (ArtilleryStrikeIncoming)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFES_ArtilleryStrikeIncoming);
             artilleryStrikeIncoming.artilleryShellDef = shellDef;
             return (ArtilleryStrikeIncoming)GenSpawn.Spawn(artilleryStrikeIncoming, position, map);

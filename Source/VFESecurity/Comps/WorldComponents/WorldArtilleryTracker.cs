@@ -22,79 +22,45 @@ namespace VFESecurity
         private static readonly Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.WorldOverlayTransparent, new Color(1, 0.5f, 0.5f), WorldMaterials.WorldLineRenderQueue);
         private static readonly Material NonPlayerTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.WorldOverlayTransparent, new Color(0.5f, 0.5f, 1), WorldMaterials.WorldLineRenderQueue);
 
-        private List<WorldObject> cachedWorldObjects;
-        private List<CompLongRangeArtillery> listerArtilleryComps;
+        private List<WorldObject> cachedWorldObjects = new List<WorldObject>();
+        private List<CompLongRangeArtillery> listerArtilleryComps = new List<CompLongRangeArtillery>();
         public List<WorldObject> bombardingWorldObjects = new List<WorldObject>();
+
+        private HashSet<ArtilleryComp> cachedArtilleryCompsBombarding = new HashSet<ArtilleryComp>();
 
         public WorldArtilleryTracker(World world) : base(world)
         {
         }
 
-        private void TryPostInit()
+        public override void WorldComponentTick()
         {
-            bool init = false;
-            if (cachedWorldObjects == null)
+            base.WorldComponentTick();
+            foreach (ArtilleryComp comp in cachedArtilleryCompsBombarding)
             {
-                cachedWorldObjects = new List<WorldObject>();
-                init = true;
-            }
-            if (listerArtilleryComps == null)
-            {
-                listerArtilleryComps = new List<CompLongRangeArtillery>();
-                init = true;
-            }
-
-            if (init)
-            {
-                var worldObjects = Find.WorldObjects.AllWorldObjects;
-                for (int i = 0; i < worldObjects.Count; i++)
-                {
-                    var worldObject = worldObjects[i];
-                    var artilleryComp = worldObject.GetComponent<ArtilleryComp>();
-                    if (artilleryComp != null)
-                    {
-                        RegisterWorldObject(worldObject);
-                        var artilleryComps = artilleryComp.ArtilleryComps.ToList();
-                        for (int j = 0; j < artilleryComps.Count; j++)
-                        {
-                            var artillery = artilleryComps[j];
-                            RegisterArtilleryComp(artillery);
-                        }
-                    }
-                }
+                comp.BombardmentTick();
             }
         }
 
         public override void WorldComponentUpdate()
         {
-            TryPostInit();
-
             // Draw shoot lines
             if (WorldRendererUtility.WorldRenderedNow)
             {
                 var worldGrid = Find.WorldGrid;
-                var worldObjectList = cachedWorldObjects.ToList();
-                for (int i = 0; i < worldObjectList.Count; i++)
+                foreach (var artilleryComp in cachedArtilleryCompsBombarding)
                 {
-                    var worldObject = worldObjectList[i];
-                    var artilleryComp = worldObject.GetComponent<ArtilleryComp>();
-                    if (artilleryComp != null && artilleryComp.Attacking)
+                    var material = artilleryComp.parent.Faction == Faction.OfPlayer ? ForcedTargetLineMat : NonPlayerTargetLineMat;
+                    foreach (var target in artilleryComp.Targets)
                     {
-                        var material = worldObject.Faction == Faction.OfPlayer ? ForcedTargetLineMat : NonPlayerTargetLineMat;
-                        var targetList = artilleryComp.Targets.ToList();
-                        for (int j = 0; j < targetList.Count; j++)
-                        {
-                            var target = targetList[j];
-                            var start = worldGrid.GetTileCenter(worldObject.Tile);
-                            var end = worldGrid.GetTileCenter(target.Tile);
+                        var start = worldGrid.GetTileCenter(artilleryComp.parent.Tile);
+                        var end = worldGrid.GetTileCenter(target.Tile);
 
-                            var drawPoints = ArtilleryStrikeUtility.WorldLineDrawPoints(start, end).ToList();
-                            for (int k = 1; k < drawPoints.Count; k++)
-                            {
-                                var a = drawPoints[k - 1];
-                                var b = drawPoints[k];
-                                GenDraw.DrawWorldLineBetween(a, b, material);
-                            }
+                        var drawPoints = ArtilleryStrikeUtility.WorldLineDrawPoints(start, end).ToList();
+                        for (int k = 1; k < drawPoints.Count; k++)
+                        {
+                            var a = drawPoints[k - 1];
+                            var b = drawPoints[k];
+                            GenDraw.DrawWorldLineBetween(a, b, material);
                         }
                     }
                 }
@@ -111,26 +77,22 @@ namespace VFESecurity
             }                
         }
 
-        public void RegisterWorldObject(WorldObject o)
+        public bool RegisterBombardment(WorldObject o)
         {
-            if (o == null)
-                return;
-
-            if (cachedWorldObjects == null)
-                cachedWorldObjects = new List<WorldObject>();
-            if (!cachedWorldObjects.Contains(o))
-                cachedWorldObjects.Add(o);
+            if (o is null)
+            {
+                return false;
+            }
+            return o.GetComponent<ArtilleryComp>() is ArtilleryComp comp && cachedArtilleryCompsBombarding.Add(comp);
         }
 
-        public void DeregisterWorldObject(WorldObject o)
+        public bool DeregisterBombardment(WorldObject o)
         {
-            if (o == null)
-                return;
-
-            if (cachedWorldObjects == null)
-                cachedWorldObjects = new List<WorldObject>();
-            if (cachedWorldObjects.Contains(o))
-                cachedWorldObjects.Remove(o);
+            if (o is null)
+            {
+                return false;
+            }
+            return o.GetComponent<ArtilleryComp>() is ArtilleryComp comp && cachedArtilleryCompsBombarding.Remove(comp);
         }
 
         public void RegisterArtilleryComp(CompLongRangeArtillery a)
@@ -138,10 +100,10 @@ namespace VFESecurity
             if (a == null)
                 return;
 
-            if (listerArtilleryComps == null)
-                listerArtilleryComps = new List<CompLongRangeArtillery>();
             if (!listerArtilleryComps.Contains(a))
+            {
                 listerArtilleryComps.Add(a);
+            }
         }
 
         public void DeregisterArtilleryComp(CompLongRangeArtillery a)
@@ -149,15 +111,16 @@ namespace VFESecurity
             if (a == null)
                 return;
 
-            if (listerArtilleryComps == null)
-                listerArtilleryComps = new List<CompLongRangeArtillery>();
             if (listerArtilleryComps.Contains(a))
+            {
                 listerArtilleryComps.Remove(a);
+            }
         }
 
         public override void ExposeData()
         {
             Scribe_Collections.Look(ref bombardingWorldObjects, "bombardingWorldObjects", LookMode.Reference);
+            Scribe_Collections.Look(ref cachedArtilleryCompsBombarding, "cachedArtilleryCompsBombarding", LookMode.Reference);
             base.ExposeData();
         }
 

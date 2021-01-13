@@ -17,11 +17,11 @@ namespace VFESecurity
 
     public class ArtilleryComp : WorldObjectComp
     {
+        public int recentRetaliationTicks;
 
         private const int BombardmentStartDelay = GenTicks.TicksPerRealSecond * 5;
 
         private WorldObjectCompProperties_Artillery Props => (WorldObjectCompProperties_Artillery)props;
-        private RetaliationTracker RetaliationTracker => parent.GetComponent<RetaliationTracker>();
 
         private ThingDef ArtilleryDef
         {
@@ -37,7 +37,6 @@ namespace VFESecurity
 
         private ThingDef ArtilleryGunDef => ArtilleryDef.building.turretGunDef;
 
-        public bool HasArtillery => ArtilleryDef != null && artilleryCount > 0;
         public bool Attacking
         {
             get
@@ -47,7 +46,8 @@ namespace VFESecurity
                 return bombardmentDurationTicks > 0;
             }
         }
-        private bool CanAttack => HasArtillery && !Attacking && RetaliationTracker.recentRetaliationTicks <= 0;
+
+        private bool CanAttack => ArtilleryDef != null && !Attacking && recentRetaliationTicks <= 0;
 
         private CompProperties_LongRangeArtillery ArtilleryProps => cachedArtilleryDef.GetCompProperties<CompProperties_LongRangeArtillery>();
 
@@ -72,26 +72,19 @@ namespace VFESecurity
             }
         }
 
-        public override void Initialize(WorldObjectCompProperties props)
-        {
-            Find.World.GetComponent<WorldArtilleryTracker>().RegisterWorldObject(parent);
-            base.Initialize(props);
-        }
-
         private void TryResolveArtilleryCount()
         {
-            if (artilleryCount == -1)
+            if (artilleryCount <= 0)
             {
-                artilleryCount = Rand.Bool ? Props.ArtilleryCountFor(parent.Faction.def) : 0;
+                artilleryCount = Props.ArtilleryCountFor(parent.Faction.def);
             }
         }
 
-        public override void CompTick()
+        public void BombardmentTick()
         {
             if (parent.Faction != Faction.OfPlayer)
             {
                 TryResolveArtilleryCount();
-
                 if (Attacking)
                 {
                     // Try and bombard player settlements
@@ -104,7 +97,7 @@ namespace VFESecurity
                         else
                         {
                             artilleryWarmupTicks--;
-                            if (artilleryWarmupTicks == -1)
+                            if (artilleryWarmupTicks <= 0)
                             {
                                 var shell = ArtilleryStrikeUtility.GetRandomShellFor(ArtilleryGunDef, parent.Faction.def);
                                 if (shell != null)
@@ -113,7 +106,9 @@ namespace VFESecurity
                                     var map = targetSettlement.Map;
                                     var strikeCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, missRadius);
                                     for (int i = 0; i < artilleryCount; i++)
+                                    {
                                         ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(shell, map, strikeCells.RandomElement());
+                                    }
                                     artilleryCooldownTicks = ArtilleryDef.building.turretBurstCooldownTime.SecondsToTicks();
                                 }
                                 else
@@ -136,10 +131,10 @@ namespace VFESecurity
         {
             if (CanAttack)
             {
-                Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Add(parent);
+                Find.World.GetComponent<WorldArtilleryTracker>().RegisterBombardment(parent);
                 artilleryCooldownTicks = BombardmentStartDelay;
                 bombardmentDurationTicks = Props.bombardmentDurationRange.RandomInRange;
-                RetaliationTracker.recentRetaliationTicks = Props.bombardmentCooldownRange.RandomInRange;
+                recentRetaliationTicks = Props.bombardmentCooldownRange.RandomInRange;
                 Find.LetterStack.ReceiveLetter("VFESecurity.ArtilleryStrikeSettlement_Letter".Translate(), "VFESecurity.ArtilleryStrikeSettlement_LetterText".Translate(parent.Faction.def.pawnsPlural, parent.Label), LetterDefOf.ThreatBig, parent);
             }
         }
@@ -154,7 +149,7 @@ namespace VFESecurity
         {
             if (Attacking)
                 EndBombardment();
-            Find.World.GetComponent<WorldArtilleryTracker>().DeregisterWorldObject(parent);
+            Find.World.GetComponent<WorldArtilleryTracker>().DeregisterBombardment(parent);
             base.PostPostRemove();
         }
 
@@ -164,6 +159,7 @@ namespace VFESecurity
             Scribe_Values.Look(ref artilleryWarmupTicks, "artilleryWarmupTicks", -1);
             Scribe_Values.Look(ref artilleryCooldownTicks, "artilleryCooldownTicks");
             Scribe_Values.Look(ref bombardmentDurationTicks, "bombardmentDurationTicks");
+            Scribe_Values.Look(ref recentRetaliationTicks, "recentRetaliationTicks");
             Scribe_Collections.Look(ref artillery, "artillery", LookMode.Reference);
             base.PostExposeData();
         }

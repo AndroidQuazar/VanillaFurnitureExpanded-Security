@@ -45,15 +45,15 @@ namespace VFESecurity
             // Aggro the insects
             if (cellsInRect > 0 && Rand.Chance(cellsInRect * DestroyChancePerCellInRect))
             {
-                var retaliationTracker = Settlement.GetComponent<RetaliationTracker>();
+                var artilleryComp = Settlement.GetComponent<ArtilleryComp>();
                 var parms = new IncidentParms();
                 parms.target = sourceMap;
-                parms.points = StorytellerUtility.DefaultThreatPointsNow(sourceMap) * (1 + ((float)retaliationTracker.recentRetaliationTicks / RetaliationTicksPerExtraPointsMultiplier));
+                parms.points = StorytellerUtility.DefaultThreatPointsNow(sourceMap) * (1 + ((float)artilleryComp.recentRetaliationTicks / RetaliationTicksPerExtraPointsMultiplier));
                 parms.faction = Settlement.Faction;
                 parms.generateFightersOnly = true;
                 parms.forced = true;
                 Find.Storyteller.incidentQueue.Add(IncidentDefOf.RaidEnemy, Find.TickManager.TicksGame + RaidIntervalRange.RandomInRange, parms);
-                retaliationTracker.recentRetaliationTicks += RetaliationTicksPerRetaliation;
+                artilleryComp.recentRetaliationTicks += RetaliationTicksPerRetaliation;
             }
         }
 

@@ -17,22 +17,6 @@ namespace VFESecurity
 
     public class RetaliationTracker : WorldObjectComp
     {
-
-        public override void CompTick()
-        {
-            if (recentRetaliationTicks > 0)
-                recentRetaliationTicks--;
-        }
-
-        public override void PostExposeData()
-        {
-            Scribe_Values.Look(ref recentRetaliationTicks, "recentRetaliationTicks");
-            base.PostExposeData();
-        }
-
-        public int recentRetaliationTicks;
-
-
     }
 
 }
