@@ -42,7 +42,7 @@ namespace VFESecurity
             var sectionLayerSunShadows = GenTypes.GetTypeInAnyAssembly("Verse.SectionLayer_SunShadows", "Verse");
             VFESecurity.harmonyInstance.Patch(AccessTools.Method(sectionLayerSunShadows, "Regenerate"), transpiler: new HarmonyMethod(typeof(Patch_SectionLayer_SunShadows.manual_Regenerate), "Transpiler"));
 
-            //VFESecurity.harmonyInstance.Patch(AccessTools.Method(typeof(StorageSettings), nameof(StorageSettings.AllowedToAccept), new Type[] { typeof(Thing) }),
+            //VFESecurity.harmonyInstance.Patch(AccessTools.Method(typeof(JobGiver_Work), nameof(JobGiver_Work.TryIssueJobPackage)),
             //    prefix: new HarmonyMethod(typeof(HarmonyPatches),
             //    nameof(TestPrefix)),
             //    postfix: new HarmonyMethod(typeof(HarmonyPatches),
@@ -51,9 +51,10 @@ namespace VFESecurity
 
         public static void TestPrefix()
         {
+
         }
 
-        public static void TestPostfix()
+        public static void TestPostfix(Pawn pawn, JobIssueParams jobParams, ref ThinkResult __result)
         {
         }
     }
