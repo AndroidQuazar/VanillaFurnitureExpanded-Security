@@ -29,6 +29,7 @@ namespace VFESecurity
                 StuffCategoryDef stuffDef = thingDef.stuffCategories.RandomElement();
                 var potentialStuff = DefDatabase<ThingDef>.AllDefs.Where(d => d.stuffProps?.categories.Contains(stuffDef) ?? false);
                 ThingDef stuff = potentialStuff.RandomElementByWeight(d => 1 / (d.BaseMarketValue * (d.smallVolume ? 20 : 1)));
+                Log.Message($"Placing: {thingDef.label} Faction: {___faction} Tech: {___faction.def.techLevel} ArtilleryTech: {thingDef.techLevel}");
                 yield return GenConstruct.PlaceBlueprintForBuild(thingDef, intVec, map, random, ___faction, stuff);
                 points -= 60f;
             }

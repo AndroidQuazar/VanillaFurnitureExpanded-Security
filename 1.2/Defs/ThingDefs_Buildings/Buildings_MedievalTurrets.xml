@@ -236,8 +236,8 @@
       <turretBurstWarmupTime>6</turretBurstWarmupTime>
       <turretBurstCooldownTime>42</turretBurstCooldownTime>
       <buildingTags>
-        <li>Artillery</li>
-        <li>Artillery_BaseDestroyer</li>
+        <li>ArtilleryMedieval</li>
+        <li>ArtilleryMedieval_BaseDestroyer</li>
       </buildingTags>
       <turretGunDef>VFES_Artillery_Catapult</turretGunDef>
       <turretTopDrawSize>3</turretTopDrawSize>
@@ -275,8 +275,8 @@
       <RangedWeapon_Cooldown>42</RangedWeapon_Cooldown>
     </statBases>
     <weaponTags>
-      <li>Artillery</li>
-      <li>Artillery_BaseDestroyer</li>
+      <li>ArtilleryMedieval</li>
+      <li>ArtilleryMedieval_BaseDestroyer</li>
     </weaponTags>
     <verbs>
       <li>
