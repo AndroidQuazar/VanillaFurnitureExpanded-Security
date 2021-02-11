@@ -5,7 +5,7 @@ using Verse;
 
 namespace VFESecurity
 {
-    public class Submersible : ThingWithComps
+    public class Submersible : Building
     {
     }
 }
