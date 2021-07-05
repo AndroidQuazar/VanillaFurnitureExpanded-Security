@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- Add StatPart_AmmoCrate -->
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>/Defs/StatDef[defName="RangedWeapon_Cooldown"]/parts</xpath>
+                <success>Invert</success>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>/Defs/StatDef[defName="RangedWeapon_Cooldown"]</xpath>
+                <value>
+                    <parts/>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/StatDef[defName="RangedWeapon_Cooldown"]/parts</xpath>
+        <value>
+            <li Class="VFESecurity.StatPart_AmmoCrate">
+                <valueFactor>0.8</valueFactor>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

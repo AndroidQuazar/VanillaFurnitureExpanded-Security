@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Mod Support for Vanilla Weapons Expanded -->
+  <Operation Class="PatchOperationFindMod">
+	<mods>
+		<li>Vanilla Weapons Expanded</li>
+	</mods>
+	<match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- Merge Research -->
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName="VFES_TrenchWarfare"]</xpath>
+			</li>
+			<!-- Sandbags -->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="VFES_Trench" or defName="VFES_BarbedWire" or defName="VFES_Turret_HMGComplex" or defName="VFES_Turret_Decoy"]/researchPrerequisites/li</xpath>
+				<value>
+				  <li>VWE_TrenchWarfare</li>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- Add artillery comp to settlements -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/WorldObjectDef[defName="Settlement"]/comps</xpath>
+        <value>
+            <li Class="VFESecurity.WorldObjectCompProperties_Artillery">
+                <bombardmentDurationRange>60000~120000</bombardmentDurationRange>
+                <bombardmentCooldownRange>300000~480000</bombardmentCooldownRange>
+                <defaultArtilleryDef>VFES_Turret_Artillery</defaultArtilleryDef>
+                <defaultArtilleryCountCurve>
+                    <points>
+                        <li>(0, 1)</li>
+                        <li>(0.5, 1)</li>
+                        <li>(1, 2)</li>
+                    </points>
+                </defaultArtilleryCountCurve>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

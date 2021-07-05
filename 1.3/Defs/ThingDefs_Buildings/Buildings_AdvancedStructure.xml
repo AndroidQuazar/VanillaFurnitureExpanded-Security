@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Deployable Barrier -->
+  <ThingDef ParentName="VFES_Barrier">
+    <defName>VFES_DeployableBarrier</defName>
+    <label>deployable barrier</label>
+    <thingClass>VFESecurity.Submersible</thingClass>
+    <description>A submersible barrier which acts as a normal floor tile when unpowered. Provides excellent cover from ranged attacks. It only takes half as much damage when submerged.</description>
+    <graphicData Inherit="False">
+      <texPath>Things/Security/BarrierDeployed/BarrierDeployed_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Security/BarrierDeployed/BarrierDeployed_south</uiIconPath>
+    <tickerType>Normal</tickerType>
+    <neverMultiSelect>false</neverMultiSelect>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <statBases>
+      <WorkToBuild>1900</WorkToBuild>
+    </statBases>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <costStuffCount>0</costStuffCount>
+    <stuffCategories Inherit="False"/>
+    <costList>
+      <Steel>10</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>15</basePowerConsumption>
+      </li>
+      <li Class="VFESecurity.CompProperties_Submersible">
+        <submergedPassability>Standable</submergedPassability>
+        <submergedGraphicData>
+          <texPath>Things/Security/BarrierDeployed/BarrierSubmerged_south</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </submergedGraphicData>
+        <submergedDamageFactor>0.5</submergedDamageFactor>
+        <ticksToSubmerge>120</ticksToSubmerge>
+      </li>
+      <li Class="VFESecurity.CompProperties_TerrainSetter">
+        <terrainDef>Concrete</terrainDef>
+      </li>
+    </comps>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <researchPrerequisites Inherit="False">
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Deployable Turret -->
+  <ThingDef ParentName="VFES_Turret_MilitaryTurret">
+    <defName>VFES_Turret_FloorTurret</defName>
+    <label>deployable turret</label>
+    <description>A submersible military-grade double barreled automatic turret which acts as a normal floor tile when unpowered. It only takes half as much damage when submerged. Requires steel to refurbish its barrels after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <thingClass>VFESecurity.SubmersibleBuilding_TurretGun</thingClass>
+    <graphicData Inherit="False">
+      <texPath>Things/Building/Floor/TurretFloor_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Floor/TurretFloor_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <costStuffCount>0</costStuffCount>
+    <stuffCategories Inherit="False"/>
+    <costList Inherit="False">
+      <Steel>200</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>4500</WorkToBuild>
+    </statBases>
+    <comps>
+      <li Class="VFESecurity.CompProperties_Submersible">
+        <submergedPassability>Standable</submergedPassability>
+        <submergedGraphicData>
+          <texPath>Things/Building/Floor/TurretFloorSubmerged_south</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </submergedGraphicData>
+        <submergedDamageFactor>0.5</submergedDamageFactor>
+        <ticksToSubmerge>120</ticksToSubmerge>
+      </li>
+      <li Class="VFESecurity.CompProperties_TerrainSetter">
+        <terrainDef>Concrete</terrainDef>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <building>
+      <turretGunDef>VFES_Gun_FloorTurret</turretGunDef>
+      <!-- turretTopOffset>(0, 0.3)</turretTopOffset -->
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites Inherit="False">
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="VFES_Gun_MilitaryTurret">
+    <defName>VFES_Gun_FloorTurret</defName>
+    <label>submersible military turret doublegun</label>
+    <graphicData>
+      <texPath>Things/Building/Floor/TurretFloor_Top</texPath>
+    </graphicData>
+    <!-- Only thing different about verbs is ticksBetweenBurstShots is 8 instead of 4 -->
+    <verbs Inherit="False">
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>28.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <!-- HMG Complex (3.15,1.45) -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Turret_HMGComplex</defName>
+    <label>HMG complex</label>
+    <description>A stationary heavy machine gun supported by some sandbags to grant cover.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Security/HMGComplex/HMGComplex</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3.15,1.45)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>Things/Security/HMGComplex/HMGComplex_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <size>(3,1)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <costList>
+      <Steel>115</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>11000</WorkToBuild>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until out of ammo</fuelLabel>
+        <fuelGizmoLabel>Ammo</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>250</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.6</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>10</fuelMultiplier>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Out of ammo</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/FuelAmmo</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <castEdgeShadows>true</castEdgeShadows>
+    <passability>PassThroughOnly</passability>
+    <pathCost>40</pathCost>
+    <fillPercent>0.57</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_Gun_HMGComplex</turretGunDef>
+      <turretBurstCooldownTime>2.6</turretBurstCooldownTime>
+      <turretBurstWarmupTime>2.4</turretBurstWarmupTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_Gun_HMGComplex</defName>
+    <label>mounted HMG</label>
+    <description>A mounted variant of a heavy machine gun.</description>
+    <graphicData>
+      <texPath>Things/Security/HMGComplex/HMGComplexGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <destroyOnDrop>true</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>0.52</AccuracyTouch>
+      <AccuracyShort>0.62</AccuracyShort>
+      <AccuracyMedium>0.39</AccuracyMedium>
+      <AccuracyLong>0.26</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <weaponTags Inherit="false">
+      <li>TurretGun</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_HMGComplex</defaultProjectile>
+        <warmupTime>2.4</warmupTime>
+        <range>25.9</range>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <burstShotCount>5</burstShotCount>
+        <soundCast>VFES_Shot_HMG</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>VFES_Bullet_HMGComplex</defName>
+    <label>HMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>3</stoppingPower>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

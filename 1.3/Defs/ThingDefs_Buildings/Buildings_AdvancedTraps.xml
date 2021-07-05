@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Chemfuel Barrel -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_ChemfuelBarrel</defName>
+    <label>chemfuel barrel</label>
+    <description>A barrel full of chemfuel. Ignites upon getting shot, which results in a massive explosion.</description>
+    <graphicData>
+      <texPath>Things/Security/ChemfuelBarrel/ChemfuelBarrel_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.1,0,0.8,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconScale>0.8</uiIconScale>
+    <costList>
+      <Chemfuel>75</Chemfuel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <startWickHitPointsPercent>0.95</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
+        <wickTicks>
+          <min>0</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <fillPercent>0.4</fillPercent>
+    <specialDisplayRadius>5.9</specialDisplayRadius>
+    <uiIconOffset>(0,-0.14)</uiIconOffset>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <stealable>false</stealable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories Inherit="False">
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <Mass>10</Mass>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1400</WorkToBuild>
+      <Flammability>2</Flammability>
+      <Beauty>-10</Beauty>
+      <TrapSpringChance>0.05</TrapSpringChance>
+    </statBases>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_NeverAdjacentTrap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>BiofuelRefining</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Landmine -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Landmine</defName>
+    <label>land mine</label>
+    <description>An anti-tank container of explosive material, designed to incapacitate armored vehicles and enemy personnel. Explodes immediately.</description>
+    <graphicData>
+      <texPath>Things/Security/Landmine/Landmine</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.1,0,0.8,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costList>
+      <Shell_HighExplosive>1</Shell_HighExplosive>
+      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>15</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <wickTicks>1~1</wickTicks>
+      </li>
+    </comps>
+    <specialDisplayRadius>5.9</specialDisplayRadius>
+    <thingClass>Building_TrapExplosive</thingClass>
+    <uiIconOffset>(0,-0.14)</uiIconOffset>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <stealable>false</stealable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <Mass>2.5</Mass>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-4</Beauty>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapPeacefulWildAnimalsSpringChanceFactor>0.25</trapPeacefulWildAnimalsSpringChanceFactor>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_NeverAdjacentTrap</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_PulseChargedDefenses</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Decoy -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Turret_Decoy</defName>
+    <label>decoy</label>
+    <description>A cloth dummy holding a wooden rifle. Attracts enemy attention.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <graphicData>
+      <texPath>Things/Security/Decoy</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.8,1.8)</drawSize>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>Things/Security/Misc/Decoy_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <Flammability>1.2</Flammability>
+      <WorkToBuild>750</WorkToBuild>
+      <Mass>8.5</Mass>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.25</fillPercent>
+    <hasTooltip>false</hasTooltip>
+    <costList>
+      <Cloth>30</Cloth>
+      <WoodLog>30</WoodLog>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_Gun_None</turretGunDef>
+      <turretBurstCooldownTime>0</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_NeverAdjacentTrap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>VFES_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_Gun_None</defName>
+    <label>decoy gun</label>
+    <description>A replica gun made of wood for a turret.</description>
+    <graphicData>
+      <texPath>Things/Security/None</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <destroyOnDrop>true</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>0.99</AccuracyTouch>
+      <AccuracyShort>0.88</AccuracyShort>
+      <AccuracyMedium>0.77</AccuracyMedium>
+      <AccuracyLong>0.66</AccuracyLong>
+      <RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <weaponTags Inherit="false">
+      <li>TurretGun</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_Invisible</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>0</range>
+        <ticksBetweenBurstShots>250</ticksBetweenBurstShots>
+        <burstShotCount>0</burstShotCount>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>VFES_Bullet_Invisible</defName>
+    <label>invisible</label>
+    <graphicData>
+      <texPath>Things/Security/None</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>VFES_NoDMG</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>250</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

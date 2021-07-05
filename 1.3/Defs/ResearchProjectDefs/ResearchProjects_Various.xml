@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchProjectDef Name="VFES_ResearchBase" Abstract="True">
+		<tab>VanillaExpanded</tab>
+	</ResearchProjectDef>
+
+	<!-- Medieval -->
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_SiegeEquipment</defName>
+		<label>siege equipment</label>
+		<description>Construct medieval siege equipment.</description>
+		<baseCost>900</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>Smithing</li>
+		</prerequisites>
+  <researchViewX>0.00</researchViewX>
+  <researchViewY>2.75</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- Industrial -->
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_TrenchWarfare</defName>
+		<label>trench warfare</label>
+		<description>Adapt a trench warfare doctrine with a selection of weapons for close-quarters combat, as well as the ability to dig trenches.</description>
+		<baseCost>900</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Mortars</li>
+			<li>GasOperation</li>
+		</prerequisites>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_Artillery</defName>
+		<label>artillery</label>
+		<description>Learn how to construct field artillery capable of bombarding distant targets within a location's region on the world.</description>
+		<baseCost>1600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Mortars</li>
+		</prerequisites>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>1.25</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_SentryGuns</defName>
+		<label>sentry guns</label>
+		<description>Craft self-powered, reliable sentry guns to be utilised in the field.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>GunTurrets</li>
+			<li>GasOperation</li>
+		</prerequisites>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_MetalAlloysBarricades</defName>
+		<label>metal alloy barricades</label>
+		<description>Construct reinforced metal barricades.</description>
+		<baseCost>800</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>MicroelectronicsBasics</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>2.45</researchViewY>
+	</ResearchProjectDef>
+
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_ConcealedDefenses</defName>
+		<label>concealed defenses</label>
+		<description>Construct submersible barriers and turrets, perfect for indoor defenses.</description>
+		<baseCost>1100</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>GunTurrets</li>
+			<li>VFES_MetalAlloysBarricades</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>6.00</researchViewX>
+  <researchViewY>3.10</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_MissileBarrage</defName>
+		<label>missile turret</label>
+		<description>Adapt explosive technology in a form of surface-to-surface missile launcher.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>HeavyTurrets</li>
+		</prerequisites>
+  <researchViewX>5.00</researchViewX>
+  <researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- Spacer -->
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_PulseChargedDefenses</defName>
+		<label>pulse-charged defenses</label>
+		<description>Develop advanced charge cannons capable of keeping consistent firing speed.</description>
+		<baseCost>1600</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>VFES_MetalAlloysBarricades</li>
+			<li>ChargedShot</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>6.00</researchViewX>
+  <researchViewY>2.45</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_Railgun</defName>
+		<label>railgun</label>
+		<description>Adapt spacecraft weaponry as part of your defensive systems.</description>
+		<baseCost>2400</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChargedShot</li>
+			<li>SniperTurret</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>2.50</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_EMPCannon</defName>
+		<label>EMP cannon</label>
+		<description>Develop EMP cannons, useful throughout the galaxy with it's ability to stun mechanoids.</description>
+		<baseCost>1600</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>HeavyTurrets</li>
+			<li>ChargedShot</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>2.00</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="VFES_ResearchBase">
+		<defName>VFES_RepulsorTechnology</defName>
+		<label>repulsor technology</label>
+		<description>Build shield generators that project energy fields capable of repelling projectiles.</description>
+		<baseCost>6000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>AdvancedFabrication</li>
+			<li>ShieldBelt</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  <researchViewX>8.00</researchViewX>
+  <researchViewY>1.50</researchViewY>
+	</ResearchProjectDef>
+
+</Defs>

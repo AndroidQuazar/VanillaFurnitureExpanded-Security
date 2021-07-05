@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <WorldObjectDef>
+        <defName>VFES_TravellingArtilleryStrike</defName>
+        <label>artillery strike</label>
+        <description>Artillery strike in flight.</description>
+        <worldObjectClass>VFESecurity.TravellingArtilleryStrike</worldObjectClass>
+        <texture>World/WorldObjects/Expanding/TravelingArtilleryShells</texture>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>Things/Item/Resource/Shell/Shell_HighExplosive/Shell_HighExplosive_A</expandingIconTexture>
+        <expandingIconPriority>60</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>
+    </WorldObjectDef>
+
+</Defs>

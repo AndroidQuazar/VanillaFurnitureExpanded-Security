@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Make Sandbags available only in Industrial times -->
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- Reach proper techLevel -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="Sandbags"]</xpath>
+				<value>
+					<techLevel>Industrial</techLevel>
+				</value>
+			</li>
+			<!-- Make them Medieval if Patch gets removed -->
+			<!-- <li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VFES_CavalrySpikes"]/constructionSkillPrerequisite</xpath>
+			</li> -->
+		</operations>	
+	</Operation>
+
+</Patch>

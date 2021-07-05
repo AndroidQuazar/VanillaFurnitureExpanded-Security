@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="VFES_ShieldGeneratorBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>VFESecurity.Building_Shield</thingClass>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <techLevel>Spacer</techLevel>
+    <tickerType>Normal</tickerType>
+    <drawOffscreen>true</drawOffscreen>
+    <passability>PassThroughOnly</passability>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+  </ThingDef>
+
+  <ThingDef Name="VFES_BuildableShieldGeneratorBase" ParentName="VFES_ShieldGeneratorBase" Abstract="True">
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_RepulsorTechnology</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Small Shield Generator -->
+  <ThingDef ParentName="VFES_BuildableShieldGeneratorBase">
+    <defName>VFES_ShieldGenerator_Small</defName>
+    <label>small shield generator</label>
+    <description>An ultratech device that projects a potent energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.\n\nShield generators only activate when there's an active threat present such as a raid or an artillery bombardment. Otherwise, they stay in an inactive state and consume much less power.\n\nCan set surrounding area on fire if enough damage is absorbed in a short period of time.</description>
+    <graphicData>
+      <texPath>Things/Security/ShieldGenerator/Small/ShieldGenerator1x1</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <costList>
+      <Steel>150</Steel>
+      <Plasteel>50</Plasteel>
+      <ComponentSpacer>8</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2900</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Beauty>-20</Beauty>
+      <Mass>50</Mass>
+      <WorkToBuild>15000</WorkToBuild>
+      <VFES_EnergyShieldEnergyMax>11</VFES_EnergyShieldEnergyMax>
+      <VFES_EnergyShieldRechargeRate>1.04</VFES_EnergyShieldRechargeRate>
+      <VFES_EnergyShieldRadius>7.9</VFES_EnergyShieldRadius>
+    </statBases>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>50</pathCost>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <specialDisplayRadius>7.9</specialDisplayRadius>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>300</inactivePowerConsumption>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- Large Shield Generator -->
+  <ThingDef ParentName="VFES_BuildableShieldGeneratorBase">
+    <defName>VFES_ShieldGenerator_Large</defName>
+    <label>large shield generator</label>
+    <description>An ultratech device that projects a large energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.\n\nShield generators only activate when there's an active threat present such as a raid or an artillery bombardment. Otherwise, they stay in an inactive state and consume much less power.</description>
+    <graphicData>
+      <texPath>Things/Security/ShieldGenerator/Large/ShieldGenerator3x3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4, 4)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Beauty>-20</Beauty>
+      <WorkToBuild>30000</WorkToBuild>
+      <VFES_EnergyShieldEnergyMax>7.7</VFES_EnergyShieldEnergyMax>
+      <VFES_EnergyShieldRechargeRate>0.73</VFES_EnergyShieldRechargeRate>
+      <VFES_EnergyShieldRadius>31.9</VFES_EnergyShieldRadius>
+    </statBases>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <size>(3,3)</size>
+    <costList>
+      <Steel>350</Steel>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>14</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>9.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>4800</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <fillPercent>0.5</fillPercent>
+    <pathCost>150</pathCost>
+    <specialDisplayRadius>31.9</specialDisplayRadius>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>500</inactivePowerConsumption>
+        <shieldColour>(1, 1, 1, 0.7)</shieldColour>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- Archotech Shield Generator -->
+  <ThingDef ParentName="VFES_ShieldGeneratorBase">
+    <defName>VFES_ShieldGenerator_Archotech</defName>
+    <label>archotech shield generator</label>
+    <description>A self-powered archotech device that projects a very potent energy field around itself to protect everything inside. Works through walls.\n\nShield generators only activate when there's an active threat present such as a raid or an artillery bombardment. Otherwise, they stay in an inactive state and consume much less power.\n\nCan set surrounding area on fire if enough damage is absorbed in a short period of time.</description>
+    <graphicData>
+      <texPath>Things/Security/ShieldGenerator/Archotech/ShieldGeneratorArchotech_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1, 1)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MarketValue>2800</MarketValue>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+      <Mass>40</Mass>
+      <WorkToBuild>20000</WorkToBuild>
+      <VFES_EnergyShieldEnergyMax>18.7</VFES_EnergyShieldEnergyMax>
+      <VFES_EnergyShieldRechargeRate>1.35</VFES_EnergyShieldRechargeRate>
+      <VFES_EnergyShieldRadius>3.9</VFES_EnergyShieldRadius>
+    </statBases>
+    <techLevel>Archotech</techLevel>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <costList>
+      <Plasteel>70</Plasteel>
+      <Uranium>30</Uranium>
+      <ComponentSpacer>10</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+      </li>
+    </comps>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>50</pathCost>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <specialDisplayRadius>3.9</specialDisplayRadius>
+    <tradeability>Sellable</tradeability>
+    <modExtensions>
+      <li Class="VFESecurity.ExtendedBuildingProperties">
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
+        <shieldColour>(0.7, 1, 0.7, 1)</shieldColour>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+</Defs>

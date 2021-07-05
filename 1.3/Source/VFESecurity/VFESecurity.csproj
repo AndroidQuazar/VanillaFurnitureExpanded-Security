@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9FC1570-4DA7-48B6-8B4B-1D59718EB05E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VFESecurity</RootNamespace>
+    <AssemblyName>VFESecurity</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\1.3\Assemblies\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.0.4\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\JobDriver_RearmTrap.cs" />
+    <Compile Include="AI\WorkGiver_RearmTrap.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_AIBase.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Outpost.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Insectoid.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Settlement.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_PeaceTalks.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Map.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction.cs" />
+    <Compile Include="ArtillerySearchGroup.cs" />
+    <Compile Include="Comps\MapComponents\ListerThingsExtended.cs" />
+    <Compile Include="Comps\ThingComps\CompThingTracker.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_Rearmable.cs" />
+    <Compile Include="Comps\ThingComps\CompRearmable.cs" />
+    <Compile Include="Comps\ThingComps\CompPawnTracker.cs" />
+    <Compile Include="Comps\ThingComps\CompLifespanAutoReplace.cs" />
+    <Compile Include="Comps\WorldObjectComps\RetaliationTracker.cs" />
+    <Compile Include="DefModExtensions\ExtendedProjectileProperties.cs" />
+    <Compile Include="DefModExtensions\ExtendedVerbProperties.cs" />
+    <Compile Include="DefModExtensions\TerrainDefExtension.cs" />
+    <Compile Include="Defs\DesignationDefOf.cs" />
+    <Compile Include="Defs\HediffDefOf.cs" />
+    <Compile Include="Defs\RecordDefOf.cs" />
+    <Compile Include="Defs\ShaderTypeDefOf.cs" />
+    <Compile Include="Defs\FactionDefOf.cs" />
+    <Compile Include="Defs\JobDefOf.cs" />
+    <Compile Include="Defs\SitePartDefOf.cs" />
+    <Compile Include="Defs\WorkGiverDefOf.cs" />
+    <Compile Include="Designators\Designator_RearmTrap.cs" />
+    <Compile Include="HarmonyPatches\Patch_Building.cs" />
+    <Compile Include="HarmonyPatches\Patch_Building_Trap.cs" />
+    <Compile Include="HarmonyPatches\Patch_CastPositionFinder.cs" />
+    <Compile Include="HarmonyPatches\Patch_DamageWorker.cs" />
+    <Compile Include="HarmonyPatches\Patch_AttackTargetFinder.cs" />
+    <Compile Include="HarmonyPatches\Patch_Debugging.cs" />
+    <Compile Include="HarmonyPatches\Patch_IsShell.cs" />
+    <Compile Include="HarmonyPatches\Patch_PlaceArtilleryBlueprints.cs" />
+    <Compile Include="HarmonyPatches\Patch_SectionLayer_SunShadows.cs" />
+    <Compile Include="HarmonyPatches\Patch_Toils_Combat.cs" />
+    <Compile Include="HarmonyPatches\Patch_JobGiver_ConfigurableHostilityResponse.cs" />
+    <Compile Include="HarmonyPatches\Patch_JobGiver_AIFightEnemies.cs" />
+    <Compile Include="HarmonyPatches\Patch_JobGiver_AIDefendPoint.cs" />
+    <Compile Include="HarmonyPatches\Patch_PathFinder.cs" />
+    <Compile Include="HarmonyPatches\Patch_Skyfaller.cs" />
+    <Compile Include="HarmonyPatches\Patch_JobGiver_AIDefendPawn.cs" />
+    <Compile Include="HarmonyPatches\Patch_ReverseDesignatorDatabase.cs" />
+    <Compile Include="HarmonyPatches\Patch_TryFindRandomShellDef.cs" />
+    <Compile Include="HarmonyPatches\Patch_VerbProperties.cs" />
+    <Compile Include="HarmonyPatches\Patch_Verb.cs" />
+    <Compile Include="HarmonyPatches\Patch_Tornado.cs" />
+    <Compile Include="HarmonyPatches\ThoughtWorker_PsychicDrone.cs" />
+    <Compile Include="HediffGivers\HediffGiver_Dazzled.cs" />
+    <Compile Include="ExtendedMoteMaker.cs" />
+    <Compile Include="ModCompatibilityCheck.cs" />
+    <Compile Include="StatParts\StatPart_AmmoCrate.cs" />
+    <Compile Include="StatParts\StatPart_PylonExposure.cs" />
+    <Compile Include="StatParts\StatPart_ValueOffsetFactor.cs" />
+    <Compile Include="Things\Building_BarbedWire.cs" />
+    <Compile Include="Things\Building_TrapBear.cs" />
+    <Compile Include="Things\Submersible.cs" />
+    <Compile Include="Things\SubmersibleBuilding_TurretGun.cs" />
+    <Compile Include="Utilities\ShieldGeneratorUtility.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_LongRangeArtillery.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_TerrainSetter.cs" />
+    <Compile Include="Comps\ThingComps\CompProperties_Submersible.cs" />
+    <Compile Include="Comps\ThingComps\CompLongRangeArtillery.cs" />
+    <Compile Include="Comps\ThingComps\CompTerrainSetter.cs" />
+    <Compile Include="Comps\ThingComps\CompSubmersible.cs" />
+    <Compile Include="Comps\WorldComponents\WorldArtilleryTracker.cs" />
+    <Compile Include="Comps\WorldObjectComps\ArtilleryComp.cs" />
+    <Compile Include="Comps\WorldObjectComps\WorldObjectCompProperties_Artillery.cs" />
+    <Compile Include="DefModExtensions\ExtendedBuildingProperties.cs" />
+    <Compile Include="DefModExtensions\ThingDefExtension.cs" />
+    <Compile Include="Defs\StatDefOf.cs" />
+    <Compile Include="Defs\ThingDefOf.cs" />
+    <Compile Include="Defs\WorldObjectDefOf.cs" />
+    <Compile Include="Enums\DeployedState.cs" />
+    <Compile Include="Gizmos\Gizmo_EnergyShieldGeneratorStatus.cs" />
+    <Compile Include="HarmonyPatches\Patch_TerrainGrid.cs" />
+    <Compile Include="HarmonyPatches\Patch_PathGrid.cs" />
+    <Compile Include="HarmonyPatches\Patch_CoverUtility.cs" />
+    <Compile Include="HarmonyPatches\Patch_GenGrid.cs" />
+    <Compile Include="HarmonyPatches\Patch_Building_TurretGun.cs" />
+    <Compile Include="HarmonyPatches\Patch_TurretTop.cs" />
+    <Compile Include="HarmonyPatches\Patch_WorldObjectsHolder.cs" />
+    <Compile Include="HarmonyPatches\Patch_Thing.cs" />
+    <Compile Include="Reflection\NonPublicFields.cs" />
+    <Compile Include="Reflection\NonPublicProperties.cs" />
+    <Compile Include="Reflection\NonPublicMethods.cs" />
+    <Compile Include="StaticConstructorClass.cs" />
+    <Compile Include="Utilities\ArtilleryStrikeUtility.cs" />
+    <Compile Include="Utilities\TrenchUtility.cs" />
+    <Compile Include="Utilities\SubmersibleUtility.cs" />
+    <Compile Include="StatParts\StatPart_Submerged.cs" />
+    <Compile Include="Things\Projectile_ExplosiveAlt.cs" />
+    <Compile Include="Things\MoteSpotLight.cs" />
+    <Compile Include="Things\Building_Shield.cs" />
+    <Compile Include="Things\ArtilleryStrikeSkyfaller.cs" />
+    <Compile Include="Things\ArtilleryStrikeIncoming.cs" />
+    <Compile Include="Things\ArtilleryStrikeLeaving.cs" />
+    <Compile Include="Things\ActiveArtilleryStrike.cs" />
+    <Compile Include="Verbs\Verb_Dazzle.cs" />
+    <Compile Include="VFESecurity.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldObjects\TravellingArtilleryStrike.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
