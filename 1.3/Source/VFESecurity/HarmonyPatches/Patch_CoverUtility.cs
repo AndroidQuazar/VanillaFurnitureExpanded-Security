@@ -45,10 +45,11 @@ namespace VFESecurity
                     {
                         var terrain = terrainSetter.terrainDef;
                         var terrainDefExtension = TerrainDefExtension.Get(terrain);
-                        if (terrainDefExtension.coverEffectiveness > 0)
+                        __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
+                        /*if (terrainDefExtension.coverEffectiveness > 0)
                         {
                             __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
-                        }
+                        }*/
                     }
                 }
             }
@@ -58,7 +59,6 @@ namespace VFESecurity
         [HarmonyPatch(typeof(CoverUtility), nameof(CoverUtility.CalculateOverallBlockChance))]
         public static class CalculateOverallBlockChance
         {
-
             public static void Postfix(LocalTargetInfo target, Map map, ref float __result)
             {
                 var things = target.Cell.GetThingList(map);
@@ -70,10 +70,11 @@ namespace VFESecurity
                     {
                         var terrain = terrainSetter.terrainDef;
                         var terrainDefExtension = TerrainDefExtension.Get(terrain);
-                        if (terrainDefExtension.coverEffectiveness > 0)
+                        __result += (1 - __result) * terrainDefExtension.coverEffectiveness;
+                        /*if (terrainDefExtension.coverEffectiveness > 0)
                         {
                             __result += (1 - __result) * terrainDefExtension.coverEffectiveness;
-                        }
+                        }*/
                     }
                 }
             }

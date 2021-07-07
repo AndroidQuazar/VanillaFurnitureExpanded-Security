@@ -36,7 +36,7 @@
         <allowCrouching>true</allowCrouching>
         <pathCostEntering>75</pathCostEntering>
         <pathCostLeaving>75</pathCostLeaving>
-        <coverEffectiveness>0</coverEffectiveness>
+        <coverEffectiveness>-0.35</coverEffectiveness>
         <rangeFactor>1.2</rangeFactor>
       </li>
     </modExtensions>
