@@ -61,7 +61,6 @@
 				<multiplier>2</multiplier>
 			</li>
 		</damageMultipliers>
-		<constructEffect>ConstructMetal</constructEffect>
 		<repairEffect>ConstructMetal</repairEffect>
 		<researchPrerequisites><li>VFES_TrenchWarfare</li></researchPrerequisites>
 		<modExtensions>
