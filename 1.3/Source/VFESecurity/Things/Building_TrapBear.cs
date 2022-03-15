@@ -26,24 +26,18 @@ namespace VFESecurity
         {
             get
             {
-                if (rearmableComp.armed || rearmableComp.UnarmedGraphic == null)
+                if (RearmableComp.armed || RearmableComp.UnarmedGraphic == null)
                     return base.Graphic;
-                return rearmableComp.UnarmedGraphic;
+                return RearmableComp.UnarmedGraphic;
             }
-        }
-
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
-        {
-            base.SpawnSetup(map, respawningAfterLoad);
-            rearmableComp = GetComp<CompRearmable>();
         }
 
         protected override void SpringSub(Pawn p)
         {
-            if (rearmableComp.armed)
+            if (RearmableComp.armed)
             {
                 SoundDefOf.TrapSpring.PlayOneShot(new TargetInfo(Position, Map));
-                rearmableComp.armed = false;
+                RearmableComp.armed = false;
                 Map.mapDrawer.SectionAt(Position).RegenerateAllLayers();
                 if (!def.building.trapDestroyOnSpring && (bool)NonPublicFields.Building_Trap_autoRearm.GetValue(this))
                     Map.designationManager.AddDesignation(new Designation(this, DesignationDefOf.VFES_RearmTrap));
@@ -63,7 +57,20 @@ namespace VFESecurity
             }
         }
 
-        private CompRearmable rearmableComp;
+        private CompRearmable _rearmableComp;
+
+        private CompRearmable RearmableComp
+        {
+            get
+            {
+                if (_rearmableComp == null)
+                {
+                    _rearmableComp = GetComp<CompRearmable>();
+                }
+
+                return _rearmableComp;
+            }
+        }
 
     }
 
